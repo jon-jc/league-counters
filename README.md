@@ -23,9 +23,14 @@ cp .env.example .env.local   # add your Riot API key
 npm run dev
 ```
 
-The site runs without a Riot key: `data/snapshots/` ships with placeholder
-snapshots so every page renders. They are tagged `source: "seed"` and the UI
-labels them as sample data.
+The site runs without a Riot key: `data/snapshots/` ships with **real** ranked
+snapshots for every supported region, committed by the scheduled ingest.
+
+If you want throwaway data to develop against — after changing the ranking
+formula, say — `npm run seed` generates a deterministic placeholder set. Those
+snapshots are tagged `source: "seed"` and the UI labels them as sample data
+wherever they appear, so they can never be mistaken for the live meta. Nothing
+synthetic is committed.
 
 ## How the numbers are produced
 
@@ -92,6 +97,20 @@ the same snapshot files, so overlapping runs can flush stale state over each
 other. The scheduled workflow loops through regions sequentially for this
 reason; do the same locally.
 
+### Which brackets have data
+
+The pipeline samples **Master+** for every region, and that is what the site
+defaults to. Sampling a second bracket would halve the volume behind each one,
+which matters far more than breadth while a development key caps throughput at
+roughly 50 matches a minute. Requesting a bracket with no snapshot falls back to
+the best one that region has, with a notice saying so.
+
+To populate another bracket, point the ingest at it:
+
+```bash
+npm run ingest -- --region KR --bracket emerald_plus --matches 2000
+```
+
 ### Scheduled runs
 
 `.github/workflows/ingest.yml` runs every three hours, ingests each configured
@@ -157,7 +176,8 @@ from Riot's response headers.
 | `npm run lint`     | ESLint                                       |
 | `npm run typecheck`| `tsc --noEmit`                               |
 | `npm run ingest`   | Aggregate ranked matches into a snapshot     |
-| `npm run seed`     | Regenerate the placeholder dataset           |
+| `npm run seed`     | Generate a local placeholder dataset          |
+| `npm run ingest:all` | Ingest several regions, one after another   |
 | `npm run key:check`  | Report whether the Riot key still works    |
 | `npm run key:rotate` | Install a new Riot key everywhere it is needed |
 
