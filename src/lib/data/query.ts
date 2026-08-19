@@ -18,6 +18,14 @@ export interface SnapshotQuery {
   queue: QueueId;
   bracket: Bracket;
   role: Role | null;
+  /**
+   * Whether the visitor actually asked for this bracket.
+   *
+   * A default is not a choice. When nobody picked a bracket we are free to
+   * serve the best snapshot a region has; when someone did pick one, we owe
+   * them exactly that, even if it is thin.
+   */
+  bracketExplicit: boolean;
 }
 
 function first(value: string | string[] | undefined): string | undefined {
@@ -32,7 +40,14 @@ export function parseSnapshotQuery(params: RawSearchParams): SnapshotQuery {
   const queue: QueueId = isQueueId(rawQueue) ? rawQueue : DEFAULT_QUEUE;
 
   const rawBracket = first(params.rank);
-  const bracket: Bracket = rawBracket && isBracket(rawBracket) ? rawBracket : DEFAULT_BRACKET;
+  const bracketExplicit = Boolean(rawBracket && isBracket(rawBracket));
+  const bracket: Bracket = bracketExplicit ? (rawBracket as Bracket) : DEFAULT_BRACKET;
 
-  return { platform, queue, bracket, role: resolveRole(first(params.role)) };
+  return {
+    platform,
+    queue,
+    bracket,
+    bracketExplicit,
+    role: resolveRole(first(params.role)),
+  };
 }

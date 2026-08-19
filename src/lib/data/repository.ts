@@ -63,16 +63,33 @@ export const loadSnapshot = cache(
  * Only the *fallback* prefers a snapshot with enough volume to actually render,
  * since substituting one empty page for another helps nobody.
  */
+/**
+ * Load the best snapshot for a request.
+ *
+ * When the visitor explicitly picked a bracket they get exactly that, thin or
+ * not — substituting data they did not ask for is worse than showing the truth
+ * about what they did. When the bracket is merely a default, the region's best
+ * available snapshot wins instead, so a region part-way through its first
+ * ingest does not greet everyone with an almost-empty page.
+ *
+ * Falls back across bracket, then platform, so a deep link never dead-ends.
+ */
 export const resolveSnapshot = cache(
   async (
     platform: PlatformId,
     queue: QueueId = DEFAULT_QUEUE,
     bracket: Bracket = DEFAULT_BRACKET,
+    bracketExplicit = true,
   ): Promise<Snapshot | null> => {
-    const exact = await loadSnapshot(platform, queue, bracket);
-    if (exact) return exact;
-
     const available = await listSnapshots();
+
+    if (bracketExplicit) {
+      const exact = await loadSnapshot(platform, queue, bracket);
+      if (exact) return exact;
+    } else {
+      const best = bestOf(available.filter((s) => s.platform === platform && s.queue === queue));
+      if (best) return loadSnapshot(best.platform, best.queue, best.bracket);
+    }
 
     const samePlatform = bestOf(
       available.filter((s) => s.platform === platform && s.queue === queue),

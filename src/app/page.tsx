@@ -7,7 +7,7 @@ import { RoleHighlights } from "@/components/tier-list/role-highlights";
 import { getChampionIndex } from "@/lib/lol/ddragon";
 import { resolveSnapshot } from "@/lib/data/repository";
 import { buildTierRows } from "@/lib/data/rows";
-import { ROLES } from "@/lib/lol/constants";
+import { DEFAULT_BRACKET, DEFAULT_QUEUE, ROLES } from "@/lib/lol/constants";
 import { DEFAULT_PLATFORM } from "@/lib/lol/regions";
 
 export const revalidate = 900;
@@ -33,7 +33,8 @@ const FEATURES = [
 export default async function HomePage() {
   const [index, snapshot] = await Promise.all([
     getChampionIndex(),
-    resolveSnapshot(DEFAULT_PLATFORM),
+    // Nobody picked anything on the landing page, so serve the best we have.
+    resolveSnapshot(DEFAULT_PLATFORM, DEFAULT_QUEUE, DEFAULT_BRACKET, false),
   ]);
 
   const highlights = snapshot

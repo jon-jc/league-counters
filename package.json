@@ -14,7 +14,8 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "key:check": "tsx scripts/check-key.ts",
-    "key:rotate": "tsx scripts/rotate-key.ts"
+    "key:rotate": "tsx scripts/rotate-key.ts",
+    "ingest:all": "tsx scripts/ingest-all.ts"
   },
   "dependencies": {
     "clsx": "^2.1.1",

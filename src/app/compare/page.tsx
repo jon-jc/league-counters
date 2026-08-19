@@ -73,7 +73,7 @@ export default async function ComparePage({
 
   const index = await getChampionIndex();
   const [snapshot, platforms] = await Promise.all([
-    resolveSnapshot(query.platform, query.queue, query.bracket),
+    resolveSnapshot(query.platform, query.queue, query.bracket, query.bracketExplicit),
     availablePlatforms(),
   ]);
 

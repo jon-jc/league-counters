@@ -67,3 +67,36 @@ describe("bestOf", () => {
     expect(list[0]!.bracket).toBe("master_plus");
   });
 });
+
+describe("default versus explicit bracket", () => {
+  /* Regression: once master_plus became the default, every region part-way
+     through its first ingest answered the *default* view with an almost-empty
+     snapshot, because an exact bracket match skips the fallback ranking. A
+     default is not a choice, so it must not be honoured that literally. */
+  const thinDefault = descriptor({
+    platform: "BR1",
+    source: "riot",
+    matches: 40,
+    bracket: "master_plus",
+  });
+  const richOther = descriptor({
+    platform: "BR1",
+    source: "seed",
+    matches: 26_000,
+    bracket: "emerald_plus",
+  });
+
+  it("prefers the richer bracket when nobody picked one", () => {
+    expect(bestOf([thinDefault, richOther])?.bracket).toBe("emerald_plus");
+  });
+
+  it("still ranks a viable real snapshot above a rich seed", () => {
+    const viableReal = descriptor({
+      platform: "BR1",
+      source: "riot",
+      matches: 4_000,
+      bracket: "master_plus",
+    });
+    expect(bestOf([viableReal, richOther])?.bracket).toBe("master_plus");
+  });
+});

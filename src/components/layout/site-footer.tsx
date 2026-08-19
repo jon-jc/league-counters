@@ -13,21 +13,23 @@ export function SiteFooter() {
               platform, recomputed each patch.
             </p>
           </div>
-          <nav className="grid grid-cols-2 gap-x-12 gap-y-2 text-sm" aria-label="Footer">
-            <Link href="/tier-list" className="text-fg-muted hover:text-fg">
+          {/* -my-2 py-2 keeps the touch target comfortably tall without
+              opening up the visual spacing between rows. */}
+          <nav className="grid grid-cols-2 gap-x-12 text-sm" aria-label="Footer">
+            <Link href="/tier-list" className="-my-1 py-2.5 text-fg-muted hover:text-fg">
               Tier List
             </Link>
-            <Link href="/champions" className="text-fg-muted hover:text-fg">
+            <Link href="/champions" className="-my-1 py-2.5 text-fg-muted hover:text-fg">
               Champions
             </Link>
-            <Link href="/compare" className="text-fg-muted hover:text-fg">
+            <Link href="/compare" className="-my-1 py-2.5 text-fg-muted hover:text-fg">
               Compare
             </Link>
             <a
               href="https://github.com/jon-jc/league-counters"
               target="_blank"
               rel="noreferrer noopener"
-              className="text-fg-muted hover:text-fg"
+              className="-my-1 py-2.5 text-fg-muted hover:text-fg"
             >
               Source
             </a>

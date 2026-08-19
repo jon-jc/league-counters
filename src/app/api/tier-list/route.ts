@@ -20,7 +20,7 @@ export async function GET(request: Request) {
 
   const [index, snapshot] = await Promise.all([
     getChampionIndex(),
-    resolveSnapshot(query.platform, query.queue, query.bracket),
+    resolveSnapshot(query.platform, query.queue, query.bracket, query.bracketExplicit),
   ]);
 
   if (!snapshot) {
