@@ -28,6 +28,8 @@ export class RateLimiter {
   private hits: number[] = [];
   /** Set when a 429 tells us to stop entirely for a while. */
   private blockedUntil = 0;
+  /** Whether the cold-start sync with Riot's counter has already happened. */
+  private synced = false;
 
   constructor(windows: RateWindow[] = DEV_KEY_WINDOWS) {
     this.windows = [...windows];
@@ -71,20 +73,31 @@ export class RateLimiter {
   }
 
   /**
-   * Sync with the budget Riot says is already spent, e.g. "97:120,3:1".
+   * Sync once with the budget Riot says is already spent, e.g. "97:120,3:1".
    *
    * The limiter only ever sees its own requests, but the budget belongs to the
    * key. A freshly started process — every scheduled run, or a resumed ingest —
    * begins with empty history against a counter that may already be nearly
-   * full, and would immediately burn through it into a 429 storm. Backfilling
-   * the difference makes a cold start throttle itself correctly.
+   * full, and would immediately burn through it into a 429 storm.
+   *
+   * This applies on the first response only. Riot's app limits use fixed
+   * windows, so the reported count says nothing about *when* those requests
+   * happened; the backfill has to assume the worst and stamp them as current.
+   * Re-applying that on every response would keep re-aging the same requests
+   * and throttle a healthy run to a fraction of its real budget. After the
+   * cold-start correction, this limiter's own sliding window is accurate.
    */
   observeCountHeader(value: string | null): void {
+    if (this.synced) return;
+
+    const pairs = parsePairs(value);
+    if (pairs.length === 0) return;
+    this.synced = true;
+
     const now = Date.now();
-    for (const [count, seconds] of parsePairs(value)) {
+    for (const [count, seconds] of pairs) {
       const cutoff = now - seconds * 1000;
       const known = this.hits.filter((t) => t > cutoff).length;
-      // Conservative: synthetic hits are stamped now, so they age out late.
       for (let i = known; i < count; i += 1) this.hits.push(now);
     }
     this.hits.sort((a, b) => a - b);

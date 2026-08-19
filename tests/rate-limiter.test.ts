@@ -86,6 +86,20 @@ describe("RateLimiter.observeCountHeader", () => {
     expect(Date.now() - started).toBeLessThan(150);
   });
 
+  it("syncs only once, so a healthy run is not throttled by repeated backfills", async () => {
+    const limiter = new RateLimiter([{ limit: 10, seconds: 1 }]);
+    limiter.observeCountHeader("1:1");
+
+    // Riot keeps reporting a rising count on every response. Re-applying it
+    // would re-age the same requests and stall a run well inside its budget.
+    const started = Date.now();
+    for (let i = 0; i < 8; i += 1) {
+      await limiter.acquire();
+      limiter.observeCountHeader(`${i + 2}:1`);
+    }
+    expect(Date.now() - started).toBeLessThan(200);
+  });
+
   it("ignores a malformed count header", async () => {
     const limiter = new RateLimiter([{ limit: 2, seconds: 1 }]);
     limiter.observeCountHeader("garbage");
