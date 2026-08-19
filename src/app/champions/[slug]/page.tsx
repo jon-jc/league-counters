@@ -4,6 +4,7 @@ import { BarChart3 } from "lucide-react";
 import { ChampionHero } from "@/components/champion/champion-hero";
 import { ChampionRoleTabs } from "@/components/champion/champion-role-tabs";
 import { StatTiles } from "@/components/champion/stat-tiles";
+import { ChampionBuildPanels } from "@/components/champion/champion-build";
 import { CounterList } from "@/components/matchup/counter-list";
 import { MatchupTable } from "@/components/matchup/matchup-table";
 import { SnapshotFilters } from "@/components/filters/snapshot-filters";
@@ -23,6 +24,7 @@ import {
 } from "@/lib/data/repository";
 import { buildRoleRows, rolesFor } from "@/lib/data/metrics";
 import { buildMatchupDisplayRows } from "@/lib/data/rows";
+import { buildChampionBuild } from "@/lib/data/builds";
 import { parseSnapshotQuery, type RawSearchParams } from "@/lib/data/query";
 import { ROLE_LABELS, type Role } from "@/lib/lol/constants";
 import { PLATFORMS } from "@/lib/lol/regions";
@@ -106,6 +108,11 @@ export default async function ChampionPage({
       ? buildMatchupDisplayRows(snapshot, index, champion.id, activeRole)
       : [];
 
+  const build =
+    snapshot && activeRole
+      ? await buildChampionBuild(snapshot, champion.id, activeRole)
+      : null;
+
   /* Split by sign, not by position in the list. Taking the head and tail
      regardless would put a losing matchup under "Strong against" whenever a
      champion has fewer favourable lanes than the limit — which is exactly what
@@ -180,6 +187,8 @@ export default async function ChampionPage({
             </div>
 
             <StatTiles row={row} roleLabel={roleLabel} />
+
+            {build && <ChampionBuildPanels build={build} roleLabel={roleLabel} />}
 
             <MetricsLegend variant="matchup" />
 

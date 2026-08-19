@@ -32,6 +32,28 @@ export const matchSchema = z.object({
         /** "" when Riot could not classify the position — those are dropped. */
         teamPosition: z.string(),
         win: z.boolean(),
+        /* Inventory at the final tick. Slots 0-5 are items, 6 is the trinket.
+           A slot is 0 when empty. */
+        item0: z.number().optional(),
+        item1: z.number().optional(),
+        item2: z.number().optional(),
+        item3: z.number().optional(),
+        item4: z.number().optional(),
+        item5: z.number().optional(),
+        summoner1Id: z.number().optional(),
+        summoner2Id: z.number().optional(),
+        perks: z
+          .object({
+            styles: z.array(
+              z.object({
+                /** "primaryStyle" or "subStyle". */
+                description: z.string().optional(),
+                style: z.number(),
+                selections: z.array(z.object({ perk: z.number() })),
+              }),
+            ),
+          })
+          .optional(),
       }),
     ),
     teams: z.array(

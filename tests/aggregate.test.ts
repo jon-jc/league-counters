@@ -8,9 +8,28 @@ const TARGET = { queue: 420, patch: "16.16" };
 
 /** Blue team wins by default; champion ids are 100+index / 200+index. */
 function buildMatch(overrides: Partial<RiotMatch["info"]> = {}): RiotMatch {
+  /* Slot 5 repeats slot 0 and slot 4 is empty, so the tests can prove
+     duplicates are counted once and empty slots ignored. */
+  const loadout = {
+    item0: 3153,
+    item1: 3031,
+    item2: 3006,
+    item3: 6672,
+    item4: 0,
+    item5: 3153,
+    summoner1Id: 4,
+    summoner2Id: 14,
+    perks: {
+      styles: [
+        { description: "primaryStyle", style: 8000, selections: [{ perk: 8008 }] },
+        { description: "subStyle", style: 8100, selections: [{ perk: 8135 }] },
+      ],
+    },
+  };
+
   const participants = ROLES.flatMap((role, index) => [
-    { championId: 100 + index, teamId: 100, teamPosition: role, win: true },
-    { championId: 200 + index, teamId: 200, teamPosition: role, win: false },
+    { championId: 100 + index, teamId: 100, teamPosition: role, win: true, ...loadout },
+    { championId: 200 + index, teamId: 200, teamPosition: role, win: false, ...loadout },
   ]);
 
   return {
@@ -151,5 +170,88 @@ describe("snapshot round trip", () => {
     const snapshot = toSnapshot(acc, meta);
     const top = snapshot.champions.find((c) => c.championId === 100)!;
     expect(Object.keys(top.byRole)).toEqual(["TOP"]);
+  });
+});
+
+describe("build aggregation", () => {
+  /* 3006 is boots; the rest are legendary. 9999 is deliberately unknown, to
+     prove unclassified ids are dropped rather than guessed at. */
+  const items = {
+    legendary: new Set([3153, 3031, 6672]),
+    boots: new Set([3006]),
+  };
+
+  it("records nothing when no item classifier is supplied", () => {
+    const acc = createAccumulator();
+    addMatch(acc, buildMatch(), TARGET);
+    expect(acc.builds.size).toBe(0);
+  });
+
+  it("separates boots from legendary items", () => {
+    const acc = createAccumulator();
+    addMatch(acc, buildMatch(), TARGET, items);
+
+    const build = acc.builds.get("100:TOP")!;
+    expect([...build.boots.keys()]).toEqual([3006]);
+    expect([...build.items.keys()].sort((a, b) => a - b)).toEqual([3031, 3153, 6672]);
+  });
+
+  it("counts a duplicated item slot once per game", () => {
+    const acc = createAccumulator();
+    addMatch(acc, buildMatch(), TARGET, items);
+    // 3153 occupies two slots in the fixture.
+    expect(acc.builds.get("100:TOP")!.items.get(3153)).toEqual({ games: 1, wins: 1 });
+  });
+
+  it("ignores empty inventory slots", () => {
+    const acc = createAccumulator();
+    addMatch(acc, buildMatch(), TARGET, items);
+    expect(acc.builds.get("100:TOP")!.items.has(0)).toBe(false);
+  });
+
+  it("records the keystone and the secondary tree", () => {
+    const acc = createAccumulator();
+    addMatch(acc, buildMatch(), TARGET, items);
+
+    const build = acc.builds.get("100:TOP")!;
+    expect(build.keystones.get(8008)).toEqual({ games: 1, wins: 1 });
+    expect(build.secondaryStyles.get(8100)).toEqual({ games: 1, wins: 1 });
+  });
+
+  it("keys a summoner spell pair by sorted ids, whichever order they arrive in", () => {
+    const acc = createAccumulator();
+    const swapped = buildMatch();
+    for (const p of swapped.info.participants) {
+      p.summoner1Id = 14;
+      p.summoner2Id = 4;
+    }
+    addMatch(acc, swapped, TARGET, items);
+    expect([...acc.builds.get("100:TOP")!.spells.keys()]).toEqual(["4-14"]);
+  });
+
+  it("tracks wins separately from games", () => {
+    const acc = createAccumulator();
+    addMatch(acc, buildMatch(), TARGET, items);
+    // Red side lost the fixture match.
+    expect(acc.builds.get("200:TOP")!.items.get(3153)).toEqual({ games: 1, wins: 0 });
+  });
+
+  it("survives a snapshot round trip", () => {
+    const meta = {
+      platform: "NA1",
+      queue: 420,
+      bracket: "master_plus",
+      patch: "16.16",
+      generatedAt: "2026-08-19T00:00:00.000Z",
+      source: "riot",
+    } as const;
+
+    const acc = createAccumulator();
+    addMatch(acc, buildMatch(), TARGET, items);
+    const snapshot = toSnapshot(acc, meta);
+
+    expect(snapshot.builds?.length).toBeGreaterThan(0);
+    const restored = toSnapshot(fromSnapshot(snapshot as Snapshot), meta);
+    expect(restored.builds).toEqual(snapshot.builds);
   });
 });

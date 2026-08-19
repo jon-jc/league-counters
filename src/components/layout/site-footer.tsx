@@ -28,6 +28,9 @@ export function SiteFooter() {
             <Link href="/compare" className="-my-1 py-2.5 text-fg-muted hover:text-fg">
               Compare
             </Link>
+            <Link href="/methodology" className="-my-1 py-2.5 text-fg-muted hover:text-fg">
+              Methodology
+            </Link>
             <a
               href="https://github.com/jon-jc/league-counters"
               target="_blank"

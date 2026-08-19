@@ -17,6 +17,11 @@ const queueSchema = z
 
 const roleSchema = z.enum(ROLES);
 
+const optionCountSchema = z.object({
+  games: z.number().int().nonnegative(),
+  wins: z.number().int().nonnegative(),
+});
+
 export const snapshotMetaSchema = z.object({
   platform: platformSchema,
   queue: queueSchema,
@@ -51,6 +56,21 @@ export const snapshotSchema = z.object({
       wins: z.number().int().nonnegative(),
     }),
   ),
+  /* Optional so snapshots written before builds existed still validate. */
+  builds: z
+    .array(
+      z.object({
+        championId: z.number().int().positive(),
+        role: roleSchema,
+        games: z.number().int().nonnegative(),
+        items: z.record(z.string(), optionCountSchema),
+        boots: z.record(z.string(), optionCountSchema),
+        keystones: z.record(z.string(), optionCountSchema),
+        secondaryStyles: z.record(z.string(), optionCountSchema),
+        spells: z.record(z.string(), optionCountSchema),
+      }),
+    )
+    .optional(),
 });
 
 export const snapshotIndexSchema = z.object({
