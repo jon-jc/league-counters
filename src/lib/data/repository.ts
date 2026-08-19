@@ -11,7 +11,10 @@ import {
 } from "@/lib/lol/constants";
 import { DEFAULT_PLATFORM, type PlatformId } from "@/lib/lol/regions";
 import { snapshotSchema } from "./schema";
+import { bestOf } from "./select";
 import type { Snapshot, SnapshotDescriptor } from "./types";
+
+
 
 const SNAPSHOT_ROOT = path.join(process.cwd(), "data", "snapshots");
 
@@ -53,7 +56,12 @@ export const loadSnapshot = cache(
 
 /**
  * Load the requested snapshot, falling back to another bracket on the same
- * platform, then to the default platform, so a deep link never dead-ends.
+ * platform, then to the best snapshot anywhere, so a deep link never dead-ends.
+ *
+ * An explicit selection is always honoured exactly — if someone picks Master+
+ * and it is thin, they get the thin real numbers and an honest empty state.
+ * Only the *fallback* prefers a snapshot with enough volume to actually render,
+ * since substituting one empty page for another helps nobody.
  */
 export const resolveSnapshot = cache(
   async (
@@ -66,13 +74,15 @@ export const resolveSnapshot = cache(
 
     const available = await listSnapshots();
 
-    const samePlatform = available.find((s) => s.platform === platform && s.queue === queue);
+    const samePlatform = bestOf(
+      available.filter((s) => s.platform === platform && s.queue === queue),
+    );
     if (samePlatform) {
       return loadSnapshot(samePlatform.platform, samePlatform.queue, samePlatform.bracket);
     }
 
     const fallback =
-      available.find((s) => s.platform === DEFAULT_PLATFORM) ?? available[0];
+      bestOf(available.filter((s) => s.platform === DEFAULT_PLATFORM)) ?? bestOf(available);
     return fallback
       ? loadSnapshot(fallback.platform, fallback.queue, fallback.bracket)
       : null;

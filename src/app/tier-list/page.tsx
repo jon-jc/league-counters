@@ -3,6 +3,7 @@ import { ListOrdered } from "lucide-react";
 import { PageHeader } from "@/components/ui/page-header";
 import { EmptyState } from "@/components/ui/empty-state";
 import { DataNotice } from "@/components/ui/data-notice";
+import { FallbackNotice } from "@/components/ui/fallback-notice";
 import { SnapshotFilters } from "@/components/filters/snapshot-filters";
 import { TierListView } from "@/components/tier-list/tier-list-view";
 import { getChampionIndex } from "@/lib/lol/ddragon";
@@ -43,8 +44,18 @@ export default async function TierListPage({
     resolveSnapshot(query.platform, query.queue, query.bracket),
     availablePlatforms(),
   ]);
-  const brackets = await availableBrackets(query.platform);
 
+  /* Drive the controls from the snapshot actually rendered, not from the
+     request, so they can never describe data that is not on screen. */
+  const shown = snapshot
+    ? {
+        platform: snapshot.meta.platform,
+        queue: snapshot.meta.queue,
+        bracket: snapshot.meta.bracket,
+      }
+    : { platform: query.platform, queue: query.queue, bracket: query.bracket };
+
+  const brackets = await availableBrackets(shown.platform);
   const rows = snapshot ? buildTierRows(snapshot, index, query.role) : [];
 
   return (
@@ -56,13 +67,15 @@ export default async function TierListPage({
       />
 
       <SnapshotFilters
-        platform={query.platform}
-        queue={query.queue}
-        bracket={query.bracket}
+        platform={shown.platform}
+        queue={shown.queue}
+        bracket={shown.bracket}
         role={query.role}
         availablePlatforms={platforms}
         availableBrackets={brackets}
       />
+
+      <FallbackNotice requested={query} actual={shown} />
 
       {snapshot && <DataNotice meta={snapshot.meta} />}
 
