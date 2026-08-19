@@ -3,6 +3,7 @@ import { Users } from "lucide-react";
 import { PageHeader } from "@/components/ui/page-header";
 import { EmptyState } from "@/components/ui/empty-state";
 import { DataNotice } from "@/components/ui/data-notice";
+import { FallbackNotice } from "@/components/ui/fallback-notice";
 import { ChampionGrid, type ChampionGridItem } from "@/components/champion/champion-grid";
 import { championSquareUrl, getChampionIndex } from "@/lib/lol/ddragon";
 import { resolveSnapshot } from "@/lib/data/repository";
@@ -69,6 +70,10 @@ export default async function ChampionsPage({
 
       {snapshot ? (
         <>
+          <FallbackNotice
+            requested={query}
+            actual={{ platform: snapshot.meta.platform, bracket: snapshot.meta.bracket }}
+          />
           <DataNotice meta={snapshot.meta} />
           <ChampionGrid champions={champions} />
         </>

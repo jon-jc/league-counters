@@ -8,6 +8,7 @@ import { CounterList } from "@/components/matchup/counter-list";
 import { MatchupTable } from "@/components/matchup/matchup-table";
 import { SnapshotFilters } from "@/components/filters/snapshot-filters";
 import { DataNotice } from "@/components/ui/data-notice";
+import { FallbackNotice } from "@/components/ui/fallback-notice";
 import { EmptyState } from "@/components/ui/empty-state";
 import {
   championSplashUrl,
@@ -72,11 +73,20 @@ export default async function ChampionPage({
   const champion = index.bySlug.get(slug);
   if (!champion) notFound();
 
-  const [snapshot, platforms, brackets] = await Promise.all([
+  const [snapshot, platforms] = await Promise.all([
     resolveSnapshot(query.platform, query.queue, query.bracket),
     availablePlatforms(),
-    availableBrackets(query.platform),
   ]);
+
+  // Controls describe the snapshot on screen, not the one that was requested.
+  const shown = snapshot
+    ? {
+        platform: snapshot.meta.platform,
+        queue: snapshot.meta.queue,
+        bracket: snapshot.meta.bracket,
+      }
+    : { platform: query.platform, queue: query.queue, bracket: query.bracket };
+  const brackets = await availableBrackets(shown.platform);
 
   const tally = snapshot?.champions.find((c) => c.championId === champion.id);
   const playedRoles: Role[] = tally ? rolesFor(tally) : [];
@@ -106,9 +116,9 @@ export default async function ChampionPage({
         icon={championSquareUrl(champion, index.version)}
       >
         <SnapshotFilters
-          platform={query.platform}
-          queue={query.queue}
-          bracket={query.bracket}
+          platform={shown.platform}
+          queue={shown.queue}
+          bracket={shown.bracket}
           role={activeRole}
           availablePlatforms={platforms}
           availableBrackets={brackets}
@@ -126,6 +136,8 @@ export default async function ChampionPage({
             active={activeRole}
           />
         )}
+
+        <FallbackNotice requested={query} actual={shown} />
 
         {snapshot && <DataNotice meta={snapshot.meta} />}
 
@@ -154,7 +166,7 @@ export default async function ChampionPage({
           <EmptyState
             icon={<BarChart3 className="size-8" />}
             title={`No ranked data for ${champion.name}`}
-            description={`${champion.name} has not appeared in enough ${PLATFORMS[query.platform].label} games in this snapshot to rank. Try a different region or rank bracket.`}
+            description={`${champion.name} has not appeared in enough ${PLATFORMS[shown.platform].label} games in this snapshot to rank. Try a different region or rank bracket.`}
           />
         )}
       </div>
