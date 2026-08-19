@@ -60,3 +60,38 @@ describe("RateLimiter", () => {
     expect(Date.now() - started).toBeGreaterThan(900);
   });
 });
+
+describe("RateLimiter.observeCountHeader", () => {
+  it("throttles a cold start that inherits an almost-spent budget", async () => {
+    const limiter = new RateLimiter([{ limit: 3, seconds: 1 }]);
+    // A fresh process learns 3 of 3 requests are already spent for this window.
+    limiter.observeCountHeader("3:1");
+
+    const started = Date.now();
+    await limiter.acquire();
+    expect(Date.now() - started).toBeGreaterThan(900);
+  });
+
+  it("does not double-count requests it already made itself", async () => {
+    const limiter = new RateLimiter([{ limit: 5, seconds: 1 }]);
+    await limiter.acquire();
+    await limiter.acquire();
+    // Riot agrees only two have been spent, so nothing extra is added.
+    limiter.observeCountHeader("2:1");
+
+    const started = Date.now();
+    await limiter.acquire();
+    await limiter.acquire();
+    await limiter.acquire();
+    expect(Date.now() - started).toBeLessThan(150);
+  });
+
+  it("ignores a malformed count header", async () => {
+    const limiter = new RateLimiter([{ limit: 2, seconds: 1 }]);
+    limiter.observeCountHeader("garbage");
+
+    const started = Date.now();
+    await limiter.acquire();
+    expect(Date.now() - started).toBeLessThan(150);
+  });
+});

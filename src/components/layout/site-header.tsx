@@ -6,6 +6,8 @@ import { useState } from "react";
 import { Menu, X } from "lucide-react";
 import type { Route } from "next";
 import { SiteLogo } from "./site-logo";
+import { SearchTrigger } from "@/components/search/search-trigger";
+import type { SearchChampion } from "@/components/search/search-dialog";
 import { cn } from "@/lib/utils";
 
 const NAV: { href: Route; label: string }[] = [
@@ -14,7 +16,7 @@ const NAV: { href: Route; label: string }[] = [
   { href: "/compare", label: "Compare" },
 ];
 
-export function SiteHeader() {
+export function SiteHeader({ champions }: { champions: SearchChampion[] }) {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
@@ -49,6 +51,7 @@ export function SiteHeader() {
         </nav>
 
         <div className="ml-auto flex items-center gap-3">
+          <SearchTrigger champions={champions} />
           <a
             href="https://github.com/jon-jc/league-counters"
             target="_blank"
