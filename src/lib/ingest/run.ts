@@ -1,6 +1,6 @@
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
-import { getLatestVersion } from "@/lib/lol/ddragon";
+import { getItemCatalogue, getLatestVersion } from "@/lib/lol/ddragon";
 import { toPatch, type Bracket, type QueueId } from "@/lib/lol/constants";
 import type { PlatformId } from "@/lib/lol/regions";
 import { RiotClient } from "@/lib/riot/client";
@@ -97,6 +97,12 @@ export async function runIngest(options: IngestOptions): Promise<IngestResult> {
   const patch = toPatch(await getLatestVersion());
   log(`Patch ${patch} · ${platform} · ${bracket} · queue ${queue}`);
 
+  /* Fetched once per run so the aggregator can tell a finished item from a
+     component without carrying a copy of the item catalogue itself. */
+  const itemCatalogue = await getItemCatalogue();
+  const items = { legendary: itemCatalogue.legendary, boots: itemCatalogue.boots };
+  log(`Item catalogue: ${items.legendary.size} legendary, ${items.boots.size} boots`);
+
   const client = new RiotClient({
     apiKey: options.apiKey,
     onRetry: ({ status, waitSeconds }) =>
@@ -191,7 +197,7 @@ export async function runIngest(options: IngestOptions): Promise<IngestResult> {
   for (const [position, matchId] of targets.entries()) {
     try {
       const match = await client.match(platform, matchId);
-      const result = addMatch(acc, match, { queue, patch });
+      const result = addMatch(acc, match, { queue, patch }, items);
       if (result.counted) added += 1;
       else if (result.reason) skipped[result.reason] += 1;
       // Seen either way — a rejected match stays rejected, so never refetch it.

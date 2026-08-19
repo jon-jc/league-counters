@@ -16,7 +16,7 @@ import {
 import { buildTierRows } from "@/lib/data/rows";
 import { parseSnapshotQuery, type RawSearchParams } from "@/lib/data/query";
 import { ROLE_LABELS } from "@/lib/lol/constants";
-import { PLATFORMS } from "@/lib/lol/regions";
+import { GLOBAL_REGION, regionLabel, regionShort } from "@/lib/lol/regions";
 
 export const revalidate = 900;
 
@@ -28,8 +28,8 @@ export async function generateMetadata({
   const { platform, role } = parseSnapshotQuery(await searchParams);
   const scope = role ? `${ROLE_LABELS[role]} tier list` : "Champion tier list";
   return {
-    title: `${scope} — ${PLATFORMS[platform].short}`,
-    description: `Live ${scope.toLowerCase()} for ${PLATFORMS[platform].label}, ranked by win rate and presence from aggregated ranked matches.`,
+    title: `${scope} — ${regionShort(platform)}`,
+    description: `Live ${scope.toLowerCase()} for ${regionLabel(platform)}, ranked by win rate and presence from aggregated ranked matches.`,
   };
 }
 
@@ -50,7 +50,8 @@ export default async function TierListPage({
      request, so they can never describe data that is not on screen. */
   const shown = snapshot
     ? {
-        platform: snapshot.meta.platform,
+        // A merged snapshot reports the global scope, not its seed shard.
+        platform: snapshot.meta.regions ? GLOBAL_REGION : snapshot.meta.platform,
         queue: snapshot.meta.queue,
         bracket: snapshot.meta.bracket,
       }

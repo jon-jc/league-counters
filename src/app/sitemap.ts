@@ -21,6 +21,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${siteUrl}/tier-list`, lastModified, changeFrequency: "daily", priority: 0.9 },
     { url: `${siteUrl}/champions`, lastModified, changeFrequency: "daily", priority: 0.8 },
     { url: `${siteUrl}/compare`, lastModified, changeFrequency: "weekly", priority: 0.6 },
+    { url: `${siteUrl}/methodology`, lastModified, changeFrequency: "monthly", priority: 0.4 },
   ];
 
   const champions: MetadataRoute.Sitemap = index.all.map((champion) => ({

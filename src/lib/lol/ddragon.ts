@@ -109,3 +109,152 @@ export function championSquareUrl(champion: Champion, version: string): string {
 export function championSplashUrl(champion: Champion, skin = 0): string {
   return `${DDRAGON}/cdn/img/champion/splash/${champion.ddragonId}_${skin}.jpg`;
 }
+
+/* ---------- Items, runes and summoner spells ---------- */
+
+export interface ItemMeta {
+  id: number;
+  name: string;
+  goldTotal: number;
+  tags: string[];
+}
+
+export interface ItemCatalogue {
+  version: string;
+  byId: Map<number, ItemMeta>;
+  /** Finished items worth showing as a build. */
+  legendary: Set<number>;
+  /** Upgraded boots, kept apart so a build shows one pair rather than five. */
+  boots: Set<number>;
+}
+
+/**
+ * Cheap components would swamp any "most built items" list, so the catalogue
+ * pre-classifies what counts. Anything under this is a part, not a build.
+ */
+const LEGENDARY_GOLD_FLOOR = 2000;
+/** Boots of Speed costs 300; every upgrade is far above this. */
+const BOOTS_GOLD_FLOOR = 900;
+
+let itemCache: ItemCatalogue | null = null;
+
+export async function getItemCatalogue(): Promise<ItemCatalogue> {
+  const version = await getLatestVersion();
+  if (itemCache?.version === version) return itemCache;
+
+  const payload = await ddragonFetch<{
+    data: Record<
+      string,
+      { name: string; gold: { total: number; purchasable: boolean }; tags?: string[] }
+    >;
+  }>(`/cdn/${version}/data/en_US/item.json`, 86_400);
+
+  const byId = new Map<number, ItemMeta>();
+  const legendary = new Set<number>();
+  const boots = new Set<number>();
+
+  for (const [rawId, item] of Object.entries(payload.data)) {
+    const id = Number(rawId);
+    const tags = item.tags ?? [];
+    byId.set(id, { id, name: item.name, goldTotal: item.gold.total, tags });
+
+    if (!item.gold.purchasable) continue;
+    if (tags.includes("Consumable") || tags.includes("Trinket")) continue;
+
+    if (tags.includes("Boots")) {
+      if (item.gold.total >= BOOTS_GOLD_FLOOR) boots.add(id);
+    } else if (item.gold.total >= LEGENDARY_GOLD_FLOOR) {
+      legendary.add(id);
+    }
+  }
+
+  itemCache = { version, byId, legendary, boots };
+  return itemCache;
+}
+
+export function itemIconUrl(itemId: number, version: string): string {
+  return `${DDRAGON}/cdn/${version}/img/item/${itemId}.png`;
+}
+
+export interface RuneMeta {
+  id: number;
+  name: string;
+  icon: string;
+}
+
+export interface RuneCatalogue {
+  /** Keystones and every lesser rune, by perk id. */
+  runes: Map<number, RuneMeta>;
+  /** Rune trees, by style id. */
+  styles: Map<number, RuneMeta>;
+}
+
+let runeCache: { version: string; catalogue: RuneCatalogue } | null = null;
+
+export async function getRuneCatalogue(): Promise<RuneCatalogue> {
+  const version = await getLatestVersion();
+  if (runeCache?.version === version) return runeCache.catalogue;
+
+  const payload = await ddragonFetch<
+    {
+      id: number;
+      name: string;
+      icon: string;
+      slots: { runes: { id: number; name: string; icon: string }[] }[];
+    }[]
+  >(`/cdn/${version}/data/en_US/runesReforged.json`, 86_400);
+
+  const runes = new Map<number, RuneMeta>();
+  const styles = new Map<number, RuneMeta>();
+
+  for (const style of payload) {
+    styles.set(style.id, { id: style.id, name: style.name, icon: style.icon });
+    for (const slot of style.slots) {
+      for (const rune of slot.runes) {
+        runes.set(rune.id, { id: rune.id, name: rune.name, icon: rune.icon });
+      }
+    }
+  }
+
+  const catalogue = { runes, styles };
+  runeCache = { version, catalogue };
+  return catalogue;
+}
+
+/** Rune art lives at a version-less path, unlike everything else. */
+export function runeIconUrl(icon: string): string {
+  return `${DDRAGON}/cdn/img/${icon}`;
+}
+
+export interface SpellMeta {
+  key: number;
+  name: string;
+  image: string;
+}
+
+let spellCache: { version: string; spells: Map<number, SpellMeta> } | null = null;
+
+export async function getSummonerSpells(): Promise<Map<number, SpellMeta>> {
+  const version = await getLatestVersion();
+  if (spellCache?.version === version) return spellCache.spells;
+
+  const payload = await ddragonFetch<{
+    data: Record<string, { key: string; name: string; image: { full: string } }>;
+  }>(`/cdn/${version}/data/en_US/summoner.json`, 86_400);
+
+  const spells = new Map<number, SpellMeta>();
+  for (const spell of Object.values(payload.data)) {
+    spells.set(Number(spell.key), {
+      key: Number(spell.key),
+      name: spell.name,
+      image: spell.image.full,
+    });
+  }
+
+  spellCache = { version, spells };
+  return spells;
+}
+
+export function spellIconUrl(image: string, version: string): string {
+  return `${DDRAGON}/cdn/${version}/img/spell/${image}`;
+}

@@ -4,6 +4,7 @@ import { BarChart3 } from "lucide-react";
 import { ChampionHero } from "@/components/champion/champion-hero";
 import { ChampionRoleTabs } from "@/components/champion/champion-role-tabs";
 import { StatTiles } from "@/components/champion/stat-tiles";
+import { ChampionBuildPanels } from "@/components/champion/champion-build";
 import { CounterList } from "@/components/matchup/counter-list";
 import { MatchupTable } from "@/components/matchup/matchup-table";
 import { SnapshotFilters } from "@/components/filters/snapshot-filters";
@@ -23,9 +24,10 @@ import {
 } from "@/lib/data/repository";
 import { buildRoleRows, rolesFor } from "@/lib/data/metrics";
 import { buildMatchupDisplayRows } from "@/lib/data/rows";
+import { buildChampionBuild } from "@/lib/data/builds";
 import { parseSnapshotQuery, type RawSearchParams } from "@/lib/data/query";
 import { ROLE_LABELS, type Role } from "@/lib/lol/constants";
-import { PLATFORMS } from "@/lib/lol/regions";
+import { GLOBAL_REGION, regionLabel } from "@/lib/lol/regions";
 
 export const revalidate = 900;
 
@@ -83,7 +85,8 @@ export default async function ChampionPage({
   // Controls describe the snapshot on screen, not the one that was requested.
   const shown = snapshot
     ? {
-        platform: snapshot.meta.platform,
+        // A merged snapshot reports the global scope, not its seed shard.
+        platform: snapshot.meta.regions ? GLOBAL_REGION : snapshot.meta.platform,
         queue: snapshot.meta.queue,
         bracket: snapshot.meta.bracket,
       }
@@ -105,6 +108,11 @@ export default async function ChampionPage({
     snapshot && activeRole
       ? buildMatchupDisplayRows(snapshot, index, champion.id, activeRole)
       : [];
+
+  const build =
+    snapshot && activeRole
+      ? await buildChampionBuild(snapshot, champion.id, activeRole)
+      : null;
 
   /* Split by sign, not by position in the list. Taking the head and tail
      regardless would put a losing matchup under "Strong against" whenever a
@@ -181,6 +189,8 @@ export default async function ChampionPage({
 
             <StatTiles row={row} roleLabel={roleLabel} />
 
+            {build && <ChampionBuildPanels build={build} roleLabel={roleLabel} />}
+
             <MetricsLegend variant="matchup" />
 
             {matchups.length > 0 && <MatchupTable rows={matchups} />}
@@ -189,7 +199,7 @@ export default async function ChampionPage({
           <EmptyState
             icon={<BarChart3 className="size-8" />}
             title={`No ranked data for ${champion.name}`}
-            description={`${champion.name} has not appeared in enough ${PLATFORMS[shown.platform].label} games in this snapshot to rank. Try a different region or rank bracket.`}
+            description={`${champion.name} has not appeared in enough ${regionLabel(shown.platform)} games in this snapshot to rank. Try a different region or rank bracket.`}
           />
         )}
       </div>

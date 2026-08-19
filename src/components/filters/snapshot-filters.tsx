@@ -7,7 +7,7 @@ import { Loader2 } from "lucide-react";
 import { Select } from "@/components/ui/select";
 import { RoleTabs } from "./role-tabs";
 import { BRACKETS, QUEUES, type Bracket, type QueueId, type Role } from "@/lib/lol/constants";
-import { PLATFORMS, type PlatformId } from "@/lib/lol/regions";
+import { GLOBAL_REGION, PLATFORMS, type PlatformId, type RegionId } from "@/lib/lol/regions";
 import { cn } from "@/lib/utils";
 
 export function SnapshotFilters({
@@ -20,7 +20,7 @@ export function SnapshotFilters({
   showRoles = true,
   className,
 }: {
-  platform: PlatformId;
+  platform: RegionId;
   queue: QueueId;
   bracket: Bracket;
   role: Role | null;
@@ -51,16 +51,29 @@ export function SnapshotFilters({
 
   /* A region with no snapshot is still listed, but flagged and unselectable —
      hiding it entirely makes the picker look broken to someone who plays there. */
-  const platformOptions = Object.keys(PLATFORMS).map((id) => {
-    const has = availablePlatforms.includes(id as PlatformId);
-    return {
-      value: id,
-      label: has
-        ? `${PLATFORMS[id as PlatformId].short} · ${PLATFORMS[id as PlatformId].label}`
-        : `${PLATFORMS[id as PlatformId].short} — no data yet`,
-      disabled: !has,
-    };
-  });
+  /* The global aggregate leads the list: it has by far the widest matchup
+     coverage, because a lane pairing only gains one game per match and summing
+     regions is the only way to reach a usable sample for most of them. */
+  const platformOptions = [
+    {
+      value: GLOBAL_REGION,
+      label:
+        availablePlatforms.length > 0
+          ? `Global · all ${availablePlatforms.length} regions`
+          : "Global — no data yet",
+      disabled: availablePlatforms.length === 0,
+    },
+    ...Object.keys(PLATFORMS).map((id) => {
+      const has = availablePlatforms.includes(id as PlatformId);
+      return {
+        value: id,
+        label: has
+          ? `${PLATFORMS[id as PlatformId].short} · ${PLATFORMS[id as PlatformId].label}`
+          : `${PLATFORMS[id as PlatformId].short} — no data yet`,
+        disabled: !has,
+      };
+    }),
+  ];
 
   const bracketOptions = Object.entries(BRACKETS).map(([value, meta]) => ({
     value,

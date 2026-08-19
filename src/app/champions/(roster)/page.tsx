@@ -1,12 +1,14 @@
+import { GLOBAL_REGION } from "@/lib/lol/regions";
 import type { Metadata } from "next";
 import { Users } from "lucide-react";
 import { PageHeader } from "@/components/ui/page-header";
 import { EmptyState } from "@/components/ui/empty-state";
 import { DataNotice } from "@/components/ui/data-notice";
+import { SnapshotFilters } from "@/components/filters/snapshot-filters";
 import { FallbackNotice } from "@/components/ui/fallback-notice";
 import { ChampionGrid, type ChampionGridItem } from "@/components/champion/champion-grid";
 import { championSquareUrl, getChampionIndex } from "@/lib/lol/ddragon";
-import { resolveSnapshot } from "@/lib/data/repository";
+import { availableBrackets, availablePlatforms, resolveSnapshot } from "@/lib/data/repository";
 import { buildRoleRows, primaryRole } from "@/lib/data/metrics";
 import { parseSnapshotQuery, type RawSearchParams } from "@/lib/data/query";
 import { ROLES } from "@/lib/lol/constants";
@@ -26,10 +28,22 @@ export default async function ChampionsPage({
   searchParams: Promise<RawSearchParams>;
 }) {
   const query = parseSnapshotQuery(await searchParams);
-  const [index, snapshot] = await Promise.all([
+  const [index, snapshot, platforms] = await Promise.all([
     getChampionIndex(),
     resolveSnapshot(query.platform, query.queue, query.bracket, query.bracketExplicit),
+    availablePlatforms(),
   ]);
+
+  // Controls describe the snapshot on screen, not the one that was requested.
+  const shown = snapshot
+    ? {
+        // A merged snapshot reports the global scope, not its seed shard.
+        platform: snapshot.meta.regions ? GLOBAL_REGION : snapshot.meta.platform,
+        queue: snapshot.meta.queue,
+        bracket: snapshot.meta.bracket,
+      }
+    : { platform: query.platform, queue: query.queue, bracket: query.bracket };
+  const brackets = await availableBrackets(shown.platform);
 
   // Rank once per role, then look each champion up in its own primary role.
   const rankings = new Map<number, { winRate: number; tier: ChampionGridItem["tier"] }>();
@@ -66,6 +80,16 @@ export default async function ChampionsPage({
         eyebrow="Roster"
         title="Champions"
         description={`All ${champions.length} champions, with the role each is most played in and how it is performing on the live patch.`}
+      />
+
+      <SnapshotFilters
+        platform={shown.platform}
+        queue={shown.queue}
+        bracket={shown.bracket}
+        role={query.role}
+        availablePlatforms={platforms}
+        availableBrackets={brackets}
+        showRoles={false}
       />
 
       {snapshot ? (
