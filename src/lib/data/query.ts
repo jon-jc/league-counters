@@ -36,14 +36,3 @@ export function parseSnapshotQuery(params: RawSearchParams): SnapshotQuery {
 
   return { platform, queue, bracket, role: resolveRole(first(params.role)) };
 }
-
-/** Serialise a query back to a query string, omitting defaults for clean URLs. */
-export function toSearchString(query: Partial<SnapshotQuery>): string {
-  const params = new URLSearchParams();
-  if (query.platform) params.set("region", query.platform);
-  if (query.queue && query.queue !== DEFAULT_QUEUE) params.set("queue", String(query.queue));
-  if (query.bracket && query.bracket !== DEFAULT_BRACKET) params.set("rank", query.bracket);
-  if (query.role) params.set("role", query.role);
-  const s = params.toString();
-  return s ? `?${s}` : "";
-}

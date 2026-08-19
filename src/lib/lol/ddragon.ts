@@ -28,7 +28,7 @@ interface DDragonChampion {
 }
 
 /** "Kai'Sa" -> "kaisa", "Dr. Mundo" -> "dr-mundo", "Nunu & Willump" -> "nunu-willump". */
-export function slugify(name: string): string {
+function slugify(name: string): string {
   return name
     .toLowerCase()
     .replace(/['’.]/g, "")
@@ -108,9 +108,4 @@ export function championSquareUrl(champion: Champion, version: string): string {
 /** Wide key art (1215x717) — used as the champion page banner. */
 export function championSplashUrl(champion: Champion, skin = 0): string {
   return `${DDRAGON}/cdn/img/champion/splash/${champion.ddragonId}_${skin}.jpg`;
-}
-
-/** Portrait loading art (308x560). */
-export function championLoadingUrl(champion: Champion, skin = 0): string {
-  return `${DDRAGON}/cdn/img/champion/loading/${champion.ddragonId}_${skin}.jpg`;
 }

@@ -28,6 +28,7 @@ import { PLATFORMS } from "@/lib/lol/regions";
 
 export const revalidate = 900;
 
+
 /** Counter lists never show more than this many opponents per side. */
 const COUNTER_LIMIT = 6;
 
