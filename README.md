@@ -84,6 +84,14 @@ matchup depth in under an hour.
 The rate limiter reads Riot's `X-App-Rate-Limit` header and adopts whatever
 limits the key actually has, so moving to a production key needs no code change.
 
+**Run one ingest at a time.** The limiter tracks only its own requests, but the
+budget belongs to the key. Two ingests running concurrently each believe they
+own the whole budget, and both spend more time in 429 backoff than fetching —
+a single process sees no 429s at all under the same workload. They also write
+the same snapshot files, so overlapping runs can flush stale state over each
+other. The scheduled workflow loops through regions sequentially for this
+reason; do the same locally.
+
 ### Scheduled runs
 
 `.github/workflows/ingest.yml` runs every three hours, ingests each configured
