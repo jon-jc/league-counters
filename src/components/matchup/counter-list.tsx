@@ -53,7 +53,10 @@ export function CounterList({
               >
                 <ChampionAvatar src={row.icon} alt="" size="sm" />
                 <span className="min-w-0 flex-1">
-                  <span className="block truncate text-sm font-medium group-hover:text-accent">
+                  <span
+                    className="block truncate text-sm font-medium group-hover:text-accent"
+                    title={row.name}
+                  >
                     {row.name}
                   </span>
                   <span className="mt-0.5 flex items-center gap-1.5 text-xs text-fg-subtle">

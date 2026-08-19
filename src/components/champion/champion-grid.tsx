@@ -115,17 +115,36 @@ export function ChampionGrid({ champions }: { champions: ChampionGridItem[] }) {
                 href={`/champions/${champion.slug}` as Route}
                 className="group flex items-center gap-3 rounded-card border border-line bg-surface/60 p-3 transition-colors hover:border-accent/50 hover:bg-surface-2/60"
               >
-                <ChampionAvatar src={champion.icon} alt="" size="md" />
+                {/* Smaller portrait on phones so the name has room; the card is only
+                    about 165px wide in the two-column layout. */}
+                <ChampionAvatar
+                  src={champion.icon}
+                  alt=""
+                  size="md"
+                  className="size-9 sm:size-12"
+                />
+                {/* Tier sits on the meta line rather than beside the name. As a
+                    sibling it stole 26px from the name, which on a two-column
+                    phone layout left barely enough for "Sett". */}
                 <div className="min-w-0 flex-1">
-                  <p className="truncate text-sm font-semibold group-hover:text-accent">
+                  {/* Wraps rather than truncates. In a two-column phone layout
+                      the name box is about 80px, and "Nunu & Willump" needs
+                      108px — no amount of shrinking fits it, so it gets a
+                      second line instead of an ellipsis. */}
+                  <p
+                    className="text-sm leading-tight font-semibold break-words text-balance group-hover:text-accent"
+                    title={champion.name}
+                  >
                     {champion.name}
                   </p>
-                  <p className="mt-0.5 flex items-center gap-2 text-xs text-fg-subtle">
-                    {champion.role ? ROLE_LABELS[champion.role] : champion.tags[0]}
+                  <p className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs text-fg-subtle">
+                    {champion.tier && <TierPill tier={champion.tier} size="sm" />}
+                    <span>
+                      {champion.role ? ROLE_LABELS[champion.role] : champion.tags[0]}
+                    </span>
                     {champion.winRate !== null && <WinRate value={champion.winRate} />}
                   </p>
                 </div>
-                {champion.tier && <TierPill tier={champion.tier} size="sm" />}
               </Link>
             </li>
           ))}

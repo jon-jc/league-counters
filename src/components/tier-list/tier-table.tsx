@@ -132,7 +132,10 @@ export function TierTable({ rows, showRole }: { rows: TierTableRow[]; showRole: 
                 >
                   <ChampionAvatar src={row.icon} alt="" size="sm" />
                   <span className="min-w-0">
-                    <span className="block truncate font-medium group-hover:text-accent">
+                    <span
+                      className="block truncate font-medium group-hover:text-accent"
+                      title={row.name}
+                    >
                       {row.name}
                     </span>
                     {showRole && (
