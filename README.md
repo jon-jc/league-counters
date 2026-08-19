@@ -96,8 +96,56 @@ reason; do the same locally.
 
 `.github/workflows/ingest.yml` runs every three hours, ingests each configured
 region, and commits the updated snapshots back to `main`. It needs a
-`RIOT_API_KEY` repository secret. Development keys expire every 24 hours, so a
-production key is required for this to keep working unattended.
+`RIOT_API_KEY` repository secret.
+
+## Keeping the key alive
+
+Development keys stop working 24 hours after they are issued. **Riot publishes
+no endpoint for issuing one** — regeneration is a button on the developer portal
+behind an account login, so it cannot be fully automated. What is automated is
+everything around it.
+
+### Rotating
+
+```bash
+npm run key:rotate
+```
+
+Generate the key first at <https://developer.riotgames.com/> (*Regenerate API
+Key*), then paste it when prompted — input is hidden. The command validates it
+against Riot **before** storing it anywhere, writes `.env.local`, and updates
+the `RIOT_API_KEY` repository secret through the `gh` CLI. A malformed or dead
+key is rejected without touching either, so a bad paste cannot take down a
+working setup.
+
+It also accepts a pipe, which keeps the key out of shell history:
+
+```bash
+echo "RGAPI-..." | npm run key:rotate
+```
+
+### Knowing when to rotate
+
+```bash
+npm run key:check
+```
+
+Exit codes are meaningful: `0` usable, `1` needs rotation, `2` Riot unreachable.
+That distinction matters — a Riot outage must not be reported as an expired key.
+
+`.github/workflows/key-health.yml` runs this daily, an hour ahead of the ingest
+window. When the key lapses it opens a single issue explaining the fix, comments
+on it rather than opening duplicates while it stays broken, and closes it
+automatically once the key works again. The ingest workflow runs the same check
+first, so a dead key fails in seconds instead of burning half an hour on 401s.
+
+### Stopping the treadmill
+
+Register a product at <https://developer.riotgames.com/app-type> and apply for a
+personal key. Personal and production keys **do not expire**, which removes the
+daily rotation entirely and raises the rate limit enough to make matchup
+coverage practical. No code change is needed — the rate limiter reads its budget
+from Riot's response headers.
 
 ## Scripts
 
@@ -110,6 +158,8 @@ production key is required for this to keep working unattended.
 | `npm run typecheck`| `tsc --noEmit`                               |
 | `npm run ingest`   | Aggregate ranked matches into a snapshot     |
 | `npm run seed`     | Regenerate the placeholder dataset           |
+| `npm run key:check`  | Report whether the Riot key still works    |
+| `npm run key:rotate` | Install a new Riot key everywhere it is needed |
 
 ## API
 

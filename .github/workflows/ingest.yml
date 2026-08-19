@@ -44,6 +44,22 @@ jobs:
 
       - run: npm ci
 
+      - name: Check the key before spending half an hour on it
+        env:
+          RIOT_API_KEY: ${{ secrets.RIOT_API_KEY }}
+        run: |
+          set +e
+          npm run key:check
+          code=$?
+          set -e
+          if [ "$code" = "1" ]; then
+            echo "::error::Riot API key is not authenticating — skipping ingest. Run 'npm run key:rotate'."
+            exit 1
+          fi
+          if [ "$code" != "0" ]; then
+            echo "::warning::Could not reach Riot to verify the key; attempting the ingest anyway."
+          fi
+
       - name: Ingest each region
         env:
           RIOT_API_KEY: ${{ secrets.RIOT_API_KEY }}

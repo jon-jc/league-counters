@@ -1,0 +1,93 @@
+name: Riot key health
+
+on:
+  schedule:
+    # Daily, an hour before the 03:17 UTC ingest window, leaving time to react.
+    - cron: "10 2 * * *"
+  workflow_dispatch:
+
+# One issue is opened when the key lapses and closed when it comes back, so the
+# repository always carries exactly one accurate signal.
+permissions:
+  contents: read
+  issues: write
+
+concurrency:
+  group: key-health
+  cancel-in-progress: true
+
+env:
+  ISSUE_TITLE: Riot API key needs rotating
+
+jobs:
+  check:
+    name: Check the Riot API key
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - run: npm ci
+
+      - name: Probe the key
+        id: probe
+        env:
+          RIOT_API_KEY: ${{ secrets.RIOT_API_KEY }}
+        run: |
+          set +e
+          npm run key:check
+          code=$?
+          set -e
+          # 0 usable, 1 needs rotation, 2 Riot unreachable. Only 1 is actionable;
+          # a Riot outage must not raise an issue telling someone to rotate.
+          case "$code" in
+            0) state=ok ;;
+            1) state=rotate ;;
+            *) state=unknown ;;
+          esac
+          echo "state=$state" >> "$GITHUB_OUTPUT"
+          echo "Key check exited $code -> $state"
+
+      - name: Find any open rotation issue
+        id: existing
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          # Matched on exact title rather than search relevance, so this can
+          # never comment on or close an unrelated issue.
+          number=$(gh issue list --state open --limit 100 --json number,title \
+            --jq "[.[] | select(.title == \"$ISSUE_TITLE\")] | .[0].number // empty")
+          echo "number=$number" >> "$GITHUB_OUTPUT"
+          echo "Existing issue: ${number:-none}"
+
+      - name: Raise the alarm
+        if: steps.probe.outputs.state == 'rotate'
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EXISTING: ${{ steps.existing.outputs.number }}
+        run: |
+          if [ -n "$EXISTING" ]; then
+            gh issue comment "$EXISTING" \
+              --body "Key still failing as of $(date -u '+%Y-%m-%d %H:%M UTC')."
+          else
+            gh issue create --title "$ISSUE_TITLE" \
+              --body-file .github/key-rotation-issue.md
+          fi
+
+      - name: Stand down
+        if: steps.probe.outputs.state == 'ok' && steps.existing.outputs.number != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+          EXISTING: ${{ steps.existing.outputs.number }}
+        run: |
+          gh issue close "$EXISTING" --comment "Key is valid again — closing automatically."
+
+      - name: Fail the run when the key is dead
+        if: steps.probe.outputs.state == 'rotate'
+        run: |
+          echo "::error::Riot API key is not authenticating. Run 'npm run key:rotate'."
+          exit 1
