@@ -42,7 +42,7 @@ export default async function TierListPage({
 
   const [index, snapshot, platforms] = await Promise.all([
     getChampionIndex(),
-    resolveSnapshot(query.platform, query.queue, query.bracket),
+    resolveSnapshot(query.platform, query.queue, query.bracket, query.bracketExplicit),
     availablePlatforms(),
   ]);
 

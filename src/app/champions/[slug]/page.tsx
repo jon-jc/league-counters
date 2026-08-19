@@ -76,7 +76,7 @@ export default async function ChampionPage({
   if (!champion) notFound();
 
   const [snapshot, platforms] = await Promise.all([
-    resolveSnapshot(query.platform, query.queue, query.bracket),
+    resolveSnapshot(query.platform, query.queue, query.bracket, query.bracketExplicit),
     availablePlatforms(),
   ]);
 

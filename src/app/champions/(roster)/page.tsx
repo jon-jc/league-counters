@@ -28,7 +28,7 @@ export default async function ChampionsPage({
   const query = parseSnapshotQuery(await searchParams);
   const [index, snapshot] = await Promise.all([
     getChampionIndex(),
-    resolveSnapshot(query.platform, query.queue, query.bracket),
+    resolveSnapshot(query.platform, query.queue, query.bracket, query.bracketExplicit),
   ]);
 
   // Rank once per role, then look each champion up in its own primary role.
