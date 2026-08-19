@@ -32,6 +32,10 @@ jobs:
         with:
           # Needed so the commit this job creates can be pushed back.
           persist-credentials: true
+          # Full history: the commit step rebases onto origin/main before
+          # pushing, and a rebase cannot run against the shallow clone
+          # actions/checkout takes by default.
+          fetch-depth: 0
 
       - uses: actions/setup-node@v4
         with:
