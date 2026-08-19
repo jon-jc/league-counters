@@ -10,7 +10,7 @@ on:
       regions:
         description: Space-separated platform ids (e.g. "NA1 EUW1 KR")
         required: false
-        default: NA1 EUW1 KR
+        default: KR EUW1 NA1 BR1 EUN1
       matches:
         description: Match budget per region
         required: false
@@ -63,7 +63,7 @@ jobs:
       - name: Ingest each region
         env:
           RIOT_API_KEY: ${{ secrets.RIOT_API_KEY }}
-          REGIONS: ${{ inputs.regions || 'NA1 EUW1 KR' }}
+          REGIONS: ${{ inputs.regions || 'KR EUW1 NA1 BR1 EUN1' }}
           MATCHES: ${{ inputs.matches || '600' }}
         run: |
           if [ -z "$RIOT_API_KEY" ]; then

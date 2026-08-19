@@ -3,6 +3,7 @@ import { ListOrdered } from "lucide-react";
 import { PageHeader } from "@/components/ui/page-header";
 import { EmptyState } from "@/components/ui/empty-state";
 import { DataNotice } from "@/components/ui/data-notice";
+import { MetricsLegend } from "@/components/ui/metrics-legend";
 import { FallbackNotice } from "@/components/ui/fallback-notice";
 import { SnapshotFilters } from "@/components/filters/snapshot-filters";
 import { TierListView } from "@/components/tier-list/tier-list-view";
@@ -80,7 +81,10 @@ export default async function TierListPage({
       {snapshot && <DataNotice meta={snapshot.meta} />}
 
       {rows.length > 0 ? (
-        <TierListView rows={rows} showRole={query.role === null} />
+        <>
+          <MetricsLegend />
+          <TierListView rows={rows} showRole={query.role === null} />
+        </>
       ) : (
         <EmptyState
           icon={<ListOrdered className="size-8" />}

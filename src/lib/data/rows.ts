@@ -73,6 +73,8 @@ export interface MatchupDisplayRow {
   slug: string;
   icon: string;
   role: Role;
+  /** The opponent's own tier in this role, when it has enough games to rank. */
+  tier: TierGrade | null;
   games: number;
   winRate: number;
   /** Win rate in this lane minus the champion's baseline in the role. */
@@ -90,6 +92,12 @@ export function buildMatchupDisplayRows(
   championId: number,
   role: Role,
 ): MatchupDisplayRow[] {
+  /* Rank the role once and reuse it, so each opponent can carry its own tier.
+     Knowing a hard matchup is also an S-tier pick is most of the context. */
+  const tierByChampion = new Map(
+    buildRoleRows(snapshot, role).map((row) => [row.championId, row.tier] as const),
+  );
+
   return buildMatchupRows(snapshot, championId, role).flatMap((row) => {
     const opponent = index.byId.get(row.opponentId);
     if (!opponent) return [];
@@ -100,6 +108,7 @@ export function buildMatchupDisplayRows(
         slug: opponent.slug,
         icon: championSquareUrl(opponent, index.version),
         role: row.role,
+        tier: tierByChampion.get(row.opponentId) ?? null,
         games: row.games,
         winRate: row.winRate,
         delta: row.delta,

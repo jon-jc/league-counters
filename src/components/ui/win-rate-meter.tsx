@@ -16,7 +16,9 @@ export function WinRateMeter({ value, className }: { value: number; className?: 
 
   return (
     <span className={cn("flex items-center gap-2.5", className)}>
-      <span className="relative h-1.5 w-[70px] shrink-0 overflow-hidden rounded-full bg-surface-3">
+      {/* The bar is the first thing to go on narrow screens: the number carries
+          the meaning, the bar only speeds up comparison. */}
+      <span className="relative hidden h-1.5 w-[70px] shrink-0 overflow-hidden rounded-full bg-surface-3 sm:block">
         <span className="absolute inset-y-0 left-1/2 w-px bg-line-strong" />
         <span
           className={cn("absolute inset-y-0 rounded-full", positive ? "bg-good" : "bg-bad")}

@@ -56,7 +56,12 @@ export const BRACKETS = {
 } as const;
 
 export type Bracket = keyof typeof BRACKETS;
-export const DEFAULT_BRACKET: Bracket = "emerald_plus";
+/**
+ * Master+ is the default because it is what the pipeline actually ingests, so
+ * it is the bracket with real data behind it. Defaulting to a bracket we do not
+ * sample would show placeholder numbers on the first page a visitor sees.
+ */
+export const DEFAULT_BRACKET: Bracket = "master_plus";
 
 export function isBracket(value: string): value is Bracket {
   return value in BRACKETS;

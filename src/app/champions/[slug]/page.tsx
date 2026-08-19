@@ -8,6 +8,7 @@ import { CounterList } from "@/components/matchup/counter-list";
 import { MatchupTable } from "@/components/matchup/matchup-table";
 import { SnapshotFilters } from "@/components/filters/snapshot-filters";
 import { DataNotice } from "@/components/ui/data-notice";
+import { MetricsLegend } from "@/components/ui/metrics-legend";
 import { FallbackNotice } from "@/components/ui/fallback-notice";
 import { EmptyState } from "@/components/ui/empty-state";
 import {
@@ -105,6 +106,12 @@ export default async function ChampionPage({
       ? buildMatchupDisplayRows(snapshot, index, champion.id, activeRole)
       : [];
 
+  /* Matchups need far more volume than rankings — a lane pairing only gains one
+     game per match — so an empty list here is normal on a young snapshot and
+     should say what to do about it. */
+  const matchupHint =
+    "No lane pairing has enough games yet on this snapshot. Matchups need far more volume than rankings, so try a region with a larger sample.";
+
   const worst = matchups.slice(0, COUNTER_LIMIT);
   const best = [...matchups].reverse().slice(0, COUNTER_LIMIT);
   const roleLabel = activeRole ? ROLE_LABELS[activeRole] : "";
@@ -146,18 +153,20 @@ export default async function ChampionPage({
           <>
             <StatTiles row={row} roleLabel={roleLabel} />
 
+            <MetricsLegend variant="matchup" />
+
             <div className="grid gap-4 lg:grid-cols-2">
               <CounterList
                 tone="weak"
                 rows={worst}
                 role={roleLabel}
-                emptyHint="Not enough matchup games recorded yet."
+                emptyHint={matchupHint}
               />
               <CounterList
                 tone="strong"
                 rows={best}
                 role={roleLabel}
-                emptyHint="Not enough matchup games recorded yet."
+                emptyHint={matchupHint}
               />
             </div>
 
