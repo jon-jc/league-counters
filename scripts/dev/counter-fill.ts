@@ -2,7 +2,7 @@
 import { readFileSync, readdirSync } from "node:fs";
 import path from "node:path";
 import { mergeSnapshots } from "../../src/lib/data/merge";
-import { buildMatchupRows, primaryRole, rolesFor } from "../../src/lib/data/metrics";
+import { buildMatchupRows, primaryRole } from "../../src/lib/data/metrics";
 import type { Snapshot } from "../../src/lib/data/types";
 
 const root = path.join(process.cwd(), "data", "snapshots");
