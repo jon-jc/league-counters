@@ -61,6 +61,7 @@ export class RiotClient {
       });
 
       this.limiter.observeLimitHeader(response.headers.get("x-app-rate-limit"));
+      this.limiter.observeCountHeader(response.headers.get("x-app-rate-limit-count"));
 
       if (response.ok) {
         return schema.parse(await response.json());

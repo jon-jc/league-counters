@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
 import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
+import { championSquareUrl, getChampionIndex } from "@/lib/lol/ddragon";
 import "./globals.css";
 
 const inter = Inter({
@@ -42,7 +43,15 @@ export const viewport: Viewport = {
   colorScheme: "dark",
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
+  const index = await getChampionIndex();
+  const champions = index.all.map((champion) => ({
+    slug: champion.slug,
+    name: champion.name,
+    title: champion.title,
+    icon: championSquareUrl(champion, index.version),
+  }));
+
   return (
     <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable}`}>
       <body className="min-h-dvh antialiased">
@@ -52,7 +61,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         >
           Skip to content
         </a>
-        <SiteHeader />
+        <SiteHeader champions={champions} />
         <main id="main">{children}</main>
         <SiteFooter />
       </body>

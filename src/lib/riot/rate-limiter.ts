@@ -66,17 +66,44 @@ export class RateLimiter {
 
   /** Adopt the real limits for this key, e.g. "100:120,20:1". */
   observeLimitHeader(value: string | null): void {
-    if (!value) return;
-    const parsed = value
-      .split(",")
-      .map((part) => part.split(":").map(Number))
-      .filter((pair): pair is [number, number] => pair.length === 2 && pair.every(Number.isFinite))
-      .map(([limit, seconds]) => ({ limit, seconds }));
-    if (parsed.length > 0) this.windows = parsed;
+    const parsed = parsePairs(value);
+    if (parsed.length > 0) this.windows = parsed.map(([limit, seconds]) => ({ limit, seconds }));
+  }
+
+  /**
+   * Sync with the budget Riot says is already spent, e.g. "97:120,3:1".
+   *
+   * The limiter only ever sees its own requests, but the budget belongs to the
+   * key. A freshly started process — every scheduled run, or a resumed ingest —
+   * begins with empty history against a counter that may already be nearly
+   * full, and would immediately burn through it into a 429 storm. Backfilling
+   * the difference makes a cold start throttle itself correctly.
+   */
+  observeCountHeader(value: string | null): void {
+    const now = Date.now();
+    for (const [count, seconds] of parsePairs(value)) {
+      const cutoff = now - seconds * 1000;
+      const known = this.hits.filter((t) => t > cutoff).length;
+      // Conservative: synthetic hits are stamped now, so they age out late.
+      for (let i = known; i < count; i += 1) this.hits.push(now);
+    }
+    this.hits.sort((a, b) => a - b);
   }
 
   /** Honour Retry-After from a 429. */
   blockFor(seconds: number): void {
     this.blockedUntil = Math.max(this.blockedUntil, Date.now() + seconds * 1000);
   }
+}
+
+/** Parse Riot's "a:b,c:d" limit headers into numeric pairs. */
+function parsePairs(value: string | null): [number, number][] {
+  if (!value) return [];
+  return value
+    .split(",")
+    .map((part) => part.split(":").map(Number))
+    .filter(
+      (pair): pair is [number, number] =>
+        pair.length === 2 && pair.every((n) => Number.isFinite(n) && n >= 0),
+    );
 }
