@@ -1,6 +1,16 @@
 import Link from "next/link";
+import type { Route } from "next";
 import { ArrowRight, Globe2, Swords, TrendingUp } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
+import { DataNotice } from "@/components/ui/data-notice";
+import { RoleHighlights } from "@/components/tier-list/role-highlights";
+import { getChampionIndex } from "@/lib/lol/ddragon";
+import { resolveSnapshot } from "@/lib/data/repository";
+import { buildTierRows } from "@/lib/data/rows";
+import { ROLES } from "@/lib/lol/constants";
+import { DEFAULT_PLATFORM } from "@/lib/lol/regions";
+
+export const revalidate = 900;
 
 const FEATURES = [
   {
@@ -20,7 +30,21 @@ const FEATURES = [
   },
 ];
 
-export default function HomePage() {
+export default async function HomePage() {
+  const [index, snapshot] = await Promise.all([
+    getChampionIndex(),
+    resolveSnapshot(DEFAULT_PLATFORM),
+  ]);
+
+  const highlights = snapshot
+    ? ROLES.map((role) => ({
+        role,
+        rows: buildTierRows(snapshot, index, role).slice(0, 5),
+      })).filter((entry) => entry.rows.length > 0)
+    : [];
+
+  const regionQuery = snapshot ? `region=${snapshot.meta.platform}&` : "";
+
   return (
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
       <section className="relative py-20 sm:py-28">
@@ -54,6 +78,35 @@ export default function HomePage() {
           </Link>
         </div>
       </section>
+
+      {highlights.length > 0 && snapshot && (
+        <section className="space-y-4 pb-16">
+          <div className="flex flex-wrap items-end justify-between gap-3">
+            <div>
+              <h2 className="font-display text-xl font-semibold tracking-tight">
+                Strongest right now
+              </h2>
+              <p className="mt-1 text-sm text-fg-muted">
+                Top five per role on patch {snapshot.meta.patch}.
+              </p>
+            </div>
+            <Link
+              href={`/tier-list?${regionQuery}` as Route}
+              className="text-sm text-accent hover:underline"
+            >
+              Full tier list →
+            </Link>
+          </div>
+
+          <DataNotice meta={snapshot.meta} />
+
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+            {highlights.map(({ role, rows }) => (
+              <RoleHighlights key={role} role={role} rows={rows} regionQuery={regionQuery} />
+            ))}
+          </div>
+        </section>
+      )}
 
       <section className="grid gap-4 pb-8 sm:grid-cols-2 lg:grid-cols-3">
         {FEATURES.map(({ icon: Icon, title, body }) => (
