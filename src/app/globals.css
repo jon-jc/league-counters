@@ -1,0 +1,125 @@
+@import "tailwindcss";
+
+@theme {
+  /* Surfaces — dark-first, blue-shifted neutrals */
+  --color-canvas: #05070d;
+  --color-surface: #0a0e17;
+  --color-surface-2: #111725;
+  --color-surface-3: #18202f;
+  --color-line: #1f2937;
+  --color-line-strong: #2c3949;
+
+  /* Text */
+  --color-fg: #e8edf6;
+  --color-fg-muted: #93a1b8;
+  --color-fg-subtle: #64748b;
+
+  /* Brand */
+  --color-accent: #5b8cff;
+  --color-accent-soft: #16203a;
+  --color-accent-2: #c084fc;
+  --color-teal: #2dd4bf;
+
+  /* Semantic */
+  --color-good: #34d399;
+  --color-bad: #fb7185;
+  --color-warn: #fbbf24;
+
+  /* Tier ramp */
+  --color-tier-splus: #ff5f9e;
+  --color-tier-s: #ffb020;
+  --color-tier-a: #7aa2ff;
+  --color-tier-b: #34d399;
+  --color-tier-c: #94a3b8;
+  --color-tier-d: #5b6b80;
+
+  /* Type */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-display), var(--font-inter), ui-sans-serif, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", "JetBrains Mono", monospace;
+
+  /* Motion */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Radii */
+  --radius-card: 14px;
+}
+
+@layer base {
+  * {
+    border-color: var(--color-line);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    color-scheme: dark;
+  }
+
+  body {
+    background-color: var(--color-canvas);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Ambient glow anchored behind the page content */
+  body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+      radial-gradient(60rem 40rem at 15% -10%, color-mix(in oklab, var(--color-accent) 16%, transparent), transparent 60%),
+      radial-gradient(50rem 34rem at 90% 0%, color-mix(in oklab, var(--color-accent-2) 12%, transparent), transparent 60%);
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--color-accent) 35%, transparent);
+    color: var(--color-fg);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-surface);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-line-strong);
+    border-radius: 999px;
+    border: 2px solid var(--color-surface);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #3b4a5e;
+  }
+}
+
+@utility glass {
+  background: color-mix(in oklab, var(--color-surface-2) 70%, transparent);
+  backdrop-filter: blur(12px) saturate(140%);
+  border: 1px solid var(--color-line);
+}
+
+@utility text-gradient {
+  background-image: linear-gradient(
+    100deg,
+    var(--color-fg) 10%,
+    var(--color-accent) 55%,
+    var(--color-accent-2) 95%
+  );
+  background-clip: text;
+  color: transparent;
+}
+
+@utility tabular {
+  font-variant-numeric: tabular-nums;
+}
