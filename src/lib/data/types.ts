@@ -14,6 +14,12 @@ export interface SnapshotMeta {
   matches: number;
   generatedAt: string;
   source: SnapshotSource;
+  /**
+   * Set only on cross-region aggregates. `platform` stays a real shard so URLs
+   * and fallbacks keep working; this is what display code keys off to say the
+   * numbers span several regions.
+   */
+  regions?: PlatformId[];
 }
 
 /** Per-role tallies for one champion. */
@@ -86,4 +92,10 @@ export interface SnapshotDescriptor {
   matches: number;
   generatedAt: string;
   source: SnapshotSource;
+  /**
+   * Set only on cross-region aggregates. `platform` stays a real shard so URLs
+   * and fallbacks keep working; this is what display code keys off to say the
+   * numbers span several regions.
+   */
+  regions?: PlatformId[];
 }

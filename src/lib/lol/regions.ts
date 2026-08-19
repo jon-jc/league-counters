@@ -48,3 +48,42 @@ export function platformHost(platform: PlatformId): string {
 export function routeHost(platform: PlatformId): string {
   return `https://${PLATFORMS[platform].route}.api.riotgames.com`;
 }
+
+/**
+ * A pseudo-region meaning "every shard summed together".
+ *
+ * It is deliberately not a member of PLATFORMS: there is no such Riot host, and
+ * nothing may ever try to call one. It exists only as a view over snapshots
+ * that were each ingested from a real shard.
+ */
+export const GLOBAL_REGION = "GLOBAL" as const;
+export type RegionId = PlatformId | typeof GLOBAL_REGION;
+
+export function isGlobal(region: RegionId): region is typeof GLOBAL_REGION {
+  return region === GLOBAL_REGION;
+}
+
+/** Accepts a platform id, a short label, or "global". */
+export function resolveRegion(value: string | undefined | null): RegionId {
+  if (!value) return DEFAULT_PLATFORM;
+  if (value.toUpperCase() === GLOBAL_REGION) return GLOBAL_REGION;
+  return resolvePlatform(value);
+}
+
+export function regionLabel(region: RegionId): string {
+  return isGlobal(region) ? "All regions" : PLATFORMS[region].label;
+}
+
+export function regionShort(region: RegionId): string {
+  return isGlobal(region) ? "Global" : PLATFORMS[region].short;
+}
+
+/**
+ * What a visitor sees before choosing anything.
+ *
+ * The global aggregate, because matchup coverage is what the site is for and
+ * summing regions is the difference between roughly 700 scored lanes and over
+ * 3,000. Per-region views stay one click away for anyone who wants their own
+ * shard's meta.
+ */
+export const DEFAULT_REGION: RegionId = GLOBAL_REGION;

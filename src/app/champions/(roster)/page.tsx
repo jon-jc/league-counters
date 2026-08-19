@@ -1,3 +1,4 @@
+import { GLOBAL_REGION } from "@/lib/lol/regions";
 import type { Metadata } from "next";
 import { Users } from "lucide-react";
 import { PageHeader } from "@/components/ui/page-header";
@@ -36,7 +37,8 @@ export default async function ChampionsPage({
   // Controls describe the snapshot on screen, not the one that was requested.
   const shown = snapshot
     ? {
-        platform: snapshot.meta.platform,
+        // A merged snapshot reports the global scope, not its seed shard.
+        platform: snapshot.meta.regions ? GLOBAL_REGION : snapshot.meta.platform,
         queue: snapshot.meta.queue,
         bracket: snapshot.meta.bracket,
       }

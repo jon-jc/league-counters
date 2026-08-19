@@ -8,13 +8,14 @@ import {
   type QueueId,
   type Role,
 } from "@/lib/lol/constants";
-import { resolvePlatform, type PlatformId } from "@/lib/lol/regions";
+import { DEFAULT_REGION, resolveRegion, type RegionId } from "@/lib/lol/regions";
 
 /** Search params as Next hands them to a server component. */
 export type RawSearchParams = Record<string, string | string[] | undefined>;
 
 export interface SnapshotQuery {
-  platform: PlatformId;
+  /** A shard, or GLOBAL for the cross-region aggregate. */
+  platform: RegionId;
   queue: QueueId;
   bracket: Bracket;
   role: Role | null;
@@ -34,7 +35,7 @@ function first(value: string | string[] | undefined): string | undefined {
 
 /** Parse ?region=&queue=&rank=&role= into a validated query, falling back to defaults. */
 export function parseSnapshotQuery(params: RawSearchParams): SnapshotQuery {
-  const platform = resolvePlatform(first(params.region));
+  const platform = resolveRegion(first(params.region) ?? DEFAULT_REGION);
 
   const rawQueue = Number(first(params.queue));
   const queue: QueueId = isQueueId(rawQueue) ? rawQueue : DEFAULT_QUEUE;

@@ -9,9 +9,15 @@ import {
   type Bracket,
   type QueueId,
 } from "@/lib/lol/constants";
-import { DEFAULT_PLATFORM, type PlatformId } from "@/lib/lol/regions";
+import {
+  DEFAULT_PLATFORM,
+  isGlobal,
+  type PlatformId,
+  type RegionId,
+} from "@/lib/lol/regions";
 import { snapshotSchema } from "./schema";
 import { bestOf } from "./select";
+import { mergeSnapshots } from "./merge";
 import type { Snapshot, SnapshotDescriptor } from "./types";
 
 
@@ -76,12 +82,20 @@ export const loadSnapshot = cache(
  */
 export const resolveSnapshot = cache(
   async (
-    platform: PlatformId,
+    region: RegionId,
     queue: QueueId = DEFAULT_QUEUE,
     bracket: Bracket = DEFAULT_BRACKET,
     bracketExplicit = true,
   ): Promise<Snapshot | null> => {
     const available = await listSnapshots();
+
+    if (isGlobal(region)) {
+      const merged = await loadGlobalSnapshot(queue, bracket);
+      if (merged) return merged;
+      // Nothing to merge — fall through and serve a single region instead.
+    }
+
+    const platform = isGlobal(region) ? DEFAULT_PLATFORM : region;
 
     if (bracketExplicit) {
       const exact = await loadSnapshot(platform, queue, bracket);
@@ -149,8 +163,49 @@ export const availablePlatforms = cache(async (): Promise<PlatformId[]> => {
 
 /** Brackets available for a platform, for the rank picker. */
 export const availableBrackets = cache(
-  async (platform: PlatformId): Promise<Bracket[]> => {
+  async (region: RegionId): Promise<Bracket[]> => {
     const snapshots = await listSnapshots();
-    return [...new Set(snapshots.filter((s) => s.platform === platform).map((s) => s.bracket))];
+    // The global view can offer any bracket that any region has.
+    if (isGlobal(region)) return [...new Set(snapshots.map((s) => s.bracket))];
+    return [...new Set(snapshots.filter((s) => s.platform === region).map((s) => s.bracket))];
+  },
+);
+
+/**
+ * Every region on the newest shared patch, summed into one snapshot.
+ *
+ * Only snapshots on the same patch are merged — combining patches would be a
+ * silent correctness bug — so the newest patch that at least one region has is
+ * chosen, and regions still behind it are left out of that merge.
+ */
+export const loadGlobalSnapshot = cache(
+  async (
+    queue: QueueId = DEFAULT_QUEUE,
+    bracket: Bracket = DEFAULT_BRACKET,
+  ): Promise<Snapshot | null> => {
+    const available = await listSnapshots();
+    const candidates = available.filter((s) => s.queue === queue && s.bracket === bracket);
+    if (candidates.length === 0) return null;
+
+    const patch = candidates
+      .map((s) => s.patch)
+      .sort((a, b) => b.localeCompare(a, undefined, { numeric: true }))[0];
+
+    const onPatch = candidates.filter((s) => s.patch === patch);
+    const loaded = await Promise.all(
+      onPatch.map((s) => loadSnapshot(s.platform, s.queue, s.bracket)),
+    );
+
+    return mergeSnapshots(loaded.filter((s): s is Snapshot => s !== null));
+  },
+);
+
+/** Platforms that have a snapshot for this queue and bracket. */
+export const globalRegionCount = cache(
+  async (queue: QueueId = DEFAULT_QUEUE, bracket: Bracket = DEFAULT_BRACKET): Promise<number> => {
+    const available = await listSnapshots();
+    return new Set(
+      available.filter((s) => s.queue === queue && s.bracket === bracket).map((s) => s.platform),
+    ).size;
   },
 );

@@ -29,8 +29,10 @@ export function DataNotice({ meta }: { meta: SnapshotMeta }) {
         {formatCompact(meta.matches)} ranked games
       </span>
       <span>
-        {PLATFORMS[meta.platform].label} · {BRACKETS[meta.bracket].label} ·{" "}
-        {QUEUES[meta.queue].short}
+        {meta.regions
+          ? `All regions (${meta.regions.length})`
+          : PLATFORMS[meta.platform].label}{" "}
+        · {BRACKETS[meta.bracket].label} · {QUEUES[meta.queue].short}
       </span>
       <span>Patch {meta.patch}</span>
       <span>Updated {formatRelativeTime(meta.generatedAt)}</span>

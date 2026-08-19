@@ -30,6 +30,7 @@ export const snapshotMetaSchema = z.object({
   matches: z.number().int().nonnegative(),
   generatedAt: z.iso.datetime(),
   source: z.enum(["riot", "seed"]),
+  regions: z.array(platformSchema).optional(),
 });
 
 export const snapshotSchema = z.object({

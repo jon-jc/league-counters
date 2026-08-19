@@ -27,7 +27,7 @@ import { buildMatchupDisplayRows } from "@/lib/data/rows";
 import { buildChampionBuild } from "@/lib/data/builds";
 import { parseSnapshotQuery, type RawSearchParams } from "@/lib/data/query";
 import { ROLE_LABELS, type Role } from "@/lib/lol/constants";
-import { PLATFORMS } from "@/lib/lol/regions";
+import { GLOBAL_REGION, regionLabel } from "@/lib/lol/regions";
 
 export const revalidate = 900;
 
@@ -85,7 +85,8 @@ export default async function ChampionPage({
   // Controls describe the snapshot on screen, not the one that was requested.
   const shown = snapshot
     ? {
-        platform: snapshot.meta.platform,
+        // A merged snapshot reports the global scope, not its seed shard.
+        platform: snapshot.meta.regions ? GLOBAL_REGION : snapshot.meta.platform,
         queue: snapshot.meta.queue,
         bracket: snapshot.meta.bracket,
       }
@@ -198,7 +199,7 @@ export default async function ChampionPage({
           <EmptyState
             icon={<BarChart3 className="size-8" />}
             title={`No ranked data for ${champion.name}`}
-            description={`${champion.name} has not appeared in enough ${PLATFORMS[shown.platform].label} games in this snapshot to rank. Try a different region or rank bracket.`}
+            description={`${champion.name} has not appeared in enough ${regionLabel(shown.platform)} games in this snapshot to rank. Try a different region or rank bracket.`}
           />
         )}
       </div>

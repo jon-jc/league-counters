@@ -9,7 +9,7 @@ import { championSquareUrl, getChampionIndex } from "@/lib/lol/ddragon";
 import { resolveSnapshot } from "@/lib/data/repository";
 import { buildTierRows } from "@/lib/data/rows";
 import { DEFAULT_BRACKET, DEFAULT_QUEUE, ROLES } from "@/lib/lol/constants";
-import { DEFAULT_PLATFORM } from "@/lib/lol/regions";
+import { DEFAULT_REGION, GLOBAL_REGION } from "@/lib/lol/regions";
 
 export const revalidate = 900;
 
@@ -35,7 +35,7 @@ export default async function HomePage() {
   const [index, snapshot] = await Promise.all([
     getChampionIndex(),
     // Nobody picked anything on the landing page, so serve the best we have.
-    resolveSnapshot(DEFAULT_PLATFORM, DEFAULT_QUEUE, DEFAULT_BRACKET, false),
+    resolveSnapshot(DEFAULT_REGION, DEFAULT_QUEUE, DEFAULT_BRACKET, false),
   ]);
 
   const pickerChampions = index.all.map((champion) => ({
@@ -51,7 +51,12 @@ export default async function HomePage() {
       })).filter((entry) => entry.rows.length > 0)
     : [];
 
-  const regionQuery = snapshot ? `region=${snapshot.meta.platform}&` : "";
+  /* A merged snapshot must link on as the global scope, not the shard that
+     happened to seed it. */
+  const shownRegion = snapshot
+    ? (snapshot.meta.regions ? GLOBAL_REGION : snapshot.meta.platform)
+    : null;
+  const regionQuery = shownRegion ? `region=${shownRegion}&` : "";
 
   return (
     <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -94,7 +99,7 @@ export default async function HomePage() {
           champions={pickerChampions}
           champion={null}
           role={null}
-          region={snapshot?.meta.platform}
+          region={shownRegion ?? undefined}
           size="hero"
         />
       </section>

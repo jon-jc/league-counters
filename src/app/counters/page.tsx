@@ -19,7 +19,7 @@ import { rolesFor } from "@/lib/data/metrics";
 import { buildMatchupDisplayRows } from "@/lib/data/rows";
 import { parseSnapshotQuery, type RawSearchParams } from "@/lib/data/query";
 import { ROLE_LABELS, type Role } from "@/lib/lol/constants";
-import { PLATFORMS } from "@/lib/lol/regions";
+import { GLOBAL_REGION, regionLabel } from "@/lib/lol/regions";
 
 export const revalidate = 900;
 
@@ -73,7 +73,8 @@ export default async function CountersPage({
 
   const shown = snapshot
     ? {
-        platform: snapshot.meta.platform,
+        // A merged snapshot reports the global scope, not its seed shard.
+        platform: snapshot.meta.regions ? GLOBAL_REGION : snapshot.meta.platform,
         queue: snapshot.meta.queue,
         bracket: snapshot.meta.bracket,
       }
@@ -166,7 +167,7 @@ export default async function CountersPage({
             <EmptyState
               icon={<Swords className="size-8" />}
               title={`No matchup data for ${champion.name} yet`}
-              description={`${champion.name} has not appeared in enough ${PLATFORMS[shown.platform].label} games on this snapshot to score its lanes. Try another region.`}
+              description={`${champion.name} has not appeared in enough ${regionLabel(shown.platform)} games on this snapshot to score its lanes. Try another region.`}
             />
           ) : (
             <>
