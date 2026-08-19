@@ -15,7 +15,8 @@
     "test:watch": "vitest",
     "key:check": "tsx scripts/check-key.ts",
     "key:rotate": "tsx scripts/rotate-key.ts",
-    "ingest:all": "tsx scripts/ingest-all.ts"
+    "ingest:all": "tsx scripts/ingest-all.ts",
+    "stale-regions": "tsx scripts/stale-regions.ts"
   },
   "dependencies": {
     "clsx": "^2.1.1",
