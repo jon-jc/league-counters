@@ -9,6 +9,11 @@ const nextConfig: NextConfig = {
     ],
   },
   typedRoutes: true,
+  // Snapshots are read from disk at request time, so they must be traced into
+  // the serverless bundle alongside the compiled routes.
+  outputFileTracingIncludes: {
+    "/**": ["./data/snapshots/**"],
+  },
 };
 
 export default nextConfig;
