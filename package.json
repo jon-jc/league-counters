@@ -12,7 +12,9 @@
     "seed": "tsx scripts/generate-seed.ts",
     "ingest": "tsx scripts/ingest.ts",
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "key:check": "tsx scripts/check-key.ts",
+    "key:rotate": "tsx scripts/rotate-key.ts"
   },
   "dependencies": {
     "clsx": "^2.1.1",
