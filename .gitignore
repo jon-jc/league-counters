@@ -44,8 +44,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 
-# ingestion working files
-/data/.cache/
+# ingestion working files (checkpoints under data/checkpoints ARE committed —
+# they are what makes scheduled ingests additive rather than double-counting)
 /data/raw/
 
 # editor

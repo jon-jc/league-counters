@@ -1,0 +1,77 @@
+name: Ingest ranked matches
+
+on:
+  schedule:
+    # Every three hours. Each run is a small additive slice; the snapshot for a
+    # patch grows across runs rather than being rebuilt from scratch.
+    - cron: "17 */3 * * *"
+  workflow_dispatch:
+    inputs:
+      regions:
+        description: Space-separated platform ids (e.g. "NA1 EUW1 KR")
+        required: false
+        default: NA1 EUW1 KR
+      matches:
+        description: Match budget per region
+        required: false
+        default: "600"
+
+# Runs commit to main, so never let two overlap.
+concurrency:
+  group: ingest
+  cancel-in-progress: false
+
+jobs:
+  ingest:
+    name: Aggregate and commit snapshots
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # Needed so the commit this job creates can be pushed back.
+          persist-credentials: true
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - run: npm ci
+
+      - name: Ingest each region
+        env:
+          RIOT_API_KEY: ${{ secrets.RIOT_API_KEY }}
+          REGIONS: ${{ inputs.regions || 'NA1 EUW1 KR' }}
+          MATCHES: ${{ inputs.matches || '600' }}
+        run: |
+          if [ -z "$RIOT_API_KEY" ]; then
+            echo "::error::RIOT_API_KEY secret is not set — nothing to ingest."
+            exit 1
+          fi
+          for region in $REGIONS; do
+            echo "::group::$region"
+            # Keep going if one shard is unhealthy; the others still contribute.
+            npm run ingest -- \
+              --region "$region" \
+              --bracket master_plus \
+              --matches "$MATCHES" \
+              --players 60 \
+              --per-player 30 || echo "::warning::ingest failed for $region"
+            echo "::endgroup::"
+          done
+
+      - name: Commit updated snapshots
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/snapshots data/checkpoints
+          if git diff --cached --quiet; then
+            echo "No snapshot changes to commit."
+            exit 0
+          fi
+          git commit -m "data: refresh ranked snapshots"
+          # Another run may have landed while this one was fetching.
+          git pull --rebase --autostash origin main
+          git push origin HEAD:main
