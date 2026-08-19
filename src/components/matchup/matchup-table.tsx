@@ -126,7 +126,10 @@ export function MatchupTable({ rows }: { rows: MatchupDisplayRow[] }) {
                     <ChampionAvatar src={row.icon} alt="" size="sm" />
                     <span className="min-w-0">
                       <span className="flex items-center gap-2">
-                        <span className="truncate font-medium group-hover:text-accent">
+                        <span
+                          className="truncate font-medium group-hover:text-accent"
+                          title={row.name}
+                        >
                           {row.name}
                         </span>
                         {row.tier && <TierPill tier={row.tier} size="sm" />}

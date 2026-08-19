@@ -38,17 +38,27 @@ export function RoleHighlights({
           <li key={row.championId}>
             <Link
               href={`/champions/${row.slug}?role=${role}` as Route}
-              className="group flex items-center gap-3 px-4 py-2.5 transition-colors hover:bg-surface-2/60"
+              className="group flex items-center gap-2.5 px-3 py-2.5 transition-colors hover:bg-surface-2/60"
             >
-              <span className="w-3 text-xs tabular text-fg-subtle">{row.rank}</span>
-              <ChampionAvatar src={row.icon} alt="" size="xs" />
-              <span className="min-w-0 flex-1 truncate text-sm font-medium group-hover:text-accent">
-                {row.name}
+              <span className="w-3 shrink-0 text-xs tabular text-fg-subtle">{row.rank}</span>
+              <ChampionAvatar src={row.icon} alt="" size="sm" />
+              {/* The name gets a line to itself. Sharing one with the rank, win
+                  rate and tier pill left it around 60px in a five-column row,
+                  which truncated even short names like Gragas. */}
+              <span className="min-w-0 flex-1">
+                <span
+                  className="block truncate text-sm font-medium group-hover:text-accent"
+                  title={row.name}
+                >
+                  {row.name}
+                </span>
+                <span className="mt-1 flex items-center gap-1.5">
+                  <TierPill tier={row.tier} size="sm" />
+                  <span className="text-[11px] tabular text-fg-subtle">
+                    {formatPercent(row.winRate)}
+                  </span>
+                </span>
               </span>
-              <span className="text-xs tabular text-fg-muted">
-                {formatPercent(row.winRate)}
-              </span>
-              <TierPill tier={row.tier} size="sm" />
             </Link>
           </li>
         ))}
