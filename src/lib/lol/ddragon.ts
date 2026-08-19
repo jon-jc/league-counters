@@ -1,6 +1,4 @@
 const DDRAGON = "https://ddragon.leagueoflegends.com";
-const COMMUNITY_DRAGON =
-  "https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default";
 
 /** Static champion metadata, normalised out of Data Dragon's raw shape. */
 export interface Champion {
@@ -107,15 +105,12 @@ export function championSquareUrl(champion: Champion, version: string): string {
   return `${DDRAGON}/cdn/${version}/img/champion/${champion.ddragonId}.png`;
 }
 
+/** Wide key art (1215x717) — used as the champion page banner. */
 export function championSplashUrl(champion: Champion, skin = 0): string {
   return `${DDRAGON}/cdn/img/champion/splash/${champion.ddragonId}_${skin}.jpg`;
 }
 
-/** Wide, low-contrast art that works well as a page banner. */
-export function championCenteredUrl(champion: Champion): string {
-  return `${COMMUNITY_DRAGON}/v1/champion-splashes/${champion.id}/${champion.id}000.jpg`;
-}
-
+/** Portrait loading art (308x560). */
 export function championLoadingUrl(champion: Champion, skin = 0): string {
   return `${DDRAGON}/cdn/img/champion/loading/${champion.ddragonId}_${skin}.jpg`;
 }

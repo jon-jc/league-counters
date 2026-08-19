@@ -1,5 +1,5 @@
 import type { Confidence, TierGrade } from "./metrics";
-import { buildRoleRows } from "./metrics";
+import { buildMatchupRows, buildRoleRows } from "./metrics";
 import type { Role } from "@/lib/lol/constants";
 import { ROLES } from "@/lib/lol/constants";
 import type { ChampionIndex } from "@/lib/lol/ddragon";
@@ -64,4 +64,47 @@ export function buildTierRows(
   return rows
     .sort((a, b) => b.score - a.score)
     .map(({ score: _score, ...rest }, position) => ({ ...rest, rank: position + 1 }));
+}
+
+/** One opponent in a lane matchup, flattened for rendering. */
+export interface MatchupDisplayRow {
+  opponentId: number;
+  name: string;
+  slug: string;
+  icon: string;
+  role: Role;
+  games: number;
+  winRate: number;
+  /** Win rate in this lane minus the champion's baseline in the role. */
+  delta: number;
+  confidence: Confidence;
+}
+
+/**
+ * Every tracked opponent for a champion in a role, hardest matchup first.
+ * Sorted by delta, so the list reads as "who actually beats this champion".
+ */
+export function buildMatchupDisplayRows(
+  snapshot: Snapshot,
+  index: ChampionIndex,
+  championId: number,
+  role: Role,
+): MatchupDisplayRow[] {
+  return buildMatchupRows(snapshot, championId, role).flatMap((row) => {
+    const opponent = index.byId.get(row.opponentId);
+    if (!opponent) return [];
+    return [
+      {
+        opponentId: row.opponentId,
+        name: opponent.name,
+        slug: opponent.slug,
+        icon: championSquareUrl(opponent, index.version),
+        role: row.role,
+        games: row.games,
+        winRate: row.winRate,
+        delta: row.delta,
+        confidence: row.confidence,
+      },
+    ];
+  });
 }
