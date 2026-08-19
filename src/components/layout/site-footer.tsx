@@ -9,13 +9,16 @@ export function SiteFooter() {
           <div className="max-w-sm space-y-3">
             <SiteLogo />
             <p className="text-sm leading-relaxed text-fg-subtle">
-              Counter-pick and tier-list data aggregated from ranked matches across every Riot
-              platform, recomputed each patch.
+              Counter picks scored from real ranked matches across every Riot platform, and
+              recomputed each patch.
             </p>
           </div>
           {/* -my-2 py-2 keeps the touch target comfortably tall without
               opening up the visual spacing between rows. */}
           <nav className="grid grid-cols-2 gap-x-12 text-sm" aria-label="Footer">
+            <Link href="/counters" className="-my-1 py-2.5 text-fg-muted hover:text-fg">
+              Counters
+            </Link>
             <Link href="/tier-list" className="-my-1 py-2.5 text-fg-muted hover:text-fg">
               Tier List
             </Link>

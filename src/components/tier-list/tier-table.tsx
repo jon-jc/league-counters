@@ -61,14 +61,23 @@ export function TierTable({ rows, showRole }: { rows: TierTableRow[]; showRole: 
   const ariaSort = (key: SortKey): "ascending" | "descending" | "none" =>
     sort.key !== key ? "none" : sort.dir === "asc" ? "ascending" : "descending";
 
+  /*
+   * overflow-x is applied only below sm. `overflow-x: auto` forces
+   * `overflow-y: auto`, which makes the wrapper a scroll container — and a
+   * sticky thead inside one positions against that container rather than the
+   * viewport, landing on top of the first rows. Above sm the table fits, so
+   * there is no scroll container and the sticky header behaves.
+   *
+   * The 65px offset matches the site header: h-16 plus its 1px bottom border.
+   */
   return (
-    <div className="overflow-x-auto rounded-card border border-line bg-surface/50">
+    <div className="rounded-card border border-line bg-surface/50 max-sm:overflow-x-auto">
       <table className="w-full min-w-[340px] border-collapse text-sm">
         <caption className="sr-only">
           Champions ranked by tier, win rate, pick rate, ban rate and games played. Column
           headers are buttons that change the sort order.
         </caption>
-        <thead className="sticky top-16 z-10 bg-surface-2/95 backdrop-blur">
+        <thead className="z-10 bg-surface-2/95 backdrop-blur sm:sticky sm:top-[65px]">
           <tr className="border-b border-line text-left">
             <th scope="col" className="w-11 py-3 pl-3 sm:w-14 sm:pl-4" aria-sort={ariaSort("rank")}>
               <button type="button" onClick={() => toggle("rank")} className={HEAD}>

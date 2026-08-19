@@ -22,17 +22,17 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "League Counters — LoL tier list & counter picks",
+    default: "League Counters — who counters any LoL champion",
     template: "%s · League Counters",
   },
   description:
-    "Live League of Legends tier lists and champion counters, aggregated from ranked matches across every region and recomputed each patch.",
+    "Find who counters any League of Legends champion. Every lane matchup scored from real ranked games by win-rate delta against the champion's own baseline.",
   openGraph: {
     type: "website",
     siteName: "League Counters",
-    title: "League Counters — LoL tier list & counter picks",
+    title: "League Counters — who counters any LoL champion",
     description:
-      "Live League of Legends tier lists and champion counters, aggregated from ranked matches across every region.",
+      "Every lane matchup scored from real ranked games, region by region.",
   },
   twitter: { card: "summary_large_image" },
   robots: { index: true, follow: true },

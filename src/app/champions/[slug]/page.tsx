@@ -106,14 +106,25 @@ export default async function ChampionPage({
       ? buildMatchupDisplayRows(snapshot, index, champion.id, activeRole)
       : [];
 
-  /* Matchups need far more volume than rankings — a lane pairing only gains one
-     game per match — so an empty list here is normal on a young snapshot and
-     should say what to do about it. */
-  const matchupHint =
-    "No lane pairing has enough games yet on this snapshot. Matchups need far more volume than rankings, so try a region with a larger sample.";
+  /* Split by sign, not by position in the list. Taking the head and tail
+     regardless would put a losing matchup under "Strong against" whenever a
+     champion has fewer favourable lanes than the limit — which is exactly what
+     happened to Jinx, listed as over-performing into a -1.2% matchup. */
+  const worst = matchups.filter((row) => row.delta < 0).slice(0, COUNTER_LIMIT);
+  const best = matchups
+    .filter((row) => row.delta > 0)
+    .reverse()
+    .slice(0, COUNTER_LIMIT);
 
-  const worst = matchups.slice(0, COUNTER_LIMIT);
-  const best = [...matchups].reverse().slice(0, COUNTER_LIMIT);
+  const thinHint =
+    "No lane pairing has enough games yet on this snapshot. Matchups need far more volume than rankings, so try a region with a larger sample.";
+  const weakHint = matchups.length
+    ? "Nothing best this champion by a meaningful margin on this snapshot."
+    : thinHint;
+  const strongHint = matchups.length
+    ? "This champion does not over-perform into anything on this snapshot."
+    : thinHint;
+
   const roleLabel = activeRole ? ROLE_LABELS[activeRole] : "";
 
   return (
@@ -151,24 +162,26 @@ export default async function ChampionPage({
 
         {row && activeRole ? (
           <>
-            <StatTiles row={row} roleLabel={roleLabel} />
-
-            <MetricsLegend variant="matchup" />
-
+            {/* Counters lead. Someone opening a champion page mid-select wants
+                the matchup before the aggregate stat line. */}
             <div className="grid gap-4 lg:grid-cols-2">
               <CounterList
                 tone="weak"
                 rows={worst}
                 role={roleLabel}
-                emptyHint={matchupHint}
+                emptyHint={weakHint}
               />
               <CounterList
                 tone="strong"
                 rows={best}
                 role={roleLabel}
-                emptyHint={matchupHint}
+                emptyHint={strongHint}
               />
             </div>
+
+            <StatTiles row={row} roleLabel={roleLabel} />
+
+            <MetricsLegend variant="matchup" />
 
             {matchups.length > 0 && <MatchupTable rows={matchups} />}
           </>

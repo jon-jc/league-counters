@@ -10,7 +10,11 @@ import { SearchTrigger } from "@/components/search/search-trigger";
 import type { SearchChampion } from "@/components/search/search-dialog";
 import { cn } from "@/lib/utils";
 
+/* Counters first: it is what the site is for. The tier list answers a
+   different, secondary question — what is strong in general, rather than what
+   beats the champion in front of you. */
 const NAV: { href: Route; label: string }[] = [
+  { href: "/counters", label: "Counters" },
   { href: "/tier-list", label: "Tier List" },
   { href: "/champions", label: "Champions" },
   { href: "/compare", label: "Compare" },
