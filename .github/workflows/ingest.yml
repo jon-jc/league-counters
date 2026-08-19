@@ -10,17 +10,25 @@ on:
     # about 50 a minute, so a run lands near 100 minutes against a 180 minute
     # cadence. Overrunning would queue behind the concurrency group and the
     # backlog would never drain.
+    #
+    # Each run takes the five stalest regions, so all seventeen are covered
+    # roughly every ten hours rather than five being kept fresh and the rest
+    # never touched.
     - cron: "17 */3 * * *"
   workflow_dispatch:
     inputs:
       regions:
-        description: Space-separated platform ids (e.g. "NA1 EUW1 KR")
+        description: Space-separated platform ids. Leave empty to pick the stalest.
         required: false
-        default: KR EUW1 NA1 BR1 EUN1
+        default: ""
       matches:
         description: Match budget per region
         required: false
         default: "1000"
+      region_count:
+        description: How many of the stalest regions to refresh
+        required: false
+        default: "5"
 
 # Runs commit to main, so never let two overlap.
 concurrency:
@@ -69,12 +77,22 @@ jobs:
       - name: Ingest each region
         env:
           RIOT_API_KEY: ${{ secrets.RIOT_API_KEY }}
-          REGIONS: ${{ inputs.regions || 'KR EUW1 NA1 BR1 EUN1' }}
+          REGIONS: ${{ inputs.regions }}
           MATCHES: ${{ inputs.matches || '1000' }}
+          REGION_COUNT: ${{ inputs.region_count || '5' }}
         run: |
           if [ -z "$RIOT_API_KEY" ]; then
             echo "::error::RIOT_API_KEY secret is not set — nothing to ingest."
             exit 1
+          fi
+
+          # No explicit list: refresh whichever shards have gone longest without
+          # one. A development key cannot cover seventeen regions every three
+          # hours, so the job rotates instead of favouring a fixed few, and a
+          # newly supported region fills itself in with no workflow edit.
+          if [ -z "$REGIONS" ]; then
+            REGIONS=$(npm run --silent stale-regions -- --count "$REGION_COUNT")
+            echo "Selected stalest regions: $REGIONS"
           fi
           for region in $REGIONS; do
             echo "::group::$region"
