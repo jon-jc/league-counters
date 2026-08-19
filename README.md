@@ -12,6 +12,8 @@ Built with Next.js 16 (App Router), React 19, TypeScript and Tailwind CSS v4.
   contested they are, filterable by region, rank bracket and queue.
 - **Counters** — every lane matchup scored as a win-rate delta against the
   champion's own baseline, not as a raw win rate.
+- **Global view** — every region summed, which is the difference between roughly
+  700 scored lanes and over 3,000.
 - **Compare** — two champions head to head in a chosen lane.
 - **Per region** — every Riot platform is aggregated independently.
 
@@ -96,6 +98,22 @@ a single process sees no 429s at all under the same workload. They also write
 the same snapshot files, so overlapping runs can flush stale state over each
 other. The scheduled workflow loops through regions sequentially for this
 reason; do the same locally.
+
+### Why the default view sums every region
+
+Matchup coverage is the scarce resource. A champion gains a game every time it
+is played, but a *lane pairing* only gains one when those two champions meet, so
+most pairings sit under the display threshold even in a region with thousands of
+matches. Measured on the current snapshots:
+
+| View | Scored lanes | Champions with counters |
+| ---- | ------------ | ----------------------- |
+| KR (largest single region) | 722 | 106 |
+| All regions merged | **3,090** | **167** |
+
+So `region=GLOBAL` is the default. Per-region views remain a click away, because
+regional metas genuinely differ — but a locally precise answer is worth little
+when there is no local data. Only snapshots on the same patch are ever merged.
 
 ### Which brackets have data
 
