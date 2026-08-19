@@ -12,7 +12,11 @@
   /* Text */
   --color-fg: #e8edf6;
   --color-fg-muted: #93a1b8;
-  --color-fg-subtle: #64748b;
+  /* Lightened to clear WCAG AA (4.5:1) for small text against surface-2, the
+     darkest background it is used on. The previous #64748b measured 3.76:1
+     there, and this token carries game counts, hints and axis labels — all of
+     which are small text, so the 3:1 large-text allowance does not apply. */
+  --color-fg-subtle: #7688a1;
 
   /* Brand */
   --color-accent: #5b8cff;
@@ -31,7 +35,7 @@
   --color-tier-a: #7aa2ff;
   --color-tier-b: #34d399;
   --color-tier-c: #94a3b8;
-  --color-tier-d: #5b6b80;
+  --color-tier-d: #78899f;
 
   /* Type */
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
