@@ -13,10 +13,12 @@ export const PLATFORMS = {
   RU: { label: "Russia", short: "RU", route: "europe" },
   ME1: { label: "Middle East", short: "ME", route: "europe" },
   SG2: { label: "Singapore", short: "SG", route: "sea" },
-  PH2: { label: "Philippines", short: "PH", route: "sea" },
-  TH2: { label: "Thailand", short: "TH", route: "sea" },
   TW2: { label: "Taiwan", short: "TW", route: "sea" },
   VN2: { label: "Vietnam", short: "VN", route: "sea" },
+  /* PH2 and TH2 are deliberately absent. Their hosts refuse connections
+     outright — not 404, not 401, no TCP connection at all, with or without a
+     key — so they cannot ever hold data. Listing them only put two permanently
+     disabled entries in the region picker. */
 } as const satisfies Record<string, { label: string; short: string; route: RegionalRoute }>;
 
 export type PlatformId = keyof typeof PLATFORMS;

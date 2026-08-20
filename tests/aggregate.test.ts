@@ -255,3 +255,31 @@ describe("build aggregation", () => {
     expect(restored.builds).toEqual(snapshot.builds);
   });
 });
+
+describe("empty snapshots", () => {
+  const meta = {
+    platform: "NA1",
+    queue: 420,
+    bracket: "master_plus",
+    patch: "16.16",
+    generatedAt: "2026-08-20T00:00:00.000Z",
+    source: "riot",
+  } as const;
+
+  it("reports zero matches when nothing could be aggregated", () => {
+    /* A region whose ladder could not be reached must not produce a snapshot
+       that claims to have data — an empty file is enough for the site to offer
+       that region and then render nothing. */
+    const snapshot = toSnapshot(createAccumulator(), meta);
+    expect(snapshot.meta.matches).toBe(0);
+    expect(snapshot.champions).toEqual([]);
+    expect(snapshot.matchups).toEqual([]);
+    expect(snapshot.builds).toBeUndefined();
+  });
+
+  it("reports a real count as soon as one match lands", () => {
+    const acc = createAccumulator();
+    addMatch(acc, buildMatch(), TARGET);
+    expect(toSnapshot(acc, meta).meta.matches).toBe(1);
+  });
+});

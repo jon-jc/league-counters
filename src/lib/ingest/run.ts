@@ -179,6 +179,13 @@ export async function runIngest(options: IngestOptions): Promise<IngestResult> {
   const flush = async (counted: Set<string>) => {
     const current = toSnapshot(acc, { ...meta, generatedAt: new Date().toISOString() });
 
+    /* Never publish an empty snapshot. A region whose ladder could not be
+       reached — a dead shard, an expired key — would otherwise leave a file
+       claiming zero matches, which is enough for the site to offer that region
+       in the picker and then render nothing. No file at all is the honest
+       state, and the next run starts clean. */
+    if (current.meta.matches === 0) return current;
+
     await mkdir(path.dirname(file), { recursive: true });
     await writeFile(file, `${JSON.stringify(current)}\n`, "utf8");
 
@@ -215,6 +222,9 @@ export async function runIngest(options: IngestOptions): Promise<IngestResult> {
   }
 
   const snapshot = await flush(processed);
+  if (snapshot.meta.matches === 0) {
+    log("No matches could be aggregated — leaving the snapshot unwritten.");
+  }
 
   return { snapshot, added, skipped, patch, file };
 }
