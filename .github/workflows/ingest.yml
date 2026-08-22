@@ -58,34 +58,44 @@ jobs:
 
       - run: npm ci
 
+      # An expired development key is an expected condition, not a broken build.
+      # Failing here turned every three-hourly run red and sent a mail each
+      # time; the run now skips cleanly and the key-health workflow owns the
+      # single notification.
       - name: Check the key before spending half an hour on it
+        id: key
         env:
           RIOT_API_KEY: ${{ secrets.RIOT_API_KEY }}
         run: |
+          # A missing secret is a misconfiguration, not a lapsed key, and it
+          # will never fix itself — so that one still fails loudly.
+          if [ -z "$RIOT_API_KEY" ]; then
+            echo "::error::RIOT_API_KEY secret is not set — nothing to ingest."
+            exit 1
+          fi
+
           set +e
           npm run key:check
           code=$?
           set -e
           if [ "$code" = "1" ]; then
-            echo "::error::Riot API key is not authenticating — skipping ingest. Run 'npm run key:rotate'."
-            exit 1
-          fi
-          if [ "$code" != "0" ]; then
-            echo "::warning::Could not reach Riot to verify the key; attempting the ingest anyway."
+            echo "usable=false" >> "$GITHUB_OUTPUT"
+            echo "::warning::Riot API key is not authenticating — skipping this ingest. Run 'npm run key:rotate'."
+          else
+            echo "usable=true" >> "$GITHUB_OUTPUT"
+            if [ "$code" != "0" ]; then
+              echo "::warning::Could not reach Riot to verify the key; attempting the ingest anyway."
+            fi
           fi
 
       - name: Ingest each region
+        if: steps.key.outputs.usable == 'true'
         env:
           RIOT_API_KEY: ${{ secrets.RIOT_API_KEY }}
           REGIONS: ${{ inputs.regions }}
           MATCHES: ${{ inputs.matches || '1000' }}
           REGION_COUNT: ${{ inputs.region_count || '5' }}
         run: |
-          if [ -z "$RIOT_API_KEY" ]; then
-            echo "::error::RIOT_API_KEY secret is not set — nothing to ingest."
-            exit 1
-          fi
-
           # No explicit list: refresh whichever shards have gone longest without
           # one. A development key cannot cover seventeen regions every three
           # hours, so the job rotates instead of favouring a fixed few, and a
@@ -107,6 +117,7 @@ jobs:
           done
 
       - name: Commit updated snapshots
+        if: steps.key.outputs.usable == 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
