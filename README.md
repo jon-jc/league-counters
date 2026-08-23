@@ -170,16 +170,20 @@ npm run key:check
 Exit codes are meaningful: `0` usable, `1` needs rotation, `2` Riot unreachable.
 That distinction matters — a Riot outage must not be reported as an expired key.
 
-`.github/workflows/key-health.yml` runs this every six hours. It notifies on the
-**transition, not the state**: it opens a single issue when the key lapses, says
-nothing further while it stays broken, and closes the issue automatically once
-the key works again. One mail when it breaks, one when it recovers.
+**Nothing notifies you about the key.** There is no schedule, no issue, no
+failing run. A development key lapses every 24 hours, so an automated reminder
+is noise rather than news; rotate it when it suits you.
 
-Scheduled ingests skip quietly when the key is dead rather than failing, because
-a lapsed development key is an expected condition rather than a broken build —
-otherwise every run turns red and mails you, eight times a day. A **missing**
-`RIOT_API_KEY` secret still fails loudly, since that is a misconfiguration that
-will never fix itself.
+Scheduled ingests skip quietly while the key is expired — the run goes green
+with a warning annotation and collects nothing, then resumes on its own once the
+key works again. Nothing is lost by skipping: runs are additive, so the next one
+picks up where the last left off. A **missing** `RIOT_API_KEY` secret does still
+fail loudly, since that is a misconfiguration rather than an expiry and will
+never fix itself.
+
+`.github/workflows/key-health.yml` is manual-only. Run it from the Actions tab
+when you want to know whether the key in the *repository secret* still works —
+`npm run key:check` cannot tell you that, because it reads `.env.local`.
 
 ### Stopping the treadmill
 
