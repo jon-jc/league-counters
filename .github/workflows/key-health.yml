@@ -1,25 +1,25 @@
 name: Riot key health
 
+# Manual only, and deliberately silent.
+#
+# This used to run on a schedule and open a GitHub issue when the development
+# key lapsed, which meant mail every time a key expired — daily, in practice,
+# since development keys last 24 hours. The key is rotated by hand whenever it
+# suits, so an automated reminder was noise rather than news.
+#
+# What it is still good for: checking the key stored as a repository secret,
+# which `npm run key:check` cannot see because that reads .env.local. Run it
+# from the Actions tab when you want to know whether scheduled ingests are
+# currently able to collect anything.
 on:
-  schedule:
-    # Every six hours. Frequency costs nothing now that a run only speaks when
-    # the key changes state, and it shortens the gap between a key lapsing and
-    # the issue appearing.
-    - cron: "10 */6 * * *"
   workflow_dispatch:
 
-# One issue is opened when the key lapses and closed when it comes back, so the
-# repository always carries exactly one accurate signal.
 permissions:
   contents: read
-  issues: write
 
 concurrency:
   group: key-health
   cancel-in-progress: true
-
-env:
-  ISSUE_TITLE: Riot API key needs rotating
 
 jobs:
   check:
@@ -36,7 +36,6 @@ jobs:
       - run: npm ci
 
       - name: Probe the key
-        id: probe
         env:
           RIOT_API_KEY: ${{ secrets.RIOT_API_KEY }}
         run: |
@@ -44,50 +43,11 @@ jobs:
           npm run key:check
           code=$?
           set -e
-          # 0 usable, 1 needs rotation, 2 Riot unreachable. Only 1 is actionable;
-          # a Riot outage must not raise an issue telling someone to rotate.
+          # 0 usable, 1 needs rotation, 2 Riot unreachable. Nothing here fails
+          # the run: you asked for this check, so the answer is the output, not
+          # a red mark and an email.
           case "$code" in
-            0) state=ok ;;
-            1) state=rotate ;;
-            *) state=unknown ;;
+            0) echo "Key is usable — scheduled ingests will collect." ;;
+            1) echo "::warning::Key needs rotating. Run 'npm run key:rotate' locally." ;;
+            *) echo "::warning::Could not reach Riot; this says nothing about the key." ;;
           esac
-          echo "state=$state" >> "$GITHUB_OUTPUT"
-          echo "Key check exited $code -> $state"
-
-      - name: Find any open rotation issue
-        id: existing
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          # Matched on exact title rather than search relevance, so this can
-          # never comment on or close an unrelated issue.
-          number=$(gh issue list --state open --limit 100 --json number,title \
-            --jq "[.[] | select(.title == \"$ISSUE_TITLE\")] | .[0].number // empty")
-          echo "number=$number" >> "$GITHUB_OUTPUT"
-          echo "Existing issue: ${number:-none}"
-
-      # Notify on the transition, not on the state. An issue that is already
-      # open has said everything there is to say; commenting on it each run
-      # only mails the same news again, every day, until someone acts.
-      - name: Raise the alarm
-        if: steps.probe.outputs.state == 'rotate' && steps.existing.outputs.number == ''
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: |
-          gh issue create --title "$ISSUE_TITLE" \
-            --body-file .github/key-rotation-issue.md
-
-      - name: Note that the key is still down
-        if: steps.probe.outputs.state == 'rotate' && steps.existing.outputs.number != ''
-        env:
-          EXISTING: ${{ steps.existing.outputs.number }}
-        run: |
-          echo "::warning::Riot API key is still not authenticating. Tracked in issue #$EXISTING."
-
-      - name: Stand down
-        if: steps.probe.outputs.state == 'ok' && steps.existing.outputs.number != ''
-        env:
-          GH_TOKEN: ${{ github.token }}
-          EXISTING: ${{ steps.existing.outputs.number }}
-        run: |
-          gh issue close "$EXISTING" --comment "Key is valid again — closing automatically."
