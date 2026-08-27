@@ -10,14 +10,25 @@ import { formatCompact, formatRelativeTime } from "@/lib/utils";
  * matches this pipeline aggregates. Saying plainly whose numbers are on screen
  * is what keeps both statements true.
  */
-export function OpggNotice({ meta }: { meta: OpggMeta }) {
+export function OpggNotice({
+  meta,
+  kind = "tiers",
+}: {
+  meta: OpggMeta;
+  kind?: "tiers" | "counters";
+}) {
+  const heading = kind === "counters" ? "Matchups from op.gg." : "Tier grades from op.gg.";
+  const detail =
+    kind === "counters"
+      ? "Every lane pairing and the win rate each delta is measured against are"
+      : "Ranking, grading and rates on this view are";
+
   return (
     <div className="space-y-2 rounded-card border border-accent/25 bg-accent/6 px-4 py-3">
       <p className="flex flex-wrap items-center gap-x-1.5 text-sm leading-relaxed text-fg-muted">
         <Info className="size-4 shrink-0 text-accent" />
         <span>
-          <span className="font-semibold text-fg">Tier grades from op.gg.</span> Ranking,
-          grading and rates on this view are{" "}
+          <span className="font-semibold text-fg">{heading}</span> {detail}{" "}
           <a
             href="https://op.gg"
             target="_blank"
@@ -36,7 +47,7 @@ export function OpggNotice({ meta }: { meta: OpggMeta }) {
         <span>{meta.champions} champions</span>
         <span>Fetched {formatRelativeTime(meta.fetchedAt)}</span>
         <span>
-          Region and rank filters do not apply — op.gg&apos;s lane meta is a single global
+          Region and rank filters do not apply — op.gg&apos;s data here is a single global
           dataset.
         </span>
       </div>

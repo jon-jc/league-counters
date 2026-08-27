@@ -1,4 +1,4 @@
-name: Refresh op.gg lane meta
+name: Refresh op.gg data
 
 on:
   schedule:
@@ -17,7 +17,7 @@ concurrency:
 
 jobs:
   refresh:
-    name: Pull and commit op.gg's tier list
+    name: Pull and commit op.gg's tier list and counters
     runs-on: ubuntu-latest
     permissions:
       contents: write
@@ -40,26 +40,31 @@ jobs:
       # build. The committed file stays in place and the site keeps serving the
       # previous pull, so a failed run needs no attention and should not mail
       # anyone — the next one picks it up.
-      - name: Fetch lane meta
+      - name: Fetch lane meta and counters
         id: fetch
         continue-on-error: true
-        run: npm run ingest:opgg
+        run: |
+          # Counters are driven by the lane meta, so the order matters: a new
+          # champion has to be in the tier list before it can be queried for
+          # matchups.
+          npm run ingest:opgg
+          npm run ingest:opgg:counters
 
       - name: Note an upstream failure without failing the run
         if: steps.fetch.outcome != 'success'
-        run: echo "::warning::Could not refresh op.gg lane meta; keeping the previous pull."
+        run: echo "::warning::Could not refresh op.gg data; keeping the previous pull."
 
-      - name: Commit refreshed lane meta
+      - name: Commit refreshed op.gg data
         if: steps.fetch.outcome == 'success'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add data/opgg
           if git diff --cached --quiet; then
-            echo "op.gg lane meta is unchanged."
+            echo "op.gg data is unchanged."
             exit 0
           fi
-          git commit -m "data: refresh op.gg lane meta"
+          git commit -m "data: refresh op.gg lane meta and counters"
           # The ranked-snapshot job may have landed while this ran.
           git pull --rebase --autostash origin main
           git push origin HEAD:main

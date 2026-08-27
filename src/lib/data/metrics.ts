@@ -12,7 +12,7 @@ import type { ChampionTally, MatchupTally, Snapshot } from "./types";
 const CHAMPION_PRIOR = 150;
 
 /** Matchup samples are far thinner than champion samples, so they shrink harder. */
-const MATCHUP_PRIOR = 40;
+export const MATCHUP_PRIOR = 40;
 
 /** Below this, a row is treated as noise and hidden rather than ranked. */
 export const MIN_CHAMPION_GAMES = 20;

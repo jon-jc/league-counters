@@ -5,9 +5,11 @@ import { ArrowRight, Swords } from "lucide-react";
 import { PageHeader } from "@/components/ui/page-header";
 import { EmptyState } from "@/components/ui/empty-state";
 import { DataNotice } from "@/components/ui/data-notice";
+import { OpggNotice } from "@/components/ui/opgg-notice";
 import { FallbackNotice } from "@/components/ui/fallback-notice";
 import { MetricsLegend } from "@/components/ui/metrics-legend";
 import { SnapshotFilters } from "@/components/filters/snapshot-filters";
+import { SourceToggle } from "@/components/filters/source-toggle";
 import { CounterFinder } from "@/components/matchup/counter-finder";
 import { CounterList } from "@/components/matchup/counter-list";
 import { MatchupTable } from "@/components/matchup/matchup-table";
@@ -18,8 +20,13 @@ import { ChampionAvatar } from "@/components/champion/champion-avatar";
 import { ChampionRoleTabs } from "@/components/champion/champion-role-tabs";
 import { championSquareUrl, getChampionIndex } from "@/lib/lol/ddragon";
 import { availableBrackets, availablePlatforms, resolveSnapshot } from "@/lib/data/repository";
+import { loadOpggTierList } from "@/lib/opgg/repository";
+import { loadOpggCounters } from "@/lib/opgg/repository-counters";
+import { buildOpggMatchupRows, opggRoleGames, opggRolesFor } from "@/lib/opgg/matchups";
+import { buildOpggTierRows } from "@/lib/opgg/rows";
 import { rolesFor } from "@/lib/data/metrics";
-import { buildMatchupDisplayRows, buildTierRows } from "@/lib/data/rows";
+import { buildMatchupDisplayRows, buildTierRows, type TierRow } from "@/lib/data/rows";
+import type { MatchupDisplayRow } from "@/lib/data/rows";
 import { parseSnapshotQuery, type RawSearchParams } from "@/lib/data/query";
 import { ROLE_LABELS, type Role } from "@/lib/lol/constants";
 import { GLOBAL_REGION, regionLabel } from "@/lib/lol/regions";
@@ -45,7 +52,7 @@ export async function generateMetadata({
     return {
       title: "Champion counters",
       description:
-        "Find who counters any League of Legends champion, scored from real ranked games by win-rate delta against the champion's own baseline.",
+        "Find who counters any League of Legends champion, scored by win-rate delta against the champion's own baseline.",
     };
   }
 
@@ -55,7 +62,7 @@ export async function generateMetadata({
 
   return {
     title: `Who counters ${champion.name}?`,
-    description: `The champions that beat ${champion.name} in lane, and the ones ${champion.name} beats, from real ranked games.`,
+    description: `The champions that beat ${champion.name} in lane, and the ones ${champion.name} beats, scored against ${champion.name}'s own win rate in the role.`,
   };
 }
 
@@ -69,10 +76,26 @@ export default async function CountersPage({
   const slug = first(raw.champion);
 
   const index = await getChampionIndex();
-  const [snapshot, platforms] = await Promise.all([
-    resolveSnapshot(query.platform, query.queue, query.bracket, query.bracketExplicit),
-    availablePlatforms(),
+  const champion = slug ? (index.bySlug.get(slug) ?? null) : null;
+
+  const wantsOpgg = query.source === "opgg";
+  const [laneMeta, opggCounters] = await Promise.all([
+    wantsOpgg ? loadOpggTierList() : Promise.resolve(null),
+    wantsOpgg ? loadOpggCounters() : Promise.resolve(null),
   ]);
+
+  /* Both files are needed: the counters supply the pairings, the lane meta
+     supplies the baseline each delta is measured against. Without either, fall
+     back to the Riot pipeline rather than render a page of zeroes. */
+  const usingOpgg = wantsOpgg && laneMeta !== null && opggCounters !== null;
+
+  /* Only resolve a Riot snapshot when one will actually be read. */
+  const [snapshot, platforms] = usingOpgg
+    ? [null, []]
+    : await Promise.all([
+        resolveSnapshot(query.platform, query.queue, query.bracket, query.bracketExplicit),
+        availablePlatforms(),
+      ]);
 
   const shown = snapshot
     ? {
@@ -82,7 +105,61 @@ export default async function CountersPage({
         bracket: snapshot.meta.bracket,
       }
     : { platform: query.platform, queue: query.queue, bracket: query.bracket };
-  const brackets = await availableBrackets(shown.platform);
+  const brackets = usingOpgg ? [] : await availableBrackets(shown.platform);
+
+  const tally =
+    snapshot && champion
+      ? snapshot.champions.find((c) => c.championId === champion.id)
+      : undefined;
+
+  const playedRoles: Role[] =
+    usingOpgg && laneMeta && champion
+      ? opggRolesFor(laneMeta, champion.id)
+      : tally
+        ? rolesFor(tally)
+        : [];
+
+  const activeRole =
+    query.role && playedRoles.includes(query.role) ? query.role : (playedRoles[0] ?? null);
+
+  let matchups: MatchupDisplayRow[] = [];
+  if (champion && activeRole) {
+    if (usingOpgg && laneMeta && opggCounters) {
+      matchups = buildOpggMatchupRows(opggCounters, laneMeta, index, champion.id, activeRole);
+    } else if (snapshot) {
+      matchups = buildMatchupDisplayRows(snapshot, index, champion.id, activeRole);
+    }
+  }
+
+  /* Split by sign, not by position in the list. Taking the head and tail
+     regardless would put a losing matchup under "Strong against" whenever a
+     champion has fewer favourable lanes than the limit. */
+  const beatenBy = matchups.filter((row) => row.delta < 0).slice(0, COUNTER_LIMIT);
+  const beats = matchups
+    .filter((row) => row.delta > 0)
+    .reverse()
+    .slice(0, COUNTER_LIMIT);
+
+  const thinHint = usingOpgg
+    ? "op.gg reports no lane pairings for this champion in this role."
+    : "No lane pairing has enough games yet on this snapshot. Matchups need far more volume than rankings, so try a region with a larger sample — or switch the source above.";
+  const weakHint = matchups.length
+    ? "Nothing beats this champion by a meaningful margin here."
+    : thinHint;
+  const strongHint = matchups.length
+    ? "This champion does not over-perform into anything here."
+    : thinHint;
+  const roleLabel = activeRole ? ROLE_LABELS[activeRole] : "";
+
+  /* Only needed for the cold-start screen, so it is skipped once a champion
+     has been chosen. */
+  let contested: TierRow[] = [];
+  if (!champion) {
+    if (usingOpgg && laneMeta) contested = buildOpggTierRows(laneMeta, index, null);
+    else if (snapshot) contested = buildTierRows(snapshot, index, null);
+  }
+
+  const carryQuery = usingOpgg ? "source=opgg&" : `region=${shown.platform}&`;
 
   const pickerChampions = index.all.map((c) => ({
     slug: c.slug,
@@ -90,44 +167,9 @@ export default async function CountersPage({
     icon: championSquareUrl(c, index.version),
   }));
 
-  const champion = slug ? (index.bySlug.get(slug) ?? null) : null;
-  const tally =
-    snapshot && champion
-      ? snapshot.champions.find((c) => c.championId === champion.id)
-      : undefined;
-  const playedRoles: Role[] = tally ? rolesFor(tally) : [];
-  const activeRole =
-    query.role && playedRoles.includes(query.role) ? query.role : (playedRoles[0] ?? null);
-
-  const matchups =
-    snapshot && champion && activeRole
-      ? buildMatchupDisplayRows(snapshot, index, champion.id, activeRole)
-      : [];
-
-  /* Split by sign, not by position in the list. Taking the head and tail
-     regardless would put a losing matchup under "Strong against" whenever a
-     champion has fewer favourable lanes than the limit — which is exactly what
-     happened to Jinx, listed as over-performing into a -1.2% matchup. */
-  const beatenBy = matchups.filter((row) => row.delta < 0).slice(0, COUNTER_LIMIT);
-  const beats = matchups
-    .filter((row) => row.delta > 0)
-    .reverse()
-    .slice(0, COUNTER_LIMIT);
-
-  const thinHint =
-    "No lane pairing has enough games yet on this snapshot. Matchups need far more volume than rankings, so try a region with a larger sample.";
-  const weakHint = matchups.length
-    ? "Nothing beats this champion by a meaningful margin on this snapshot."
-    : thinHint;
-  const strongHint = matchups.length
-    ? "This champion does not over-perform into anything on this snapshot."
-    : thinHint;
-  const roleLabel = activeRole ? ROLE_LABELS[activeRole] : "";
-
-  /* Only needed for the cold-start screen, so it is skipped once a champion
-     has been chosen. */
-  const contested = !champion && snapshot ? buildTierRows(snapshot, index, null) : [];
-  const regionQuery = `region=${shown.platform}&`;
+  const emptyRoleHint = usingOpgg
+    ? `op.gg does not rank ${champion?.name ?? "this champion"} in a lane with counter data yet.`
+    : `${champion?.name ?? "This champion"} has not appeared in enough ${regionLabel(shown.platform)} games on this snapshot to score its lanes. Try another region, or switch the source above.`;
 
   return (
     <div className="mx-auto max-w-6xl space-y-8 px-4 py-12 sm:px-6 lg:px-8">
@@ -141,13 +183,16 @@ export default async function CountersPage({
         }
       />
 
+      <SourceToggle value={usingOpgg ? "opgg" : "riot"} />
+
       <div className="grid gap-4 lg:grid-cols-[minmax(0,340px)_1fr] lg:items-start">
         <div className="space-y-4">
           <CounterFinder
             champions={pickerChampions}
             champion={slug}
             role={activeRole}
-            region={shown.platform}
+            region={usingOpgg ? undefined : shown.platform}
+            source={usingOpgg ? "opgg" : undefined}
             size="hero"
           />
           <SnapshotFilters
@@ -158,12 +203,17 @@ export default async function CountersPage({
             availablePlatforms={platforms}
             availableBrackets={brackets}
             showRoles={false}
+            showScope={!usingOpgg}
           />
         </div>
 
         <div className="space-y-4">
-          <FallbackNotice requested={query} actual={shown} />
-          {snapshot && <DataNotice meta={snapshot.meta} />}
+          {!usingOpgg && <FallbackNotice requested={query} actual={shown} />}
+          {usingOpgg && laneMeta ? (
+            <OpggNotice meta={laneMeta.meta} kind="counters" />
+          ) : (
+            snapshot && <DataNotice meta={snapshot.meta} />
+          )}
 
           {!champion ? (
             <div className="space-y-6">
@@ -172,13 +222,13 @@ export default async function CountersPage({
                 title="Pick a champion to counter"
                 description="Choose the champion you are laning against and this page will show which picks beat them, which they beat, and how many games back each one."
               />
-              <ContestedPicks rows={contested} regionQuery={regionQuery} />
+              <ContestedPicks rows={contested} regionQuery={carryQuery} />
             </div>
           ) : !activeRole || matchups.length === 0 ? (
             <EmptyState
               icon={<Swords className="size-8" />}
               title={`No matchup data for ${champion.name} yet`}
-              description={`${champion.name} has not appeared in enough ${regionLabel(shown.platform)} games on this snapshot to score its lanes. Try another region.`}
+              description={emptyRoleHint}
             />
           ) : (
             <>
@@ -203,11 +253,14 @@ export default async function CountersPage({
                 </Link>
               </div>
 
-              {tally && playedRoles.length > 1 && (
+              {playedRoles.length > 1 && (
                 <ChampionRoleTabs
                   roles={playedRoles.map((r) => ({
                     role: r,
-                    games: tally.byRole[r]?.games ?? 0,
+                    games:
+                      usingOpgg && laneMeta
+                        ? opggRoleGames(laneMeta, champion.id, r)
+                        : (tally?.byRole[r]?.games ?? 0),
                   }))}
                   active={activeRole}
                 />

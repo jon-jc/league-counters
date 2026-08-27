@@ -89,9 +89,21 @@ export default async function MethodologyPage() {
           </li>
         </ul>
         <p>
-          Everything else on the site — every counter, matchup, build and champion page — comes
-          from our own aggregation. op.gg&apos;s lane meta carries no matchup data, so it cannot
-          answer the question this site exists to answer.
+          The switch also drives the counters page. Matchup coverage is where the two sources
+          differ most, and not in our favour: a lane pairing gains one game per match, so our own
+          pairings sit at a median of about a dozen games while op.gg&apos;s sit near a hundred.
+          Roughly a third of the champion-roles we rank have no counter data of our own at all.
+        </p>
+        <p>
+          op.gg reports the extremes rather than a full table — their best and worst lanes for a
+          champion — which this site mirrors to fill both sides of a pairing: if a champion won
+          184 of 412 lanes into an opponent, the opponent won the other 228 of that same 412.
+          Deltas are always measured against a baseline from the same source as the pairing;
+          scoring an op.gg matchup against our own win rate would measure the gap between two
+          datasets and call it a counter.
+        </p>
+        <p>
+          Builds and champion pages come from our own aggregation either way.
         </p>
       </Section>
 

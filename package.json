@@ -18,7 +18,8 @@
     "ingest:all": "tsx scripts/ingest-all.ts",
     "stale-regions": "tsx scripts/stale-regions.ts",
     "build:global": "tsx scripts/build-global.ts",
-    "ingest:opgg": "tsx scripts/ingest-opgg.ts"
+    "ingest:opgg": "tsx scripts/ingest-opgg.ts",
+    "ingest:opgg:counters": "tsx scripts/ingest-opgg-counters.ts"
   },
   "dependencies": {
     "clsx": "^2.1.1",

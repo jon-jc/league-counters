@@ -1,4 +1,6 @@
-import { parseLaneMeta, type LaneMeta } from "./parse";
+import { parseChampionCounters, parseLaneMeta, type ChampionCounters, type LaneMeta } from "./parse";
+import { championSlug } from "@/lib/lol/ddragon";
+import type { Role } from "@/lib/lol/constants";
 
 /**
  * Minimal JSON-RPC client for op.gg's public MCP endpoint.
@@ -57,7 +59,11 @@ function unwrapBody(raw: string): string {
   return last;
 }
 
-async function callTool(args: Record<string, unknown>, signal?: AbortSignal): Promise<string> {
+async function callTool(
+  args: Record<string, unknown>,
+  signal?: AbortSignal,
+  tool: string = TOOL,
+): Promise<string> {
   const res = await fetch(ENDPOINT, {
     method: "POST",
     headers: {
@@ -68,7 +74,7 @@ async function callTool(args: Record<string, unknown>, signal?: AbortSignal): Pr
       jsonrpc: "2.0",
       id: 1,
       method: "tools/call",
-      params: { name: TOOL, arguments: args },
+      params: { name: tool, arguments: args },
     }),
     signal,
   });
@@ -103,4 +109,71 @@ export async function fetchLaneMeta(signal?: AbortSignal): Promise<LaneMeta> {
   );
 
   return parseLaneMeta(text);
+}
+
+/* ---------- Champion counter matchups ---------- */
+
+const COUNTERS_TOOL = "lol_get_champion_analysis";
+
+/** Riot's `teamPosition` values -> op.gg's lane names. */
+export const OPGG_LANE_BY_ROLE: Record<Role, OpggLane> = {
+  TOP: "top",
+  JUNGLE: "jungle",
+  MIDDLE: "mid",
+  BOTTOM: "adc",
+  UTILITY: "support",
+};
+
+/**
+ * "Kai'Sa" -> "KAISA", "Nunu & Willump" -> "NUNU_WILLUMP".
+ *
+ * op.gg takes champions in UPPER_SNAKE_CASE, which is the site's own slug with
+ * different punctuation — so it is derived from `championSlug` rather than
+ * kept as a second hand-maintained table that could drift out of step. Verified
+ * against every awkward name in the roster, Wukong and Nunu included.
+ */
+export function toOpggChampionName(displayName: string): string {
+  return championSlug(displayName).toUpperCase().replaceAll("-", "_");
+}
+
+const COUNTER_FIELDS = ["champion_id", "champion_name", "play", "win"] as const;
+
+/* op.gg points at these explicitly when the graded counters are too thin, and
+   they cover every position the champion plays rather than just the one asked
+   for — so they are requested alongside, not only as a retry. */
+const SUMMARY_FIELDS = [
+  "data.summary.positions[].name",
+  ...COUNTER_FIELDS.map((field) => `data.summary.positions[].counters[].${field}`),
+];
+
+/**
+ * Best and worst matchups for one champion in one lane.
+ *
+ * op.gg returns only three each way, so this is not a full matchup table — it
+ * is the extremes, on a sample far larger than this project can gather.
+ */
+export async function fetchChampionCounters(
+  championName: string,
+  lane: OpggLane,
+  signal?: AbortSignal,
+): Promise<ChampionCounters> {
+  const desiredOutputFields = [
+    ...COUNTER_FIELDS.map((field) => `data.strong_counters[].${field}`),
+    ...COUNTER_FIELDS.map((field) => `data.weak_counters[].${field}`),
+    ...SUMMARY_FIELDS,
+  ];
+
+  const text = await callTool(
+    {
+      game_mode: "ranked",
+      champion: championName,
+      position: lane,
+      lang: "en_US",
+      desired_output_fields: desiredOutputFields,
+    },
+    signal,
+    COUNTERS_TOOL,
+  );
+
+  return parseChampionCounters(text);
 }

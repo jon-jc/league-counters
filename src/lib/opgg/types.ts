@@ -46,3 +46,28 @@ export interface OpggTierList {
   meta: OpggMeta;
   rows: OpggTierRow[];
 }
+
+/**
+ * One lane pairing from op.gg, in the same shape Riot-derived matchups use.
+ *
+ * `wins` is from `championId`'s side, matching `MatchupTally`, so the existing
+ * delta scoring works against these rows unchanged.
+ */
+export interface OpggMatchupRow {
+  championId: number;
+  role: Role;
+  opponentId: number;
+  games: number;
+  wins: number;
+}
+
+export interface OpggCounters {
+  meta: {
+    fetchedAt: string;
+    /** Champion-lanes queried. */
+    championRoles: number;
+    /** Champion-lanes that came back with at least one pairing. */
+    covered: number;
+  };
+  rows: OpggMatchupRow[];
+}

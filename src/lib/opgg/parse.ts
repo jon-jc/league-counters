@@ -70,6 +70,37 @@ function readClassDeclarations(text: string): Record<string, string[]> {
 }
 
 /**
+ * The balanced contents of `Name(...)`, or null if absent.
+ *
+ * Needed because a payload can carry sibling nodes with their own arrays —
+ * `FieldDiagnostics(["data.counters_meta"], "...")` turns up whenever a
+ * requested field does not match — and counting top-level groups across the
+ * whole response would then read a diagnostic array as if it were data.
+ */
+function extractCall(text: string, name: string): string | null {
+  const opener = `${name}(`;
+  const start = text.indexOf(opener);
+  if (start === -1) return null;
+
+  let depth = 1;
+  let inString = false;
+  for (let i = start + opener.length; i < text.length; i++) {
+    const char = text[i];
+    if (inString) {
+      if (char === '"') inString = false;
+      continue;
+    }
+    if (char === '"') inString = true;
+    else if (char === "(") depth++;
+    else if (char === ")") {
+      depth--;
+      if (depth === 0) return text.slice(start + opener.length, i);
+    }
+  }
+  return null;
+}
+
+/**
  * Split the top-level `[...]` groups, one per lane.
  *
  * Done by walking characters rather than matching brackets with a regex,
@@ -139,7 +170,8 @@ function readTuples(
         inString = true;
         continue;
       }
-      if (char === "(") depth++;
+      if (char === "(" || char === "[") depth++;
+      else if (char === "]") depth--;
       else if (char === ")") {
         depth--;
         if (depth === 0) break;
@@ -234,4 +266,228 @@ export function parseLaneMeta(text: string): LaneMeta {
   });
 
   return meta;
+}
+
+/* ---------- Champion counter matchups ---------- */
+
+/** One head-to-head lane pairing, from the queried champion's perspective. */
+export interface CounterRow {
+  opponentId: number;
+  opponentName: string;
+  /** Games in this pairing. */
+  play: number;
+  /** Wins for the *queried* champion, not the opponent. */
+  win: number;
+}
+
+/** Counters op.gg lists for one position, keyed by its own position name. */
+export interface PositionCounters {
+  /** op.gg's spelling: "TOP", "MID", "JUNGLE", "ADC", "SUPPORT". */
+  position: string;
+  counters: CounterRow[];
+}
+
+export interface ChampionCounters {
+  /** Opponents the queried champion beats. */
+  strong: CounterRow[];
+  /** Opponents that beat the queried champion. */
+  weak: CounterRow[];
+  /**
+   * op.gg's documented fallback for thin samples, covering every position the
+   * champion plays rather than only the one queried. Smaller samples than
+   * strong/weak, and only the losing side, but it is the difference between a
+   * sparse counter list and an empty one.
+   */
+  byPosition: PositionCounters[];
+}
+
+/**
+ * Turn a `lol_get_champion_analysis` counters payload into lane pairings.
+ *
+ * op.gg reuses one class for both arrays and distinguishes them only by
+ * position inside `Data(...)`, so the order is read from the `Data` class
+ * declaration rather than assumed — getting it backwards would invert every
+ * counter on the site, listing a champion's worst matchups as its best.
+ *
+ * `win` is the queried champion's wins in both arrays, which is what makes
+ * these rows drop straight into the same shape Riot-derived matchups use.
+ */
+export function parseChampionCounters(text: string): ChampionCounters {
+  const classes = readClassDeclarations(text);
+
+  const dataFields = classes.Data;
+  if (!dataFields) {
+    throw new OpggParseError("no `class Data` declaration on the counters response");
+  }
+
+  const body = extractCall(text, "Data");
+  if (body === null) throw new OpggParseError("counters response has no Data(...) node");
+
+  /* `Data` declares only the fields it actually carries, and not all of them
+     are arrays: a champion-lane with too thin a sample drops the empty side
+     entirely and adds a `counters_meta` node instead, giving
+     `Data([...], CountersMeta("..."))`. So items are matched to field names by
+     walking the body in order rather than by counting brackets. */
+  const items = readTopLevelItems(body);
+  if (items.length !== dataFields.length) {
+    throw new OpggParseError(
+      `Data declares ${dataFields.length} fields but carries ${items.length} values`,
+    );
+  }
+
+  const read = (field: string): CounterRow[] => {
+    const index = dataFields.indexOf(field);
+    if (index === -1) return []; // op.gg omits a side it has no sample for
+    const item = items[index];
+    if (!item || item.kind !== "array") return [];
+
+    /* The row class is named after whichever side it holds — `StrongCounter`
+       or `WeakCounter` — and op.gg reuses one of them for both arrays when
+       both are present. Reading the name out of the group itself covers every
+       combination without assuming which. */
+    const className = detectClassName(item.text);
+    if (!className) return [];
+    const fields = classes[className];
+    if (!fields) {
+      throw new OpggParseError(`group for ${field} uses undeclared class ${className}`);
+    }
+
+    return readTuples(item.text, className, fields).flatMap((row) => {
+      const opponentId = row.champion_id;
+      const play = row.play;
+      const win = row.win;
+      if (typeof opponentId !== "number" || typeof play !== "number" || typeof win !== "number") {
+        throw new OpggParseError(`counter row for ${field} is missing champion_id, play or win`);
+      }
+      const name = row.champion_name;
+      return [
+        {
+          opponentId,
+          opponentName: typeof name === "string" ? name : "",
+          play,
+          win,
+        },
+      ];
+    });
+  };
+
+  return {
+    strong: read("strong_counters"),
+    weak: read("weak_counters"),
+    byPosition: readSummaryCounters(text, classes),
+  };
+}
+
+/**
+ * Pull `data.summary.positions[].counters[]` — op.gg's raw, smaller-sample
+ * matchups, which they point to explicitly when the graded counters are empty.
+ */
+function readSummaryCounters(
+  text: string,
+  classes: Record<string, string[]>,
+): PositionCounters[] {
+  const summary = extractCall(text, "Summary");
+  if (summary === null) return [];
+
+  const positionFields = classes.Position;
+  const counterFields = classes.Counter;
+  if (!positionFields || !counterFields) return [];
+
+  const items = readTopLevelItems(summary);
+  const array = items.find((item) => item.kind === "array");
+  if (!array) return [];
+
+  return readTuples(array.text, "Position", positionFields).flatMap((row) => {
+    const position = row.name;
+    const counters = row.counters;
+    if (typeof position !== "string" || typeof counters !== "string") return [];
+
+    const inner = counters.startsWith("[") ? counters.slice(1, -1) : counters;
+    const parsed = readTuples(inner, "Counter", counterFields).flatMap((counter) => {
+      const opponentId = counter.champion_id;
+      const play = counter.play;
+      const win = counter.win;
+      if (typeof opponentId !== "number" || typeof play !== "number" || typeof win !== "number") {
+        return [];
+      }
+      const name = counter.champion_name;
+      return [
+        { opponentId, opponentName: typeof name === "string" ? name : "", play, win },
+      ];
+    });
+
+    return parsed.length > 0 ? [{ position, counters: parsed }] : [];
+  });
+}
+
+/** One positional value inside a node: an array, a nested node, or a scalar. */
+interface TopLevelItem {
+  kind: "array" | "node" | "scalar";
+  text: string;
+}
+
+/**
+ * Split a node's body into its positional values, in order.
+ *
+ * Needed because a declared field is not necessarily an array — counting
+ * `[...]` groups alone cannot tell which declared field a group belongs to
+ * once optional non-array siblings appear.
+ */
+function readTopLevelItems(body: string): TopLevelItem[] {
+  const items: TopLevelItem[] = [];
+  let depth = 0;
+  let inString = false;
+  let current = "";
+
+  const push = (raw: string) => {
+    const value = raw.trim();
+    if (value === "") return;
+    if (value.startsWith("[")) items.push({ kind: "array", text: value.slice(1, -1) });
+    else if (value.endsWith(")")) items.push({ kind: "node", text: value });
+    else items.push({ kind: "scalar", text: value });
+  };
+
+  for (let i = 0; i < body.length; i++) {
+    const char = body[i] ?? "";
+    if (inString) {
+      if (char === '"') inString = false;
+      current += char;
+      continue;
+    }
+    if (char === '"') {
+      inString = true;
+      current += char;
+      continue;
+    }
+    if (char === "[" || char === "(") depth++;
+    else if (char === "]" || char === ")") depth--;
+    if (depth === 0 && char === ",") {
+      push(current);
+      current = "";
+      continue;
+    }
+    current += char;
+  }
+  push(current);
+
+  return items;
+}
+
+/** The class name opening a group, e.g. `StrongCounter(1,2,3),...` -> "StrongCounter". */
+function detectClassName(group: string): string | null {
+  const open = group.indexOf("(");
+  if (open === -1) return null;
+  let start = open;
+  while (start > 0) {
+    const code = group.charCodeAt(start - 1);
+    const isWordChar =
+      (code >= 48 && code <= 57) ||
+      (code >= 65 && code <= 90) ||
+      (code >= 97 && code <= 122) ||
+      code === 95;
+    if (!isWordChar) break;
+    start--;
+  }
+  const name = group.slice(start, open);
+  return name === "" ? null : name;
 }

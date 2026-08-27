@@ -27,3 +27,23 @@ export const opggTierListSchema = z.object({
 });
 
 export type ParsedOpggTierList = z.infer<typeof opggTierListSchema>;
+
+/** Validates `data/opgg/counters.json`. */
+export const opggCountersSchema = z.object({
+  meta: z.object({
+    fetchedAt: z.iso.datetime(),
+    championRoles: z.number().int().nonnegative(),
+    covered: z.number().int().nonnegative(),
+  }),
+  rows: z.array(
+    z.object({
+      championId: z.number().int().positive(),
+      role: z.enum(ROLES),
+      opponentId: z.number().int().positive(),
+      games: z.number().int().nonnegative(),
+      wins: z.number().int().nonnegative(),
+    }),
+  ),
+});
+
+export type ParsedOpggCounters = z.infer<typeof opggCountersSchema>;
