@@ -8,6 +8,7 @@ import { ChampionBuildPanels } from "@/components/champion/champion-build";
 import { CounterList } from "@/components/matchup/counter-list";
 import { MatchupTable } from "@/components/matchup/matchup-table";
 import { MatchupSpread } from "@/components/matchup/matchup-spread";
+import { BestCounterPicks } from "@/components/matchup/best-counter-picks";
 import { SnapshotFilters } from "@/components/filters/snapshot-filters";
 import { DataNotice } from "@/components/ui/data-notice";
 import { MetricsLegend } from "@/components/ui/metrics-legend";
@@ -172,7 +173,15 @@ export default async function ChampionPage({
         {row && activeRole ? (
           <>
             {/* Counters lead. Someone opening a champion page mid-select wants
-                the matchup before the aggregate stat line. */}
+                the matchup before the aggregate stat line — and the same
+                recommendation the counters page gives, since this page is
+                reached from those lists and from search. */}
+            <BestCounterPicks
+              rows={matchups}
+              championName={champion.name}
+              roleLabel={roleLabel}
+            />
+
             <div className="grid gap-4 lg:grid-cols-2">
               <CounterList
                 tone="weak"
