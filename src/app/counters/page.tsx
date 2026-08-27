@@ -12,12 +12,13 @@ import { CounterFinder } from "@/components/matchup/counter-finder";
 import { CounterList } from "@/components/matchup/counter-list";
 import { MatchupTable } from "@/components/matchup/matchup-table";
 import { MatchupSpread } from "@/components/matchup/matchup-spread";
+import { ContestedPicks } from "@/components/matchup/contested-picks";
 import { ChampionAvatar } from "@/components/champion/champion-avatar";
 import { ChampionRoleTabs } from "@/components/champion/champion-role-tabs";
 import { championSquareUrl, getChampionIndex } from "@/lib/lol/ddragon";
 import { availableBrackets, availablePlatforms, resolveSnapshot } from "@/lib/data/repository";
 import { rolesFor } from "@/lib/data/metrics";
-import { buildMatchupDisplayRows } from "@/lib/data/rows";
+import { buildMatchupDisplayRows, buildTierRows } from "@/lib/data/rows";
 import { parseSnapshotQuery, type RawSearchParams } from "@/lib/data/query";
 import { ROLE_LABELS, type Role } from "@/lib/lol/constants";
 import { GLOBAL_REGION, regionLabel } from "@/lib/lol/regions";
@@ -122,6 +123,11 @@ export default async function CountersPage({
     : thinHint;
   const roleLabel = activeRole ? ROLE_LABELS[activeRole] : "";
 
+  /* Only needed for the cold-start screen, so it is skipped once a champion
+     has been chosen. */
+  const contested = !champion && snapshot ? buildTierRows(snapshot, index, null) : [];
+  const regionQuery = `region=${shown.platform}&`;
+
   return (
     <div className="mx-auto max-w-6xl space-y-8 px-4 py-12 sm:px-6 lg:px-8">
       <PageHeader
@@ -159,11 +165,14 @@ export default async function CountersPage({
           {snapshot && <DataNotice meta={snapshot.meta} />}
 
           {!champion ? (
-            <EmptyState
-              icon={<Swords className="size-8" />}
-              title="Pick a champion to counter"
-              description="Choose the champion you are laning against and this page will show which picks beat them, which they beat, and how many games back each one."
-            />
+            <div className="space-y-6">
+              <EmptyState
+                icon={<Swords className="size-8" />}
+                title="Pick a champion to counter"
+                description="Choose the champion you are laning against and this page will show which picks beat them, which they beat, and how many games back each one."
+              />
+              <ContestedPicks rows={contested} regionQuery={regionQuery} />
+            </div>
           ) : !activeRole || matchups.length === 0 ? (
             <EmptyState
               icon={<Swords className="size-8" />}
