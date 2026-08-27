@@ -123,13 +123,21 @@ jobs:
             echo "::endgroup::"
           done
 
+      # The site's default view is every region summed. Precomputing it here
+      # keeps that a single file read at request time instead of a merge whose
+      # cost grows with every match ever collected. always(), for the same
+      # reason the commit step is: a timed-out ingest still has new data.
+      - name: Rebuild the all-regions snapshot
+        if: always() && steps.key.outputs.usable == 'true'
+        run: npm run build:global
+
       # always(), so a timed-out ingest still publishes what it collected.
       - name: Commit updated snapshots
         if: always() && steps.key.outputs.usable == 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/snapshots data/checkpoints
+          git add data/snapshots data/checkpoints data/global
           if git diff --cached --quiet; then
             echo "No snapshot changes to commit."
             exit 0
