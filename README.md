@@ -91,7 +91,13 @@ The rate limiter reads Riot's `X-App-Rate-Limit` header and adopts whatever
 limits the key in use actually has, so key tier needs no code change — a wider
 allowance simply collects faster. Scheduled runs collect for a fixed stretch of
 wall-clock time rather than a fixed match count, so a faster key fills the same
-window with more matches.
+window with more matches and nothing needs re-tuning.
+
+The key in use allows **20 requests per second and 100 per 2 minutes**. The
+two-minute window binds by a wide margin, giving roughly 50 requests a minute,
+so a 140-minute run fetches on the order of 7,000 matches before it is cut off.
+Roughly half are discarded as belonging to an older patch, so expect a few
+thousand new matches per run, spread across the regions that run covers.
 
 **Run one ingest at a time.** The limiter tracks only its own requests, but the
 budget belongs to the key. Two ingests running concurrently each believe they

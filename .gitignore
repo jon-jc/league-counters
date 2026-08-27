@@ -48,6 +48,10 @@ yarn-error.log*
 # they are what makes scheduled ingests additive rather than double-counting)
 /data/raw/
 
+# Derived from data/snapshots at build time. Committing it would rewrite ~2MB
+# of git objects on every ingest for something reproducible in a second.
+/data/global/
+
 # editor
 .idea/
 .vscode/*

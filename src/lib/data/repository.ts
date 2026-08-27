@@ -15,7 +15,7 @@ import {
   type PlatformId,
   type RegionId,
 } from "@/lib/lol/regions";
-import { snapshotSchema } from "./schema";
+import { snapshotMetaSchema, snapshotSchema } from "./schema";
 import { bestOf } from "./select";
 import { mergeSnapshots } from "./merge";
 import type { Snapshot, SnapshotDescriptor } from "./types";
@@ -23,6 +23,8 @@ import type { Snapshot, SnapshotDescriptor } from "./types";
 
 
 const SNAPSHOT_ROOT = path.join(process.cwd(), "data", "snapshots");
+/** Where `npm run build:global` leaves the precomputed all-regions merge. */
+const GLOBAL_ROOT = path.join(process.cwd(), "data", "global");
 
 export function snapshotPath(
   platform: PlatformId,
@@ -48,6 +50,23 @@ async function readSnapshotFile(file: string): Promise<Snapshot | null> {
   return parsed.data as Snapshot;
 }
 
+/** Read just the header of a snapshot, for building the index cheaply. */
+async function readSnapshotMeta(file: string): Promise<SnapshotDescriptor | null> {
+  let raw: string;
+  try {
+    raw = await readFile(file, "utf8");
+  } catch {
+    return null;
+  }
+
+  try {
+    const parsed = snapshotMetaSchema.safeParse(JSON.parse(raw).meta);
+    return parsed.success ? (parsed.data as SnapshotDescriptor) : null;
+  } catch {
+    return null;
+  }
+}
+
 /**
  * Load one snapshot. Returns null when that region/bracket has never been
  * ingested — callers render an empty state rather than inventing numbers.
@@ -60,15 +79,6 @@ export const loadSnapshot = cache(
   ): Promise<Snapshot | null> => readSnapshotFile(snapshotPath(platform, queue, bracket)),
 );
 
-/**
- * Load the requested snapshot, falling back to another bracket on the same
- * platform, then to the best snapshot anywhere, so a deep link never dead-ends.
- *
- * An explicit selection is always honoured exactly — if someone picks Master+
- * and it is thin, they get the thin real numbers and an honest empty state.
- * Only the *fallback* prefers a snapshot with enough volume to actually render,
- * since substituting one empty page for another helps nobody.
- */
 /**
  * Load the best snapshot for a request.
  *
@@ -145,8 +155,12 @@ export const listSnapshots = cache(async (): Promise<SnapshotDescriptor[]> => {
 
     for (const file of files) {
       if (!file.endsWith(".json")) continue;
-      const snapshot = await readSnapshotFile(path.join(SNAPSHOT_ROOT, platform, file));
-      if (snapshot) descriptors.push({ ...snapshot.meta });
+      /* The index only needs meta, so only meta is validated here. Running the
+         full schema over every snapshot just to list them cost more than
+         everything else on the page put together, and each snapshot is still
+         validated in full when it is actually loaded. */
+      const meta = await readSnapshotMeta(path.join(SNAPSHOT_ROOT, platform, file));
+      if (meta) descriptors.push(meta);
     }
   }
 
@@ -190,15 +204,59 @@ export const loadGlobalSnapshot = cache(
     const patch = candidates
       .map((s) => s.patch)
       .sort((a, b) => b.localeCompare(a, undefined, { numeric: true }))[0];
-
     const onPatch = candidates.filter((s) => s.patch === patch);
+
+    const precomputed = await readPrecomputedGlobal(queue, bracket, onPatch);
+    if (precomputed) return precomputed;
+
     const loaded = await Promise.all(
       onPatch.map((s) => loadSnapshot(s.platform, s.queue, s.bracket)),
     );
-
     return mergeSnapshots(loaded.filter((s): s is Snapshot => s !== null));
   },
 );
+
+/**
+ * The merge `npm run build:global` wrote, if it still matches what is on disk.
+ *
+ * Merging every region per request costs CPU proportional to all the data ever
+ * collected, so the result is precomputed after each ingest. The file records
+ * which snapshots it came from; if that no longer matches — a region ingested
+ * since, or the builder never run — it is ignored and the merge happens live.
+ * A stale global view would be worse than a slow one.
+ */
+async function readPrecomputedGlobal(
+  queue: QueueId,
+  bracket: Bracket,
+  expected: SnapshotDescriptor[],
+): Promise<Snapshot | null> {
+  let raw: string;
+  try {
+    raw = await readFile(path.join(GLOBAL_ROOT, `${queue}-${bracket}.json`), "utf8");
+  } catch {
+    return null;
+  }
+
+  let payload: { sources?: { platform: string; generatedAt: string }[]; snapshot?: unknown };
+  try {
+    payload = JSON.parse(raw);
+  } catch {
+    return null;
+  }
+
+  const fingerprint = (rows: { platform: string; generatedAt: string }[]) =>
+    rows
+      .map((r) => `${r.platform}@${r.generatedAt}`)
+      .sort()
+      .join("|");
+
+  if (!payload.sources || fingerprint(payload.sources) !== fingerprint(expected)) {
+    return null;
+  }
+
+  const parsed = snapshotSchema.safeParse(payload.snapshot);
+  return parsed.success ? (parsed.data as Snapshot) : null;
+}
 
 /** Platforms that have a snapshot for this queue and bracket. */
 export const globalRegionCount = cache(
