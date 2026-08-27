@@ -1,4 +1,4 @@
-import type { Role } from "@/lib/lol/constants";
+import { ROLES, type Role } from "@/lib/lol/constants";
 import type { ChampionTally, MatchupTally, Snapshot } from "./types";
 
 /**
@@ -118,8 +118,19 @@ export function buildRoleRows(snapshot: Snapshot, role: Role): ChampionRow[] {
     const tally = champion.byRole[role]!;
     const adjustedWinRate = shrunkWinRate(tally.wins, tally.games);
     const pickRate = tally.games / roleGamesTotal;
+
+    /* Bans are recorded per champion, not per role — a ban removes a champion
+       from the game entirely. Charging the whole ban rate to every role put a
+       champion banned 57% of the time at the top of all five, including roles
+       it plays 1% of the time. Attributing bans in proportion to where the
+       champion is actually played keeps presence role-specific, the same way
+       pick rate already is. */
+    const playedGames = ROLES.reduce((sum, r) => sum + (champion.byRole[r]?.games ?? 0), 0);
+    const roleShare = playedGames > 0 ? tally.games / playedGames : 0;
     // A champion can be banned once per team, so matches is the right base.
-    const banRate = meta.matches > 0 ? champion.bans / meta.matches : 0;
+    const championBanRate = meta.matches > 0 ? champion.bans / meta.matches : 0;
+    const banRate = championBanRate * roleShare;
+
     return {
       champion,
       tally,
@@ -130,17 +141,35 @@ export function buildRoleRows(snapshot: Snapshot, role: Role): ChampionRow[] {
     };
   });
 
-  const wrValues = partial.map((p) => p.adjustedWinRate);
-  const presenceValues = partial.map((p) => p.presence);
+  /* Rank on how well a champion can be *shown* to perform, not on its point
+     estimate. Shrinkage alone still let a 77-game champion at 66% outrank one
+     with 721 games at 54%, because it moves the estimate without accounting for
+     how wide the interval around it is. Subtracting the 95% margin makes a
+     claim only as strong as its evidence, so volume has to back a high tier. */
+  const confident = partial.map((p) => ({
+    ...p,
+    confidentWinRate: p.adjustedWinRate - wilsonMargin(p.tally.wins, p.tally.games),
+  }));
+
+  /* Presence is compared on a log scale. Win rates are symmetric and narrow
+     (43-56%, skew -0.03) while presence has a long right tail (0.1-20%, skew
+     1.91), so z-scoring both raw let the most-contested champion reach z=3.86
+     against the best win rate's z=2.32 — presence supplying about 39% of the
+     top score under a nominal 28% weight, enough to put a 47.7% win rate at S+.
+     Taking logs makes contest a matter of proportion rather than raw spread,
+     which is how it is actually read: twice as banned, not twenty points more
+     banned. The weights then mean what they say. */
+  const wrValues = confident.map((p) => p.confidentWinRate);
+  const presenceValues = confident.map((p) => Math.log(p.presence + 0.005));
   const wrMean = mean(wrValues);
   const wrSd = stdDev(wrValues, wrMean);
   const presenceMean = mean(presenceValues);
   const presenceSd = stdDev(presenceValues, presenceMean);
 
-  const scored = partial
+  const scored = confident
     .map((p) => {
-      const winZ = (p.adjustedWinRate - wrMean) / wrSd;
-      const presenceZ = (p.presence - presenceMean) / presenceSd;
+      const winZ = (p.confidentWinRate - wrMean) / wrSd;
+      const presenceZ = (Math.log(p.presence + 0.005) - presenceMean) / presenceSd;
       return { ...p, score: 0.72 * winZ + 0.28 * presenceZ };
     })
     .sort((a, b) => b.score - a.score);

@@ -116,6 +116,19 @@ export default async function MethodologyPage() {
           <em>within the champion&apos;s own role</em>. Comparing across roles would bury support,
           whose win rates are naturally flat.
         </p>
+        <p>
+          Ranking uses the <strong className="text-fg">lower end</strong> of a champion&apos;s
+          win-rate interval rather than its midpoint, so a claim is only as strong as the
+          evidence behind it. A 66% record over 77 games no longer outranks 54% over 721.
+        </p>
+        <p>
+          Presence is compared on a log scale. Win rates are symmetric and narrow while pick
+          and ban rates have a long tail, so comparing both on a raw spread let sheer
+          popularity outweigh a much better record. Bans are also charged to the roles a
+          champion actually plays: a ban removes it from the whole game, but crediting the
+          full ban rate to all five roles put a heavily-banned mid laner top of the support
+          list on twenty games.
+        </p>
       </Section>
 
       <Section title="What makes something a counter">

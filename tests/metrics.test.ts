@@ -182,3 +182,86 @@ describe("rolesFor", () => {
     expect(primaryRole({ championId: 2, bans: 0, byRole: {} })).toBeNull();
   });
 });
+
+describe("ranking accuracy", () => {
+  /* Regressions from a real audit of the live tier list. Each of these put a
+     champion at the top of a role it had no business topping. */
+
+  it("charges bans to the roles a champion actually plays", () => {
+    // Played almost entirely mid, banned in 50% of games.
+    const split: ChampionTally = {
+      championId: 1,
+      bans: 500,
+      byRole: {
+        MIDDLE: { games: 760, wins: 380 },
+        UTILITY: { games: 40, wins: 20 },
+      },
+    };
+    const filler = Array.from({ length: 10 }, (_, i) => ({
+      championId: i + 10,
+      bans: 0,
+      byRole: {
+        MIDDLE: { games: 500, wins: 250 },
+        UTILITY: { games: 500, wins: 250 },
+      },
+    })) satisfies ChampionTally[];
+
+    const snapshot = snapshotOf([split, ...filler], [], 1000);
+    const mid = buildRoleRows(snapshot, "MIDDLE").find((r) => r.championId === 1)!;
+    const support = buildRoleRows(snapshot, "UTILITY").find((r) => r.championId === 1)!;
+
+    // 95% of its games are mid, so that is where the ban pressure belongs.
+    expect(mid.banRate).toBeGreaterThan(0.4);
+    expect(support.banRate).toBeLessThan(0.05);
+    // Previously both read 50%, which put it top of a role it barely plays.
+    expect(support.banRate).toBeLessThan(mid.banRate);
+  });
+
+  it("does not let a small sample outrank a large one on a similar record", () => {
+    // A 66% win rate over 77 games used to beat 54% over 721.
+    const lucky: ChampionTally = {
+      championId: 1,
+      bans: 0,
+      byRole: { TOP: { games: 77, wins: 51 } },
+    };
+    const proven: ChampionTally = {
+      championId: 2,
+      bans: 0,
+      byRole: { TOP: { games: 721, wins: 388 } },
+    };
+    const filler = Array.from({ length: 10 }, (_, i) => ({
+      championId: i + 10,
+      bans: 0,
+      byRole: { TOP: { games: 400, wins: 200 } },
+    })) satisfies ChampionTally[];
+
+    const rows = buildRoleRows(snapshotOf([lucky, proven, ...filler], [], 2000), "TOP");
+    const luckyRank = rows.find((r) => r.championId === 1)!.rank;
+    const provenRank = rows.find((r) => r.championId === 2)!.rank;
+    expect(provenRank).toBeLessThan(luckyRank);
+  });
+
+  it("does not let popularity alone outrank a much better record", () => {
+    // Ubiquitous but losing, against modest but winning.
+    const popular: ChampionTally = {
+      championId: 1,
+      bans: 0,
+      byRole: { BOTTOM: { games: 2300, wins: 1097 } },
+    };
+    const strong: ChampionTally = {
+      championId: 2,
+      bans: 0,
+      byRole: { BOTTOM: { games: 1035, wins: 563 } },
+    };
+    const filler = Array.from({ length: 10 }, (_, i) => ({
+      championId: i + 10,
+      bans: 0,
+      byRole: { BOTTOM: { games: 400, wins: 200 } },
+    })) satisfies ChampionTally[];
+
+    const rows = buildRoleRows(snapshotOf([popular, strong, ...filler], [], 5000), "BOTTOM");
+    const popularRank = rows.find((r) => r.championId === 1)!.rank;
+    const strongRank = rows.find((r) => r.championId === 2)!.rank;
+    expect(strongRank).toBeLessThan(popularRank);
+  });
+});
