@@ -90,6 +90,21 @@
     border-radius: 4px;
   }
 
+  /* The site animates skeletons, hovers and page transitions. Someone who has
+     asked their system for less motion should get near-none of it — and a
+     vestibular trigger is not worth a fade. Kept just above zero so anything
+     depending on a transitionend still fires. */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
   ::-webkit-scrollbar {
     width: 10px;
     height: 10px;
