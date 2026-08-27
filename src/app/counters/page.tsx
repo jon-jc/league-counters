@@ -13,6 +13,7 @@ import { CounterList } from "@/components/matchup/counter-list";
 import { MatchupTable } from "@/components/matchup/matchup-table";
 import { MatchupSpread } from "@/components/matchup/matchup-spread";
 import { ContestedPicks } from "@/components/matchup/contested-picks";
+import { BestCounterPicks } from "@/components/matchup/best-counter-picks";
 import { ChampionAvatar } from "@/components/champion/champion-avatar";
 import { ChampionRoleTabs } from "@/components/champion/champion-role-tabs";
 import { championSquareUrl, getChampionIndex } from "@/lib/lol/ddragon";
@@ -211,6 +212,12 @@ export default async function CountersPage({
                   active={activeRole}
                 />
               )}
+
+              <BestCounterPicks
+                rows={matchups}
+                championName={champion.name}
+                roleLabel={roleLabel}
+              />
 
               <div className="grid gap-4 xl:grid-cols-2">
                 <CounterList tone="weak" rows={beatenBy} role={roleLabel} emptyHint={weakHint} />
