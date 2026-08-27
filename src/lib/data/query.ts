@@ -9,6 +9,7 @@ import {
   type Role,
 } from "@/lib/lol/constants";
 import { DEFAULT_REGION, resolveRegion, type RegionId } from "@/lib/lol/regions";
+import { resolveTierSource, type TierSource } from "./source";
 
 /** Search params as Next hands them to a server component. */
 export type RawSearchParams = Record<string, string | string[] | undefined>;
@@ -27,6 +28,12 @@ export interface SnapshotQuery {
    * them exactly that, even if it is thin.
    */
   bracketExplicit: boolean;
+  /**
+   * Which dataset to rank from. Only the tier list reads this; other pages
+   * are served by the Riot pipeline regardless, because op.gg's lane meta
+   * carries no matchup data.
+   */
+  source: TierSource;
 }
 
 function first(value: string | string[] | undefined): string | undefined {
@@ -50,5 +57,6 @@ export function parseSnapshotQuery(params: RawSearchParams): SnapshotQuery {
     bracket,
     bracketExplicit,
     role: resolveRole(first(params.role)),
+    source: resolveTierSource(first(params.source)),
   };
 }

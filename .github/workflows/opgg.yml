@@ -1,0 +1,65 @@
+name: Refresh op.gg lane meta
+
+on:
+  schedule:
+    # Every six hours, offset from the Riot ingest so the two jobs are not
+    # pushing to main at the same moment. This is a single request that takes
+    # about a second — unlike the Riot ingest there is nothing to budget, and
+    # no key to spend, so the cadence is set by how often op.gg's own meta
+    # moves rather than by rate limits.
+    - cron: "43 */6 * * *"
+  workflow_dispatch:
+
+# Pushes to main, so never let two overlap.
+concurrency:
+  group: opgg
+  cancel-in-progress: false
+
+jobs:
+  refresh:
+    name: Pull and commit op.gg's tier list
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          # The commit step rebases onto origin/main before pushing, which a
+          # shallow clone cannot do.
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - run: npm ci
+
+      # op.gg being unreachable is a transient upstream condition, not a broken
+      # build. The committed file stays in place and the site keeps serving the
+      # previous pull, so a failed run needs no attention and should not mail
+      # anyone — the next one picks it up.
+      - name: Fetch lane meta
+        id: fetch
+        continue-on-error: true
+        run: npm run ingest:opgg
+
+      - name: Note an upstream failure without failing the run
+        if: steps.fetch.outcome != 'success'
+        run: echo "::warning::Could not refresh op.gg lane meta; keeping the previous pull."
+
+      - name: Commit refreshed lane meta
+        if: steps.fetch.outcome == 'success'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/opgg
+          if git diff --cached --quiet; then
+            echo "op.gg lane meta is unchanged."
+            exit 0
+          fi
+          git commit -m "data: refresh op.gg lane meta"
+          # The ranked-snapshot job may have landed while this ran.
+          git pull --rebase --autostash origin main
+          git push origin HEAD:main

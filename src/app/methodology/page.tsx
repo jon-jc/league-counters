@@ -35,7 +35,7 @@ export default async function MethodologyPage() {
       <PageHeader
         eyebrow="How this works"
         title="Methodology"
-        description="Every number on this site is derived from ranked matches pulled from Riot's API. Here is exactly how, including what gets thrown away and where the limits are."
+        description="The tier list can be ranked from op.gg's meta or from matches this site aggregates itself, and counters are always our own. Here is exactly how each is built, including what gets thrown away and where the limits are."
       />
 
       <div className="rounded-card border border-line bg-surface/60 p-5">
@@ -67,7 +67,35 @@ export default async function MethodologyPage() {
         </dl>
       </div>
 
-      <Section title="Where the data comes from">
+      <Section title="Two sources, and which one you are looking at">
+        <p>
+          The tier list has a <strong className="text-fg">source switch</strong>, because the two
+          datasets behind it are genuinely different things rather than two views of one.
+        </p>
+        <ul className="list-disc space-y-1.5 pl-5">
+          <li>
+            <strong className="text-fg">op.gg</strong> — their lane meta, pulled through their
+            public MCP endpoint. Their grading, their ranking, their sample: millions of champion
+            games covering every champion in every lane they track. It is shown as theirs, with
+            their six tier buckets mapped onto this site&apos;s pills and nothing re-scored. Win
+            rates are the one exception, recomputed from the raw game and win counts they
+            publish because their percentage field is rounded to two decimals.
+          </li>
+          <li>
+            <strong className="text-fg">Our data</strong> — the ranking described in the rest of
+            this page, aggregated here from Riot&apos;s API. Smaller, but it is the only one of
+            the two that can be filtered by region and rank, and the only one whose formula is
+            open to inspection.
+          </li>
+        </ul>
+        <p>
+          Everything else on the site — every counter, matchup, build and champion page — comes
+          from our own aggregation. op.gg&apos;s lane meta carries no matchup data, so it cannot
+          answer the question this site exists to answer.
+        </p>
+      </Section>
+
+      <Section title="Where our own data comes from">
         <p>
           Ranked ladders are sampled through Riot&apos;s league API, and each sampled player&apos;s
           recent games are pulled through match-v5. Every region is aggregated independently,

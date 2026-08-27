@@ -10,8 +10,13 @@ export const revalidate = 900;
 /**
  * GET /api/tier-list?region=KR&rank=emerald_plus&queue=420&role=MIDDLE
  *
- * Returns the same ranking the tier list page renders. Unknown or unsupported
+ * Returns this site's own ranking, aggregated from Riot's API — the same thing
+ * the tier list page shows under its "Our data" source. Unknown or unsupported
  * parameters fall back to defaults rather than erroring.
+ *
+ * Deliberately does not serve the op.gg-sourced view. Displaying someone
+ * else's tier list with attribution is one thing; re-serving their dataset as
+ * JSON for other people to consume is another, and not ours to offer.
  */
 export async function GET(request: Request) {
   const url = new URL(request.url);

@@ -35,6 +35,35 @@ const TIER_LIST: Entry[] = [
   },
 ];
 
+/**
+ * The op.gg view is graded by op.gg, so the shared entries would misdescribe
+ * it — the tier is not this site's blend, and the 20-game floor is not their
+ * threshold. Saying so is the difference between attribution and a veneer.
+ */
+const OPGG: Entry[] = [
+  {
+    term: <TierPill tier="S+" size="sm" />,
+    body: "op.gg's own grade for the champion in this lane, on their six-bucket scale — shown in this site's pills, not re-graded or re-ranked.",
+  },
+  {
+    term: <span className="font-medium text-fg">Win rate</span>,
+    body: "Share of games won, computed from op.gg's raw game and win counts rather than their rounded percentage, so close rows stay separable.",
+  },
+  {
+    term: (
+      <span className="inline-flex items-center gap-1.5 font-medium text-fg">
+        <ConfidenceDot level="high" />
+        Games
+      </span>
+    ),
+    body: "Sample size. op.gg lists only champions with real volume in a lane, so rows here carry far more games than the region-by-region view.",
+  },
+  {
+    term: <span className="font-medium text-fg">Pick / ban rate</span>,
+    body: "How often the champion is picked in this lane, and how often it is banned. A ban removes a champion from the whole game, so op.gg reports one ban rate per champion — the same figure repeats across each lane it plays.",
+  },
+];
+
 const MATCHUP: Entry[] = [
   {
     term: <span className="font-medium text-fg">Delta</span>,
@@ -51,8 +80,12 @@ const MATCHUP: Entry[] = [
  * baseline — but a returning visitor should not have to scroll past the
  * explanation every time.
  */
-export function MetricsLegend({ variant = "tier-list" }: { variant?: "tier-list" | "matchup" }) {
-  const entries = variant === "matchup" ? MATCHUP : TIER_LIST;
+export function MetricsLegend({
+  variant = "tier-list",
+}: {
+  variant?: "tier-list" | "matchup" | "opgg";
+}) {
+  const entries = variant === "matchup" ? MATCHUP : variant === "opgg" ? OPGG : TIER_LIST;
 
   return (
     <details className="group rounded-card border border-line bg-surface/40">
