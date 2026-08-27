@@ -66,7 +66,9 @@ export function SourceToggle({
             )}
           >
             <span className="block text-xs font-semibold">{TIER_SOURCE_LABELS[source]}</span>
-            <span className="mt-0.5 block text-[11px] text-fg-subtle">
+            {/* The label carries the choice; the description only qualifies it,
+                and wrapping to two lines on a phone costs more than it adds. */}
+            <span className="mt-0.5 hidden text-[11px] text-fg-subtle sm:block">
               {DESCRIPTIONS[source]}
             </span>
           </button>
