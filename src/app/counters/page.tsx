@@ -11,6 +11,7 @@ import { SnapshotFilters } from "@/components/filters/snapshot-filters";
 import { CounterFinder } from "@/components/matchup/counter-finder";
 import { CounterList } from "@/components/matchup/counter-list";
 import { MatchupTable } from "@/components/matchup/matchup-table";
+import { MatchupSpread } from "@/components/matchup/matchup-spread";
 import { ChampionAvatar } from "@/components/champion/champion-avatar";
 import { ChampionRoleTabs } from "@/components/champion/champion-role-tabs";
 import { championSquareUrl, getChampionIndex } from "@/lib/lol/ddragon";
@@ -206,6 +207,12 @@ export default async function CountersPage({
                 <CounterList tone="weak" rows={beatenBy} role={roleLabel} emptyHint={weakHint} />
                 <CounterList tone="strong" rows={beats} role={roleLabel} emptyHint={strongHint} />
               </div>
+
+              <MatchupSpread
+                rows={matchups}
+                championName={champion.name}
+                roleLabel={roleLabel}
+              />
 
               <MetricsLegend variant="matchup" />
               <MatchupTable rows={matchups} />

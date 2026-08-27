@@ -7,6 +7,7 @@ import { StatTiles } from "@/components/champion/stat-tiles";
 import { ChampionBuildPanels } from "@/components/champion/champion-build";
 import { CounterList } from "@/components/matchup/counter-list";
 import { MatchupTable } from "@/components/matchup/matchup-table";
+import { MatchupSpread } from "@/components/matchup/matchup-spread";
 import { SnapshotFilters } from "@/components/filters/snapshot-filters";
 import { DataNotice } from "@/components/ui/data-notice";
 import { MetricsLegend } from "@/components/ui/metrics-legend";
@@ -190,6 +191,12 @@ export default async function ChampionPage({
             <StatTiles row={row} roleLabel={roleLabel} />
 
             {build && <ChampionBuildPanels build={build} roleLabel={roleLabel} />}
+
+            <MatchupSpread
+              rows={matchups}
+              championName={champion.name}
+              roleLabel={roleLabel}
+            />
 
             <MetricsLegend variant="matchup" />
 
