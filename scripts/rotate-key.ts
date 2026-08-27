@@ -112,8 +112,7 @@ console.log(`Wrote ${ENV_FILE}`);
 const pushed = await setRepoSecret(key);
 if (pushed) console.log("Updated the RIOT_API_KEY repository secret");
 
-// Development keys last 24 hours from the moment they are issued.
-const expires = new Date(Date.now() + 24 * 60 * 60 * 1000);
-console.log(`\nDone. A development key issued now lapses around ${expires.toLocaleString()}.`);
-console.log("For a key that does not expire, register a product at");
-console.log("https://developer.riotgames.com/app-type and apply for a personal key.");
+// The key is live in both places, so there is nothing further to do. Whether
+// it needs replacing again depends on its tier: personal and production keys
+// do not expire, development keys lapse 24 hours after they are issued.
+console.log("\nDone. Scheduled ingests will use it from their next run.");

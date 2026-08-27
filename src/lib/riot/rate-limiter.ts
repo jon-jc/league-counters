@@ -5,9 +5,9 @@ export interface RateWindow {
 }
 
 /**
- * Development keys allow 20 req/s and 100 req/2min. The two-minute window is
- * the binding constraint by a wide margin, so the limiter has to respect both
- * rather than just spacing requests evenly.
+ * A conservative default matching a development key: 20 req/s and 100 req/2min.
+ * The limiter replaces these with whatever Riot reports for the key in use, so a
+ * personal or production key widens the budget on its own.
  */
 export const DEV_KEY_WINDOWS: RateWindow[] = [
   { limit: 20, seconds: 1 },

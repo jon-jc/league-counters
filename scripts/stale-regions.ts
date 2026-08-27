@@ -3,8 +3,8 @@
  *
  *   npm run --silent stale-regions -- --count 5
  *
- * A development key cannot refresh seventeen shards every three hours, so the
- * scheduled job asks for the stalest few instead of a hardcoded list. Regions
+ * No key refreshes every shard every three hours, so the scheduled job asks
+ * for the stalest few instead of a hardcoded list. Regions
  * with no snapshot at all sort first, which means a newly supported shard fills
  * itself in without anyone editing the workflow.
  */

@@ -2,10 +2,9 @@ name: Riot key health
 
 # Manual only, and deliberately silent.
 #
-# This used to run on a schedule and open a GitHub issue when the development
-# key lapsed, which meant mail every time a key expired — daily, in practice,
-# since development keys last 24 hours. The key is rotated by hand whenever it
-# suits, so an automated reminder was noise rather than news.
+# This used to run on a schedule and open a GitHub issue whenever the key
+# stopped authenticating, which on a development key meant mail every day. The
+# key is now a permanent one, so there is nothing routine left to report.
 #
 # What it is still good for: checking the key stored as a repository secret,
 # which `npm run key:check` cannot see because that reads .env.local. Run it
