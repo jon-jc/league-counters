@@ -36,10 +36,10 @@ interface Checkpoint {
 /**
  * Matches between writes to disk.
  *
- * A development key sustains roughly 50 requests a minute, so a few thousand
- * matches is an hours-long run. Flushing periodically means an interrupted run
- * keeps everything it had already aggregated, and the checkpoint stays in step
- * with the snapshot so nothing is counted twice on resume.
+ * Throughput depends on the key tier, and a large sample is an hours-long run
+ * on a slow one. Flushing periodically means an interrupted run keeps
+ * everything it had already aggregated, and the checkpoint stays in step with
+ * the snapshot so nothing is counted twice on resume.
  */
 const FLUSH_EVERY = 100;
 
@@ -87,8 +87,7 @@ async function readJson<T>(file: string): Promise<T | null> {
  *
  * Runs are additive and resumable: a checkpoint of seen match ids means a
  * short run every few hours accumulates into a real sample over a patch, which
- * is the only way to build meaningful volume under a development key's
- * 100-requests-per-two-minutes budget.
+ * is how volume accumulates without depending on any single run finishing.
  */
 export async function runIngest(options: IngestOptions): Promise<IngestResult> {
   const { platform, queue, bracket, matchBudget, playerSample, matchesPerPlayer } = options;

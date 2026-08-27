@@ -82,14 +82,16 @@ remake, or missing a classified position for any of the ten players.
 
 ### Rate limits, and how much data you can actually get
 
-A **development key** allows 100 requests per 2 minutes — roughly 50 matches a
-minute. That is enough to rank champions within a day, but genuine matchup
-coverage needs far more volume, since a lane pairing only accrues one game per
-match. A **production key** (30,000 requests per 10 minutes) reaches useful
-matchup depth in under an hour.
+Matchup coverage is the expensive part. A champion gains a game every time it is
+played, but a lane pairing only gains one when those two champions actually
+meet. Rankings settle quickly at any key tier; counter tables need far more
+volume.
 
 The rate limiter reads Riot's `X-App-Rate-Limit` header and adopts whatever
-limits the key actually has, so moving to a production key needs no code change.
+limits the key in use actually has, so key tier needs no code change — a wider
+allowance simply collects faster. Scheduled runs collect for a fixed stretch of
+wall-clock time rather than a fixed match count, so a faster key fills the same
+window with more matches.
 
 **Run one ingest at a time.** The limiter tracks only its own requests, but the
 budget belongs to the key. Two ingests running concurrently each believe they
@@ -119,8 +121,8 @@ when there is no local data. Only snapshots on the same patch are ever merged.
 
 The pipeline samples **Master+** for every region, and that is what the site
 defaults to. Sampling a second bracket would halve the volume behind each one,
-which matters far more than breadth while a development key caps throughput at
-roughly 50 matches a minute. Requesting a bracket with no snapshot falls back to
+which matters far more than breadth while matchup coverage is still the scarce
+thing. Requesting a bracket with no snapshot falls back to
 the best one that region has, with a notice saying so.
 
 To populate another bracket, point the ingest at it:
@@ -135,14 +137,14 @@ npm run ingest -- --region KR --bracket emerald_plus --matches 2000
 region, and commits the updated snapshots back to `main`. It needs a
 `RIOT_API_KEY` repository secret.
 
-## Keeping the key alive
+## Installing a key
 
-Development keys stop working 24 hours after they are issued. **Riot publishes
-no endpoint for issuing one** — regeneration is a button on the developer portal
-behind an account login, so it cannot be fully automated. What is automated is
-everything around it.
+Personal and production keys do not expire. Development keys stop working 24
+hours after they are issued, and **Riot publishes no endpoint for issuing one** —
+regeneration is a button on the developer portal behind an account login — so
+running on a development key means replacing it by hand.
 
-### Rotating
+### Installing or replacing
 
 ```bash
 npm run key:rotate
@@ -161,18 +163,18 @@ It also accepts a pipe, which keeps the key out of shell history:
 echo "RGAPI-..." | npm run key:rotate
 ```
 
-### Knowing when to rotate
+### Checking a key
 
 ```bash
 npm run key:check
 ```
 
-Exit codes are meaningful: `0` usable, `1` needs rotation, `2` Riot unreachable.
-That distinction matters — a Riot outage must not be reported as an expired key.
+Exit codes are meaningful: `0` usable, `1` needs replacing, `2` Riot
+unreachable. That distinction matters — a Riot outage must not be reported as a
+dead key.
 
 **Nothing notifies you about the key.** There is no schedule, no issue, no
-failing run. A development key lapses every 24 hours, so an automated reminder
-is noise rather than news; rotate it when it suits you.
+failing run.
 
 Scheduled ingests skip quietly while the key is expired — the run goes green
 with a warning annotation and collects nothing, then resumes on its own once the

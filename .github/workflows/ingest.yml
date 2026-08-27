@@ -5,15 +5,16 @@ on:
     # Every three hours. Each run is an additive slice; the snapshot for a patch
     # grows across runs rather than being rebuilt from scratch.
     #
-    # Budget is sized to finish inside the gap between runs. Five regions at
-    # 1000 matches is roughly 5000 requests, and a development key sustains
-    # about 50 a minute, so a run lands near 100 minutes against a 180 minute
-    # cadence. Overrunning would queue behind the concurrency group and the
-    # backlog would never drain.
+    # The budget is deliberately larger than a run can finish. Throughput
+    # depends on which tier of key is installed — the rate limiter reads its
+    # allowance from Riot's response headers rather than assuming one — so
+    # rather than guessing a match count that fits, the ingest step is given a
+    # wall-clock limit and collects whatever fits inside it. Snapshots flush
+    # every 100 matches and are committed even when the step is cut short, so
+    # a faster key simply collects more per run with no change here.
     #
-    # Each run takes the five stalest regions, so all seventeen are covered
-    # roughly every ten hours rather than five being kept fresh and the rest
-    # never touched.
+    # Each run takes the stalest regions, so all of them are covered in
+    # rotation rather than a few being kept fresh and the rest never touched.
     - cron: "17 */3 * * *"
   workflow_dispatch:
     inputs:
@@ -24,11 +25,11 @@ on:
       matches:
         description: Match budget per region
         required: false
-        default: "1000"
+        default: "4000"
       region_count:
         description: How many of the stalest regions to refresh
         required: false
-        default: "5"
+        default: "6"
 
 # Runs commit to main, so never let two overlap.
 concurrency:
@@ -58,10 +59,10 @@ jobs:
 
       - run: npm ci
 
-      # An expired development key is an expected condition, not a broken build.
-      # Failing here turned every three-hourly run red and sent a mail each
-      # time; the run now skips cleanly and the key-health workflow owns the
-      # single notification.
+      # A key that has stopped authenticating is an expected condition, not a
+      # broken build — failing here turned every three-hourly run red and mailed
+      # about it each time. The run skips cleanly instead and resumes on its own
+      # once the key works, since ingestion is additive.
       - name: Check the key before spending half an hour on it
         id: key
         env:
@@ -88,18 +89,24 @@ jobs:
             fi
           fi
 
+      # Collect for a fixed stretch rather than a fixed match count. Being cut
+      # off here is the normal ending, not a failure: snapshots flush every 100
+      # matches and the commit step runs regardless, so whatever was gathered is
+      # kept and the next run resumes from the checkpoint.
       - name: Ingest each region
         if: steps.key.outputs.usable == 'true'
+        timeout-minutes: 140
+        continue-on-error: true
         env:
           RIOT_API_KEY: ${{ secrets.RIOT_API_KEY }}
           REGIONS: ${{ inputs.regions }}
-          MATCHES: ${{ inputs.matches || '1000' }}
-          REGION_COUNT: ${{ inputs.region_count || '5' }}
+          MATCHES: ${{ inputs.matches || '4000' }}
+          REGION_COUNT: ${{ inputs.region_count || '6' }}
         run: |
           # No explicit list: refresh whichever shards have gone longest without
-          # one. A development key cannot cover seventeen regions every three
-          # hours, so the job rotates instead of favouring a fixed few, and a
-          # newly supported region fills itself in with no workflow edit.
+          # one. No key can cover every region every three hours, so the job
+          # rotates instead of favouring a fixed few, and a newly supported
+          # region fills itself in with no workflow edit.
           if [ -z "$REGIONS" ]; then
             REGIONS=$(npm run --silent stale-regions -- --count "$REGION_COUNT")
             echo "Selected stalest regions: $REGIONS"
@@ -111,13 +118,14 @@ jobs:
               --region "$region" \
               --bracket master_plus \
               --matches "$MATCHES" \
-              --players 60 \
-              --per-player 30 || echo "::warning::ingest failed for $region"
+              --players 200 \
+              --per-player 40 || echo "::warning::ingest failed for $region"
             echo "::endgroup::"
           done
 
+      # always(), so a timed-out ingest still publishes what it collected.
       - name: Commit updated snapshots
-        if: steps.key.outputs.usable == 'true'
+        if: always() && steps.key.outputs.usable == 'true'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

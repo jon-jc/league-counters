@@ -9,8 +9,8 @@ const PROBE_PATH = "/lol/status/v4/platform-data";
 export type KeyStatus =
   /** Key works. */
   | "valid"
-  /** Riot does not recognise the key. Development keys land here once they
-      pass their 24-hour lifetime. */
+  /** Riot does not recognise the key: revoked, mistyped, or a development
+      key past its 24-hour lifetime. */
   | "expired"
   /** Recognised but not allowed to call this — a revoked or scoped-down key. */
   | "forbidden"
@@ -40,7 +40,8 @@ export function needsRotation(status: KeyStatus): boolean {
 
 export const STATUS_MESSAGES: Record<KeyStatus, string> = {
   valid: "Key is valid.",
-  expired: "Riot does not recognise this key. Development keys expire 24 hours after they are issued.",
+  expired:
+    "Riot does not recognise this key. It may have been revoked, or it may be a development key past its 24-hour lifetime.",
   forbidden: "Key is recognised but not permitted to call the API. It may have been revoked.",
   "rate-limited": "Key is valid but currently rate limited.",
   unavailable: "Could not reach the Riot API. This says nothing about the key.",
