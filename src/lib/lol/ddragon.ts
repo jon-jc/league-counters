@@ -27,8 +27,14 @@ interface DDragonChampion {
   info: { difficulty: number };
 }
 
-/** "Kai'Sa" -> "kaisa", "Dr. Mundo" -> "dr-mundo", "Nunu & Willump" -> "nunu-willump". */
-function slugify(name: string): string {
+/**
+ * "Kai'Sa" -> "kaisa", "Dr. Mundo" -> "dr-mundo", "Nunu & Willump" -> "nunu-willump".
+ *
+ * Exported because it doubles as the join key for other sources: op.gg reports
+ * champions by display name, and normalising both sides the same way is what
+ * makes those names line up with Riot's ids without a hand-kept lookup table.
+ */
+export function championSlug(name: string): string {
   return name
     .toLowerCase()
     .replace(/['’.]/g, "")
@@ -68,7 +74,7 @@ export async function getChampions(): Promise<Champion[]> {
     .map<Champion>((c) => ({
       id: Number(c.key),
       ddragonId: c.id,
-      slug: slugify(c.name),
+      slug: championSlug(c.name),
       name: c.name,
       title: c.title,
       tags: c.tags ?? [],

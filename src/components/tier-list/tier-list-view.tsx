@@ -12,7 +12,15 @@ type View = "table" | "tiers";
  * Two ways to read the same ranking: a sortable table for comparing numbers,
  * and grade buckets for scanning what is strong at a glance.
  */
-export function TierListView({ rows, showRole }: { rows: TierTableRow[]; showRole: boolean }) {
+export function TierListView({
+  rows,
+  showRole,
+  rateDigits,
+}: {
+  rows: TierTableRow[];
+  showRole: boolean;
+  rateDigits?: { pick: number; ban: number };
+}) {
   const [view, setView] = useState<View>("table");
 
   const options: { value: View; label: string; icon: typeof Rows3 }[] = [
@@ -52,7 +60,7 @@ export function TierListView({ rows, showRole }: { rows: TierTableRow[]; showRol
       </div>
 
       {view === "table" ? (
-        <TierTable rows={rows} showRole={showRole} />
+        <TierTable rows={rows} showRole={showRole} rateDigits={rateDigits} />
       ) : (
         <TierGroups rows={rows} showRole={showRole} />
       )}

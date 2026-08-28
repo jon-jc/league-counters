@@ -38,7 +38,20 @@ function SortIcon({ active, dir }: { active: boolean; dir: "asc" | "desc" }) {
 const HEAD =
   "inline-flex items-center gap-1 text-[11px] font-semibold tracking-wider text-fg-subtle uppercase hover:text-fg";
 
-export function TierTable({ rows, showRole }: { rows: TierTableRow[]; showRole: boolean }) {
+export function TierTable({
+  rows,
+  showRole,
+  rateDigits = { pick: 2, ban: 1 },
+}: {
+  rows: TierTableRow[];
+  showRole: boolean;
+  /**
+   * Decimal places for pick and ban rate. op.gg publishes these rounded to
+   * whole percents, so rendering "9.00%" would dress up precision the source
+   * never had.
+   */
+  rateDigits?: { pick: number; ban: number };
+}) {
   const [sort, setSort] = useState<{ key: SortKey; dir: "asc" | "desc" }>({
     key: "rank",
     dir: "asc",
@@ -160,10 +173,10 @@ export function TierTable({ rows, showRole }: { rows: TierTableRow[]; showRole: 
                 <WinRateMeter value={row.winRate} />
               </td>
               <td className="hidden py-2.5 tabular text-fg-muted md:table-cell">
-                {formatPercent(row.pickRate, 2)}
+                {formatPercent(row.pickRate, rateDigits.pick)}
               </td>
               <td className="hidden py-2.5 tabular text-fg-muted lg:table-cell">
-                {formatPercent(row.banRate, 1)}
+                {formatPercent(row.banRate, rateDigits.ban)}
               </td>
               <td className="hidden py-2.5 sm:table-cell">
                 <span className="inline-flex items-center gap-1.5 tabular text-fg-subtle">

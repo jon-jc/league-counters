@@ -18,6 +18,7 @@ export function SnapshotFilters({
   availablePlatforms,
   availableBrackets,
   showRoles = true,
+  showScope = true,
   className,
 }: {
   platform: RegionId;
@@ -27,6 +28,12 @@ export function SnapshotFilters({
   availablePlatforms: PlatformId[];
   availableBrackets: Bracket[];
   showRoles?: boolean;
+  /**
+   * Region, rank and queue. Hidden when the view is ranked from a source that
+   * has no such dimensions — showing controls that silently do nothing is
+   * worse than showing none.
+   */
+  showScope?: boolean;
   className?: string;
 }) {
   const router = useRouter();
@@ -85,31 +92,35 @@ export function SnapshotFilters({
 
   return (
     <div className={cn("space-y-3", className)}>
-      <div className="flex flex-wrap items-center gap-3">
-        <Select
-          label="Region"
-          value={platform}
-          options={platformOptions}
-          onChange={(value) => update({ region: value })}
-          className="w-56"
-        />
-        <Select
-          label="Rank"
-          value={bracket}
-          options={bracketOptions}
-          onChange={(value) => update({ rank: value })}
-          className="w-44"
-        />
-        <Select
-          label="Queue"
-          value={String(queue)}
-          options={Object.entries(QUEUES).map(([value, meta]) => ({
-            value,
-            label: meta.label,
-          }))}
-          onChange={(value) => update({ queue: value })}
-          className="w-44"
-        />
+      <div className="flex flex-wrap items-center gap-3 empty:hidden">
+        {showScope && (
+          <>
+            <Select
+              label="Region"
+              value={platform}
+              options={platformOptions}
+              onChange={(value) => update({ region: value })}
+              className="w-56"
+            />
+            <Select
+              label="Rank"
+              value={bracket}
+              options={bracketOptions}
+              onChange={(value) => update({ rank: value })}
+              className="w-44"
+            />
+            <Select
+              label="Queue"
+              value={String(queue)}
+              options={Object.entries(QUEUES).map(([value, meta]) => ({
+                value,
+                label: meta.label,
+              }))}
+              onChange={(value) => update({ queue: value })}
+              className="w-44"
+            />
+          </>
+        )}
         {pending && (
           <span className="inline-flex items-center gap-1.5 text-xs text-fg-subtle">
             <Loader2 className="size-3.5 animate-spin" />

@@ -20,6 +20,7 @@ export function CounterFinder({
   champion,
   role,
   region,
+  source,
   size = "default",
   className,
 }: {
@@ -27,6 +28,11 @@ export function CounterFinder({
   champion: string | null;
   role: Role | null;
   region?: string;
+  /**
+   * Carried through so a search keeps the dataset you were reading. Region is
+   * dropped alongside it when the source has no regions to speak of.
+   */
+  source?: string;
   size?: "default" | "hero";
   className?: string;
 }) {
@@ -38,7 +44,8 @@ export function CounterFinder({
     const params = new URLSearchParams();
     params.set("champion", nextChampion);
     if (nextRole) params.set("role", nextRole);
-    if (region) params.set("region", region);
+    if (source) params.set("source", source);
+    else if (region) params.set("region", region);
     startTransition(() => {
       router.push(`/counters?${params.toString()}` as Route);
     });
