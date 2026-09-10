@@ -1,8 +1,7 @@
 import type { MetadataRoute } from "next";
 import { getChampionIndex } from "@/lib/lol/ddragon";
 import { listSnapshots } from "@/lib/data/repository";
-
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
+import { siteUrl } from "@/lib/site-url";
 
 export const revalidate = 86400;
 
