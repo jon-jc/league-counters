@@ -1,1498 +1,6846 @@
 {
  "meta": {
-  "fetchedAt": "2026-10-21T12:31:37.011Z",
+  "fetchedAt": "2026-10-21T17:46:36.597Z",
   "championRoles": 263,
-  "covered": 82
+  "covered": 195
  },
  "rows": [
   {
-   "championId": 4,
+   "championId": 1,
    "role": "MIDDLE",
-   "opponentId": 517,
-   "games": 34,
-   "wins": 22
+   "opponentId": 777,
+   "games": 32,
+   "wins": 20
   },
   {
-   "championId": 4,
+   "championId": 2,
+   "role": "TOP",
+   "opponentId": 164,
+   "games": 36,
+   "wins": 15
+  },
+  {
+   "championId": 2,
+   "role": "TOP",
+   "opponentId": 41,
+   "games": 34,
+   "wins": 15
+  },
+  {
+   "championId": 2,
+   "role": "TOP",
+   "opponentId": 86,
+   "games": 31,
+   "wins": 12
+  },
+  {
+   "championId": 2,
+   "role": "TOP",
+   "opponentId": 80,
+   "games": 31,
+   "wins": 20
+  },
+  {
+   "championId": 3,
    "role": "MIDDLE",
-   "opponentId": 112,
+   "opponentId": 134,
+   "games": 60,
+   "wins": 25
+  },
+  {
+   "championId": 3,
+   "role": "MIDDLE",
+   "opponentId": 105,
+   "games": 49,
+   "wins": 31
+  },
+  {
+   "championId": 3,
+   "role": "MIDDLE",
+   "opponentId": 127,
+   "games": 44,
+   "wins": 19
+  },
+  {
+   "championId": 3,
+   "role": "MIDDLE",
+   "opponentId": 101,
+   "games": 37,
+   "wins": 12
+  },
+  {
+   "championId": 3,
+   "role": "UTILITY",
+   "opponentId": 412,
    "games": 32,
    "wins": 17
   },
   {
    "championId": 4,
    "role": "MIDDLE",
-   "opponentId": 103,
+   "opponentId": 112,
+   "games": 113,
+   "wins": 69
+  },
+  {
+   "championId": 4,
+   "role": "MIDDLE",
+   "opponentId": 517,
+   "games": 112,
+   "wins": 65
+  },
+  {
+   "championId": 4,
+   "role": "MIDDLE",
+   "opponentId": 777,
+   "games": 100,
+   "wins": 63
+  },
+  {
+   "championId": 4,
+   "role": "MIDDLE",
+   "opponentId": 238,
+   "games": 92,
+   "wins": 57
+  },
+  {
+   "championId": 4,
+   "role": "MIDDLE",
+   "opponentId": 84,
+   "games": 73,
+   "wins": 42
+  },
+  {
+   "championId": 4,
+   "role": "MIDDLE",
+   "opponentId": 101,
+   "games": 58,
+   "wins": 23
+  },
+  {
+   "championId": 4,
+   "role": "MIDDLE",
+   "opponentId": 142,
+   "games": 47,
+   "wins": 27
+  },
+  {
+   "championId": 4,
+   "role": "MIDDLE",
+   "opponentId": 910,
+   "games": 45,
+   "wins": 20
+  },
+  {
+   "championId": 4,
+   "role": "MIDDLE",
+   "opponentId": 245,
+   "games": 42,
+   "wins": 22
+  },
+  {
+   "championId": 4,
+   "role": "MIDDLE",
+   "opponentId": 163,
+   "games": 39,
+   "wins": 27
+  },
+  {
+   "championId": 4,
+   "role": "MIDDLE",
+   "opponentId": 91,
+   "games": 33,
+   "wins": 14
+  },
+  {
+   "championId": 4,
+   "role": "MIDDLE",
+   "opponentId": 800,
    "games": 31,
-   "wins": 12
+   "wins": 20
   },
   {
    "championId": 5,
    "role": "JUNGLE",
    "opponentId": 64,
-   "games": 50,
+   "games": 170,
+   "wins": 92
+  },
+  {
+   "championId": 5,
+   "role": "JUNGLE",
+   "opponentId": 62,
+   "games": 63,
+   "wins": 26
+  },
+  {
+   "championId": 5,
+   "role": "JUNGLE",
+   "opponentId": 254,
+   "games": 45,
+   "wins": 25
+  },
+  {
+   "championId": 5,
+   "role": "JUNGLE",
+   "opponentId": 141,
+   "games": 45,
+   "wins": 30
+  },
+  {
+   "championId": 5,
+   "role": "JUNGLE",
+   "opponentId": 876,
+   "games": 44,
+   "wins": 19
+  },
+  {
+   "championId": 5,
+   "role": "JUNGLE",
+   "opponentId": 120,
+   "games": 41,
+   "wins": 24
+  },
+  {
+   "championId": 5,
+   "role": "JUNGLE",
+   "opponentId": 76,
+   "games": 32,
+   "wins": 13
+  },
+  {
+   "championId": 6,
+   "role": "TOP",
+   "opponentId": 266,
+   "games": 34,
+   "wins": 14
+  },
+  {
+   "championId": 7,
+   "role": "MIDDLE",
+   "opponentId": 103,
+   "games": 90,
    "wins": 34
+  },
+  {
+   "championId": 7,
+   "role": "MIDDLE",
+   "opponentId": 55,
+   "games": 50,
+   "wins": 31
+  },
+  {
+   "championId": 7,
+   "role": "MIDDLE",
+   "opponentId": 105,
+   "games": 48,
+   "wins": 18
+  },
+  {
+   "championId": 7,
+   "role": "MIDDLE",
+   "opponentId": 101,
+   "games": 39,
+   "wins": 24
+  },
+  {
+   "championId": 7,
+   "role": "MIDDLE",
+   "opponentId": 131,
+   "games": 36,
+   "wins": 15
+  },
+  {
+   "championId": 7,
+   "role": "MIDDLE",
+   "opponentId": 38,
+   "games": 34,
+   "wins": 18
+  },
+  {
+   "championId": 8,
+   "role": "MIDDLE",
+   "opponentId": 103,
+   "games": 38,
+   "wins": 15
+  },
+  {
+   "championId": 8,
+   "role": "MIDDLE",
+   "opponentId": 55,
+   "games": 36,
+   "wins": 15
+  },
+  {
+   "championId": 8,
+   "role": "MIDDLE",
+   "opponentId": 805,
+   "games": 32,
+   "wins": 13
+  },
+  {
+   "championId": 11,
+   "role": "JUNGLE",
+   "opponentId": 64,
+   "games": 134,
+   "wins": 76
   },
   {
    "championId": 11,
    "role": "JUNGLE",
    "opponentId": 104,
-   "games": 41,
+   "games": 101,
+   "wins": 52
+  },
+  {
+   "championId": 11,
+   "role": "JUNGLE",
+   "opponentId": 33,
+   "games": 58,
+   "wins": 34
+  },
+  {
+   "championId": 11,
+   "role": "JUNGLE",
+   "opponentId": 246,
+   "games": 46,
+   "wins": 16
+  },
+  {
+   "championId": 11,
+   "role": "JUNGLE",
+   "opponentId": 31,
+   "games": 43,
+   "wins": 27
+  },
+  {
+   "championId": 11,
+   "role": "JUNGLE",
+   "opponentId": 120,
+   "games": 32,
    "wins": 22
+  },
+  {
+   "championId": 11,
+   "role": "JUNGLE",
+   "opponentId": 56,
+   "games": 31,
+   "wins": 12
+  },
+  {
+   "championId": 11,
+   "role": "JUNGLE",
+   "opponentId": 76,
+   "games": 30,
+   "wins": 10
+  },
+  {
+   "championId": 11,
+   "role": "JUNGLE",
+   "opponentId": 238,
+   "games": 30,
+   "wins": 19
   },
   {
    "championId": 12,
    "role": "UTILITY",
    "opponentId": 412,
-   "games": 63,
-   "wins": 32
-  },
-  {
-   "championId": 12,
-   "role": "UTILITY",
-   "opponentId": 111,
-   "games": 45,
-   "wins": 18
+   "games": 194,
+   "wins": 101
   },
   {
    "championId": 12,
    "role": "UTILITY",
    "opponentId": 89,
-   "games": 41,
-   "wins": 21
+   "games": 130,
+   "wins": 66
+  },
+  {
+   "championId": 12,
+   "role": "UTILITY",
+   "opponentId": 117,
+   "games": 109,
+   "wins": 62
   },
   {
    "championId": 12,
    "role": "UTILITY",
    "opponentId": 53,
-   "games": 35,
+   "games": 102,
+   "wins": 60
+  },
+  {
+   "championId": 12,
+   "role": "UTILITY",
+   "opponentId": 526,
+   "games": 99,
+   "wins": 56
+  },
+  {
+   "championId": 12,
+   "role": "UTILITY",
+   "opponentId": 555,
+   "games": 79,
+   "wins": 33
+  },
+  {
+   "championId": 12,
+   "role": "UTILITY",
+   "opponentId": 43,
+   "games": 58,
+   "wins": 26
+  },
+  {
+   "championId": 12,
+   "role": "UTILITY",
+   "opponentId": 497,
+   "games": 52,
+   "wins": 30
+  },
+  {
+   "championId": 12,
+   "role": "UTILITY",
+   "opponentId": 267,
+   "games": 49,
+   "wins": 19
+  },
+  {
+   "championId": 12,
+   "role": "UTILITY",
+   "opponentId": 235,
+   "games": 49,
+   "wins": 28
+  },
+  {
+   "championId": 12,
+   "role": "UTILITY",
+   "opponentId": 80,
+   "games": 41,
    "wins": 23
+  },
+  {
+   "championId": 12,
+   "role": "UTILITY",
+   "opponentId": 223,
+   "games": 36,
+   "wins": 19
+  },
+  {
+   "championId": 12,
+   "role": "UTILITY",
+   "opponentId": 50,
+   "games": 33,
+   "wins": 20
+  },
+  {
+   "championId": 13,
+   "role": "MIDDLE",
+   "opponentId": 112,
+   "games": 51,
+   "wins": 18
+  },
+  {
+   "championId": 13,
+   "role": "MIDDLE",
+   "opponentId": 517,
+   "games": 45,
+   "wins": 19
+  },
+  {
+   "championId": 13,
+   "role": "MIDDLE",
+   "opponentId": 157,
+   "games": 35,
+   "wins": 14
+  },
+  {
+   "championId": 14,
+   "role": "TOP",
+   "opponentId": 122,
+   "games": 46,
+   "wins": 17
+  },
+  {
+   "championId": 14,
+   "role": "TOP",
+   "opponentId": 799,
+   "games": 32,
+   "wins": 13
+  },
+  {
+   "championId": 14,
+   "role": "TOP",
+   "opponentId": 106,
+   "games": 30,
+   "wins": 12
+  },
+  {
+   "championId": 14,
+   "role": "TOP",
+   "opponentId": 904,
+   "games": 30,
+   "wins": 16
   },
   {
    "championId": 15,
    "role": "BOTTOM",
    "opponentId": 145,
-   "games": 45,
-   "wins": 29
+   "games": 154,
+   "wins": 82
   },
   {
    "championId": 15,
    "role": "BOTTOM",
    "opponentId": 202,
-   "games": 42,
-   "wins": 20
+   "games": 135,
+   "wins": 76
   },
   {
    "championId": 15,
    "role": "BOTTOM",
    "opponentId": 81,
-   "games": 33,
+   "games": 103,
+   "wins": 51
+  },
+  {
+   "championId": 15,
+   "role": "BOTTOM",
+   "opponentId": 222,
+   "games": 93,
+   "wins": 44
+  },
+  {
+   "championId": 15,
+   "role": "BOTTOM",
+   "opponentId": 804,
+   "games": 57,
+   "wins": 32
+  },
+  {
+   "championId": 15,
+   "role": "BOTTOM",
+   "opponentId": 523,
+   "games": 56,
+   "wins": 27
+  },
+  {
+   "championId": 15,
+   "role": "BOTTOM",
+   "opponentId": 498,
+   "games": 42,
+   "wins": 23
+  },
+  {
+   "championId": 15,
+   "role": "BOTTOM",
+   "opponentId": 221,
+   "games": 38,
    "wins": 17
   },
   {
    "championId": 16,
    "role": "UTILITY",
    "opponentId": 117,
-   "games": 32,
-   "wins": 12
+   "games": 100,
+   "wins": 42
+  },
+  {
+   "championId": 16,
+   "role": "UTILITY",
+   "opponentId": 412,
+   "games": 100,
+   "wins": 45
+  },
+  {
+   "championId": 16,
+   "role": "UTILITY",
+   "opponentId": 267,
+   "games": 64,
+   "wins": 37
+  },
+  {
+   "championId": 16,
+   "role": "UTILITY",
+   "opponentId": 555,
+   "games": 48,
+   "wins": 21
+  },
+  {
+   "championId": 16,
+   "role": "UTILITY",
+   "opponentId": 89,
+   "games": 47,
+   "wins": 20
+  },
+  {
+   "championId": 16,
+   "role": "UTILITY",
+   "opponentId": 350,
+   "games": 40,
+   "wins": 28
+  },
+  {
+   "championId": 16,
+   "role": "UTILITY",
+   "opponentId": 99,
+   "games": 39,
+   "wins": 23
+  },
+  {
+   "championId": 17,
+   "role": "TOP",
+   "opponentId": 122,
+   "games": 46,
+   "wins": 23
+  },
+  {
+   "championId": 17,
+   "role": "TOP",
+   "opponentId": 266,
+   "games": 40,
+   "wins": 18
+  },
+  {
+   "championId": 17,
+   "role": "TOP",
+   "opponentId": 86,
+   "games": 35,
+   "wins": 16
+  },
+  {
+   "championId": 17,
+   "role": "TOP",
+   "opponentId": 126,
+   "games": 30,
+   "wins": 19
   },
   {
    "championId": 18,
    "role": "BOTTOM",
-   "opponentId": 145,
-   "games": 103,
+   "opponentId": 81,
+   "games": 221,
+   "wins": 122
+  },
+  {
+   "championId": 18,
+   "role": "BOTTOM",
+   "opponentId": 51,
+   "games": 191,
+   "wins": 101
+  },
+  {
+   "championId": 18,
+   "role": "BOTTOM",
+   "opponentId": 236,
+   "games": 171,
+   "wins": 81
+  },
+  {
+   "championId": 18,
+   "role": "BOTTOM",
+   "opponentId": 498,
+   "games": 132,
+   "wins": 61
+  },
+  {
+   "championId": 18,
+   "role": "BOTTOM",
+   "opponentId": 804,
+   "games": 131,
+   "wins": 72
+  },
+  {
+   "championId": 18,
+   "role": "BOTTOM",
+   "opponentId": 523,
+   "games": 120,
    "wins": 54
   },
   {
    "championId": 18,
    "role": "BOTTOM",
-   "opponentId": 202,
-   "games": 93,
-   "wins": 40
+   "opponentId": 901,
+   "games": 67,
+   "wins": 46
   },
   {
    "championId": 18,
    "role": "BOTTOM",
-   "opponentId": 222,
-   "games": 54,
-   "wins": 31
+   "opponentId": 42,
+   "games": 64,
+   "wins": 38
   },
   {
    "championId": 18,
    "role": "BOTTOM",
-   "opponentId": 236,
-   "games": 46,
-   "wins": 21
+   "opponentId": 22,
+   "games": 55,
+   "wins": 34
   },
   {
    "championId": 18,
    "role": "BOTTOM",
-   "opponentId": 51,
-   "games": 42,
+   "opponentId": 110,
+   "games": 51,
+   "wins": 27
+  },
+  {
+   "championId": 18,
+   "role": "BOTTOM",
+   "opponentId": 96,
+   "games": 41,
+   "wins": 17
+  },
+  {
+   "championId": 18,
+   "role": "BOTTOM",
+   "opponentId": 360,
+   "games": 38,
+   "wins": 17
+  },
+  {
+   "championId": 18,
+   "role": "BOTTOM",
+   "opponentId": 67,
+   "games": 37,
+   "wins": 16
+  },
+  {
+   "championId": 19,
+   "role": "JUNGLE",
+   "opponentId": 64,
+   "games": 60,
+   "wins": 23
+  },
+  {
+   "championId": 19,
+   "role": "JUNGLE",
+   "opponentId": 517,
+   "games": 39,
+   "wins": 22
+  },
+  {
+   "championId": 19,
+   "role": "JUNGLE",
+   "opponentId": 104,
+   "games": 31,
    "wins": 18
+  },
+  {
+   "championId": 19,
+   "role": "TOP",
+   "opponentId": 777,
+   "games": 30,
+   "wins": 17
+  },
+  {
+   "championId": 20,
+   "role": "JUNGLE",
+   "opponentId": 64,
+   "games": 33,
+   "wins": 15
+  },
+  {
+   "championId": 20,
+   "role": "JUNGLE",
+   "opponentId": 246,
+   "games": 30,
+   "wins": 11
   },
   {
    "championId": 21,
    "role": "BOTTOM",
    "opponentId": 202,
-   "games": 93,
-   "wins": 42
+   "games": 397,
+   "wins": 188
   },
   {
    "championId": 21,
    "role": "BOTTOM",
    "opponentId": 81,
-   "games": 51,
-   "wins": 21
+   "games": 210,
+   "wins": 97
   },
   {
    "championId": 21,
    "role": "BOTTOM",
    "opponentId": 51,
-   "games": 48,
-   "wins": 27
-  },
-  {
-   "championId": 21,
-   "role": "BOTTOM",
-   "opponentId": 236,
-   "games": 46,
-   "wins": 30
+   "games": 197,
+   "wins": 104
   },
   {
    "championId": 21,
    "role": "BOTTOM",
    "opponentId": 523,
-   "games": 38,
-   "wins": 23
+   "games": 135,
+   "wins": 81
   },
   {
    "championId": 21,
    "role": "BOTTOM",
-   "opponentId": 221,
-   "games": 32,
+   "opponentId": 236,
+   "games": 122,
+   "wins": 73
+  },
+  {
+   "championId": 21,
+   "role": "BOTTOM",
+   "opponentId": 119,
+   "games": 66,
+   "wins": 37
+  },
+  {
+   "championId": 21,
+   "role": "BOTTOM",
+   "opponentId": 429,
+   "games": 65,
+   "wins": 41
+  },
+  {
+   "championId": 21,
+   "role": "BOTTOM",
+   "opponentId": 901,
+   "games": 62,
+   "wins": 39
+  },
+  {
+   "championId": 21,
+   "role": "BOTTOM",
+   "opponentId": 360,
+   "games": 48,
+   "wins": 21
+  },
+  {
+   "championId": 21,
+   "role": "BOTTOM",
+   "opponentId": 42,
+   "games": 41,
+   "wins": 22
+  },
+  {
+   "championId": 21,
+   "role": "BOTTOM",
+   "opponentId": 67,
+   "games": 34,
    "wins": 15
   },
   {
-   "championId": 22,
+   "championId": 21,
    "role": "BOTTOM",
-   "opponentId": 202,
-   "games": 53,
-   "wins": 23
+   "opponentId": 112,
+   "games": 31,
+   "wins": 10
   },
   {
    "championId": 22,
    "role": "BOTTOM",
    "opponentId": 145,
-   "games": 51,
-   "wins": 26
+   "games": 179,
+   "wins": 96
+  },
+  {
+   "championId": 22,
+   "role": "BOTTOM",
+   "opponentId": 202,
+   "games": 178,
+   "wins": 81
   },
   {
    "championId": 22,
    "role": "BOTTOM",
    "opponentId": 222,
+   "games": 135,
+   "wins": 64
+  },
+  {
+   "championId": 22,
+   "role": "BOTTOM",
+   "opponentId": 51,
+   "games": 124,
+   "wins": 63
+  },
+  {
+   "championId": 22,
+   "role": "BOTTOM",
+   "opponentId": 81,
+   "games": 116,
+   "wins": 63
+  },
+  {
+   "championId": 22,
+   "role": "BOTTOM",
+   "opponentId": 523,
+   "games": 73,
+   "wins": 47
+  },
+  {
+   "championId": 22,
+   "role": "BOTTOM",
+   "opponentId": 18,
+   "games": 55,
+   "wins": 21
+  },
+  {
+   "championId": 22,
+   "role": "BOTTOM",
+   "opponentId": 429,
+   "games": 43,
+   "wins": 16
+  },
+  {
+   "championId": 22,
+   "role": "BOTTOM",
+   "opponentId": 29,
+   "games": 31,
+   "wins": 9
+  },
+  {
+   "championId": 23,
+   "role": "TOP",
+   "opponentId": 126,
+   "games": 43,
+   "wins": 22
+  },
+  {
+   "championId": 23,
+   "role": "TOP",
+   "opponentId": 24,
+   "games": 40,
+   "wins": 18
+  },
+  {
+   "championId": 23,
+   "role": "TOP",
+   "opponentId": 777,
    "games": 35,
+   "wins": 14
+  },
+  {
+   "championId": 23,
+   "role": "TOP",
+   "opponentId": 86,
+   "games": 34,
+   "wins": 22
+  },
+  {
+   "championId": 23,
+   "role": "TOP",
+   "opponentId": 266,
+   "games": 33,
+   "wins": 22
+  },
+  {
+   "championId": 23,
+   "role": "TOP",
+   "opponentId": 799,
+   "games": 31,
    "wins": 18
   },
   {
    "championId": 24,
    "role": "TOP",
    "opponentId": 777,
-   "games": 45,
-   "wins": 25
+   "games": 149,
+   "wins": 82
   },
   {
    "championId": 24,
    "role": "TOP",
-   "opponentId": 266,
-   "games": 31,
+   "opponentId": 79,
+   "games": 70,
+   "wins": 39
+  },
+  {
+   "championId": 24,
+   "role": "TOP",
+   "opponentId": 39,
+   "games": 68,
+   "wins": 44
+  },
+  {
+   "championId": 24,
+   "role": "TOP",
+   "opponentId": 122,
+   "games": 67,
+   "wins": 37
+  },
+  {
+   "championId": 24,
+   "role": "TOP",
+   "opponentId": 114,
+   "games": 58,
+   "wins": 23
+  },
+  {
+   "championId": 24,
+   "role": "TOP",
+   "opponentId": 106,
+   "games": 44,
+   "wins": 26
+  },
+  {
+   "championId": 24,
+   "role": "TOP",
+   "opponentId": 82,
+   "games": 40,
    "wins": 16
+  },
+  {
+   "championId": 24,
+   "role": "TOP",
+   "opponentId": 23,
+   "games": 40,
+   "wins": 22
+  },
+  {
+   "championId": 24,
+   "role": "TOP",
+   "opponentId": 36,
+   "games": 39,
+   "wins": 15
+  },
+  {
+   "championId": 24,
+   "role": "TOP",
+   "opponentId": 98,
+   "games": 32,
+   "wins": 14
+  },
+  {
+   "championId": 24,
+   "role": "TOP",
+   "opponentId": 84,
+   "games": 31,
+   "wins": 19
   },
   {
    "championId": 25,
    "role": "UTILITY",
    "opponentId": 412,
-   "games": 38,
+   "games": 146,
+   "wins": 65
+  },
+  {
+   "championId": 25,
+   "role": "UTILITY",
+   "opponentId": 89,
+   "games": 78,
+   "wins": 33
+  },
+  {
+   "championId": 25,
+   "role": "UTILITY",
+   "opponentId": 117,
+   "games": 55,
+   "wins": 24
+  },
+  {
+   "championId": 25,
+   "role": "UTILITY",
+   "opponentId": 99,
+   "games": 51,
+   "wins": 19
+  },
+  {
+   "championId": 26,
+   "role": "UTILITY",
+   "opponentId": 117,
+   "games": 59,
+   "wins": 26
+  },
+  {
+   "championId": 26,
+   "role": "UTILITY",
+   "opponentId": 111,
+   "games": 46,
    "wins": 18
+  },
+  {
+   "championId": 26,
+   "role": "UTILITY",
+   "opponentId": 432,
+   "games": 36,
+   "wins": 17
+  },
+  {
+   "championId": 26,
+   "role": "UTILITY",
+   "opponentId": 147,
+   "games": 35,
+   "wins": 20
+  },
+  {
+   "championId": 27,
+   "role": "TOP",
+   "opponentId": 777,
+   "games": 35,
+   "wins": 15
+  },
+  {
+   "championId": 27,
+   "role": "TOP",
+   "opponentId": 75,
+   "games": 31,
+   "wins": 17
+  },
+  {
+   "championId": 28,
+   "role": "JUNGLE",
+   "opponentId": 64,
+   "games": 44,
+   "wins": 20
+  },
+  {
+   "championId": 28,
+   "role": "JUNGLE",
+   "opponentId": 517,
+   "games": 37,
+   "wins": 17
+  },
+  {
+   "championId": 28,
+   "role": "JUNGLE",
+   "opponentId": 104,
+   "games": 36,
+   "wins": 24
+  },
+  {
+   "championId": 28,
+   "role": "JUNGLE",
+   "opponentId": 234,
+   "games": 34,
+   "wins": 22
+  },
+  {
+   "championId": 28,
+   "role": "JUNGLE",
+   "opponentId": 121,
+   "games": 30,
+   "wins": 15
   },
   {
    "championId": 29,
    "role": "BOTTOM",
    "opponentId": 145,
+   "games": 157,
+   "wins": 74
+  },
+  {
+   "championId": 29,
+   "role": "BOTTOM",
+   "opponentId": 202,
+   "games": 120,
+   "wins": 60
+  },
+  {
+   "championId": 29,
+   "role": "BOTTOM",
+   "opponentId": 222,
+   "games": 119,
+   "wins": 64
+  },
+  {
+   "championId": 29,
+   "role": "BOTTOM",
+   "opponentId": 81,
+   "games": 75,
+   "wins": 45
+  },
+  {
+   "championId": 29,
+   "role": "BOTTOM",
+   "opponentId": 51,
+   "games": 70,
+   "wins": 31
+  },
+  {
+   "championId": 29,
+   "role": "BOTTOM",
+   "opponentId": 804,
+   "games": 57,
+   "wins": 33
+  },
+  {
+   "championId": 29,
+   "role": "BOTTOM",
+   "opponentId": 119,
+   "games": 32,
+   "wins": 14
+  },
+  {
+   "championId": 29,
+   "role": "BOTTOM",
+   "opponentId": 22,
    "games": 31,
+   "wins": 22
+  },
+  {
+   "championId": 29,
+   "role": "BOTTOM",
+   "opponentId": 901,
+   "games": 30,
    "wins": 12
+  },
+  {
+   "championId": 30,
+   "role": "JUNGLE",
+   "opponentId": 64,
+   "games": 33,
+   "wins": 17
   },
   {
    "championId": 31,
    "role": "JUNGLE",
    "opponentId": 64,
-   "games": 37,
-   "wins": 17
+   "games": 117,
+   "wins": 66
   },
   {
-   "championId": 39,
-   "role": "TOP",
-   "opponentId": 126,
-   "games": 34,
-   "wins": 13
-  },
-  {
-   "championId": 39,
-   "role": "TOP",
-   "opponentId": 777,
-   "games": 32,
-   "wins": 16
-  },
-  {
-   "championId": 41,
-   "role": "TOP",
-   "opponentId": 266,
-   "games": 31,
-   "wins": 14
-  },
-  {
-   "championId": 42,
-   "role": "BOTTOM",
-   "opponentId": 145,
-   "games": 30,
-   "wins": 13
-  },
-  {
-   "championId": 43,
-   "role": "UTILITY",
-   "opponentId": 117,
-   "games": 52,
-   "wins": 24
-  },
-  {
-   "championId": 43,
-   "role": "UTILITY",
-   "opponentId": 412,
-   "games": 44,
-   "wins": 21
-  },
-  {
-   "championId": 43,
-   "role": "UTILITY",
-   "opponentId": 111,
-   "games": 36,
-   "wins": 18
-  },
-  {
-   "championId": 51,
-   "role": "BOTTOM",
-   "opponentId": 202,
-   "games": 150,
-   "wins": 67
-  },
-  {
-   "championId": 51,
-   "role": "BOTTOM",
-   "opponentId": 145,
-   "games": 115,
-   "wins": 62
-  },
-  {
-   "championId": 51,
-   "role": "BOTTOM",
-   "opponentId": 222,
-   "games": 104,
-   "wins": 47
-  },
-  {
-   "championId": 51,
-   "role": "BOTTOM",
-   "opponentId": 81,
-   "games": 91,
-   "wins": 37
-  },
-  {
-   "championId": 51,
-   "role": "BOTTOM",
-   "opponentId": 236,
-   "games": 51,
-   "wins": 19
-  },
-  {
-   "championId": 51,
-   "role": "BOTTOM",
-   "opponentId": 21,
-   "games": 48,
-   "wins": 21
-  },
-  {
-   "championId": 51,
-   "role": "BOTTOM",
-   "opponentId": 18,
-   "games": 42,
-   "wins": 24
-  },
-  {
-   "championId": 51,
-   "role": "BOTTOM",
-   "opponentId": 804,
-   "games": 38,
-   "wins": 20
-  },
-  {
-   "championId": 53,
-   "role": "UTILITY",
-   "opponentId": 117,
-   "games": 54,
-   "wins": 34
-  },
-  {
-   "championId": 53,
-   "role": "UTILITY",
-   "opponentId": 89,
-   "games": 41,
-   "wins": 16
-  },
-  {
-   "championId": 53,
-   "role": "UTILITY",
-   "opponentId": 12,
-   "games": 35,
-   "wins": 12
-  },
-  {
-   "championId": 53,
-   "role": "UTILITY",
-   "opponentId": 201,
-   "games": 33,
-   "wins": 18
-  },
-  {
-   "championId": 53,
-   "role": "UTILITY",
-   "opponentId": 111,
-   "games": 32,
-   "wins": 18
-  },
-  {
-   "championId": 54,
-   "role": "TOP",
-   "opponentId": 126,
-   "games": 53,
+   "championId": 31,
+   "role": "JUNGLE",
+   "opponentId": 59,
+   "games": 50,
    "wins": 29
   },
   {
-   "championId": 54,
-   "role": "TOP",
-   "opponentId": 517,
-   "games": 30,
-   "wins": 17
-  },
-  {
-   "championId": 59,
+   "championId": 31,
    "role": "JUNGLE",
-   "opponentId": 64,
-   "games": 65,
-   "wins": 35
-  },
-  {
-   "championId": 60,
-   "role": "JUNGLE",
-   "opponentId": 64,
-   "games": 43,
-   "wins": 23
-  },
-  {
-   "championId": 62,
-   "role": "JUNGLE",
-   "opponentId": 64,
-   "games": 52,
-   "wins": 26
-  },
-  {
-   "championId": 64,
-   "role": "JUNGLE",
-   "opponentId": 104,
-   "games": 111,
-   "wins": 49
-  },
-  {
-   "championId": 64,
-   "role": "JUNGLE",
-   "opponentId": 234,
-   "games": 78,
-   "wins": 39
-  },
-  {
-   "championId": 64,
-   "role": "JUNGLE",
-   "opponentId": 76,
-   "games": 66,
-   "wins": 24
-  },
-  {
-   "championId": 64,
-   "role": "JUNGLE",
-   "opponentId": 59,
-   "games": 65,
-   "wins": 30
-  },
-  {
-   "championId": 64,
-   "role": "JUNGLE",
-   "opponentId": 517,
-   "games": 64,
-   "wins": 39
-  },
-  {
-   "championId": 64,
-   "role": "JUNGLE",
-   "opponentId": 254,
-   "games": 62,
+   "opponentId": 121,
+   "games": 49,
    "wins": 31
   },
   {
-   "championId": 64,
+   "championId": 31,
    "role": "JUNGLE",
-   "opponentId": 246,
-   "games": 61,
-   "wins": 29
-  },
-  {
-   "championId": 64,
-   "role": "JUNGLE",
-   "opponentId": 62,
-   "games": 52,
-   "wins": 26
-  },
-  {
-   "championId": 64,
-   "role": "JUNGLE",
-   "opponentId": 121,
-   "games": 52,
-   "wins": 28
-  },
-  {
-   "championId": 64,
-   "role": "JUNGLE",
-   "opponentId": 120,
-   "games": 52,
-   "wins": 24
-  },
-  {
-   "championId": 64,
-   "role": "JUNGLE",
-   "opponentId": 5,
-   "games": 50,
-   "wins": 16
-  },
-  {
-   "championId": 64,
-   "role": "JUNGLE",
-   "opponentId": 876,
-   "games": 47,
-   "wins": 23
-  },
-  {
-   "championId": 64,
-   "role": "JUNGLE",
-   "opponentId": 60,
+   "opponentId": 11,
    "games": 43,
-   "wins": 20
-  },
-  {
-   "championId": 64,
-   "role": "JUNGLE",
-   "opponentId": 141,
-   "games": 42,
    "wins": 16
   },
   {
-   "championId": 64,
+   "championId": 31,
    "role": "JUNGLE",
-   "opponentId": 950,
-   "games": 39,
-   "wins": 17
+   "opponentId": 254,
+   "games": 38,
+   "wins": 12
   },
   {
-   "championId": 64,
+   "championId": 31,
    "role": "JUNGLE",
-   "opponentId": 31,
-   "games": 37,
-   "wins": 20
+   "opponentId": 102,
+   "games": 33,
+   "wins": 12
   },
   {
-   "championId": 64,
+   "championId": 31,
    "role": "JUNGLE",
-   "opponentId": 245,
+   "opponentId": 233,
    "games": 32,
-   "wins": 16
+   "wins": 19
   },
   {
-   "championId": 64,
-   "role": "JUNGLE",
-   "opponentId": 126,
+   "championId": 31,
+   "role": "TOP",
+   "opponentId": 54,
+   "games": 48,
+   "wins": 25
+  },
+  {
+   "championId": 31,
+   "role": "TOP",
+   "opponentId": 777,
    "games": 31,
    "wins": 15
   },
   {
-   "championId": 64,
-   "role": "JUNGLE",
-   "opponentId": 91,
-   "games": 30,
-   "wins": 16
+   "championId": 31,
+   "role": "TOP",
+   "opponentId": 83,
+   "games": 31,
+   "wins": 19
   },
   {
-   "championId": 64,
+   "championId": 33,
    "role": "JUNGLE",
-   "opponentId": 163,
+   "opponentId": 11,
+   "games": 58,
+   "wins": 24
+  },
+  {
+   "championId": 33,
+   "role": "JUNGLE",
+   "opponentId": 64,
+   "games": 40,
+   "wins": 15
+  },
+  {
+   "championId": 34,
+   "role": "MIDDLE",
+   "opponentId": 134,
+   "games": 33,
+   "wins": 14
+  },
+  {
+   "championId": 35,
+   "role": "JUNGLE",
+   "opponentId": 246,
+   "games": 44,
+   "wins": 28
+  },
+  {
+   "championId": 35,
+   "role": "JUNGLE",
+   "opponentId": 876,
+   "games": 37,
+   "wins": 12
+  },
+  {
+   "championId": 35,
+   "role": "JUNGLE",
+   "opponentId": 91,
+   "games": 31,
+   "wins": 14
+  },
+  {
+   "championId": 35,
+   "role": "JUNGLE",
+   "opponentId": 56,
+   "games": 31,
+   "wins": 19
+  },
+  {
+   "championId": 35,
+   "role": "JUNGLE",
+   "opponentId": 121,
    "games": 30,
    "wins": 12
   },
   {
-   "championId": 76,
-   "role": "JUNGLE",
-   "opponentId": 64,
-   "games": 66,
-   "wins": 42
-  },
-  {
-   "championId": 81,
-   "role": "BOTTOM",
-   "opponentId": 145,
-   "games": 181,
-   "wins": 74
-  },
-  {
-   "championId": 81,
-   "role": "BOTTOM",
-   "opponentId": 202,
-   "games": 154,
-   "wins": 73
-  },
-  {
-   "championId": 81,
-   "role": "BOTTOM",
-   "opponentId": 51,
-   "games": 91,
-   "wins": 54
-  },
-  {
-   "championId": 81,
-   "role": "BOTTOM",
-   "opponentId": 222,
-   "games": 90,
-   "wins": 51
-  },
-  {
-   "championId": 81,
-   "role": "BOTTOM",
-   "opponentId": 236,
-   "games": 63,
-   "wins": 33
-  },
-  {
-   "championId": 81,
-   "role": "BOTTOM",
-   "opponentId": 21,
-   "games": 51,
-   "wins": 30
-  },
-  {
-   "championId": 81,
-   "role": "BOTTOM",
-   "opponentId": 221,
-   "games": 39,
+   "championId": 35,
+   "role": "UTILITY",
+   "opponentId": 412,
+   "games": 42,
    "wins": 18
   },
   {
-   "championId": 81,
-   "role": "BOTTOM",
-   "opponentId": 804,
+   "championId": 36,
+   "role": "TOP",
+   "opponentId": 54,
+   "games": 63,
+   "wins": 40
+  },
+  {
+   "championId": 36,
+   "role": "TOP",
+   "opponentId": 777,
+   "games": 54,
+   "wins": 23
+  },
+  {
+   "championId": 36,
+   "role": "TOP",
+   "opponentId": 122,
+   "games": 42,
+   "wins": 19
+  },
+  {
+   "championId": 36,
+   "role": "TOP",
+   "opponentId": 58,
+   "games": 40,
+   "wins": 24
+  },
+  {
+   "championId": 36,
+   "role": "TOP",
+   "opponentId": 24,
+   "games": 39,
+   "wins": 24
+  },
+  {
+   "championId": 36,
+   "role": "TOP",
+   "opponentId": 266,
+   "games": 32,
+   "wins": 15
+  },
+  {
+   "championId": 37,
+   "role": "UTILITY",
+   "opponentId": 117,
+   "games": 55,
+   "wins": 37
+  },
+  {
+   "championId": 37,
+   "role": "UTILITY",
+   "opponentId": 412,
+   "games": 46,
+   "wins": 18
+  },
+  {
+   "championId": 37,
+   "role": "UTILITY",
+   "opponentId": 111,
    "games": 37,
+   "wins": 20
+  },
+  {
+   "championId": 37,
+   "role": "UTILITY",
+   "opponentId": 43,
+   "games": 33,
+   "wins": 19
+  },
+  {
+   "championId": 38,
+   "role": "MIDDLE",
+   "opponentId": 777,
+   "games": 44,
    "wins": 22
   },
   {
-   "championId": 81,
-   "role": "BOTTOM",
-   "opponentId": 15,
-   "games": 33,
+   "championId": 38,
+   "role": "MIDDLE",
+   "opponentId": 103,
+   "games": 41,
+   "wins": 19
+  },
+  {
+   "championId": 38,
+   "role": "MIDDLE",
+   "opponentId": 7,
+   "games": 34,
    "wins": 16
   },
   {
-   "championId": 81,
-   "role": "BOTTOM",
-   "opponentId": 429,
+   "championId": 38,
+   "role": "MIDDLE",
+   "opponentId": 517,
+   "games": 30,
+   "wins": 22
+  },
+  {
+   "championId": 39,
+   "role": "MIDDLE",
+   "opponentId": 103,
+   "games": 51,
+   "wins": 19
+  },
+  {
+   "championId": 39,
+   "role": "MIDDLE",
+   "opponentId": 517,
+   "games": 45,
+   "wins": 28
+  },
+  {
+   "championId": 39,
+   "role": "MIDDLE",
+   "opponentId": 777,
+   "games": 38,
+   "wins": 14
+  },
+  {
+   "championId": 39,
+   "role": "MIDDLE",
+   "opponentId": 805,
    "games": 30,
    "wins": 13
   },
   {
-   "championId": 84,
-   "role": "MIDDLE",
-   "opponentId": 777,
-   "games": 37,
-   "wins": 19
+   "championId": 39,
+   "role": "TOP",
+   "opponentId": 126,
+   "games": 118,
+   "wins": 57
   },
   {
-   "championId": 84,
-   "role": "MIDDLE",
-   "opponentId": 517,
-   "games": 34,
-   "wins": 23
+   "championId": 39,
+   "role": "TOP",
+   "opponentId": 266,
+   "games": 79,
+   "wins": 31
   },
   {
-   "championId": 84,
-   "role": "MIDDLE",
-   "opponentId": 805,
-   "games": 31,
-   "wins": 17
+   "championId": 39,
+   "role": "TOP",
+   "opponentId": 24,
+   "games": 68,
+   "wins": 24
   },
   {
-   "championId": 89,
+   "championId": 39,
+   "role": "TOP",
+   "opponentId": 114,
+   "games": 38,
+   "wins": 12
+  },
+  {
+   "championId": 40,
    "role": "UTILITY",
    "opponentId": 412,
-   "games": 59,
-   "wins": 35
+   "games": 125,
+   "wins": 67
   },
   {
-   "championId": 89,
+   "championId": 40,
    "role": "UTILITY",
-   "opponentId": 111,
-   "games": 56,
+   "opponentId": 53,
+   "games": 64,
+   "wins": 25
+  },
+  {
+   "championId": 40,
+   "role": "UTILITY",
+   "opponentId": 555,
+   "games": 47,
    "wins": 30
   },
   {
-   "championId": 89,
-   "role": "UTILITY",
-   "opponentId": 12,
-   "games": 41,
-   "wins": 20
-  },
-  {
-   "championId": 89,
-   "role": "UTILITY",
-   "opponentId": 53,
-   "games": 41,
-   "wins": 25
-  },
-  {
-   "championId": 89,
-   "role": "UTILITY",
-   "opponentId": 117,
-   "games": 40,
-   "wins": 16
-  },
-  {
-   "championId": 89,
-   "role": "UTILITY",
-   "opponentId": 201,
-   "games": 30,
-   "wins": 17
-  },
-  {
-   "championId": 91,
-   "role": "JUNGLE",
-   "opponentId": 64,
-   "games": 30,
-   "wins": 14
-  },
-  {
-   "championId": 99,
-   "role": "UTILITY",
-   "opponentId": 412,
-   "games": 51,
-   "wins": 25
-  },
-  {
-   "championId": 99,
-   "role": "UTILITY",
-   "opponentId": 117,
-   "games": 32,
-   "wins": 17
-  },
-  {
-   "championId": 101,
-   "role": "MIDDLE",
-   "opponentId": 112,
-   "games": 34,
-   "wins": 21
-  },
-  {
-   "championId": 103,
-   "role": "MIDDLE",
-   "opponentId": 517,
-   "games": 41,
-   "wins": 26
-  },
-  {
-   "championId": 103,
-   "role": "MIDDLE",
-   "opponentId": 112,
-   "games": 32,
-   "wins": 16
-  },
-  {
-   "championId": 103,
-   "role": "MIDDLE",
-   "opponentId": 4,
-   "games": 31,
-   "wins": 19
-  },
-  {
-   "championId": 104,
-   "role": "JUNGLE",
-   "opponentId": 64,
-   "games": 111,
-   "wins": 62
-  },
-  {
-   "championId": 104,
-   "role": "JUNGLE",
-   "opponentId": 121,
-   "games": 44,
-   "wins": 18
-  },
-  {
-   "championId": 104,
-   "role": "JUNGLE",
-   "opponentId": 11,
-   "games": 41,
-   "wins": 19
-  },
-  {
-   "championId": 104,
-   "role": "JUNGLE",
-   "opponentId": 234,
-   "games": 41,
-   "wins": 21
-  },
-  {
-   "championId": 104,
-   "role": "JUNGLE",
-   "opponentId": 120,
-   "games": 33,
-   "wins": 11
-  },
-  {
-   "championId": 104,
-   "role": "JUNGLE",
-   "opponentId": 517,
-   "games": 31,
-   "wins": 17
-  },
-  {
-   "championId": 110,
-   "role": "BOTTOM",
-   "opponentId": 202,
-   "games": 41,
-   "wins": 19
-  },
-  {
-   "championId": 111,
-   "role": "UTILITY",
-   "opponentId": 89,
-   "games": 56,
-   "wins": 26
-  },
-  {
-   "championId": 111,
-   "role": "UTILITY",
-   "opponentId": 201,
-   "games": 47,
-   "wins": 27
-  },
-  {
-   "championId": 111,
-   "role": "UTILITY",
-   "opponentId": 12,
-   "games": 45,
-   "wins": 27
-  },
-  {
-   "championId": 111,
-   "role": "UTILITY",
-   "opponentId": 555,
-   "games": 43,
-   "wins": 26
-  },
-  {
-   "championId": 111,
-   "role": "UTILITY",
-   "opponentId": 350,
-   "games": 39,
-   "wins": 17
-  },
-  {
-   "championId": 111,
+   "championId": 40,
    "role": "UTILITY",
    "opponentId": 43,
-   "games": 36,
-   "wins": 18
+   "games": 41,
+   "wins": 26
   },
   {
-   "championId": 111,
+   "championId": 40,
    "role": "UTILITY",
    "opponentId": 526,
    "games": 35,
    "wins": 13
   },
   {
-   "championId": 111,
+   "championId": 40,
    "role": "UTILITY",
-   "opponentId": 432,
+   "opponentId": 497,
    "games": 33,
    "wins": 15
   },
   {
-   "championId": 111,
+   "championId": 41,
+   "role": "TOP",
+   "opponentId": 54,
+   "games": 55,
+   "wins": 20
+  },
+  {
+   "championId": 41,
+   "role": "TOP",
+   "opponentId": 897,
+   "games": 44,
+   "wins": 18
+  },
+  {
+   "championId": 41,
+   "role": "TOP",
+   "opponentId": 164,
+   "games": 38,
+   "wins": 15
+  },
+  {
+   "championId": 41,
+   "role": "TOP",
+   "opponentId": 83,
+   "games": 35,
+   "wins": 18
+  },
+  {
+   "championId": 41,
+   "role": "TOP",
+   "opponentId": 2,
+   "games": 34,
+   "wins": 19
+  },
+  {
+   "championId": 41,
+   "role": "TOP",
+   "opponentId": 875,
+   "games": 34,
+   "wins": 20
+  },
+  {
+   "championId": 41,
+   "role": "TOP",
+   "opponentId": 86,
+   "games": 30,
+   "wins": 19
+  },
+  {
+   "championId": 42,
+   "role": "BOTTOM",
+   "opponentId": 202,
+   "games": 74,
+   "wins": 34
+  },
+  {
+   "championId": 42,
+   "role": "BOTTOM",
+   "opponentId": 18,
+   "games": 64,
+   "wins": 26
+  },
+  {
+   "championId": 42,
+   "role": "BOTTOM",
+   "opponentId": 21,
+   "games": 41,
+   "wins": 19
+  },
+  {
+   "championId": 42,
+   "role": "BOTTOM",
+   "opponentId": 523,
+   "games": 39,
+   "wins": 26
+  },
+  {
+   "championId": 42,
+   "role": "BOTTOM",
+   "opponentId": 51,
+   "games": 31,
+   "wins": 18
+  },
+  {
+   "championId": 43,
+   "role": "UTILITY",
+   "opponentId": 412,
+   "games": 221,
+   "wins": 105
+  },
+  {
+   "championId": 43,
+   "role": "UTILITY",
+   "opponentId": 117,
+   "games": 210,
+   "wins": 102
+  },
+  {
+   "championId": 43,
+   "role": "UTILITY",
+   "opponentId": 111,
+   "games": 151,
+   "wins": 68
+  },
+  {
+   "championId": 43,
+   "role": "UTILITY",
+   "opponentId": 99,
+   "games": 108,
+   "wins": 63
+  },
+  {
+   "championId": 43,
    "role": "UTILITY",
    "opponentId": 53,
+   "games": 103,
+   "wins": 51
+  },
+  {
+   "championId": 43,
+   "role": "UTILITY",
+   "opponentId": 147,
+   "games": 78,
+   "wins": 31
+  },
+  {
+   "championId": 43,
+   "role": "UTILITY",
+   "opponentId": 12,
+   "games": 58,
+   "wins": 32
+  },
+  {
+   "championId": 43,
+   "role": "UTILITY",
+   "opponentId": 101,
+   "games": 57,
+   "wins": 23
+  },
+  {
+   "championId": 43,
+   "role": "UTILITY",
+   "opponentId": 40,
+   "games": 41,
+   "wins": 15
+  },
+  {
+   "championId": 43,
+   "role": "UTILITY",
+   "opponentId": 37,
+   "games": 33,
+   "wins": 14
+  },
+  {
+   "championId": 43,
+   "role": "UTILITY",
+   "opponentId": 50,
+   "games": 31,
+   "wins": 19
+  },
+  {
+   "championId": 43,
+   "role": "UTILITY",
+   "opponentId": 518,
+   "games": 30,
+   "wins": 15
+  },
+  {
+   "championId": 45,
+   "role": "MIDDLE",
+   "opponentId": 112,
+   "games": 43,
+   "wins": 24
+  },
+  {
+   "championId": 45,
+   "role": "MIDDLE",
+   "opponentId": 103,
+   "games": 38,
+   "wins": 17
+  },
+  {
+   "championId": 45,
+   "role": "MIDDLE",
+   "opponentId": 134,
+   "games": 31,
+   "wins": 12
+  },
+  {
+   "championId": 45,
+   "role": "MIDDLE",
+   "opponentId": 90,
+   "games": 31,
+   "wins": 19
+  },
+  {
+   "championId": 50,
+   "role": "BOTTOM",
+   "opponentId": 145,
+   "games": 35,
+   "wins": 16
+  },
+  {
+   "championId": 50,
+   "role": "BOTTOM",
+   "opponentId": 202,
+   "games": 32,
+   "wins": 17
+  },
+  {
+   "championId": 50,
+   "role": "UTILITY",
+   "opponentId": 12,
+   "games": 33,
+   "wins": 13
+  },
+  {
+   "championId": 50,
+   "role": "UTILITY",
+   "opponentId": 43,
+   "games": 31,
+   "wins": 12
+  },
+  {
+   "championId": 50,
+   "role": "UTILITY",
+   "opponentId": 53,
+   "games": 31,
+   "wins": 14
+  },
+  {
+   "championId": 51,
+   "role": "BOTTOM",
+   "opponentId": 222,
+   "games": 373,
+   "wins": 187
+  },
+  {
+   "championId": 51,
+   "role": "BOTTOM",
+   "opponentId": 81,
+   "games": 348,
+   "wins": 158
+  },
+  {
+   "championId": 51,
+   "role": "BOTTOM",
+   "opponentId": 236,
+   "games": 208,
+   "wins": 97
+  },
+  {
+   "championId": 51,
+   "role": "BOTTOM",
+   "opponentId": 21,
+   "games": 197,
+   "wins": 93
+  },
+  {
+   "championId": 51,
+   "role": "BOTTOM",
+   "opponentId": 18,
+   "games": 191,
+   "wins": 90
+  },
+  {
+   "championId": 51,
+   "role": "BOTTOM",
+   "opponentId": 804,
+   "games": 184,
+   "wins": 102
+  },
+  {
+   "championId": 51,
+   "role": "BOTTOM",
+   "opponentId": 22,
+   "games": 124,
+   "wins": 61
+  },
+  {
+   "championId": 51,
+   "role": "BOTTOM",
+   "opponentId": 29,
+   "games": 70,
+   "wins": 39
+  },
+  {
+   "championId": 51,
+   "role": "BOTTOM",
+   "opponentId": 112,
+   "games": 56,
+   "wins": 22
+  },
+  {
+   "championId": 51,
+   "role": "BOTTOM",
+   "opponentId": 96,
+   "games": 40,
+   "wins": 24
+  },
+  {
+   "championId": 51,
+   "role": "BOTTOM",
+   "opponentId": 157,
+   "games": 33,
+   "wins": 13
+  },
+  {
+   "championId": 51,
+   "role": "BOTTOM",
+   "opponentId": 115,
+   "games": 32,
+   "wins": 18
+  },
+  {
+   "championId": 51,
+   "role": "BOTTOM",
+   "opponentId": 42,
+   "games": 31,
+   "wins": 13
+  },
+  {
+   "championId": 53,
+   "role": "UTILITY",
+   "opponentId": 412,
+   "games": 308,
+   "wins": 158
+  },
+  {
+   "championId": 53,
+   "role": "UTILITY",
+   "opponentId": 117,
+   "games": 214,
+   "wins": 105
+  },
+  {
+   "championId": 53,
+   "role": "UTILITY",
+   "opponentId": 89,
+   "games": 154,
+   "wins": 72
+  },
+  {
+   "championId": 53,
+   "role": "UTILITY",
+   "opponentId": 201,
+   "games": 115,
+   "wins": 56
+  },
+  {
+   "championId": 53,
+   "role": "UTILITY",
+   "opponentId": 43,
+   "games": 103,
+   "wins": 52
+  },
+  {
+   "championId": 53,
+   "role": "UTILITY",
+   "opponentId": 99,
+   "games": 102,
+   "wins": 62
+  },
+  {
+   "championId": 53,
+   "role": "UTILITY",
+   "opponentId": 12,
+   "games": 102,
+   "wins": 42
+  },
+  {
+   "championId": 53,
+   "role": "UTILITY",
+   "opponentId": 147,
+   "games": 73,
+   "wins": 41
+  },
+  {
+   "championId": 53,
+   "role": "UTILITY",
+   "opponentId": 40,
+   "games": 64,
+   "wins": 39
+  },
+  {
+   "championId": 53,
+   "role": "UTILITY",
+   "opponentId": 526,
+   "games": 60,
+   "wins": 25
+  },
+  {
+   "championId": 53,
+   "role": "UTILITY",
+   "opponentId": 101,
+   "games": 52,
+   "wins": 23
+  },
+  {
+   "championId": 53,
+   "role": "UTILITY",
+   "opponentId": 517,
+   "games": 32,
+   "wins": 15
+  },
+  {
+   "championId": 53,
+   "role": "UTILITY",
+   "opponentId": 50,
+   "games": 31,
+   "wins": 17
+  },
+  {
+   "championId": 54,
+   "role": "MIDDLE",
+   "opponentId": 238,
+   "games": 48,
+   "wins": 29
+  },
+  {
+   "championId": 54,
+   "role": "TOP",
+   "opponentId": 126,
+   "games": 194,
+   "wins": 108
+  },
+  {
+   "championId": 54,
+   "role": "TOP",
+   "opponentId": 517,
+   "games": 109,
+   "wins": 60
+  },
+  {
+   "championId": 54,
+   "role": "TOP",
+   "opponentId": 777,
+   "games": 102,
+   "wins": 55
+  },
+  {
+   "championId": 54,
+   "role": "TOP",
+   "opponentId": 36,
+   "games": 63,
+   "wins": 23
+  },
+  {
+   "championId": 54,
+   "role": "TOP",
+   "opponentId": 41,
+   "games": 55,
+   "wins": 35
+  },
+  {
+   "championId": 54,
+   "role": "TOP",
+   "opponentId": 31,
+   "games": 48,
+   "wins": 23
+  },
+  {
+   "championId": 54,
+   "role": "TOP",
+   "opponentId": 150,
+   "games": 45,
+   "wins": 29
+  },
+  {
+   "championId": 54,
+   "role": "TOP",
+   "opponentId": 516,
+   "games": 35,
+   "wins": 22
+  },
+  {
+   "championId": 54,
+   "role": "TOP",
+   "opponentId": 79,
+   "games": 32,
+   "wins": 9
+  },
+  {
+   "championId": 54,
+   "role": "TOP",
+   "opponentId": 98,
+   "games": 30,
+   "wins": 10
+  },
+  {
+   "championId": 55,
+   "role": "BOTTOM",
+   "opponentId": 202,
+   "games": 36,
+   "wins": 18
+  },
+  {
+   "championId": 55,
+   "role": "MIDDLE",
+   "opponentId": 805,
+   "games": 67,
+   "wins": 38
+  },
+  {
+   "championId": 55,
+   "role": "MIDDLE",
+   "opponentId": 7,
+   "games": 50,
+   "wins": 19
+  },
+  {
+   "championId": 55,
+   "role": "MIDDLE",
+   "opponentId": 99,
+   "games": 38,
+   "wins": 14
+  },
+  {
+   "championId": 55,
+   "role": "MIDDLE",
+   "opponentId": 8,
+   "games": 36,
+   "wins": 21
+  },
+  {
+   "championId": 55,
+   "role": "MIDDLE",
+   "opponentId": 101,
+   "games": 34,
+   "wins": 12
+  },
+  {
+   "championId": 56,
+   "role": "JUNGLE",
+   "opponentId": 64,
+   "games": 103,
+   "wins": 58
+  },
+  {
+   "championId": 56,
+   "role": "JUNGLE",
+   "opponentId": 246,
+   "games": 41,
+   "wins": 17
+  },
+  {
+   "championId": 56,
+   "role": "JUNGLE",
+   "opponentId": 141,
+   "games": 40,
+   "wins": 16
+  },
+  {
+   "championId": 56,
+   "role": "JUNGLE",
+   "opponentId": 62,
+   "games": 33,
+   "wins": 21
+  },
+  {
+   "championId": 56,
+   "role": "JUNGLE",
+   "opponentId": 876,
+   "games": 32,
+   "wins": 18
+  },
+  {
+   "championId": 56,
+   "role": "JUNGLE",
+   "opponentId": 35,
+   "games": 31,
+   "wins": 12
+  },
+  {
+   "championId": 56,
+   "role": "JUNGLE",
+   "opponentId": 11,
+   "games": 31,
+   "wins": 19
+  },
+  {
+   "championId": 57,
+   "role": "UTILITY",
+   "opponentId": 412,
+   "games": 50,
+   "wins": 28
+  },
+  {
+   "championId": 57,
+   "role": "UTILITY",
+   "opponentId": 111,
+   "games": 33,
+   "wins": 20
+  },
+  {
+   "championId": 58,
+   "role": "TOP",
+   "opponentId": 777,
+   "games": 121,
+   "wins": 72
+  },
+  {
+   "championId": 58,
+   "role": "TOP",
+   "opponentId": 157,
+   "games": 64,
+   "wins": 40
+  },
+  {
+   "championId": 58,
+   "role": "TOP",
+   "opponentId": 86,
+   "games": 44,
+   "wins": 17
+  },
+  {
+   "championId": 58,
+   "role": "TOP",
+   "opponentId": 82,
+   "games": 41,
+   "wins": 27
+  },
+  {
+   "championId": 58,
+   "role": "TOP",
+   "opponentId": 36,
+   "games": 40,
+   "wins": 16
+  },
+  {
+   "championId": 58,
+   "role": "TOP",
+   "opponentId": 875,
+   "games": 39,
+   "wins": 23
+  },
+  {
+   "championId": 58,
+   "role": "TOP",
+   "opponentId": 114,
+   "games": 38,
+   "wins": 17
+  },
+  {
+   "championId": 58,
+   "role": "TOP",
+   "opponentId": 92,
+   "games": 36,
+   "wins": 18
+  },
+  {
+   "championId": 58,
+   "role": "TOP",
+   "opponentId": 897,
+   "games": 34,
+   "wins": 22
+  },
+  {
+   "championId": 58,
+   "role": "TOP",
+   "opponentId": 150,
+   "games": 31,
+   "wins": 19
+  },
+  {
+   "championId": 59,
+   "role": "JUNGLE",
+   "opponentId": 64,
+   "games": 210,
+   "wins": 106
+  },
+  {
+   "championId": 59,
+   "role": "JUNGLE",
+   "opponentId": 104,
+   "games": 119,
+   "wins": 52
+  },
+  {
+   "championId": 59,
+   "role": "JUNGLE",
+   "opponentId": 126,
+   "games": 51,
+   "wins": 33
+  },
+  {
+   "championId": 59,
+   "role": "JUNGLE",
+   "opponentId": 31,
+   "games": 50,
+   "wins": 21
+  },
+  {
+   "championId": 59,
+   "role": "JUNGLE",
+   "opponentId": 60,
+   "games": 44,
+   "wins": 17
+  },
+  {
+   "championId": 59,
+   "role": "JUNGLE",
+   "opponentId": 203,
+   "games": 38,
+   "wins": 15
+  },
+  {
+   "championId": 59,
+   "role": "JUNGLE",
+   "opponentId": 154,
+   "games": 31,
+   "wins": 18
+  },
+  {
+   "championId": 60,
+   "role": "JUNGLE",
+   "opponentId": 64,
+   "games": 127,
+   "wins": 71
+  },
+  {
+   "championId": 60,
+   "role": "JUNGLE",
+   "opponentId": 120,
+   "games": 45,
+   "wins": 21
+  },
+  {
+   "championId": 60,
+   "role": "JUNGLE",
+   "opponentId": 517,
+   "games": 45,
+   "wins": 21
+  },
+  {
+   "championId": 60,
+   "role": "JUNGLE",
+   "opponentId": 121,
+   "games": 44,
+   "wins": 18
+  },
+  {
+   "championId": 60,
+   "role": "JUNGLE",
+   "opponentId": 59,
+   "games": 44,
+   "wins": 27
+  },
+  {
+   "championId": 60,
+   "role": "JUNGLE",
+   "opponentId": 245,
+   "games": 30,
+   "wins": 18
+  },
+  {
+   "championId": 60,
+   "role": "UTILITY",
+   "opponentId": 412,
+   "games": 30,
+   "wins": 13
+  },
+  {
+   "championId": 61,
+   "role": "MIDDLE",
+   "opponentId": 134,
+   "games": 85,
+   "wins": 32
+  },
+  {
+   "championId": 61,
+   "role": "MIDDLE",
+   "opponentId": 103,
+   "games": 85,
+   "wins": 33
+  },
+  {
+   "championId": 61,
+   "role": "MIDDLE",
+   "opponentId": 84,
+   "games": 48,
+   "wins": 29
+  },
+  {
+   "championId": 61,
+   "role": "MIDDLE",
+   "opponentId": 105,
+   "games": 33,
+   "wins": 12
+  },
+  {
+   "championId": 61,
+   "role": "MIDDLE",
+   "opponentId": 268,
+   "games": 30,
+   "wins": 18
+  },
+  {
+   "championId": 62,
+   "role": "JUNGLE",
+   "opponentId": 64,
+   "games": 207,
+   "wins": 113
+  },
+  {
+   "championId": 62,
+   "role": "JUNGLE",
+   "opponentId": 91,
+   "games": 81,
+   "wins": 34
+  },
+  {
+   "championId": 62,
+   "role": "JUNGLE",
+   "opponentId": 234,
+   "games": 72,
+   "wins": 45
+  },
+  {
+   "championId": 62,
+   "role": "JUNGLE",
+   "opponentId": 5,
+   "games": 63,
+   "wins": 37
+  },
+  {
+   "championId": 62,
+   "role": "JUNGLE",
+   "opponentId": 120,
+   "games": 59,
+   "wins": 35
+  },
+  {
+   "championId": 62,
+   "role": "JUNGLE",
+   "opponentId": 254,
+   "games": 55,
+   "wins": 32
+  },
+  {
+   "championId": 62,
+   "role": "JUNGLE",
+   "opponentId": 107,
+   "games": 40,
+   "wins": 23
+  },
+  {
+   "championId": 62,
+   "role": "JUNGLE",
+   "opponentId": 56,
+   "games": 33,
+   "wins": 12
+  },
+  {
+   "championId": 62,
+   "role": "JUNGLE",
+   "opponentId": 245,
+   "games": 31,
+   "wins": 12
+  },
+  {
+   "championId": 63,
+   "role": "UTILITY",
+   "opponentId": 412,
+   "games": 46,
+   "wins": 30
+  },
+  {
+   "championId": 63,
+   "role": "UTILITY",
+   "opponentId": 111,
+   "games": 35,
+   "wins": 16
+  },
+  {
+   "championId": 64,
+   "role": "JUNGLE",
+   "opponentId": 104,
+   "games": 358,
+   "wins": 170
+  },
+  {
+   "championId": 64,
+   "role": "JUNGLE",
+   "opponentId": 234,
+   "games": 244,
+   "wins": 127
+  },
+  {
+   "championId": 64,
+   "role": "JUNGLE",
+   "opponentId": 517,
+   "games": 242,
+   "wins": 105
+  },
+  {
+   "championId": 64,
+   "role": "JUNGLE",
+   "opponentId": 246,
+   "games": 219,
+   "wins": 100
+  },
+  {
+   "championId": 64,
+   "role": "JUNGLE",
+   "opponentId": 59,
+   "games": 210,
+   "wins": 104
+  },
+  {
+   "championId": 64,
+   "role": "JUNGLE",
+   "opponentId": 254,
+   "games": 209,
+   "wins": 107
+  },
+  {
+   "championId": 64,
+   "role": "JUNGLE",
+   "opponentId": 62,
+   "games": 207,
+   "wins": 94
+  },
+  {
+   "championId": 64,
+   "role": "JUNGLE",
+   "opponentId": 121,
+   "games": 187,
+   "wins": 84
+  },
+  {
+   "championId": 64,
+   "role": "JUNGLE",
+   "opponentId": 76,
+   "games": 181,
+   "wins": 80
+  },
+  {
+   "championId": 64,
+   "role": "JUNGLE",
+   "opponentId": 5,
+   "games": 170,
+   "wins": 78
+  },
+  {
+   "championId": 64,
+   "role": "JUNGLE",
+   "opponentId": 876,
+   "games": 159,
+   "wins": 71
+  },
+  {
+   "championId": 64,
+   "role": "JUNGLE",
+   "opponentId": 950,
+   "games": 151,
+   "wins": 67
+  },
+  {
+   "championId": 64,
+   "role": "JUNGLE",
+   "opponentId": 120,
+   "games": 142,
+   "wins": 73
+  },
+  {
+   "championId": 64,
+   "role": "JUNGLE",
+   "opponentId": 141,
+   "games": 141,
+   "wins": 64
+  },
+  {
+   "championId": 64,
+   "role": "JUNGLE",
+   "opponentId": 11,
+   "games": 134,
+   "wins": 58
+  },
+  {
+   "championId": 64,
+   "role": "JUNGLE",
+   "opponentId": 60,
+   "games": 127,
+   "wins": 56
+  },
+  {
+   "championId": 64,
+   "role": "JUNGLE",
+   "opponentId": 91,
+   "games": 122,
+   "wins": 67
+  },
+  {
+   "championId": 64,
+   "role": "JUNGLE",
+   "opponentId": 126,
+   "games": 119,
+   "wins": 64
+  },
+  {
+   "championId": 64,
+   "role": "JUNGLE",
+   "opponentId": 31,
+   "games": 117,
+   "wins": 51
+  },
+  {
+   "championId": 64,
+   "role": "JUNGLE",
+   "opponentId": 56,
+   "games": 103,
+   "wins": 45
+  },
+  {
+   "championId": 64,
+   "role": "JUNGLE",
+   "opponentId": 245,
+   "games": 102,
+   "wins": 52
+  },
+  {
+   "championId": 64,
+   "role": "JUNGLE",
+   "opponentId": 163,
+   "games": 93,
+   "wins": 40
+  },
+  {
+   "championId": 64,
+   "role": "JUNGLE",
+   "opponentId": 238,
+   "games": 88,
+   "wins": 51
+  },
+  {
+   "championId": 64,
+   "role": "JUNGLE",
+   "opponentId": 203,
+   "games": 77,
+   "wins": 27
+  },
+  {
+   "championId": 64,
+   "role": "JUNGLE",
+   "opponentId": 154,
+   "games": 74,
+   "wins": 27
+  },
+  {
+   "championId": 64,
+   "role": "JUNGLE",
+   "opponentId": 107,
+   "games": 72,
+   "wins": 36
+  },
+  {
+   "championId": 64,
+   "role": "JUNGLE",
+   "opponentId": 421,
+   "games": 72,
+   "wins": 29
+  },
+  {
+   "championId": 64,
+   "role": "JUNGLE",
+   "opponentId": 19,
+   "games": 60,
+   "wins": 37
+  },
+  {
+   "championId": 64,
+   "role": "JUNGLE",
+   "opponentId": 102,
+   "games": 60,
+   "wins": 29
+  },
+  {
+   "championId": 64,
+   "role": "JUNGLE",
+   "opponentId": 113,
+   "games": 47,
+   "wins": 20
+  },
+  {
+   "championId": 64,
+   "role": "JUNGLE",
+   "opponentId": 28,
+   "games": 44,
+   "wins": 24
+  },
+  {
+   "championId": 64,
+   "role": "JUNGLE",
+   "opponentId": 200,
+   "games": 43,
+   "wins": 12
+  },
+  {
+   "championId": 64,
+   "role": "JUNGLE",
+   "opponentId": 33,
+   "games": 40,
+   "wins": 25
+  },
+  {
+   "championId": 64,
+   "role": "JUNGLE",
+   "opponentId": 20,
+   "games": 33,
+   "wins": 18
+  },
+  {
+   "championId": 64,
+   "role": "JUNGLE",
+   "opponentId": 30,
+   "games": 33,
+   "wins": 16
+  },
+  {
+   "championId": 64,
+   "role": "JUNGLE",
+   "opponentId": 72,
+   "games": 32,
+   "wins": 16
+  },
+  {
+   "championId": 64,
+   "role": "JUNGLE",
+   "opponentId": 266,
+   "games": 31,
+   "wins": 14
+  },
+  {
+   "championId": 67,
+   "role": "BOTTOM",
+   "opponentId": 145,
+   "games": 95,
+   "wins": 46
+  },
+  {
+   "championId": 67,
+   "role": "BOTTOM",
+   "opponentId": 202,
+   "games": 56,
+   "wins": 26
+  },
+  {
+   "championId": 67,
+   "role": "BOTTOM",
+   "opponentId": 222,
+   "games": 51,
+   "wins": 19
+  },
+  {
+   "championId": 67,
+   "role": "BOTTOM",
+   "opponentId": 18,
+   "games": 37,
+   "wins": 21
+  },
+  {
+   "championId": 67,
+   "role": "BOTTOM",
+   "opponentId": 21,
+   "games": 34,
+   "wins": 19
+  },
+  {
+   "championId": 72,
+   "role": "JUNGLE",
+   "opponentId": 64,
+   "games": 32,
+   "wins": 16
+  },
+  {
+   "championId": 75,
+   "role": "TOP",
+   "opponentId": 266,
+   "games": 45,
+   "wins": 15
+  },
+  {
+   "championId": 75,
+   "role": "TOP",
+   "opponentId": 80,
+   "games": 33,
+   "wins": 14
+  },
+  {
+   "championId": 75,
+   "role": "TOP",
+   "opponentId": 122,
+   "games": 32,
+   "wins": 11
+  },
+  {
+   "championId": 75,
+   "role": "TOP",
+   "opponentId": 27,
+   "games": 31,
+   "wins": 14
+  },
+  {
+   "championId": 76,
+   "role": "JUNGLE",
+   "opponentId": 64,
+   "games": 181,
+   "wins": 101
+  },
+  {
+   "championId": 76,
+   "role": "JUNGLE",
+   "opponentId": 950,
+   "games": 38,
+   "wins": 18
+  },
+  {
+   "championId": 76,
+   "role": "JUNGLE",
+   "opponentId": 876,
+   "games": 36,
+   "wins": 15
+  },
+  {
+   "championId": 76,
+   "role": "JUNGLE",
+   "opponentId": 5,
+   "games": 32,
+   "wins": 19
+  },
+  {
+   "championId": 76,
+   "role": "JUNGLE",
+   "opponentId": 203,
+   "games": 30,
+   "wins": 14
+  },
+  {
+   "championId": 76,
+   "role": "JUNGLE",
+   "opponentId": 11,
+   "games": 30,
+   "wins": 20
+  },
+  {
+   "championId": 78,
+   "role": "UTILITY",
+   "opponentId": 111,
+   "games": 48,
+   "wins": 20
+  },
+  {
+   "championId": 78,
+   "role": "UTILITY",
+   "opponentId": 412,
+   "games": 34,
+   "wins": 13
+  },
+  {
+   "championId": 78,
+   "role": "UTILITY",
+   "opponentId": 526,
+   "games": 32,
+   "wins": 9
+  },
+  {
+   "championId": 79,
+   "role": "TOP",
+   "opponentId": 24,
+   "games": 70,
+   "wins": 31
+  },
+  {
+   "championId": 79,
+   "role": "TOP",
+   "opponentId": 126,
+   "games": 44,
+   "wins": 21
+  },
+  {
+   "championId": 79,
+   "role": "TOP",
+   "opponentId": 777,
+   "games": 44,
+   "wins": 23
+  },
+  {
+   "championId": 79,
+   "role": "TOP",
+   "opponentId": 54,
+   "games": 32,
+   "wins": 23
+  },
+  {
+   "championId": 79,
+   "role": "TOP",
+   "opponentId": 80,
+   "games": 32,
+   "wins": 20
+  },
+  {
+   "championId": 80,
+   "role": "MIDDLE",
+   "opponentId": 157,
+   "games": 37,
+   "wins": 14
+  },
+  {
+   "championId": 80,
+   "role": "TOP",
+   "opponentId": 777,
+   "games": 113,
+   "wins": 58
+  },
+  {
+   "championId": 80,
+   "role": "TOP",
+   "opponentId": 114,
+   "games": 42,
+   "wins": 26
+  },
+  {
+   "championId": 80,
+   "role": "TOP",
+   "opponentId": 75,
+   "games": 33,
+   "wins": 19
+  },
+  {
+   "championId": 80,
+   "role": "TOP",
+   "opponentId": 79,
+   "games": 32,
+   "wins": 12
+  },
+  {
+   "championId": 80,
+   "role": "TOP",
+   "opponentId": 799,
+   "games": 32,
+   "wins": 12
+  },
+  {
+   "championId": 80,
+   "role": "TOP",
+   "opponentId": 2,
+   "games": 31,
+   "wins": 11
+  },
+  {
+   "championId": 80,
+   "role": "TOP",
+   "opponentId": 157,
+   "games": 31,
+   "wins": 24
+  },
+  {
+   "championId": 80,
+   "role": "UTILITY",
+   "opponentId": 412,
+   "games": 90,
+   "wins": 34
+  },
+  {
+   "championId": 80,
+   "role": "UTILITY",
+   "opponentId": 555,
+   "games": 64,
+   "wins": 40
+  },
+  {
+   "championId": 80,
+   "role": "UTILITY",
+   "opponentId": 12,
+   "games": 41,
+   "wins": 18
+  },
+  {
+   "championId": 80,
+   "role": "UTILITY",
+   "opponentId": 89,
+   "games": 39,
+   "wins": 17
+  },
+  {
+   "championId": 81,
+   "role": "BOTTOM",
+   "opponentId": 145,
+   "games": 703,
+   "wins": 311
+  },
+  {
+   "championId": 81,
+   "role": "BOTTOM",
+   "opponentId": 202,
+   "games": 522,
+   "wins": 236
+  },
+  {
+   "championId": 81,
+   "role": "BOTTOM",
+   "opponentId": 51,
+   "games": 348,
+   "wins": 190
+  },
+  {
+   "championId": 81,
+   "role": "BOTTOM",
+   "opponentId": 18,
+   "games": 221,
+   "wins": 99
+  },
+  {
+   "championId": 81,
+   "role": "BOTTOM",
+   "opponentId": 21,
+   "games": 210,
+   "wins": 113
+  },
+  {
+   "championId": 81,
+   "role": "BOTTOM",
+   "opponentId": 804,
+   "games": 159,
+   "wins": 82
+  },
+  {
+   "championId": 81,
+   "role": "BOTTOM",
+   "opponentId": 22,
+   "games": 116,
+   "wins": 53
+  },
+  {
+   "championId": 81,
+   "role": "BOTTOM",
+   "opponentId": 429,
+   "games": 106,
+   "wins": 51
+  },
+  {
+   "championId": 81,
+   "role": "BOTTOM",
+   "opponentId": 498,
+   "games": 105,
+   "wins": 54
+  },
+  {
+   "championId": 81,
+   "role": "BOTTOM",
+   "opponentId": 15,
+   "games": 103,
+   "wins": 52
+  },
+  {
+   "championId": 81,
+   "role": "BOTTOM",
+   "opponentId": 221,
+   "games": 99,
+   "wins": 40
+  },
+  {
+   "championId": 81,
+   "role": "BOTTOM",
+   "opponentId": 29,
+   "games": 75,
+   "wins": 30
+  },
+  {
+   "championId": 81,
+   "role": "BOTTOM",
+   "opponentId": 360,
+   "games": 56,
+   "wins": 31
+  },
+  {
+   "championId": 81,
+   "role": "BOTTOM",
+   "opponentId": 112,
+   "games": 43,
+   "wins": 18
+  },
+  {
+   "championId": 81,
+   "role": "BOTTOM",
+   "opponentId": 96,
+   "games": 34,
+   "wins": 19
+  },
+  {
+   "championId": 82,
+   "role": "TOP",
+   "opponentId": 875,
+   "games": 44,
+   "wins": 16
+  },
+  {
+   "championId": 82,
+   "role": "TOP",
+   "opponentId": 58,
+   "games": 41,
+   "wins": 14
+  },
+  {
+   "championId": 82,
+   "role": "TOP",
+   "opponentId": 24,
+   "games": 40,
+   "wins": 24
+  },
+  {
+   "championId": 82,
+   "role": "TOP",
+   "opponentId": 106,
+   "games": 32,
+   "wins": 21
+  },
+  {
+   "championId": 82,
+   "role": "TOP",
+   "opponentId": 98,
+   "games": 31,
+   "wins": 12
+  },
+  {
+   "championId": 82,
+   "role": "TOP",
+   "opponentId": 126,
+   "games": 31,
+   "wins": 24
+  },
+  {
+   "championId": 83,
+   "role": "TOP",
+   "opponentId": 777,
+   "games": 48,
+   "wins": 23
+  },
+  {
+   "championId": 83,
+   "role": "TOP",
+   "opponentId": 41,
+   "games": 35,
+   "wins": 17
+  },
+  {
+   "championId": 83,
+   "role": "TOP",
+   "opponentId": 31,
+   "games": 31,
+   "wins": 12
+  },
+  {
+   "championId": 83,
+   "role": "TOP",
+   "opponentId": 122,
+   "games": 31,
+   "wins": 18
+  },
+  {
+   "championId": 84,
+   "role": "MIDDLE",
+   "opponentId": 517,
+   "games": 122,
+   "wins": 67
+  },
+  {
+   "championId": 84,
+   "role": "MIDDLE",
+   "opponentId": 777,
+   "games": 117,
+   "wins": 54
+  },
+  {
+   "championId": 84,
+   "role": "MIDDLE",
+   "opponentId": 112,
+   "games": 111,
+   "wins": 71
+  },
+  {
+   "championId": 84,
+   "role": "MIDDLE",
+   "opponentId": 805,
+   "games": 106,
+   "wins": 48
+  },
+  {
+   "championId": 84,
+   "role": "MIDDLE",
+   "opponentId": 238,
+   "games": 92,
+   "wins": 36
+  },
+  {
+   "championId": 84,
+   "role": "MIDDLE",
+   "opponentId": 4,
+   "games": 73,
+   "wins": 31
+  },
+  {
+   "championId": 84,
+   "role": "MIDDLE",
+   "opponentId": 103,
+   "games": 73,
+   "wins": 43
+  },
+  {
+   "championId": 84,
+   "role": "MIDDLE",
+   "opponentId": 61,
+   "games": 48,
+   "wins": 19
+  },
+  {
+   "championId": 84,
+   "role": "MIDDLE",
+   "opponentId": 101,
+   "games": 40,
+   "wins": 24
+  },
+  {
+   "championId": 84,
+   "role": "MIDDLE",
+   "opponentId": 246,
+   "games": 32,
+   "wins": 17
+  },
+  {
+   "championId": 84,
+   "role": "TOP",
+   "opponentId": 777,
+   "games": 79,
+   "wins": 42
+  },
+  {
+   "championId": 84,
+   "role": "TOP",
+   "opponentId": 126,
+   "games": 47,
+   "wins": 22
+  },
+  {
+   "championId": 84,
+   "role": "TOP",
+   "opponentId": 24,
+   "games": 31,
+   "wins": 12
+  },
+  {
+   "championId": 85,
+   "role": "TOP",
+   "opponentId": 126,
+   "games": 30,
+   "wins": 20
+  },
+  {
+   "championId": 86,
+   "role": "TOP",
+   "opponentId": 122,
+   "games": 74,
+   "wins": 32
+  },
+  {
+   "championId": 86,
+   "role": "TOP",
+   "opponentId": 875,
+   "games": 47,
+   "wins": 26
+  },
+  {
+   "championId": 86,
+   "role": "TOP",
+   "opponentId": 164,
+   "games": 46,
+   "wins": 27
+  },
+  {
+   "championId": 86,
+   "role": "TOP",
+   "opponentId": 58,
+   "games": 44,
+   "wins": 27
+  },
+  {
+   "championId": 86,
+   "role": "TOP",
+   "opponentId": 897,
+   "games": 44,
+   "wins": 31
+  },
+  {
+   "championId": 86,
+   "role": "TOP",
+   "opponentId": 98,
+   "games": 37,
+   "wins": 21
+  },
+  {
+   "championId": 86,
+   "role": "TOP",
+   "opponentId": 17,
+   "games": 35,
+   "wins": 19
+  },
+  {
+   "championId": 86,
+   "role": "TOP",
+   "opponentId": 23,
+   "games": 34,
+   "wins": 12
+  },
+  {
+   "championId": 86,
+   "role": "TOP",
+   "opponentId": 2,
+   "games": 31,
+   "wins": 19
+  },
+  {
+   "championId": 86,
+   "role": "TOP",
+   "opponentId": 41,
+   "games": 30,
+   "wins": 11
+  },
+  {
+   "championId": 86,
+   "role": "TOP",
+   "opponentId": 904,
+   "games": 30,
+   "wins": 18
+  },
+  {
+   "championId": 89,
+   "role": "UTILITY",
+   "opponentId": 412,
+   "games": 244,
+   "wins": 121
+  },
+  {
+   "championId": 89,
+   "role": "UTILITY",
+   "opponentId": 111,
+   "games": 204,
+   "wins": 102
+  },
+  {
+   "championId": 89,
+   "role": "UTILITY",
+   "opponentId": 117,
+   "games": 157,
+   "wins": 77
+  },
+  {
+   "championId": 89,
+   "role": "UTILITY",
+   "opponentId": 53,
+   "games": 154,
+   "wins": 82
+  },
+  {
+   "championId": 89,
+   "role": "UTILITY",
+   "opponentId": 12,
+   "games": 130,
+   "wins": 64
+  },
+  {
+   "championId": 89,
+   "role": "UTILITY",
+   "opponentId": 201,
+   "games": 120,
+   "wins": 59
+  },
+  {
+   "championId": 89,
+   "role": "UTILITY",
+   "opponentId": 432,
+   "games": 82,
+   "wins": 48
+  },
+  {
+   "championId": 89,
+   "role": "UTILITY",
+   "opponentId": 25,
+   "games": 78,
+   "wins": 45
+  },
+  {
+   "championId": 89,
+   "role": "UTILITY",
+   "opponentId": 526,
+   "games": 64,
+   "wins": 30
+  },
+  {
+   "championId": 89,
+   "role": "UTILITY",
+   "opponentId": 16,
+   "games": 47,
+   "wins": 27
+  },
+  {
+   "championId": 89,
+   "role": "UTILITY",
+   "opponentId": 235,
+   "games": 45,
+   "wins": 19
+  },
+  {
+   "championId": 89,
+   "role": "UTILITY",
+   "opponentId": 161,
+   "games": 43,
+   "wins": 19
+  },
+  {
+   "championId": 89,
+   "role": "UTILITY",
+   "opponentId": 80,
+   "games": 39,
+   "wins": 22
+  },
+  {
+   "championId": 89,
+   "role": "UTILITY",
+   "opponentId": 143,
+   "games": 35,
+   "wins": 17
+  },
+  {
+   "championId": 89,
+   "role": "UTILITY",
+   "opponentId": 223,
+   "games": 33,
+   "wins": 19
+  },
+  {
+   "championId": 90,
+   "role": "MIDDLE",
+   "opponentId": 103,
+   "games": 76,
+   "wins": 28
+  },
+  {
+   "championId": 90,
+   "role": "MIDDLE",
+   "opponentId": 805,
+   "games": 42,
+   "wins": 24
+  },
+  {
+   "championId": 90,
+   "role": "MIDDLE",
+   "opponentId": 517,
+   "games": 41,
+   "wins": 16
+  },
+  {
+   "championId": 90,
+   "role": "MIDDLE",
+   "opponentId": 901,
+   "games": 40,
+   "wins": 17
+  },
+  {
+   "championId": 90,
+   "role": "MIDDLE",
+   "opponentId": 45,
+   "games": 31,
+   "wins": 12
+  },
+  {
+   "championId": 91,
+   "role": "JUNGLE",
+   "opponentId": 64,
+   "games": 122,
+   "wins": 55
+  },
+  {
+   "championId": 91,
+   "role": "JUNGLE",
+   "opponentId": 62,
+   "games": 81,
+   "wins": 47
+  },
+  {
+   "championId": 91,
+   "role": "JUNGLE",
+   "opponentId": 517,
+   "games": 74,
+   "wins": 30
+  },
+  {
+   "championId": 91,
+   "role": "JUNGLE",
+   "opponentId": 141,
+   "games": 58,
+   "wins": 22
+  },
+  {
+   "championId": 91,
+   "role": "JUNGLE",
+   "opponentId": 107,
+   "games": 45,
+   "wins": 27
+  },
+  {
+   "championId": 91,
+   "role": "JUNGLE",
+   "opponentId": 203,
+   "games": 35,
+   "wins": 19
+  },
+  {
+   "championId": 91,
+   "role": "JUNGLE",
+   "opponentId": 950,
+   "games": 33,
+   "wins": 13
+  },
+  {
+   "championId": 91,
+   "role": "JUNGLE",
+   "opponentId": 163,
+   "games": 33,
+   "wins": 17
+  },
+  {
+   "championId": 91,
+   "role": "JUNGLE",
+   "opponentId": 143,
+   "games": 32,
+   "wins": 19
+  },
+  {
+   "championId": 91,
+   "role": "JUNGLE",
+   "opponentId": 35,
+   "games": 31,
+   "wins": 17
+  },
+  {
+   "championId": 91,
+   "role": "MIDDLE",
+   "opponentId": 103,
+   "games": 37,
+   "wins": 15
+  },
+  {
+   "championId": 91,
+   "role": "MIDDLE",
+   "opponentId": 4,
+   "games": 33,
+   "wins": 19
+  },
+  {
+   "championId": 91,
+   "role": "MIDDLE",
+   "opponentId": 127,
+   "games": 32,
+   "wins": 12
+  },
+  {
+   "championId": 91,
+   "role": "MIDDLE",
+   "opponentId": 134,
+   "games": 32,
+   "wins": 13
+  },
+  {
+   "championId": 91,
+   "role": "MIDDLE",
+   "opponentId": 112,
+   "games": 32,
+   "wins": 20
+  },
+  {
+   "championId": 92,
+   "role": "TOP",
+   "opponentId": 58,
+   "games": 36,
+   "wins": 18
+  },
+  {
+   "championId": 96,
+   "role": "BOTTOM",
+   "opponentId": 145,
+   "games": 64,
+   "wins": 36
+  },
+  {
+   "championId": 96,
+   "role": "BOTTOM",
+   "opponentId": 202,
+   "games": 60,
+   "wins": 26
+  },
+  {
+   "championId": 96,
+   "role": "BOTTOM",
+   "opponentId": 18,
+   "games": 41,
+   "wins": 24
+  },
+  {
+   "championId": 96,
+   "role": "BOTTOM",
+   "opponentId": 51,
+   "games": 40,
+   "wins": 16
+  },
+  {
+   "championId": 96,
+   "role": "BOTTOM",
+   "opponentId": 81,
+   "games": 34,
+   "wins": 15
+  },
+  {
+   "championId": 98,
+   "role": "TOP",
+   "opponentId": 777,
+   "games": 43,
+   "wins": 24
+  },
+  {
+   "championId": 98,
+   "role": "TOP",
+   "opponentId": 86,
+   "games": 37,
+   "wins": 16
+  },
+  {
+   "championId": 98,
+   "role": "TOP",
+   "opponentId": 24,
+   "games": 32,
+   "wins": 18
+  },
+  {
+   "championId": 98,
+   "role": "TOP",
+   "opponentId": 82,
+   "games": 31,
+   "wins": 19
+  },
+  {
+   "championId": 98,
+   "role": "TOP",
+   "opponentId": 54,
+   "games": 30,
+   "wins": 20
+  },
+  {
+   "championId": 99,
+   "role": "MIDDLE",
+   "opponentId": 112,
+   "games": 55,
+   "wins": 35
+  },
+  {
+   "championId": 99,
+   "role": "MIDDLE",
+   "opponentId": 238,
+   "games": 42,
+   "wins": 18
+  },
+  {
+   "championId": 99,
+   "role": "MIDDLE",
+   "opponentId": 134,
+   "games": 39,
+   "wins": 18
+  },
+  {
+   "championId": 99,
+   "role": "MIDDLE",
+   "opponentId": 55,
+   "games": 38,
+   "wins": 24
+  },
+  {
+   "championId": 99,
+   "role": "MIDDLE",
+   "opponentId": 805,
+   "games": 30,
+   "wins": 14
+  },
+  {
+   "championId": 99,
+   "role": "UTILITY",
+   "opponentId": 412,
+   "games": 163,
+   "wins": 75
+  },
+  {
+   "championId": 99,
+   "role": "UTILITY",
+   "opponentId": 111,
+   "games": 125,
+   "wins": 70
+  },
+  {
+   "championId": 99,
+   "role": "UTILITY",
+   "opponentId": 117,
+   "games": 116,
+   "wins": 68
+  },
+  {
+   "championId": 99,
+   "role": "UTILITY",
+   "opponentId": 43,
+   "games": 108,
+   "wins": 45
+  },
+  {
+   "championId": 99,
+   "role": "UTILITY",
+   "opponentId": 53,
+   "games": 102,
+   "wins": 40
+  },
+  {
+   "championId": 99,
+   "role": "UTILITY",
+   "opponentId": 101,
+   "games": 51,
+   "wins": 30
+  },
+  {
+   "championId": 99,
+   "role": "UTILITY",
+   "opponentId": 235,
+   "games": 51,
+   "wins": 29
+  },
+  {
+   "championId": 99,
+   "role": "UTILITY",
+   "opponentId": 25,
+   "games": 51,
+   "wins": 32
+  },
+  {
+   "championId": 99,
+   "role": "UTILITY",
+   "opponentId": 16,
+   "games": 39,
+   "wins": 16
+  },
+  {
+   "championId": 101,
+   "role": "BOTTOM",
+   "opponentId": 202,
+   "games": 45,
+   "wins": 26
+  },
+  {
+   "championId": 101,
+   "role": "BOTTOM",
+   "opponentId": 145,
    "games": 32,
    "wins": 14
+  },
+  {
+   "championId": 101,
+   "role": "MIDDLE",
+   "opponentId": 112,
+   "games": 113,
+   "wins": 65
+  },
+  {
+   "championId": 101,
+   "role": "MIDDLE",
+   "opponentId": 4,
+   "games": 58,
+   "wins": 35
+  },
+  {
+   "championId": 101,
+   "role": "MIDDLE",
+   "opponentId": 84,
+   "games": 40,
+   "wins": 16
+  },
+  {
+   "championId": 101,
+   "role": "MIDDLE",
+   "opponentId": 7,
+   "games": 39,
+   "wins": 15
+  },
+  {
+   "championId": 101,
+   "role": "MIDDLE",
+   "opponentId": 3,
+   "games": 37,
+   "wins": 25
+  },
+  {
+   "championId": 101,
+   "role": "MIDDLE",
+   "opponentId": 805,
+   "games": 35,
+   "wins": 14
+  },
+  {
+   "championId": 101,
+   "role": "MIDDLE",
+   "opponentId": 55,
+   "games": 34,
+   "wins": 22
+  },
+  {
+   "championId": 101,
+   "role": "UTILITY",
+   "opponentId": 117,
+   "games": 71,
+   "wins": 29
+  },
+  {
+   "championId": 101,
+   "role": "UTILITY",
+   "opponentId": 43,
+   "games": 57,
+   "wins": 34
+  },
+  {
+   "championId": 101,
+   "role": "UTILITY",
+   "opponentId": 53,
+   "games": 52,
+   "wins": 29
+  },
+  {
+   "championId": 101,
+   "role": "UTILITY",
+   "opponentId": 99,
+   "games": 51,
+   "wins": 21
+  },
+  {
+   "championId": 101,
+   "role": "UTILITY",
+   "opponentId": 350,
+   "games": 33,
+   "wins": 12
+  },
+  {
+   "championId": 102,
+   "role": "JUNGLE",
+   "opponentId": 64,
+   "games": 60,
+   "wins": 31
+  },
+  {
+   "championId": 102,
+   "role": "JUNGLE",
+   "opponentId": 234,
+   "games": 39,
+   "wins": 20
+  },
+  {
+   "championId": 102,
+   "role": "JUNGLE",
+   "opponentId": 876,
+   "games": 36,
+   "wins": 16
+  },
+  {
+   "championId": 102,
+   "role": "JUNGLE",
+   "opponentId": 31,
+   "games": 33,
+   "wins": 21
+  },
+  {
+   "championId": 103,
+   "role": "MIDDLE",
+   "opponentId": 517,
+   "games": 186,
+   "wins": 109
+  },
+  {
+   "championId": 103,
+   "role": "MIDDLE",
+   "opponentId": 157,
+   "games": 116,
+   "wins": 58
+  },
+  {
+   "championId": 103,
+   "role": "MIDDLE",
+   "opponentId": 134,
+   "games": 112,
+   "wins": 52
+  },
+  {
+   "championId": 103,
+   "role": "MIDDLE",
+   "opponentId": 112,
+   "games": 108,
+   "wins": 59
+  },
+  {
+   "championId": 103,
+   "role": "MIDDLE",
+   "opponentId": 777,
+   "games": 107,
+   "wins": 64
+  },
+  {
+   "championId": 103,
+   "role": "MIDDLE",
+   "opponentId": 7,
+   "games": 90,
+   "wins": 56
+  },
+  {
+   "championId": 103,
+   "role": "MIDDLE",
+   "opponentId": 61,
+   "games": 85,
+   "wins": 52
+  },
+  {
+   "championId": 103,
+   "role": "MIDDLE",
+   "opponentId": 90,
+   "games": 76,
+   "wins": 48
+  },
+  {
+   "championId": 103,
+   "role": "MIDDLE",
+   "opponentId": 84,
+   "games": 73,
+   "wins": 30
+  },
+  {
+   "championId": 103,
+   "role": "MIDDLE",
+   "opponentId": 127,
+   "games": 70,
+   "wins": 40
+  },
+  {
+   "championId": 103,
+   "role": "MIDDLE",
+   "opponentId": 245,
+   "games": 60,
+   "wins": 33
+  },
+  {
+   "championId": 103,
+   "role": "MIDDLE",
+   "opponentId": 800,
+   "games": 51,
+   "wins": 22
+  },
+  {
+   "championId": 103,
+   "role": "MIDDLE",
+   "opponentId": 39,
+   "games": 51,
+   "wins": 32
+  },
+  {
+   "championId": 103,
+   "role": "MIDDLE",
+   "opponentId": 893,
+   "games": 46,
+   "wins": 28
+  },
+  {
+   "championId": 103,
+   "role": "MIDDLE",
+   "opponentId": 166,
+   "games": 45,
+   "wins": 22
+  },
+  {
+   "championId": 103,
+   "role": "MIDDLE",
+   "opponentId": 246,
+   "games": 42,
+   "wins": 15
+  },
+  {
+   "championId": 103,
+   "role": "MIDDLE",
+   "opponentId": 38,
+   "games": 41,
+   "wins": 22
+  },
+  {
+   "championId": 103,
+   "role": "MIDDLE",
+   "opponentId": 711,
+   "games": 39,
+   "wins": 20
+  },
+  {
+   "championId": 103,
+   "role": "MIDDLE",
+   "opponentId": 8,
+   "games": 38,
+   "wins": 23
+  },
+  {
+   "championId": 103,
+   "role": "MIDDLE",
+   "opponentId": 131,
+   "games": 38,
+   "wins": 25
+  },
+  {
+   "championId": 103,
+   "role": "MIDDLE",
+   "opponentId": 45,
+   "games": 38,
+   "wins": 21
+  },
+  {
+   "championId": 103,
+   "role": "MIDDLE",
+   "opponentId": 91,
+   "games": 37,
+   "wins": 22
+  },
+  {
+   "championId": 104,
+   "role": "JUNGLE",
+   "opponentId": 64,
+   "games": 358,
+   "wins": 188
+  },
+  {
+   "championId": 104,
+   "role": "JUNGLE",
+   "opponentId": 121,
+   "games": 157,
+   "wins": 62
+  },
+  {
+   "championId": 104,
+   "role": "JUNGLE",
+   "opponentId": 517,
+   "games": 135,
+   "wins": 62
+  },
+  {
+   "championId": 104,
+   "role": "JUNGLE",
+   "opponentId": 234,
+   "games": 130,
+   "wins": 67
+  },
+  {
+   "championId": 104,
+   "role": "JUNGLE",
+   "opponentId": 59,
+   "games": 119,
+   "wins": 67
+  },
+  {
+   "championId": 104,
+   "role": "JUNGLE",
+   "opponentId": 246,
+   "games": 112,
+   "wins": 63
+  },
+  {
+   "championId": 104,
+   "role": "JUNGLE",
+   "opponentId": 11,
+   "games": 101,
+   "wins": 49
+  },
+  {
+   "championId": 104,
+   "role": "JUNGLE",
+   "opponentId": 120,
+   "games": 83,
+   "wins": 31
+  },
+  {
+   "championId": 104,
+   "role": "JUNGLE",
+   "opponentId": 245,
+   "games": 49,
+   "wins": 26
+  },
+  {
+   "championId": 104,
+   "role": "JUNGLE",
+   "opponentId": 28,
+   "games": 36,
+   "wins": 12
+  },
+  {
+   "championId": 104,
+   "role": "JUNGLE",
+   "opponentId": 154,
+   "games": 36,
+   "wins": 17
+  },
+  {
+   "championId": 104,
+   "role": "JUNGLE",
+   "opponentId": 113,
+   "games": 35,
+   "wins": 12
+  },
+  {
+   "championId": 104,
+   "role": "JUNGLE",
+   "opponentId": 19,
+   "games": 31,
+   "wins": 13
+  },
+  {
+   "championId": 104,
+   "role": "JUNGLE",
+   "opponentId": 200,
+   "games": 30,
+   "wins": 16
+  },
+  {
+   "championId": 105,
+   "role": "MIDDLE",
+   "opponentId": 3,
+   "games": 49,
+   "wins": 18
+  },
+  {
+   "championId": 105,
+   "role": "MIDDLE",
+   "opponentId": 157,
+   "games": 49,
+   "wins": 18
+  },
+  {
+   "championId": 105,
+   "role": "MIDDLE",
+   "opponentId": 7,
+   "games": 48,
+   "wins": 30
+  },
+  {
+   "championId": 105,
+   "role": "MIDDLE",
+   "opponentId": 61,
+   "games": 33,
+   "wins": 21
+  },
+  {
+   "championId": 105,
+   "role": "MIDDLE",
+   "opponentId": 131,
+   "games": 30,
+   "wins": 11
+  },
+  {
+   "championId": 106,
+   "role": "TOP",
+   "opponentId": 122,
+   "games": 45,
+   "wins": 26
+  },
+  {
+   "championId": 106,
+   "role": "TOP",
+   "opponentId": 24,
+   "games": 44,
+   "wins": 18
+  },
+  {
+   "championId": 106,
+   "role": "TOP",
+   "opponentId": 266,
+   "games": 39,
+   "wins": 26
+  },
+  {
+   "championId": 106,
+   "role": "TOP",
+   "opponentId": 777,
+   "games": 33,
+   "wins": 15
+  },
+  {
+   "championId": 106,
+   "role": "TOP",
+   "opponentId": 82,
+   "games": 32,
+   "wins": 11
+  },
+  {
+   "championId": 106,
+   "role": "TOP",
+   "opponentId": 14,
+   "games": 30,
+   "wins": 18
+  },
+  {
+   "championId": 107,
+   "role": "JUNGLE",
+   "opponentId": 64,
+   "games": 72,
+   "wins": 36
+  },
+  {
+   "championId": 107,
+   "role": "JUNGLE",
+   "opponentId": 91,
+   "games": 45,
+   "wins": 18
+  },
+  {
+   "championId": 107,
+   "role": "JUNGLE",
+   "opponentId": 62,
+   "games": 40,
+   "wins": 17
+  },
+  {
+   "championId": 107,
+   "role": "JUNGLE",
+   "opponentId": 234,
+   "games": 35,
+   "wins": 22
+  },
+  {
+   "championId": 110,
+   "role": "BOTTOM",
+   "opponentId": 202,
+   "games": 154,
+   "wins": 80
+  },
+  {
+   "championId": 110,
+   "role": "BOTTOM",
+   "opponentId": 145,
+   "games": 124,
+   "wins": 61
+  },
+  {
+   "championId": 110,
+   "role": "BOTTOM",
+   "opponentId": 804,
+   "games": 60,
+   "wins": 25
+  },
+  {
+   "championId": 110,
+   "role": "BOTTOM",
+   "opponentId": 18,
+   "games": 51,
+   "wins": 24
+  },
+  {
+   "championId": 110,
+   "role": "BOTTOM",
+   "opponentId": 119,
+   "games": 42,
+   "wins": 24
+  },
+  {
+   "championId": 110,
+   "role": "BOTTOM",
+   "opponentId": 221,
+   "games": 35,
+   "wins": 14
+  },
+  {
+   "championId": 111,
+   "role": "UTILITY",
+   "opponentId": 117,
+   "games": 251,
+   "wins": 122
+  },
+  {
+   "championId": 111,
+   "role": "UTILITY",
+   "opponentId": 89,
+   "games": 204,
+   "wins": 102
+  },
+  {
+   "championId": 111,
+   "role": "UTILITY",
+   "opponentId": 43,
+   "games": 151,
+   "wins": 83
+  },
+  {
+   "championId": 111,
+   "role": "UTILITY",
+   "opponentId": 555,
+   "games": 127,
+   "wins": 66
+  },
+  {
+   "championId": 111,
+   "role": "UTILITY",
+   "opponentId": 99,
+   "games": 125,
+   "wins": 55
+  },
+  {
+   "championId": 111,
+   "role": "UTILITY",
+   "opponentId": 526,
+   "games": 115,
+   "wins": 44
+  },
+  {
+   "championId": 111,
+   "role": "UTILITY",
+   "opponentId": 432,
+   "games": 115,
+   "wins": 57
+  },
+  {
+   "championId": 111,
+   "role": "UTILITY",
+   "opponentId": 350,
+   "games": 112,
+   "wins": 58
+  },
+  {
+   "championId": 111,
+   "role": "UTILITY",
+   "opponentId": 267,
+   "games": 96,
+   "wins": 55
+  },
+  {
+   "championId": 111,
+   "role": "UTILITY",
+   "opponentId": 235,
+   "games": 94,
+   "wins": 55
+  },
+  {
+   "championId": 111,
+   "role": "UTILITY",
+   "opponentId": 78,
+   "games": 48,
+   "wins": 28
+  },
+  {
+   "championId": 111,
+   "role": "UTILITY",
+   "opponentId": 26,
+   "games": 46,
+   "wins": 28
+  },
+  {
+   "championId": 111,
+   "role": "UTILITY",
+   "opponentId": 37,
+   "games": 37,
+   "wins": 17
+  },
+  {
+   "championId": 111,
+   "role": "UTILITY",
+   "opponentId": 63,
+   "games": 35,
+   "wins": 19
+  },
+  {
+   "championId": 111,
+   "role": "UTILITY",
+   "opponentId": 57,
+   "games": 33,
+   "wins": 13
+  },
+  {
+   "championId": 112,
+   "role": "BOTTOM",
+   "opponentId": 145,
+   "games": 97,
+   "wins": 37
   },
   {
    "championId": 112,
    "role": "BOTTOM",
    "opponentId": 202,
-   "games": 32,
-   "wins": 10
+   "games": 93,
+   "wins": 38
+  },
+  {
+   "championId": 112,
+   "role": "BOTTOM",
+   "opponentId": 51,
+   "games": 56,
+   "wins": 34
+  },
+  {
+   "championId": 112,
+   "role": "BOTTOM",
+   "opponentId": 222,
+   "games": 44,
+   "wins": 20
+  },
+  {
+   "championId": 112,
+   "role": "BOTTOM",
+   "opponentId": 81,
+   "games": 43,
+   "wins": 25
+  },
+  {
+   "championId": 112,
+   "role": "BOTTOM",
+   "opponentId": 21,
+   "games": 31,
+   "wins": 21
   },
   {
    "championId": 112,
    "role": "MIDDLE",
    "opponentId": 777,
-   "games": 53,
-   "wins": 24
+   "games": 169,
+   "wins": 85
   },
   {
    "championId": 112,
    "role": "MIDDLE",
    "opponentId": 134,
-   "games": 40,
-   "wins": 23
-  },
-  {
-   "championId": 112,
-   "role": "MIDDLE",
-   "opponentId": 101,
-   "games": 34,
-   "wins": 13
+   "games": 163,
+   "wins": 81
   },
   {
    "championId": 112,
    "role": "MIDDLE",
    "opponentId": 4,
-   "games": 32,
-   "wins": 15
+   "games": 113,
+   "wins": 44
+  },
+  {
+   "championId": 112,
+   "role": "MIDDLE",
+   "opponentId": 101,
+   "games": 113,
+   "wins": 48
+  },
+  {
+   "championId": 112,
+   "role": "MIDDLE",
+   "opponentId": 84,
+   "games": 111,
+   "wins": 40
+  },
+  {
+   "championId": 112,
+   "role": "MIDDLE",
+   "opponentId": 517,
+   "games": 108,
+   "wins": 64
   },
   {
    "championId": 112,
    "role": "MIDDLE",
    "opponentId": 103,
-   "games": 32,
-   "wins": 16
+   "games": 108,
+   "wins": 49
   },
   {
    "championId": 112,
    "role": "MIDDLE",
    "opponentId": 238,
+   "games": 101,
+   "wins": 41
+  },
+  {
+   "championId": 112,
+   "role": "MIDDLE",
+   "opponentId": 99,
+   "games": 55,
+   "wins": 20
+  },
+  {
+   "championId": 112,
+   "role": "MIDDLE",
+   "opponentId": 13,
+   "games": 51,
+   "wins": 33
+  },
+  {
+   "championId": 112,
+   "role": "MIDDLE",
+   "opponentId": 45,
+   "games": 43,
+   "wins": 19
+  },
+  {
+   "championId": 112,
+   "role": "MIDDLE",
+   "opponentId": 163,
+   "games": 39,
+   "wins": 21
+  },
+  {
+   "championId": 112,
+   "role": "MIDDLE",
+   "opponentId": 91,
+   "games": 32,
+   "wins": 12
+  },
+  {
+   "championId": 112,
+   "role": "MIDDLE",
+   "opponentId": 268,
    "games": 31,
-   "wins": 15
+   "wins": 20
+  },
+  {
+   "championId": 113,
+   "role": "JUNGLE",
+   "opponentId": 64,
+   "games": 47,
+   "wins": 27
+  },
+  {
+   "championId": 113,
+   "role": "JUNGLE",
+   "opponentId": 104,
+   "games": 35,
+   "wins": 23
+  },
+  {
+   "championId": 113,
+   "role": "JUNGLE",
+   "opponentId": 234,
+   "games": 31,
+   "wins": 16
+  },
+  {
+   "championId": 113,
+   "role": "JUNGLE",
+   "opponentId": 517,
+   "games": 31,
+   "wins": 19
+  },
+  {
+   "championId": 114,
+   "role": "TOP",
+   "opponentId": 777,
+   "games": 87,
+   "wins": 39
+  },
+  {
+   "championId": 114,
+   "role": "TOP",
+   "opponentId": 24,
+   "games": 58,
+   "wins": 35
+  },
+  {
+   "championId": 114,
+   "role": "TOP",
+   "opponentId": 122,
+   "games": 46,
+   "wins": 21
+  },
+  {
+   "championId": 114,
+   "role": "TOP",
+   "opponentId": 80,
+   "games": 42,
+   "wins": 16
+  },
+  {
+   "championId": 114,
+   "role": "TOP",
+   "opponentId": 58,
+   "games": 38,
+   "wins": 21
+  },
+  {
+   "championId": 114,
+   "role": "TOP",
+   "opponentId": 39,
+   "games": 38,
+   "wins": 26
+  },
+  {
+   "championId": 114,
+   "role": "TOP",
+   "opponentId": 516,
+   "games": 31,
+   "wins": 17
+  },
+  {
+   "championId": 114,
+   "role": "TOP",
+   "opponentId": 164,
+   "games": 30,
+   "wins": 16
+  },
+  {
+   "championId": 115,
+   "role": "BOTTOM",
+   "opponentId": 202,
+   "games": 60,
+   "wins": 25
+  },
+  {
+   "championId": 115,
+   "role": "BOTTOM",
+   "opponentId": 145,
+   "games": 48,
+   "wins": 26
+  },
+  {
+   "championId": 115,
+   "role": "BOTTOM",
+   "opponentId": 51,
+   "games": 32,
+   "wins": 14
   },
   {
    "championId": 117,
    "role": "UTILITY",
-   "opponentId": 412,
-   "games": 105,
-   "wins": 46
+   "opponentId": 111,
+   "games": 251,
+   "wins": 129
   },
   {
    "championId": 117,
    "role": "UTILITY",
    "opponentId": 53,
-   "games": 54,
-   "wins": 20
+   "games": 214,
+   "wins": 109
   },
   {
    "championId": 117,
    "role": "UTILITY",
    "opponentId": 43,
-   "games": 52,
-   "wins": 28
+   "games": 210,
+   "wins": 108
   },
   {
    "championId": 117,
    "role": "UTILITY",
    "opponentId": 350,
-   "games": 49,
-   "wins": 24
+   "games": 167,
+   "wins": 92
   },
   {
    "championId": 117,
    "role": "UTILITY",
    "opponentId": 89,
-   "games": 40,
-   "wins": 24
+   "games": 157,
+   "wins": 80
   },
   {
    "championId": 117,
    "role": "UTILITY",
    "opponentId": 902,
-   "games": 34,
-   "wins": 15
+   "games": 151,
+   "wins": 69
+  },
+  {
+   "championId": 117,
+   "role": "UTILITY",
+   "opponentId": 267,
+   "games": 146,
+   "wins": 82
   },
   {
    "championId": 117,
    "role": "UTILITY",
    "opponentId": 99,
-   "games": 32,
-   "wins": 15
+   "games": 116,
+   "wins": 48
   },
   {
    "championId": 117,
    "role": "UTILITY",
-   "opponentId": 16,
-   "games": 32,
-   "wins": 20
+   "opponentId": 147,
+   "games": 111,
+   "wins": 55
   },
   {
    "championId": 117,
    "role": "UTILITY",
    "opponentId": 432,
-   "games": 31,
+   "games": 111,
+   "wins": 52
+  },
+  {
+   "championId": 117,
+   "role": "UTILITY",
+   "opponentId": 555,
+   "games": 110,
+   "wins": 52
+  },
+  {
+   "championId": 117,
+   "role": "UTILITY",
+   "opponentId": 12,
+   "games": 109,
+   "wins": 47
+  },
+  {
+   "championId": 117,
+   "role": "UTILITY",
+   "opponentId": 235,
+   "games": 104,
+   "wins": 45
+  },
+  {
+   "championId": 117,
+   "role": "UTILITY",
+   "opponentId": 526,
+   "games": 104,
+   "wins": 55
+  },
+  {
+   "championId": 117,
+   "role": "UTILITY",
+   "opponentId": 16,
+   "games": 100,
+   "wins": 58
+  },
+  {
+   "championId": 117,
+   "role": "UTILITY",
+   "opponentId": 201,
+   "games": 93,
+   "wins": 53
+  },
+  {
+   "championId": 117,
+   "role": "UTILITY",
+   "opponentId": 497,
+   "games": 83,
+   "wins": 34
+  },
+  {
+   "championId": 117,
+   "role": "UTILITY",
+   "opponentId": 101,
+   "games": 71,
+   "wins": 42
+  },
+  {
+   "championId": 117,
+   "role": "UTILITY",
+   "opponentId": 26,
+   "games": 59,
+   "wins": 33
+  },
+  {
+   "championId": 117,
+   "role": "UTILITY",
+   "opponentId": 37,
+   "games": 55,
    "wins": 18
+  },
+  {
+   "championId": 117,
+   "role": "UTILITY",
+   "opponentId": 25,
+   "games": 55,
+   "wins": 31
+  },
+  {
+   "championId": 117,
+   "role": "UTILITY",
+   "opponentId": 143,
+   "games": 52,
+   "wins": 31
+  },
+  {
+   "championId": 117,
+   "role": "UTILITY",
+   "opponentId": 888,
+   "games": 44,
+   "wins": 27
+  },
+  {
+   "championId": 117,
+   "role": "UTILITY",
+   "opponentId": 518,
+   "games": 36,
+   "wins": 22
+  },
+  {
+   "championId": 117,
+   "role": "UTILITY",
+   "opponentId": 164,
+   "games": 30,
+   "wins": 14
   },
   {
    "championId": 119,
    "role": "BOTTOM",
    "opponentId": 145,
-   "games": 30,
+   "games": 106,
+   "wins": 49
+  },
+  {
+   "championId": 119,
+   "role": "BOTTOM",
+   "opponentId": 202,
+   "games": 103,
+   "wins": 55
+  },
+  {
+   "championId": 119,
+   "role": "BOTTOM",
+   "opponentId": 222,
+   "games": 102,
+   "wins": 56
+  },
+  {
+   "championId": 119,
+   "role": "BOTTOM",
+   "opponentId": 21,
+   "games": 66,
+   "wins": 29
+  },
+  {
+   "championId": 119,
+   "role": "BOTTOM",
+   "opponentId": 236,
+   "games": 60,
+   "wins": 37
+  },
+  {
+   "championId": 119,
+   "role": "BOTTOM",
+   "opponentId": 110,
+   "games": 42,
+   "wins": 18
+  },
+  {
+   "championId": 119,
+   "role": "BOTTOM",
+   "opponentId": 221,
+   "games": 39,
+   "wins": 16
+  },
+  {
+   "championId": 119,
+   "role": "BOTTOM",
+   "opponentId": 29,
+   "games": 32,
+   "wins": 18
+  },
+  {
+   "championId": 120,
+   "role": "JUNGLE",
+   "opponentId": 64,
+   "games": 142,
+   "wins": 69
+  },
+  {
+   "championId": 120,
+   "role": "JUNGLE",
+   "opponentId": 104,
+   "games": 83,
+   "wins": 52
+  },
+  {
+   "championId": 120,
+   "role": "JUNGLE",
+   "opponentId": 246,
+   "games": 77,
+   "wins": 50
+  },
+  {
+   "championId": 120,
+   "role": "JUNGLE",
+   "opponentId": 62,
+   "games": 59,
+   "wins": 24
+  },
+  {
+   "championId": 120,
+   "role": "JUNGLE",
+   "opponentId": 254,
+   "games": 46,
+   "wins": 27
+  },
+  {
+   "championId": 120,
+   "role": "JUNGLE",
+   "opponentId": 60,
+   "games": 45,
+   "wins": 24
+  },
+  {
+   "championId": 120,
+   "role": "JUNGLE",
+   "opponentId": 5,
+   "games": 41,
    "wins": 17
   },
   {
    "championId": 120,
    "role": "JUNGLE",
-   "opponentId": 64,
-   "games": 52,
-   "wins": 28
+   "opponentId": 950,
+   "games": 34,
+   "wins": 22
   },
   {
    "championId": 120,
    "role": "JUNGLE",
-   "opponentId": 104,
-   "games": 33,
-   "wins": 22
+   "opponentId": 11,
+   "games": 32,
+   "wins": 10
+  },
+  {
+   "championId": 120,
+   "role": "JUNGLE",
+   "opponentId": 203,
+   "games": 32,
+   "wins": 18
   },
   {
    "championId": 121,
    "role": "JUNGLE",
    "opponentId": 64,
-   "games": 52,
-   "wins": 24
+   "games": 187,
+   "wins": 103
   },
   {
    "championId": 121,
    "role": "JUNGLE",
    "opponentId": 104,
+   "games": 157,
+   "wins": 95
+  },
+  {
+   "championId": 121,
+   "role": "JUNGLE",
+   "opponentId": 31,
+   "games": 49,
+   "wins": 18
+  },
+  {
+   "championId": 121,
+   "role": "JUNGLE",
+   "opponentId": 60,
    "games": 44,
    "wins": 26
   },
   {
+   "championId": 121,
+   "role": "JUNGLE",
+   "opponentId": 203,
+   "games": 38,
+   "wins": 14
+  },
+  {
+   "championId": 121,
+   "role": "JUNGLE",
+   "opponentId": 143,
+   "games": 32,
+   "wins": 12
+  },
+  {
+   "championId": 121,
+   "role": "JUNGLE",
+   "opponentId": 28,
+   "games": 30,
+   "wins": 15
+  },
+  {
+   "championId": 121,
+   "role": "JUNGLE",
+   "opponentId": 35,
+   "games": 30,
+   "wins": 18
+  },
+  {
+   "championId": 121,
+   "role": "JUNGLE",
+   "opponentId": 200,
+   "games": 30,
+   "wins": 15
+  },
+  {
    "championId": 122,
    "role": "TOP",
-   "opponentId": 777,
-   "games": 34,
-   "wins": 22
+   "opponentId": 86,
+   "games": 74,
+   "wins": 42
+  },
+  {
+   "championId": 122,
+   "role": "TOP",
+   "opponentId": 24,
+   "games": 67,
+   "wins": 30
+  },
+  {
+   "championId": 122,
+   "role": "TOP",
+   "opponentId": 114,
+   "games": 46,
+   "wins": 25
+  },
+  {
+   "championId": 122,
+   "role": "TOP",
+   "opponentId": 17,
+   "games": 46,
+   "wins": 23
+  },
+  {
+   "championId": 122,
+   "role": "TOP",
+   "opponentId": 14,
+   "games": 46,
+   "wins": 29
+  },
+  {
+   "championId": 122,
+   "role": "TOP",
+   "opponentId": 106,
+   "games": 45,
+   "wins": 19
+  },
+  {
+   "championId": 122,
+   "role": "TOP",
+   "opponentId": 799,
+   "games": 45,
+   "wins": 27
+  },
+  {
+   "championId": 122,
+   "role": "TOP",
+   "opponentId": 36,
+   "games": 42,
+   "wins": 23
+  },
+  {
+   "championId": 122,
+   "role": "TOP",
+   "opponentId": 75,
+   "games": 32,
+   "wins": 21
+  },
+  {
+   "championId": 122,
+   "role": "TOP",
+   "opponentId": 150,
+   "games": 32,
+   "wins": 19
+  },
+  {
+   "championId": 122,
+   "role": "TOP",
+   "opponentId": 83,
+   "games": 31,
+   "wins": 13
+  },
+  {
+   "championId": 122,
+   "role": "TOP",
+   "opponentId": 516,
+   "games": 30,
+   "wins": 19
   },
   {
    "championId": 126,
    "role": "JUNGLE",
    "opponentId": 64,
+   "games": 119,
+   "wins": 55
+  },
+  {
+   "championId": 126,
+   "role": "JUNGLE",
+   "opponentId": 59,
+   "games": 51,
+   "wins": 18
+  },
+  {
+   "championId": 126,
+   "role": "JUNGLE",
+   "opponentId": 517,
+   "games": 40,
+   "wins": 26
+  },
+  {
+   "championId": 126,
+   "role": "JUNGLE",
+   "opponentId": 234,
+   "games": 39,
+   "wins": 17
+  },
+  {
+   "championId": 126,
+   "role": "JUNGLE",
+   "opponentId": 246,
    "games": 31,
-   "wins": 16
+   "wins": 12
   },
   {
    "championId": 126,
    "role": "TOP",
    "opponentId": 54,
-   "games": 53,
-   "wins": 24
+   "games": 194,
+   "wins": 86
   },
   {
    "championId": 126,
    "role": "TOP",
-   "opponentId": 266,
-   "games": 38,
-   "wins": 16
+   "opponentId": 777,
+   "games": 127,
+   "wins": 66
   },
   {
    "championId": 126,
    "role": "TOP",
    "opponentId": 39,
-   "games": 34,
+   "games": 118,
+   "wins": 61
+  },
+  {
+   "championId": 126,
+   "role": "TOP",
+   "opponentId": 266,
+   "games": 111,
+   "wins": 49
+  },
+  {
+   "championId": 126,
+   "role": "TOP",
+   "opponentId": 157,
+   "games": 62,
+   "wins": 34
+  },
+  {
+   "championId": 126,
+   "role": "TOP",
+   "opponentId": 164,
+   "games": 56,
+   "wins": 30
+  },
+  {
+   "championId": 126,
+   "role": "TOP",
+   "opponentId": 84,
+   "games": 47,
+   "wins": 25
+  },
+  {
+   "championId": 126,
+   "role": "TOP",
+   "opponentId": 79,
+   "games": 44,
+   "wins": 23
+  },
+  {
+   "championId": 126,
+   "role": "TOP",
+   "opponentId": 23,
+   "games": 43,
    "wins": 21
   },
   {
    "championId": 126,
    "role": "TOP",
-   "opponentId": 777,
+   "opponentId": 420,
+   "games": 33,
+   "wins": 16
+  },
+  {
+   "championId": 126,
+   "role": "TOP",
+   "opponentId": 82,
+   "games": 31,
+   "wins": 7
+  },
+  {
+   "championId": 126,
+   "role": "TOP",
+   "opponentId": 85,
+   "games": 30,
+   "wins": 10
+  },
+  {
+   "championId": 126,
+   "role": "TOP",
+   "opponentId": 17,
+   "games": 30,
+   "wins": 11
+  },
+  {
+   "championId": 127,
+   "role": "MIDDLE",
+   "opponentId": 157,
+   "games": 116,
+   "wins": 70
+  },
+  {
+   "championId": 127,
+   "role": "MIDDLE",
+   "opponentId": 238,
+   "games": 102,
+   "wins": 60
+  },
+  {
+   "championId": 127,
+   "role": "MIDDLE",
+   "opponentId": 103,
+   "games": 70,
+   "wins": 30
+  },
+  {
+   "championId": 127,
+   "role": "MIDDLE",
+   "opponentId": 245,
+   "games": 49,
+   "wins": 20
+  },
+  {
+   "championId": 127,
+   "role": "MIDDLE",
+   "opponentId": 3,
+   "games": 44,
+   "wins": 25
+  },
+  {
+   "championId": 127,
+   "role": "MIDDLE",
+   "opponentId": 910,
+   "games": 37,
+   "wins": 23
+  },
+  {
+   "championId": 127,
+   "role": "MIDDLE",
+   "opponentId": 91,
    "games": 32,
    "wins": 20
+  },
+  {
+   "championId": 127,
+   "role": "MIDDLE",
+   "opponentId": 893,
+   "games": 31,
+   "wins": 12
+  },
+  {
+   "championId": 131,
+   "role": "JUNGLE",
+   "opponentId": 234,
+   "games": 36,
+   "wins": 12
+  },
+  {
+   "championId": 131,
+   "role": "JUNGLE",
+   "opponentId": 517,
+   "games": 34,
+   "wins": 13
+  },
+  {
+   "championId": 131,
+   "role": "JUNGLE",
+   "opponentId": 246,
+   "games": 33,
+   "wins": 15
+  },
+  {
+   "championId": 131,
+   "role": "MIDDLE",
+   "opponentId": 777,
+   "games": 58,
+   "wins": 21
+  },
+  {
+   "championId": 131,
+   "role": "MIDDLE",
+   "opponentId": 103,
+   "games": 38,
+   "wins": 13
+  },
+  {
+   "championId": 131,
+   "role": "MIDDLE",
+   "opponentId": 157,
+   "games": 37,
+   "wins": 13
+  },
+  {
+   "championId": 131,
+   "role": "MIDDLE",
+   "opponentId": 7,
+   "games": 36,
+   "wins": 21
+  },
+  {
+   "championId": 131,
+   "role": "MIDDLE",
+   "opponentId": 105,
+   "games": 30,
+   "wins": 19
   },
   {
    "championId": 134,
    "role": "MIDDLE",
    "opponentId": 112,
-   "games": 40,
+   "games": 163,
+   "wins": 82
+  },
+  {
+   "championId": 134,
+   "role": "MIDDLE",
+   "opponentId": 103,
+   "games": 112,
+   "wins": 60
+  },
+  {
+   "championId": 134,
+   "role": "MIDDLE",
+   "opponentId": 61,
+   "games": 85,
+   "wins": 53
+  },
+  {
+   "championId": 134,
+   "role": "MIDDLE",
+   "opponentId": 805,
+   "games": 70,
+   "wins": 24
+  },
+  {
+   "championId": 134,
+   "role": "MIDDLE",
+   "opponentId": 245,
+   "games": 66,
+   "wins": 36
+  },
+  {
+   "championId": 134,
+   "role": "MIDDLE",
+   "opponentId": 3,
+   "games": 60,
+   "wins": 35
+  },
+  {
+   "championId": 134,
+   "role": "MIDDLE",
+   "opponentId": 711,
+   "games": 47,
    "wins": 17
   },
   {
    "championId": 134,
    "role": "MIDDLE",
-   "opponentId": 777,
-   "games": 31,
+   "opponentId": 142,
+   "games": 44,
+   "wins": 14
+  },
+  {
+   "championId": 134,
+   "role": "MIDDLE",
+   "opponentId": 99,
+   "games": 39,
+   "wins": 21
+  },
+  {
+   "championId": 134,
+   "role": "MIDDLE",
+   "opponentId": 893,
+   "games": 35,
+   "wins": 21
+  },
+  {
+   "championId": 134,
+   "role": "MIDDLE",
+   "opponentId": 34,
+   "games": 33,
+   "wins": 19
+  },
+  {
+   "championId": 134,
+   "role": "MIDDLE",
+   "opponentId": 268,
+   "games": 33,
+   "wins": 21
+  },
+  {
+   "championId": 134,
+   "role": "MIDDLE",
+   "opponentId": 91,
+   "games": 32,
+   "wins": 19
+  },
+  {
+   "championId": 134,
+   "role": "MIDDLE",
+   "opponentId": 166,
+   "games": 32,
    "wins": 17
+  },
+  {
+   "championId": 134,
+   "role": "MIDDLE",
+   "opponentId": 45,
+   "games": 31,
+   "wins": 19
   },
   {
    "championId": 141,
    "role": "JUNGLE",
    "opponentId": 64,
-   "games": 42,
-   "wins": 26
+   "games": 141,
+   "wins": 77
+  },
+  {
+   "championId": 141,
+   "role": "JUNGLE",
+   "opponentId": 91,
+   "games": 58,
+   "wins": 36
+  },
+  {
+   "championId": 141,
+   "role": "JUNGLE",
+   "opponentId": 5,
+   "games": 45,
+   "wins": 15
+  },
+  {
+   "championId": 141,
+   "role": "JUNGLE",
+   "opponentId": 56,
+   "games": 40,
+   "wins": 24
+  },
+  {
+   "championId": 141,
+   "role": "JUNGLE",
+   "opponentId": 233,
+   "games": 35,
+   "wins": 10
+  },
+  {
+   "championId": 141,
+   "role": "JUNGLE",
+   "opponentId": 950,
+   "games": 33,
+   "wins": 21
+  },
+  {
+   "championId": 141,
+   "role": "JUNGLE",
+   "opponentId": 238,
+   "games": 32,
+   "wins": 10
+  },
+  {
+   "championId": 142,
+   "role": "MIDDLE",
+   "opponentId": 4,
+   "games": 47,
+   "wins": 20
+  },
+  {
+   "championId": 142,
+   "role": "MIDDLE",
+   "opponentId": 157,
+   "games": 44,
+   "wins": 18
+  },
+  {
+   "championId": 142,
+   "role": "MIDDLE",
+   "opponentId": 134,
+   "games": 44,
+   "wins": 30
+  },
+  {
+   "championId": 142,
+   "role": "MIDDLE",
+   "opponentId": 777,
+   "games": 34,
+   "wins": 15
+  },
+  {
+   "championId": 142,
+   "role": "MIDDLE",
+   "opponentId": 800,
+   "games": 33,
+   "wins": 19
+  },
+  {
+   "championId": 142,
+   "role": "UTILITY",
+   "opponentId": 412,
+   "games": 31,
+   "wins": 16
+  },
+  {
+   "championId": 143,
+   "role": "JUNGLE",
+   "opponentId": 91,
+   "games": 32,
+   "wins": 13
+  },
+  {
+   "championId": 143,
+   "role": "JUNGLE",
+   "opponentId": 121,
+   "games": 32,
+   "wins": 20
+  },
+  {
+   "championId": 143,
+   "role": "JUNGLE",
+   "opponentId": 246,
+   "games": 31,
+   "wins": 15
+  },
+  {
+   "championId": 143,
+   "role": "JUNGLE",
+   "opponentId": 876,
+   "games": 30,
+   "wins": 13
+  },
+  {
+   "championId": 143,
+   "role": "UTILITY",
+   "opponentId": 412,
+   "games": 65,
+   "wins": 30
+  },
+  {
+   "championId": 143,
+   "role": "UTILITY",
+   "opponentId": 117,
+   "games": 52,
+   "wins": 21
+  },
+  {
+   "championId": 143,
+   "role": "UTILITY",
+   "opponentId": 89,
+   "games": 35,
+   "wins": 18
   },
   {
    "championId": 145,
    "role": "BOTTOM",
    "opponentId": 81,
-   "games": 181,
-   "wins": 107
-  },
-  {
-   "championId": 145,
-   "role": "BOTTOM",
-   "opponentId": 498,
-   "games": 149,
-   "wins": 77
+   "games": 703,
+   "wins": 392
   },
   {
    "championId": 145,
    "role": "BOTTOM",
    "opponentId": 222,
-   "games": 128,
-   "wins": 60
+   "games": 510,
+   "wins": 229
   },
   {
    "championId": 145,
    "role": "BOTTOM",
-   "opponentId": 51,
-   "games": 115,
-   "wins": 53
+   "opponentId": 498,
+   "games": 497,
+   "wins": 242
   },
   {
    "championId": 145,
    "role": "BOTTOM",
    "opponentId": 804,
-   "games": 114,
-   "wins": 55
-  },
-  {
-   "championId": 145,
-   "role": "BOTTOM",
-   "opponentId": 236,
-   "games": 111,
-   "wins": 58
-  },
-  {
-   "championId": 145,
-   "role": "BOTTOM",
-   "opponentId": 523,
-   "games": 109,
-   "wins": 56
-  },
-  {
-   "championId": 145,
-   "role": "BOTTOM",
-   "opponentId": 18,
-   "games": 103,
-   "wins": 49
+   "games": 411,
+   "wins": 193
   },
   {
    "championId": 145,
    "role": "BOTTOM",
    "opponentId": 221,
-   "games": 60,
-   "wins": 30
+   "games": 219,
+   "wins": 110
   },
   {
    "championId": 145,
    "role": "BOTTOM",
    "opponentId": 22,
-   "games": 51,
-   "wins": 25
-  },
-  {
-   "championId": 145,
-   "role": "BOTTOM",
-   "opponentId": 15,
-   "games": 45,
-   "wins": 16
-  },
-  {
-   "championId": 145,
-   "role": "BOTTOM",
-   "opponentId": 429,
-   "games": 34,
-   "wins": 16
-  },
-  {
-   "championId": 145,
-   "role": "BOTTOM",
-   "opponentId": 901,
-   "games": 33,
-   "wins": 17
-  },
-  {
-   "championId": 145,
-   "role": "BOTTOM",
-   "opponentId": 360,
-   "games": 33,
-   "wins": 20
+   "games": 179,
+   "wins": 83
   },
   {
    "championId": 145,
    "role": "BOTTOM",
    "opponentId": 29,
-   "games": 31,
-   "wins": 19
+   "games": 157,
+   "wins": 83
+  },
+  {
+   "championId": 145,
+   "role": "BOTTOM",
+   "opponentId": 15,
+   "games": 154,
+   "wins": 72
+  },
+  {
+   "championId": 145,
+   "role": "BOTTOM",
+   "opponentId": 429,
+   "games": 136,
+   "wins": 70
+  },
+  {
+   "championId": 145,
+   "role": "BOTTOM",
+   "opponentId": 901,
+   "games": 133,
+   "wins": 69
+  },
+  {
+   "championId": 145,
+   "role": "BOTTOM",
+   "opponentId": 110,
+   "games": 124,
+   "wins": 63
+  },
+  {
+   "championId": 145,
+   "role": "BOTTOM",
+   "opponentId": 360,
+   "games": 115,
+   "wins": 59
   },
   {
    "championId": 145,
    "role": "BOTTOM",
    "opponentId": 119,
-   "games": 30,
-   "wins": 13
+   "games": 106,
+   "wins": 57
   },
   {
    "championId": 145,
    "role": "BOTTOM",
-   "opponentId": 42,
+   "opponentId": 112,
+   "games": 97,
+   "wins": 60
+  },
+  {
+   "championId": 145,
+   "role": "BOTTOM",
+   "opponentId": 67,
+   "games": 95,
+   "wins": 49
+  },
+  {
+   "championId": 145,
+   "role": "BOTTOM",
+   "opponentId": 157,
+   "games": 74,
+   "wins": 38
+  },
+  {
+   "championId": 145,
+   "role": "BOTTOM",
+   "opponentId": 96,
+   "games": 64,
+   "wins": 28
+  },
+  {
+   "championId": 145,
+   "role": "BOTTOM",
+   "opponentId": 115,
+   "games": 48,
+   "wins": 22
+  },
+  {
+   "championId": 145,
+   "role": "BOTTOM",
+   "opponentId": 895,
+   "games": 44,
+   "wins": 16
+  },
+  {
+   "championId": 145,
+   "role": "BOTTOM",
+   "opponentId": 50,
+   "games": 35,
+   "wins": 19
+  },
+  {
+   "championId": 145,
+   "role": "BOTTOM",
+   "opponentId": 101,
+   "games": 32,
+   "wins": 18
+  },
+  {
+   "championId": 145,
+   "role": "BOTTOM",
+   "opponentId": 910,
+   "games": 32,
+   "wins": 18
+  },
+  {
+   "championId": 147,
+   "role": "UTILITY",
+   "opponentId": 412,
+   "games": 124,
+   "wins": 64
+  },
+  {
+   "championId": 147,
+   "role": "UTILITY",
+   "opponentId": 117,
+   "games": 111,
+   "wins": 56
+  },
+  {
+   "championId": 147,
+   "role": "UTILITY",
+   "opponentId": 43,
+   "games": 78,
+   "wins": 47
+  },
+  {
+   "championId": 147,
+   "role": "UTILITY",
+   "opponentId": 267,
+   "games": 75,
+   "wins": 32
+  },
+  {
+   "championId": 147,
+   "role": "UTILITY",
+   "opponentId": 53,
+   "games": 73,
+   "wins": 32
+  },
+  {
+   "championId": 147,
+   "role": "UTILITY",
+   "opponentId": 26,
+   "games": 35,
+   "wins": 15
+  },
+  {
+   "championId": 147,
+   "role": "UTILITY",
+   "opponentId": 161,
+   "games": 34,
+   "wins": 18
+  },
+  {
+   "championId": 150,
+   "role": "TOP",
+   "opponentId": 54,
+   "games": 45,
+   "wins": 16
+  },
+  {
+   "championId": 150,
+   "role": "TOP",
+   "opponentId": 122,
+   "games": 32,
+   "wins": 13
+  },
+  {
+   "championId": 150,
+   "role": "TOP",
+   "opponentId": 58,
+   "games": 31,
+   "wins": 12
+  },
+  {
+   "championId": 154,
+   "role": "JUNGLE",
+   "opponentId": 64,
+   "games": 74,
+   "wins": 47
+  },
+  {
+   "championId": 154,
+   "role": "JUNGLE",
+   "opponentId": 234,
+   "games": 41,
+   "wins": 16
+  },
+  {
+   "championId": 154,
+   "role": "JUNGLE",
+   "opponentId": 104,
+   "games": 36,
+   "wins": 19
+  },
+  {
+   "championId": 154,
+   "role": "JUNGLE",
+   "opponentId": 59,
+   "games": 31,
+   "wins": 13
+  },
+  {
+   "championId": 154,
+   "role": "JUNGLE",
+   "opponentId": 517,
    "games": 30,
-   "wins": 17
+   "wins": 18
+  },
+  {
+   "championId": 157,
+   "role": "BOTTOM",
+   "opponentId": 145,
+   "games": 74,
+   "wins": 36
+  },
+  {
+   "championId": 157,
+   "role": "BOTTOM",
+   "opponentId": 202,
+   "games": 73,
+   "wins": 35
+  },
+  {
+   "championId": 157,
+   "role": "BOTTOM",
+   "opponentId": 222,
+   "games": 40,
+   "wins": 19
+  },
+  {
+   "championId": 157,
+   "role": "BOTTOM",
+   "opponentId": 51,
+   "games": 33,
+   "wins": 20
   },
   {
    "championId": 157,
    "role": "MIDDLE",
    "opponentId": 777,
-   "games": 38,
-   "wins": 12
+   "games": 182,
+   "wins": 78
   },
   {
    "championId": 157,
    "role": "MIDDLE",
    "opponentId": 238,
-   "games": 30,
-   "wins": 19
+   "games": 120,
+   "wins": 65
+  },
+  {
+   "championId": 157,
+   "role": "MIDDLE",
+   "opponentId": 127,
+   "games": 116,
+   "wins": 46
+  },
+  {
+   "championId": 157,
+   "role": "MIDDLE",
+   "opponentId": 103,
+   "games": 116,
+   "wins": 58
+  },
+  {
+   "championId": 157,
+   "role": "MIDDLE",
+   "opponentId": 711,
+   "games": 61,
+   "wins": 21
+  },
+  {
+   "championId": 157,
+   "role": "MIDDLE",
+   "opponentId": 163,
+   "games": 49,
+   "wins": 18
+  },
+  {
+   "championId": 157,
+   "role": "MIDDLE",
+   "opponentId": 105,
+   "games": 49,
+   "wins": 31
+  },
+  {
+   "championId": 157,
+   "role": "MIDDLE",
+   "opponentId": 142,
+   "games": 44,
+   "wins": 26
+  },
+  {
+   "championId": 157,
+   "role": "MIDDLE",
+   "opponentId": 910,
+   "games": 41,
+   "wins": 24
+  },
+  {
+   "championId": 157,
+   "role": "MIDDLE",
+   "opponentId": 80,
+   "games": 37,
+   "wins": 23
+  },
+  {
+   "championId": 157,
+   "role": "MIDDLE",
+   "opponentId": 131,
+   "games": 37,
+   "wins": 24
+  },
+  {
+   "championId": 157,
+   "role": "MIDDLE",
+   "opponentId": 13,
+   "games": 35,
+   "wins": 21
+  },
+  {
+   "championId": 157,
+   "role": "TOP",
+   "opponentId": 777,
+   "games": 82,
+   "wins": 50
+  },
+  {
+   "championId": 157,
+   "role": "TOP",
+   "opponentId": 58,
+   "games": 64,
+   "wins": 24
+  },
+  {
+   "championId": 157,
+   "role": "TOP",
+   "opponentId": 126,
+   "games": 62,
+   "wins": 28
+  },
+  {
+   "championId": 157,
+   "role": "TOP",
+   "opponentId": 80,
+   "games": 31,
+   "wins": 7
+  },
+  {
+   "championId": 161,
+   "role": "BOTTOM",
+   "opponentId": 202,
+   "games": 32,
+   "wins": 18
+  },
+  {
+   "championId": 161,
+   "role": "UTILITY",
+   "opponentId": 412,
+   "games": 92,
+   "wins": 38
+  },
+  {
+   "championId": 161,
+   "role": "UTILITY",
+   "opponentId": 89,
+   "games": 43,
+   "wins": 24
+  },
+  {
+   "championId": 161,
+   "role": "UTILITY",
+   "opponentId": 267,
+   "games": 36,
+   "wins": 16
+  },
+  {
+   "championId": 161,
+   "role": "UTILITY",
+   "opponentId": 147,
+   "games": 34,
+   "wins": 16
   },
   {
    "championId": 163,
    "role": "JUNGLE",
    "opponentId": 64,
-   "games": 30,
+   "games": 93,
+   "wins": 53
+  },
+  {
+   "championId": 163,
+   "role": "JUNGLE",
+   "opponentId": 246,
+   "games": 39,
+   "wins": 25
+  },
+  {
+   "championId": 163,
+   "role": "JUNGLE",
+   "opponentId": 91,
+   "games": 33,
+   "wins": 16
+  },
+  {
+   "championId": 163,
+   "role": "JUNGLE",
+   "opponentId": 234,
+   "games": 31,
+   "wins": 15
+  },
+  {
+   "championId": 163,
+   "role": "MIDDLE",
+   "opponentId": 157,
+   "games": 49,
+   "wins": 31
+  },
+  {
+   "championId": 163,
+   "role": "MIDDLE",
+   "opponentId": 4,
+   "games": 39,
+   "wins": 12
+  },
+  {
+   "championId": 163,
+   "role": "MIDDLE",
+   "opponentId": 112,
+   "games": 39,
    "wins": 18
   },
   {
-   "championId": 201,
-   "role": "UTILITY",
-   "opponentId": 111,
-   "games": 47,
-   "wins": 20
+   "championId": 163,
+   "role": "MIDDLE",
+   "opponentId": 517,
+   "games": 34,
+   "wins": 16
   },
   {
-   "championId": 201,
+   "championId": 164,
+   "role": "TOP",
+   "opponentId": 126,
+   "games": 56,
+   "wins": 26
+  },
+  {
+   "championId": 164,
+   "role": "TOP",
+   "opponentId": 86,
+   "games": 46,
+   "wins": 19
+  },
+  {
+   "championId": 164,
+   "role": "TOP",
+   "opponentId": 799,
+   "games": 39,
+   "wins": 24
+  },
+  {
+   "championId": 164,
+   "role": "TOP",
+   "opponentId": 41,
+   "games": 38,
+   "wins": 23
+  },
+  {
+   "championId": 164,
+   "role": "TOP",
+   "opponentId": 2,
+   "games": 36,
+   "wins": 21
+  },
+  {
+   "championId": 164,
+   "role": "TOP",
+   "opponentId": 114,
+   "games": 30,
+   "wins": 14
+  },
+  {
+   "championId": 164,
    "role": "UTILITY",
-   "opponentId": 53,
-   "games": 33,
+   "opponentId": 412,
+   "games": 38,
+   "wins": 18
+  },
+  {
+   "championId": 164,
+   "role": "UTILITY",
+   "opponentId": 117,
+   "games": 30,
+   "wins": 16
+  },
+  {
+   "championId": 166,
+   "role": "MIDDLE",
+   "opponentId": 103,
+   "games": 45,
+   "wins": 23
+  },
+  {
+   "championId": 166,
+   "role": "MIDDLE",
+   "opponentId": 134,
+   "games": 32,
+   "wins": 15
+  },
+  {
+   "championId": 166,
+   "role": "MIDDLE",
+   "opponentId": 777,
+   "games": 30,
+   "wins": 14
+  },
+  {
+   "championId": 200,
+   "role": "JUNGLE",
+   "opponentId": 64,
+   "games": 43,
+   "wins": 31
+  },
+  {
+   "championId": 200,
+   "role": "JUNGLE",
+   "opponentId": 104,
+   "games": 30,
+   "wins": 14
+  },
+  {
+   "championId": 200,
+   "role": "JUNGLE",
+   "opponentId": 121,
+   "games": 30,
    "wins": 15
   },
   {
    "championId": 201,
    "role": "UTILITY",
+   "opponentId": 412,
+   "games": 206,
+   "wins": 103
+  },
+  {
+   "championId": 201,
+   "role": "UTILITY",
    "opponentId": 89,
-   "games": 30,
-   "wins": 13
+   "games": 120,
+   "wins": 61
+  },
+  {
+   "championId": 201,
+   "role": "UTILITY",
+   "opponentId": 53,
+   "games": 115,
+   "wins": 59
+  },
+  {
+   "championId": 201,
+   "role": "UTILITY",
+   "opponentId": 117,
+   "games": 93,
+   "wins": 40
+  },
+  {
+   "championId": 201,
+   "role": "UTILITY",
+   "opponentId": 267,
+   "games": 63,
+   "wins": 27
+  },
+  {
+   "championId": 201,
+   "role": "UTILITY",
+   "opponentId": 555,
+   "games": 42,
+   "wins": 16
+  },
+  {
+   "championId": 201,
+   "role": "UTILITY",
+   "opponentId": 350,
+   "games": 35,
+   "wins": 22
   },
   {
    "championId": 202,
    "role": "BOTTOM",
    "opponentId": 81,
-   "games": 154,
-   "wins": 81
-  },
-  {
-   "championId": 202,
-   "role": "BOTTOM",
-   "opponentId": 51,
-   "games": 150,
-   "wins": 83
-  },
-  {
-   "championId": 202,
-   "role": "BOTTOM",
-   "opponentId": 222,
-   "games": 127,
-   "wins": 62
-  },
-  {
-   "championId": 202,
-   "role": "BOTTOM",
-   "opponentId": 523,
-   "games": 102,
-   "wins": 57
-  },
-  {
-   "championId": 202,
-   "role": "BOTTOM",
-   "opponentId": 18,
-   "games": 93,
-   "wins": 53
+   "games": 522,
+   "wins": 286
   },
   {
    "championId": 202,
    "role": "BOTTOM",
    "opponentId": 21,
-   "games": 93,
-   "wins": 51
+   "games": 397,
+   "wins": 209
+  },
+  {
+   "championId": 202,
+   "role": "BOTTOM",
+   "opponentId": 523,
+   "games": 367,
+   "wins": 188
   },
   {
    "championId": 202,
    "role": "BOTTOM",
    "opponentId": 804,
-   "games": 72,
-   "wins": 25
+   "games": 280,
+   "wins": 130
   },
   {
    "championId": 202,
    "role": "BOTTOM",
    "opponentId": 22,
-   "games": 53,
-   "wins": 30
+   "games": 178,
+   "wins": 97
   },
   {
    "championId": 202,
    "role": "BOTTOM",
    "opponentId": 221,
-   "games": 44,
-   "wins": 16
+   "games": 175,
+   "wins": 77
   },
   {
    "championId": 202,
    "role": "BOTTOM",
-   "opponentId": 15,
-   "games": 42,
-   "wins": 22
+   "opponentId": 498,
+   "games": 158,
+   "wins": 80
   },
   {
    "championId": 202,
    "role": "BOTTOM",
    "opponentId": 110,
-   "games": 41,
-   "wins": 22
+   "games": 154,
+   "wins": 74
   },
   {
    "championId": 202,
    "role": "BOTTOM",
    "opponentId": 429,
-   "games": 34,
-   "wins": 16
+   "games": 139,
+   "wins": 67
   },
   {
    "championId": 202,
    "role": "BOTTOM",
-   "opponentId": 498,
-   "games": 33,
-   "wins": 17
+   "opponentId": 15,
+   "games": 135,
+   "wins": 59
+  },
+  {
+   "championId": 202,
+   "role": "BOTTOM",
+   "opponentId": 29,
+   "games": 120,
+   "wins": 60
+  },
+  {
+   "championId": 202,
+   "role": "BOTTOM",
+   "opponentId": 901,
+   "games": 109,
+   "wins": 57
+  },
+  {
+   "championId": 202,
+   "role": "BOTTOM",
+   "opponentId": 119,
+   "games": 103,
+   "wins": 48
   },
   {
    "championId": 202,
    "role": "BOTTOM",
    "opponentId": 112,
+   "games": 93,
+   "wins": 55
+  },
+  {
+   "championId": 202,
+   "role": "BOTTOM",
+   "opponentId": 360,
+   "games": 84,
+   "wins": 47
+  },
+  {
+   "championId": 202,
+   "role": "BOTTOM",
+   "opponentId": 42,
+   "games": 74,
+   "wins": 40
+  },
+  {
+   "championId": 202,
+   "role": "BOTTOM",
+   "opponentId": 157,
+   "games": 73,
+   "wins": 38
+  },
+  {
+   "championId": 202,
+   "role": "BOTTOM",
+   "opponentId": 96,
+   "games": 60,
+   "wins": 34
+  },
+  {
+   "championId": 202,
+   "role": "BOTTOM",
+   "opponentId": 115,
+   "games": 60,
+   "wins": 35
+  },
+  {
+   "championId": 202,
+   "role": "BOTTOM",
+   "opponentId": 67,
+   "games": 56,
+   "wins": 30
+  },
+  {
+   "championId": 202,
+   "role": "BOTTOM",
+   "opponentId": 101,
+   "games": 45,
+   "wins": 19
+  },
+  {
+   "championId": 202,
+   "role": "BOTTOM",
+   "opponentId": 55,
+   "games": 36,
+   "wins": 18
+  },
+  {
+   "championId": 202,
+   "role": "BOTTOM",
+   "opponentId": 161,
    "games": 32,
-   "wins": 22
+   "wins": 14
+  },
+  {
+   "championId": 202,
+   "role": "BOTTOM",
+   "opponentId": 50,
+   "games": 32,
+   "wins": 15
+  },
+  {
+   "championId": 203,
+   "role": "JUNGLE",
+   "opponentId": 64,
+   "games": 77,
+   "wins": 50
+  },
+  {
+   "championId": 203,
+   "role": "JUNGLE",
+   "opponentId": 234,
+   "games": 46,
+   "wins": 16
+  },
+  {
+   "championId": 203,
+   "role": "JUNGLE",
+   "opponentId": 121,
+   "games": 38,
+   "wins": 24
+  },
+  {
+   "championId": 203,
+   "role": "JUNGLE",
+   "opponentId": 59,
+   "games": 38,
+   "wins": 23
+  },
+  {
+   "championId": 203,
+   "role": "JUNGLE",
+   "opponentId": 91,
+   "games": 35,
+   "wins": 16
+  },
+  {
+   "championId": 203,
+   "role": "JUNGLE",
+   "opponentId": 120,
+   "games": 32,
+   "wins": 14
+  },
+  {
+   "championId": 203,
+   "role": "JUNGLE",
+   "opponentId": 76,
+   "games": 30,
+   "wins": 16
   },
   {
    "championId": 221,
    "role": "BOTTOM",
    "opponentId": 145,
-   "games": 60,
-   "wins": 30
+   "games": 219,
+   "wins": 109
   },
   {
    "championId": 221,
    "role": "BOTTOM",
    "opponentId": 202,
-   "games": 44,
-   "wins": 28
+   "games": 175,
+   "wins": 98
+  },
+  {
+   "championId": 221,
+   "role": "BOTTOM",
+   "opponentId": 222,
+   "games": 110,
+   "wins": 40
+  },
+  {
+   "championId": 221,
+   "role": "BOTTOM",
+   "opponentId": 804,
+   "games": 109,
+   "wins": 49
+  },
+  {
+   "championId": 221,
+   "role": "BOTTOM",
+   "opponentId": 523,
+   "games": 105,
+   "wins": 49
   },
   {
    "championId": 221,
    "role": "BOTTOM",
    "opponentId": 81,
+   "games": 99,
+   "wins": 59
+  },
+  {
+   "championId": 221,
+   "role": "BOTTOM",
+   "opponentId": 236,
+   "games": 73,
+   "wins": 31
+  },
+  {
+   "championId": 221,
+   "role": "BOTTOM",
+   "opponentId": 119,
    "games": 39,
+   "wins": 23
+  },
+  {
+   "championId": 221,
+   "role": "BOTTOM",
+   "opponentId": 15,
+   "games": 38,
    "wins": 21
   },
   {
    "championId": 221,
    "role": "BOTTOM",
-   "opponentId": 523,
+   "opponentId": 110,
    "games": 35,
-   "wins": 19
-  },
-  {
-   "championId": 221,
-   "role": "BOTTOM",
-   "opponentId": 21,
-   "games": 32,
-   "wins": 17
+   "wins": 21
   },
   {
    "championId": 222,
    "role": "BOTTOM",
    "opponentId": 145,
-   "games": 128,
-   "wins": 68
-  },
-  {
-   "championId": 222,
-   "role": "BOTTOM",
-   "opponentId": 202,
-   "games": 127,
-   "wins": 65
-  },
-  {
-   "championId": 222,
-   "role": "BOTTOM",
-   "opponentId": 523,
-   "games": 110,
-   "wins": 58
+   "games": 510,
+   "wins": 281
   },
   {
    "championId": 222,
    "role": "BOTTOM",
    "opponentId": 51,
-   "games": 104,
-   "wins": 57
+   "games": 373,
+   "wins": 186
   },
   {
    "championId": 222,
    "role": "BOTTOM",
-   "opponentId": 81,
-   "games": 90,
-   "wins": 39
-  },
-  {
-   "championId": 222,
-   "role": "BOTTOM",
-   "opponentId": 18,
-   "games": 54,
-   "wins": 23
-  },
-  {
-   "championId": 222,
-   "role": "BOTTOM",
-   "opponentId": 498,
-   "games": 38,
-   "wins": 16
+   "opponentId": 236,
+   "games": 193,
+   "wins": 102
   },
   {
    "championId": 222,
    "role": "BOTTOM",
    "opponentId": 22,
-   "games": 35,
+   "games": 135,
+   "wins": 71
+  },
+  {
+   "championId": 222,
+   "role": "BOTTOM",
+   "opponentId": 498,
+   "games": 132,
+   "wins": 60
+  },
+  {
+   "championId": 222,
+   "role": "BOTTOM",
+   "opponentId": 29,
+   "games": 119,
+   "wins": 55
+  },
+  {
+   "championId": 222,
+   "role": "BOTTOM",
+   "opponentId": 221,
+   "games": 110,
+   "wins": 70
+  },
+  {
+   "championId": 222,
+   "role": "BOTTOM",
+   "opponentId": 119,
+   "games": 102,
+   "wins": 46
+  },
+  {
+   "championId": 222,
+   "role": "BOTTOM",
+   "opponentId": 15,
+   "games": 93,
+   "wins": 49
+  },
+  {
+   "championId": 222,
+   "role": "BOTTOM",
+   "opponentId": 360,
+   "games": 83,
+   "wins": 50
+  },
+  {
+   "championId": 222,
+   "role": "BOTTOM",
+   "opponentId": 67,
+   "games": 51,
+   "wins": 32
+  },
+  {
+   "championId": 222,
+   "role": "BOTTOM",
+   "opponentId": 112,
+   "games": 44,
+   "wins": 24
+  },
+  {
+   "championId": 222,
+   "role": "BOTTOM",
+   "opponentId": 157,
+   "games": 40,
+   "wins": 21
+  },
+  {
+   "championId": 223,
+   "role": "UTILITY",
+   "opponentId": 412,
+   "games": 62,
+   "wins": 25
+  },
+  {
+   "championId": 223,
+   "role": "UTILITY",
+   "opponentId": 12,
+   "games": 36,
    "wins": 17
+  },
+  {
+   "championId": 223,
+   "role": "UTILITY",
+   "opponentId": 89,
+   "games": 33,
+   "wins": 14
+  },
+  {
+   "championId": 233,
+   "role": "JUNGLE",
+   "opponentId": 234,
+   "games": 50,
+   "wins": 22
+  },
+  {
+   "championId": 233,
+   "role": "JUNGLE",
+   "opponentId": 517,
+   "games": 35,
+   "wins": 16
+  },
+  {
+   "championId": 233,
+   "role": "JUNGLE",
+   "opponentId": 141,
+   "games": 35,
+   "wins": 25
+  },
+  {
+   "championId": 233,
+   "role": "JUNGLE",
+   "opponentId": 31,
+   "games": 32,
+   "wins": 13
   },
   {
    "championId": 234,
    "role": "JUNGLE",
    "opponentId": 64,
-   "games": 78,
-   "wins": 39
+   "games": 244,
+   "wins": 117
   },
   {
    "championId": 234,
    "role": "JUNGLE",
    "opponentId": 104,
-   "games": 41,
-   "wins": 20
+   "games": 130,
+   "wins": 63
   },
   {
    "championId": 234,
    "role": "JUNGLE",
    "opponentId": 517,
-   "games": 30,
-   "wins": 14
-  },
-  {
-   "championId": 236,
-   "role": "BOTTOM",
-   "opponentId": 145,
-   "games": 111,
+   "games": 117,
    "wins": 53
   },
   {
-   "championId": 236,
-   "role": "BOTTOM",
-   "opponentId": 81,
-   "games": 63,
+   "championId": 234,
+   "role": "JUNGLE",
+   "opponentId": 62,
+   "games": 72,
+   "wins": 27
+  },
+  {
+   "championId": 234,
+   "role": "JUNGLE",
+   "opponentId": 233,
+   "games": 50,
+   "wins": 28
+  },
+  {
+   "championId": 234,
+   "role": "JUNGLE",
+   "opponentId": 203,
+   "games": 46,
    "wins": 30
+  },
+  {
+   "championId": 234,
+   "role": "JUNGLE",
+   "opponentId": 154,
+   "games": 41,
+   "wins": 25
+  },
+  {
+   "championId": 234,
+   "role": "JUNGLE",
+   "opponentId": 126,
+   "games": 39,
+   "wins": 22
+  },
+  {
+   "championId": 234,
+   "role": "JUNGLE",
+   "opponentId": 102,
+   "games": 39,
+   "wins": 19
+  },
+  {
+   "championId": 234,
+   "role": "JUNGLE",
+   "opponentId": 131,
+   "games": 36,
+   "wins": 24
+  },
+  {
+   "championId": 234,
+   "role": "JUNGLE",
+   "opponentId": 107,
+   "games": 35,
+   "wins": 13
+  },
+  {
+   "championId": 234,
+   "role": "JUNGLE",
+   "opponentId": 28,
+   "games": 34,
+   "wins": 12
+  },
+  {
+   "championId": 234,
+   "role": "JUNGLE",
+   "opponentId": 163,
+   "games": 31,
+   "wins": 16
+  },
+  {
+   "championId": 234,
+   "role": "JUNGLE",
+   "opponentId": 113,
+   "games": 31,
+   "wins": 15
+  },
+  {
+   "championId": 235,
+   "role": "UTILITY",
+   "opponentId": 412,
+   "games": 118,
+   "wins": 56
+  },
+  {
+   "championId": 235,
+   "role": "UTILITY",
+   "opponentId": 117,
+   "games": 104,
+   "wins": 59
+  },
+  {
+   "championId": 235,
+   "role": "UTILITY",
+   "opponentId": 111,
+   "games": 94,
+   "wins": 39
+  },
+  {
+   "championId": 235,
+   "role": "UTILITY",
+   "opponentId": 99,
+   "games": 51,
+   "wins": 22
+  },
+  {
+   "championId": 235,
+   "role": "UTILITY",
+   "opponentId": 12,
+   "games": 49,
+   "wins": 21
+  },
+  {
+   "championId": 235,
+   "role": "UTILITY",
+   "opponentId": 432,
+   "games": 46,
+   "wins": 27
+  },
+  {
+   "championId": 235,
+   "role": "UTILITY",
+   "opponentId": 89,
+   "games": 45,
+   "wins": 26
   },
   {
    "championId": 236,
    "role": "BOTTOM",
    "opponentId": 51,
-   "games": 51,
-   "wins": 32
+   "games": 208,
+   "wins": 111
   },
   {
    "championId": 236,
    "role": "BOTTOM",
-   "opponentId": 21,
-   "games": 46,
-   "wins": 16
+   "opponentId": 222,
+   "games": 193,
+   "wins": 91
   },
   {
    "championId": 236,
    "role": "BOTTOM",
    "opponentId": 18,
-   "games": 46,
-   "wins": 25
+   "games": 171,
+   "wins": 90
   },
   {
    "championId": 236,
    "role": "BOTTOM",
    "opponentId": 804,
-   "games": 37,
-   "wins": 11
+   "games": 144,
+   "wins": 52
+  },
+  {
+   "championId": 236,
+   "role": "BOTTOM",
+   "opponentId": 21,
+   "games": 122,
+   "wins": 49
   },
   {
    "championId": 236,
    "role": "BOTTOM",
    "opponentId": 498,
-   "games": 31,
-   "wins": 18
+   "games": 100,
+   "wins": 58
+  },
+  {
+   "championId": 236,
+   "role": "BOTTOM",
+   "opponentId": 221,
+   "games": 73,
+   "wins": 42
+  },
+  {
+   "championId": 236,
+   "role": "BOTTOM",
+   "opponentId": 119,
+   "games": 60,
+   "wins": 23
   },
   {
    "championId": 238,
-   "role": "MIDDLE",
-   "opponentId": 777,
-   "games": 35,
-   "wins": 14
+   "role": "JUNGLE",
+   "opponentId": 64,
+   "games": 88,
+   "wins": 37
   },
   {
    "championId": 238,
-   "role": "MIDDLE",
-   "opponentId": 112,
-   "games": 31,
-   "wins": 16
+   "role": "JUNGLE",
+   "opponentId": 246,
+   "games": 36,
+   "wins": 17
+  },
+  {
+   "championId": 238,
+   "role": "JUNGLE",
+   "opponentId": 141,
+   "games": 32,
+   "wins": 22
+  },
+  {
+   "championId": 238,
+   "role": "JUNGLE",
+   "opponentId": 11,
+   "games": 30,
+   "wins": 11
   },
   {
    "championId": 238,
    "role": "MIDDLE",
    "opponentId": 157,
+   "games": 120,
+   "wins": 55
+  },
+  {
+   "championId": 238,
+   "role": "MIDDLE",
+   "opponentId": 777,
+   "games": 117,
+   "wins": 55
+  },
+  {
+   "championId": 238,
+   "role": "MIDDLE",
+   "opponentId": 127,
+   "games": 102,
+   "wins": 42
+  },
+  {
+   "championId": 238,
+   "role": "MIDDLE",
+   "opponentId": 112,
+   "games": 101,
+   "wins": 60
+  },
+  {
+   "championId": 238,
+   "role": "MIDDLE",
+   "opponentId": 4,
+   "games": 92,
+   "wins": 35
+  },
+  {
+   "championId": 238,
+   "role": "MIDDLE",
+   "opponentId": 84,
+   "games": 92,
+   "wins": 56
+  },
+  {
+   "championId": 238,
+   "role": "MIDDLE",
+   "opponentId": 54,
+   "games": 48,
+   "wins": 19
+  },
+  {
+   "championId": 238,
+   "role": "MIDDLE",
+   "opponentId": 246,
+   "games": 46,
+   "wins": 17
+  },
+  {
+   "championId": 238,
+   "role": "MIDDLE",
+   "opponentId": 99,
+   "games": 42,
+   "wins": 24
+  },
+  {
+   "championId": 238,
+   "role": "MIDDLE",
+   "opponentId": 711,
    "games": 30,
    "wins": 11
   },
@@ -1500,540 +6848,2360 @@
    "championId": 245,
    "role": "JUNGLE",
    "opponentId": 64,
-   "games": 32,
-   "wins": 16
+   "games": 102,
+   "wins": 50
+  },
+  {
+   "championId": 245,
+   "role": "JUNGLE",
+   "opponentId": 104,
+   "games": 49,
+   "wins": 23
+  },
+  {
+   "championId": 245,
+   "role": "JUNGLE",
+   "opponentId": 254,
+   "games": 40,
+   "wins": 15
+  },
+  {
+   "championId": 245,
+   "role": "JUNGLE",
+   "opponentId": 876,
+   "games": 34,
+   "wins": 19
+  },
+  {
+   "championId": 245,
+   "role": "JUNGLE",
+   "opponentId": 62,
+   "games": 31,
+   "wins": 19
+  },
+  {
+   "championId": 245,
+   "role": "JUNGLE",
+   "opponentId": 60,
+   "games": 30,
+   "wins": 12
+  },
+  {
+   "championId": 245,
+   "role": "MIDDLE",
+   "opponentId": 134,
+   "games": 66,
+   "wins": 30
+  },
+  {
+   "championId": 245,
+   "role": "MIDDLE",
+   "opponentId": 103,
+   "games": 60,
+   "wins": 27
+  },
+  {
+   "championId": 245,
+   "role": "MIDDLE",
+   "opponentId": 127,
+   "games": 49,
+   "wins": 29
+  },
+  {
+   "championId": 245,
+   "role": "MIDDLE",
+   "opponentId": 4,
+   "games": 42,
+   "wins": 20
   },
   {
    "championId": 246,
    "role": "JUNGLE",
    "opponentId": 64,
-   "games": 61,
+   "games": 219,
+   "wins": 119
+  },
+  {
+   "championId": 246,
+   "role": "JUNGLE",
+   "opponentId": 104,
+   "games": 112,
+   "wins": 49
+  },
+  {
+   "championId": 246,
+   "role": "JUNGLE",
+   "opponentId": 120,
+   "games": 77,
+   "wins": 27
+  },
+  {
+   "championId": 246,
+   "role": "JUNGLE",
+   "opponentId": 876,
+   "games": 57,
    "wins": 32
+  },
+  {
+   "championId": 246,
+   "role": "JUNGLE",
+   "opponentId": 11,
+   "games": 46,
+   "wins": 30
+  },
+  {
+   "championId": 246,
+   "role": "JUNGLE",
+   "opponentId": 35,
+   "games": 44,
+   "wins": 16
+  },
+  {
+   "championId": 246,
+   "role": "JUNGLE",
+   "opponentId": 56,
+   "games": 41,
+   "wins": 24
+  },
+  {
+   "championId": 246,
+   "role": "JUNGLE",
+   "opponentId": 163,
+   "games": 39,
+   "wins": 14
+  },
+  {
+   "championId": 246,
+   "role": "JUNGLE",
+   "opponentId": 238,
+   "games": 36,
+   "wins": 19
+  },
+  {
+   "championId": 246,
+   "role": "JUNGLE",
+   "opponentId": 131,
+   "games": 33,
+   "wins": 18
+  },
+  {
+   "championId": 246,
+   "role": "JUNGLE",
+   "opponentId": 126,
+   "games": 31,
+   "wins": 19
+  },
+  {
+   "championId": 246,
+   "role": "JUNGLE",
+   "opponentId": 143,
+   "games": 31,
+   "wins": 16
+  },
+  {
+   "championId": 246,
+   "role": "JUNGLE",
+   "opponentId": 20,
+   "games": 30,
+   "wins": 19
+  },
+  {
+   "championId": 246,
+   "role": "MIDDLE",
+   "opponentId": 238,
+   "games": 46,
+   "wins": 29
+  },
+  {
+   "championId": 246,
+   "role": "MIDDLE",
+   "opponentId": 103,
+   "games": 42,
+   "wins": 27
+  },
+  {
+   "championId": 246,
+   "role": "MIDDLE",
+   "opponentId": 777,
+   "games": 37,
+   "wins": 19
+  },
+  {
+   "championId": 246,
+   "role": "MIDDLE",
+   "opponentId": 805,
+   "games": 33,
+   "wins": 16
+  },
+  {
+   "championId": 246,
+   "role": "MIDDLE",
+   "opponentId": 84,
+   "games": 32,
+   "wins": 15
+  },
+  {
+   "championId": 246,
+   "role": "MIDDLE",
+   "opponentId": 517,
+   "games": 30,
+   "wins": 18
   },
   {
    "championId": 254,
    "role": "JUNGLE",
    "opponentId": 64,
-   "games": 62,
-   "wins": 31
+   "games": 209,
+   "wins": 102
+  },
+  {
+   "championId": 254,
+   "role": "JUNGLE",
+   "opponentId": 62,
+   "games": 55,
+   "wins": 23
+  },
+  {
+   "championId": 254,
+   "role": "JUNGLE",
+   "opponentId": 120,
+   "games": 46,
+   "wins": 19
+  },
+  {
+   "championId": 254,
+   "role": "JUNGLE",
+   "opponentId": 5,
+   "games": 45,
+   "wins": 20
+  },
+  {
+   "championId": 254,
+   "role": "JUNGLE",
+   "opponentId": 245,
+   "games": 40,
+   "wins": 25
+  },
+  {
+   "championId": 254,
+   "role": "JUNGLE",
+   "opponentId": 31,
+   "games": 38,
+   "wins": 26
+  },
+  {
+   "championId": 266,
+   "role": "JUNGLE",
+   "opponentId": 64,
+   "games": 31,
+   "wins": 17
   },
   {
    "championId": 266,
    "role": "TOP",
    "opponentId": 777,
-   "games": 38,
-   "wins": 20
+   "games": 138,
+   "wins": 72
   },
   {
    "championId": 266,
    "role": "TOP",
    "opponentId": 126,
-   "games": 38,
+   "games": 111,
+   "wins": 62
+  },
+  {
+   "championId": 266,
+   "role": "TOP",
+   "opponentId": 39,
+   "games": 79,
+   "wins": 48
+  },
+  {
+   "championId": 266,
+   "role": "TOP",
+   "opponentId": 75,
+   "games": 45,
+   "wins": 30
+  },
+  {
+   "championId": 266,
+   "role": "TOP",
+   "opponentId": 17,
+   "games": 40,
    "wins": 22
   },
   {
    "championId": 266,
    "role": "TOP",
-   "opponentId": 875,
-   "games": 31,
-   "wins": 14
+   "opponentId": 106,
+   "games": 39,
+   "wins": 13
   },
   {
    "championId": 266,
    "role": "TOP",
-   "opponentId": 24,
-   "games": 31,
-   "wins": 15
+   "opponentId": 420,
+   "games": 35,
+   "wins": 22
   },
   {
    "championId": 266,
    "role": "TOP",
-   "opponentId": 41,
-   "games": 31,
+   "opponentId": 6,
+   "games": 34,
+   "wins": 20
+  },
+  {
+   "championId": 266,
+   "role": "TOP",
+   "opponentId": 23,
+   "games": 33,
+   "wins": 11
+  },
+  {
+   "championId": 266,
+   "role": "TOP",
+   "opponentId": 36,
+   "games": 32,
    "wins": 17
+  },
+  {
+   "championId": 266,
+   "role": "TOP",
+   "opponentId": 904,
+   "games": 30,
+   "wins": 10
+  },
+  {
+   "championId": 267,
+   "role": "UTILITY",
+   "opponentId": 117,
+   "games": 146,
+   "wins": 64
+  },
+  {
+   "championId": 267,
+   "role": "UTILITY",
+   "opponentId": 412,
+   "games": 139,
+   "wins": 50
+  },
+  {
+   "championId": 267,
+   "role": "UTILITY",
+   "opponentId": 111,
+   "games": 96,
+   "wins": 41
+  },
+  {
+   "championId": 267,
+   "role": "UTILITY",
+   "opponentId": 147,
+   "games": 75,
+   "wins": 43
+  },
+  {
+   "championId": 267,
+   "role": "UTILITY",
+   "opponentId": 16,
+   "games": 64,
+   "wins": 27
+  },
+  {
+   "championId": 267,
+   "role": "UTILITY",
+   "opponentId": 201,
+   "games": 63,
+   "wins": 36
+  },
+  {
+   "championId": 267,
+   "role": "UTILITY",
+   "opponentId": 432,
+   "games": 51,
+   "wins": 32
+  },
+  {
+   "championId": 267,
+   "role": "UTILITY",
+   "opponentId": 12,
+   "games": 49,
+   "wins": 30
+  },
+  {
+   "championId": 267,
+   "role": "UTILITY",
+   "opponentId": 526,
+   "games": 38,
+   "wins": 22
+  },
+  {
+   "championId": 267,
+   "role": "UTILITY",
+   "opponentId": 161,
+   "games": 36,
+   "wins": 20
+  },
+  {
+   "championId": 268,
+   "role": "MIDDLE",
+   "opponentId": 134,
+   "games": 33,
+   "wins": 12
+  },
+  {
+   "championId": 268,
+   "role": "MIDDLE",
+   "opponentId": 112,
+   "games": 31,
+   "wins": 11
+  },
+  {
+   "championId": 268,
+   "role": "MIDDLE",
+   "opponentId": 61,
+   "games": 30,
+   "wins": 12
   },
   {
    "championId": 350,
    "role": "UTILITY",
    "opponentId": 117,
-   "games": 49,
-   "wins": 25
-  },
-  {
-   "championId": 350,
-   "role": "UTILITY",
-   "opponentId": 111,
-   "games": 39,
-   "wins": 22
+   "games": 167,
+   "wins": 75
   },
   {
    "championId": 350,
    "role": "UTILITY",
    "opponentId": 412,
-   "games": 36,
-   "wins": 15
+   "games": 140,
+   "wins": 62
+  },
+  {
+   "championId": 350,
+   "role": "UTILITY",
+   "opponentId": 111,
+   "games": 112,
+   "wins": 54
+  },
+  {
+   "championId": 350,
+   "role": "UTILITY",
+   "opponentId": 526,
+   "games": 47,
+   "wins": 18
+  },
+  {
+   "championId": 350,
+   "role": "UTILITY",
+   "opponentId": 16,
+   "games": 40,
+   "wins": 12
+  },
+  {
+   "championId": 350,
+   "role": "UTILITY",
+   "opponentId": 201,
+   "games": 35,
+   "wins": 13
+  },
+  {
+   "championId": 350,
+   "role": "UTILITY",
+   "opponentId": 101,
+   "games": 33,
+   "wins": 21
   },
   {
    "championId": 360,
    "role": "BOTTOM",
    "opponentId": 145,
-   "games": 33,
-   "wins": 13
+   "games": 115,
+   "wins": 56
+  },
+  {
+   "championId": 360,
+   "role": "BOTTOM",
+   "opponentId": 202,
+   "games": 84,
+   "wins": 37
+  },
+  {
+   "championId": 360,
+   "role": "BOTTOM",
+   "opponentId": 222,
+   "games": 83,
+   "wins": 33
+  },
+  {
+   "championId": 360,
+   "role": "BOTTOM",
+   "opponentId": 81,
+   "games": 56,
+   "wins": 25
+  },
+  {
+   "championId": 360,
+   "role": "BOTTOM",
+   "opponentId": 21,
+   "games": 48,
+   "wins": 27
+  },
+  {
+   "championId": 360,
+   "role": "BOTTOM",
+   "opponentId": 18,
+   "games": 38,
+   "wins": 21
   },
   {
    "championId": 412,
    "role": "UTILITY",
-   "opponentId": 117,
-   "games": 105,
-   "wins": 59
-  },
-  {
-   "championId": 412,
-   "role": "UTILITY",
-   "opponentId": 12,
-   "games": 63,
-   "wins": 31
+   "opponentId": 53,
+   "games": 308,
+   "wins": 150
   },
   {
    "championId": 412,
    "role": "UTILITY",
    "opponentId": 89,
-   "games": 59,
-   "wins": 24
-  },
-  {
-   "championId": 412,
-   "role": "UTILITY",
-   "opponentId": 555,
-   "games": 56,
-   "wins": 23
-  },
-  {
-   "championId": 412,
-   "role": "UTILITY",
-   "opponentId": 99,
-   "games": 51,
-   "wins": 26
-  },
-  {
-   "championId": 412,
-   "role": "UTILITY",
-   "opponentId": 432,
-   "games": 50,
-   "wins": 24
+   "games": 244,
+   "wins": 123
   },
   {
    "championId": 412,
    "role": "UTILITY",
    "opponentId": 43,
-   "games": 44,
-   "wins": 23
+   "games": 221,
+   "wins": 116
+  },
+  {
+   "championId": 412,
+   "role": "UTILITY",
+   "opponentId": 201,
+   "games": 206,
+   "wins": 103
+  },
+  {
+   "championId": 412,
+   "role": "UTILITY",
+   "opponentId": 12,
+   "games": 194,
+   "wins": 93
+  },
+  {
+   "championId": 412,
+   "role": "UTILITY",
+   "opponentId": 555,
+   "games": 168,
+   "wins": 94
+  },
+  {
+   "championId": 412,
+   "role": "UTILITY",
+   "opponentId": 99,
+   "games": 163,
+   "wins": 88
+  },
+  {
+   "championId": 412,
+   "role": "UTILITY",
+   "opponentId": 432,
+   "games": 158,
+   "wins": 69
   },
   {
    "championId": 412,
    "role": "UTILITY",
    "opponentId": 25,
+   "games": 146,
+   "wins": 81
+  },
+  {
+   "championId": 412,
+   "role": "UTILITY",
+   "opponentId": 350,
+   "games": 140,
+   "wins": 78
+  },
+  {
+   "championId": 412,
+   "role": "UTILITY",
+   "opponentId": 267,
+   "games": 139,
+   "wins": 89
+  },
+  {
+   "championId": 412,
+   "role": "UTILITY",
+   "opponentId": 497,
+   "games": 136,
+   "wins": 74
+  },
+  {
+   "championId": 412,
+   "role": "UTILITY",
+   "opponentId": 902,
+   "games": 133,
+   "wins": 78
+  },
+  {
+   "championId": 412,
+   "role": "UTILITY",
+   "opponentId": 40,
+   "games": 125,
+   "wins": 58
+  },
+  {
+   "championId": 412,
+   "role": "UTILITY",
+   "opponentId": 526,
+   "games": 124,
+   "wins": 57
+  },
+  {
+   "championId": 412,
+   "role": "UTILITY",
+   "opponentId": 147,
+   "games": 124,
+   "wins": 60
+  },
+  {
+   "championId": 412,
+   "role": "UTILITY",
+   "opponentId": 235,
+   "games": 118,
+   "wins": 62
+  },
+  {
+   "championId": 412,
+   "role": "UTILITY",
+   "opponentId": 16,
+   "games": 100,
+   "wins": 55
+  },
+  {
+   "championId": 412,
+   "role": "UTILITY",
+   "opponentId": 161,
+   "games": 92,
+   "wins": 54
+  },
+  {
+   "championId": 412,
+   "role": "UTILITY",
+   "opponentId": 80,
+   "games": 90,
+   "wins": 56
+  },
+  {
+   "championId": 412,
+   "role": "UTILITY",
+   "opponentId": 143,
+   "games": 65,
+   "wins": 35
+  },
+  {
+   "championId": 412,
+   "role": "UTILITY",
+   "opponentId": 223,
+   "games": 62,
+   "wins": 37
+  },
+  {
+   "championId": 412,
+   "role": "UTILITY",
+   "opponentId": 518,
+   "games": 53,
+   "wins": 28
+  },
+  {
+   "championId": 412,
+   "role": "UTILITY",
+   "opponentId": 57,
+   "games": 50,
+   "wins": 22
+  },
+  {
+   "championId": 412,
+   "role": "UTILITY",
+   "opponentId": 63,
+   "games": 46,
+   "wins": 16
+  },
+  {
+   "championId": 412,
+   "role": "UTILITY",
+   "opponentId": 37,
+   "games": 46,
+   "wins": 28
+  },
+  {
+   "championId": 412,
+   "role": "UTILITY",
+   "opponentId": 35,
+   "games": 42,
+   "wins": 24
+  },
+  {
+   "championId": 412,
+   "role": "UTILITY",
+   "opponentId": 164,
    "games": 38,
    "wins": 20
   },
   {
    "championId": 412,
    "role": "UTILITY",
-   "opponentId": 497,
-   "games": 37,
-   "wins": 18
+   "opponentId": 888,
+   "games": 36,
+   "wins": 20
   },
   {
    "championId": 412,
    "role": "UTILITY",
-   "opponentId": 902,
-   "games": 36,
-   "wins": 27
-  },
-  {
-   "championId": 412,
-   "role": "UTILITY",
-   "opponentId": 350,
-   "games": 36,
+   "opponentId": 78,
+   "games": 34,
    "wins": 21
   },
   {
    "championId": 412,
    "role": "UTILITY",
-   "opponentId": 526,
+   "opponentId": 517,
    "games": 32,
-   "wins": 12
+   "wins": 21
   },
   {
-   "championId": 429,
-   "role": "BOTTOM",
-   "opponentId": 145,
-   "games": 34,
-   "wins": 18
+   "championId": 412,
+   "role": "UTILITY",
+   "opponentId": 3,
+   "games": 32,
+   "wins": 15
+  },
+  {
+   "championId": 412,
+   "role": "UTILITY",
+   "opponentId": 142,
+   "games": 31,
+   "wins": 15
+  },
+  {
+   "championId": 412,
+   "role": "UTILITY",
+   "opponentId": 60,
+   "games": 30,
+   "wins": 17
+  },
+  {
+   "championId": 420,
+   "role": "TOP",
+   "opponentId": 266,
+   "games": 35,
+   "wins": 13
+  },
+  {
+   "championId": 420,
+   "role": "TOP",
+   "opponentId": 126,
+   "games": 33,
+   "wins": 17
+  },
+  {
+   "championId": 420,
+   "role": "TOP",
+   "opponentId": 777,
+   "games": 30,
+   "wins": 17
+  },
+  {
+   "championId": 421,
+   "role": "JUNGLE",
+   "opponentId": 64,
+   "games": 72,
+   "wins": 43
   },
   {
    "championId": 429,
    "role": "BOTTOM",
    "opponentId": 202,
-   "games": 34,
-   "wins": 18
+   "games": 139,
+   "wins": 72
+  },
+  {
+   "championId": 429,
+   "role": "BOTTOM",
+   "opponentId": 145,
+   "games": 136,
+   "wins": 66
   },
   {
    "championId": 429,
    "role": "BOTTOM",
    "opponentId": 81,
-   "games": 30,
+   "games": 106,
+   "wins": 55
+  },
+  {
+   "championId": 429,
+   "role": "BOTTOM",
+   "opponentId": 21,
+   "games": 65,
+   "wins": 24
+  },
+  {
+   "championId": 429,
+   "role": "BOTTOM",
+   "opponentId": 523,
+   "games": 61,
    "wins": 17
+  },
+  {
+   "championId": 429,
+   "role": "BOTTOM",
+   "opponentId": 498,
+   "games": 50,
+   "wins": 18
+  },
+  {
+   "championId": 429,
+   "role": "BOTTOM",
+   "opponentId": 22,
+   "games": 43,
+   "wins": 27
   },
   {
    "championId": 432,
    "role": "UTILITY",
    "opponentId": 412,
-   "games": 50,
-   "wins": 26
+   "games": 158,
+   "wins": 89
   },
   {
    "championId": 432,
    "role": "UTILITY",
    "opponentId": 111,
-   "games": 33,
-   "wins": 18
+   "games": 115,
+   "wins": 58
   },
   {
    "championId": 432,
    "role": "UTILITY",
    "opponentId": 117,
-   "games": 31,
-   "wins": 13
+   "games": 111,
+   "wins": 59
+  },
+  {
+   "championId": 432,
+   "role": "UTILITY",
+   "opponentId": 89,
+   "games": 82,
+   "wins": 34
+  },
+  {
+   "championId": 432,
+   "role": "UTILITY",
+   "opponentId": 267,
+   "games": 51,
+   "wins": 19
+  },
+  {
+   "championId": 432,
+   "role": "UTILITY",
+   "opponentId": 235,
+   "games": 46,
+   "wins": 19
+  },
+  {
+   "championId": 432,
+   "role": "UTILITY",
+   "opponentId": 26,
+   "games": 36,
+   "wins": 19
   },
   {
    "championId": 497,
    "role": "UTILITY",
    "opponentId": 412,
-   "games": 37,
-   "wins": 19
+   "games": 136,
+   "wins": 62
+  },
+  {
+   "championId": 497,
+   "role": "UTILITY",
+   "opponentId": 117,
+   "games": 83,
+   "wins": 49
+  },
+  {
+   "championId": 497,
+   "role": "UTILITY",
+   "opponentId": 555,
+   "games": 59,
+   "wins": 36
+  },
+  {
+   "championId": 497,
+   "role": "UTILITY",
+   "opponentId": 12,
+   "games": 52,
+   "wins": 22
+  },
+  {
+   "championId": 497,
+   "role": "UTILITY",
+   "opponentId": 902,
+   "games": 41,
+   "wins": 25
+  },
+  {
+   "championId": 497,
+   "role": "UTILITY",
+   "opponentId": 526,
+   "games": 36,
+   "wins": 15
+  },
+  {
+   "championId": 497,
+   "role": "UTILITY",
+   "opponentId": 40,
+   "games": 33,
+   "wins": 18
   },
   {
    "championId": 498,
    "role": "BOTTOM",
    "opponentId": 145,
-   "games": 149,
-   "wins": 72
-  },
-  {
-   "championId": 498,
-   "role": "BOTTOM",
-   "opponentId": 222,
-   "games": 38,
-   "wins": 22
+   "games": 497,
+   "wins": 255
   },
   {
    "championId": 498,
    "role": "BOTTOM",
    "opponentId": 202,
-   "games": 33,
-   "wins": 16
+   "games": 158,
+   "wins": 78
+  },
+  {
+   "championId": 498,
+   "role": "BOTTOM",
+   "opponentId": 222,
+   "games": 132,
+   "wins": 72
+  },
+  {
+   "championId": 498,
+   "role": "BOTTOM",
+   "opponentId": 18,
+   "games": 132,
+   "wins": 71
+  },
+  {
+   "championId": 498,
+   "role": "BOTTOM",
+   "opponentId": 81,
+   "games": 105,
+   "wins": 51
   },
   {
    "championId": 498,
    "role": "BOTTOM",
    "opponentId": 236,
-   "games": 31,
+   "games": 100,
+   "wins": 42
+  },
+  {
+   "championId": 498,
+   "role": "BOTTOM",
+   "opponentId": 523,
+   "games": 96,
+   "wins": 44
+  },
+  {
+   "championId": 498,
+   "role": "BOTTOM",
+   "opponentId": 804,
+   "games": 81,
+   "wins": 51
+  },
+  {
+   "championId": 498,
+   "role": "BOTTOM",
+   "opponentId": 429,
+   "games": 50,
+   "wins": 32
+  },
+  {
+   "championId": 498,
+   "role": "BOTTOM",
+   "opponentId": 15,
+   "games": 42,
+   "wins": 19
+  },
+  {
+   "championId": 516,
+   "role": "TOP",
+   "opponentId": 54,
+   "games": 35,
    "wins": 13
+  },
+  {
+   "championId": 516,
+   "role": "TOP",
+   "opponentId": 114,
+   "games": 31,
+   "wins": 14
+  },
+  {
+   "championId": 516,
+   "role": "TOP",
+   "opponentId": 122,
+   "games": 30,
+   "wins": 11
   },
   {
    "championId": 517,
    "role": "JUNGLE",
    "opponentId": 64,
-   "games": 64,
-   "wins": 25
+   "games": 242,
+   "wins": 137
   },
   {
    "championId": 517,
    "role": "JUNGLE",
    "opponentId": 104,
-   "games": 31,
-   "wins": 14
+   "games": 135,
+   "wins": 73
   },
   {
    "championId": 517,
    "role": "JUNGLE",
    "opponentId": 234,
-   "games": 30,
-   "wins": 16
+   "games": 117,
+   "wins": 64
   },
   {
    "championId": 517,
-   "role": "MIDDLE",
-   "opponentId": 103,
-   "games": 41,
-   "wins": 15
+   "role": "JUNGLE",
+   "opponentId": 91,
+   "games": 74,
+   "wins": 44
   },
   {
    "championId": 517,
-   "role": "MIDDLE",
-   "opponentId": 777,
+   "role": "JUNGLE",
+   "opponentId": 60,
+   "games": 45,
+   "wins": 24
+  },
+  {
+   "championId": 517,
+   "role": "JUNGLE",
+   "opponentId": 126,
+   "games": 40,
+   "wins": 14
+  },
+  {
+   "championId": 517,
+   "role": "JUNGLE",
+   "opponentId": 19,
+   "games": 39,
+   "wins": 17
+  },
+  {
+   "championId": 517,
+   "role": "JUNGLE",
+   "opponentId": 28,
+   "games": 37,
+   "wins": 20
+  },
+  {
+   "championId": 517,
+   "role": "JUNGLE",
+   "opponentId": 233,
    "games": 35,
+   "wins": 19
+  },
+  {
+   "championId": 517,
+   "role": "JUNGLE",
+   "opponentId": 131,
+   "games": 34,
+   "wins": 21
+  },
+  {
+   "championId": 517,
+   "role": "JUNGLE",
+   "opponentId": 113,
+   "games": 31,
+   "wins": 12
+  },
+  {
+   "championId": 517,
+   "role": "JUNGLE",
+   "opponentId": 950,
+   "games": 31,
+   "wins": 19
+  },
+  {
+   "championId": 517,
+   "role": "JUNGLE",
+   "opponentId": 154,
+   "games": 30,
    "wins": 12
   },
   {
    "championId": 517,
    "role": "MIDDLE",
+   "opponentId": 103,
+   "games": 186,
+   "wins": 77
+  },
+  {
+   "championId": 517,
+   "role": "MIDDLE",
+   "opponentId": 777,
+   "games": 127,
+   "wins": 56
+  },
+  {
+   "championId": 517,
+   "role": "MIDDLE",
    "opponentId": 84,
-   "games": 34,
-   "wins": 11
+   "games": 122,
+   "wins": 55
   },
   {
    "championId": 517,
    "role": "MIDDLE",
    "opponentId": 4,
+   "games": 112,
+   "wins": 47
+  },
+  {
+   "championId": 517,
+   "role": "MIDDLE",
+   "opponentId": 112,
+   "games": 108,
+   "wins": 44
+  },
+  {
+   "championId": 517,
+   "role": "MIDDLE",
+   "opponentId": 805,
+   "games": 99,
+   "wins": 55
+  },
+  {
+   "championId": 517,
+   "role": "MIDDLE",
+   "opponentId": 711,
+   "games": 46,
+   "wins": 30
+  },
+  {
+   "championId": 517,
+   "role": "MIDDLE",
+   "opponentId": 39,
+   "games": 45,
+   "wins": 17
+  },
+  {
+   "championId": 517,
+   "role": "MIDDLE",
+   "opponentId": 13,
+   "games": 45,
+   "wins": 26
+  },
+  {
+   "championId": 517,
+   "role": "MIDDLE",
+   "opponentId": 90,
+   "games": 41,
+   "wins": 25
+  },
+  {
+   "championId": 517,
+   "role": "MIDDLE",
+   "opponentId": 163,
    "games": 34,
+   "wins": 18
+  },
+  {
+   "championId": 517,
+   "role": "MIDDLE",
+   "opponentId": 38,
+   "games": 30,
+   "wins": 8
+  },
+  {
+   "championId": 517,
+   "role": "MIDDLE",
+   "opponentId": 246,
+   "games": 30,
    "wins": 12
   },
   {
    "championId": 517,
    "role": "TOP",
    "opponentId": 54,
-   "games": 30,
-   "wins": 13
-  },
-  {
-   "championId": 523,
-   "role": "BOTTOM",
-   "opponentId": 222,
-   "games": 110,
-   "wins": 52
-  },
-  {
-   "championId": 523,
-   "role": "BOTTOM",
-   "opponentId": 145,
    "games": 109,
-   "wins": 53
+   "wins": 49
+  },
+  {
+   "championId": 517,
+   "role": "UTILITY",
+   "opponentId": 412,
+   "games": 32,
+   "wins": 11
+  },
+  {
+   "championId": 517,
+   "role": "UTILITY",
+   "opponentId": 53,
+   "games": 32,
+   "wins": 17
+  },
+  {
+   "championId": 518,
+   "role": "UTILITY",
+   "opponentId": 412,
+   "games": 53,
+   "wins": 25
+  },
+  {
+   "championId": 518,
+   "role": "UTILITY",
+   "opponentId": 117,
+   "games": 36,
+   "wins": 14
+  },
+  {
+   "championId": 518,
+   "role": "UTILITY",
+   "opponentId": 43,
+   "games": 30,
+   "wins": 15
   },
   {
    "championId": 523,
    "role": "BOTTOM",
    "opponentId": 202,
-   "games": 102,
-   "wins": 45
-  },
-  {
-   "championId": 523,
-   "role": "BOTTOM",
-   "opponentId": 21,
-   "games": 38,
-   "wins": 15
+   "games": 367,
+   "wins": 179
   },
   {
    "championId": 523,
    "role": "BOTTOM",
    "opponentId": 804,
-   "games": 38,
-   "wins": 20
+   "games": 175,
+   "wins": 96
+  },
+  {
+   "championId": 523,
+   "role": "BOTTOM",
+   "opponentId": 21,
+   "games": 135,
+   "wins": 54
+  },
+  {
+   "championId": 523,
+   "role": "BOTTOM",
+   "opponentId": 18,
+   "games": 120,
+   "wins": 66
   },
   {
    "championId": 523,
    "role": "BOTTOM",
    "opponentId": 221,
-   "games": 35,
-   "wins": 16
+   "games": 105,
+   "wins": 56
+  },
+  {
+   "championId": 523,
+   "role": "BOTTOM",
+   "opponentId": 498,
+   "games": 96,
+   "wins": 52
+  },
+  {
+   "championId": 523,
+   "role": "BOTTOM",
+   "opponentId": 22,
+   "games": 73,
+   "wins": 26
+  },
+  {
+   "championId": 523,
+   "role": "BOTTOM",
+   "opponentId": 429,
+   "games": 61,
+   "wins": 44
+  },
+  {
+   "championId": 523,
+   "role": "BOTTOM",
+   "opponentId": 15,
+   "games": 56,
+   "wins": 29
+  },
+  {
+   "championId": 523,
+   "role": "BOTTOM",
+   "opponentId": 901,
+   "games": 48,
+   "wins": 30
+  },
+  {
+   "championId": 523,
+   "role": "BOTTOM",
+   "opponentId": 42,
+   "games": 39,
+   "wins": 13
+  },
+  {
+   "championId": 526,
+   "role": "UTILITY",
+   "opponentId": 412,
+   "games": 124,
+   "wins": 67
   },
   {
    "championId": 526,
    "role": "UTILITY",
    "opponentId": 111,
+   "games": 115,
+   "wins": 71
+  },
+  {
+   "championId": 526,
+   "role": "UTILITY",
+   "opponentId": 117,
+   "games": 104,
+   "wins": 49
+  },
+  {
+   "championId": 526,
+   "role": "UTILITY",
+   "opponentId": 12,
+   "games": 99,
+   "wins": 43
+  },
+  {
+   "championId": 526,
+   "role": "UTILITY",
+   "opponentId": 89,
+   "games": 64,
+   "wins": 34
+  },
+  {
+   "championId": 526,
+   "role": "UTILITY",
+   "opponentId": 53,
+   "games": 60,
+   "wins": 35
+  },
+  {
+   "championId": 526,
+   "role": "UTILITY",
+   "opponentId": 350,
+   "games": 47,
+   "wins": 29
+  },
+  {
+   "championId": 526,
+   "role": "UTILITY",
+   "opponentId": 267,
+   "games": 38,
+   "wins": 16
+  },
+  {
+   "championId": 526,
+   "role": "UTILITY",
+   "opponentId": 497,
+   "games": 36,
+   "wins": 21
+  },
+  {
+   "championId": 526,
+   "role": "UTILITY",
+   "opponentId": 40,
    "games": 35,
    "wins": 22
   },
   {
    "championId": 526,
    "role": "UTILITY",
-   "opponentId": 412,
+   "opponentId": 78,
    "games": 32,
-   "wins": 20
+   "wins": 23
   },
   {
    "championId": 555,
    "role": "UTILITY",
    "opponentId": 412,
-   "games": 56,
-   "wins": 33
+   "games": 168,
+   "wins": 74
   },
   {
    "championId": 555,
    "role": "UTILITY",
    "opponentId": 111,
-   "games": 43,
+   "games": 127,
+   "wins": 61
+  },
+  {
+   "championId": 555,
+   "role": "UTILITY",
+   "opponentId": 117,
+   "games": 110,
+   "wins": 58
+  },
+  {
+   "championId": 555,
+   "role": "UTILITY",
+   "opponentId": 12,
+   "games": 79,
+   "wins": 46
+  },
+  {
+   "championId": 555,
+   "role": "UTILITY",
+   "opponentId": 80,
+   "games": 64,
+   "wins": 24
+  },
+  {
+   "championId": 555,
+   "role": "UTILITY",
+   "opponentId": 497,
+   "games": 59,
+   "wins": 23
+  },
+  {
+   "championId": 555,
+   "role": "UTILITY",
+   "opponentId": 16,
+   "games": 48,
+   "wins": 27
+  },
+  {
+   "championId": 555,
+   "role": "UTILITY",
+   "opponentId": 40,
+   "games": 47,
    "wins": 17
   },
   {
-   "championId": 777,
+   "championId": 555,
+   "role": "UTILITY",
+   "opponentId": 201,
+   "games": 42,
+   "wins": 26
+  },
+  {
+   "championId": 555,
+   "role": "UTILITY",
+   "opponentId": 902,
+   "games": 39,
+   "wins": 28
+  },
+  {
+   "championId": 711,
    "role": "MIDDLE",
-   "opponentId": 112,
-   "games": 53,
-   "wins": 29
+   "opponentId": 157,
+   "games": 61,
+   "wins": 40
+  },
+  {
+   "championId": 711,
+   "role": "MIDDLE",
+   "opponentId": 134,
+   "games": 47,
+   "wins": 30
+  },
+  {
+   "championId": 711,
+   "role": "MIDDLE",
+   "opponentId": 517,
+   "games": 46,
+   "wins": 16
+  },
+  {
+   "championId": 711,
+   "role": "MIDDLE",
+   "opponentId": 103,
+   "games": 39,
+   "wins": 19
+  },
+  {
+   "championId": 711,
+   "role": "MIDDLE",
+   "opponentId": 805,
+   "games": 38,
+   "wins": 18
+  },
+  {
+   "championId": 711,
+   "role": "MIDDLE",
+   "opponentId": 238,
+   "games": 30,
+   "wins": 19
   },
   {
    "championId": 777,
    "role": "MIDDLE",
    "opponentId": 157,
-   "games": 38,
-   "wins": 26
+   "games": 182,
+   "wins": 104
   },
   {
    "championId": 777,
    "role": "MIDDLE",
-   "opponentId": 84,
-   "games": 37,
-   "wins": 18
+   "opponentId": 112,
+   "games": 169,
+   "wins": 84
   },
   {
    "championId": 777,
    "role": "MIDDLE",
    "opponentId": 517,
-   "games": 35,
-   "wins": 23
+   "games": 127,
+   "wins": 71
+  },
+  {
+   "championId": 777,
+   "role": "MIDDLE",
+   "opponentId": 84,
+   "games": 117,
+   "wins": 63
   },
   {
    "championId": 777,
    "role": "MIDDLE",
    "opponentId": 238,
-   "games": 35,
-   "wins": 21
+   "games": 117,
+   "wins": 62
   },
   {
    "championId": 777,
    "role": "MIDDLE",
-   "opponentId": 134,
-   "games": 31,
-   "wins": 14
+   "opponentId": 103,
+   "games": 107,
+   "wins": 43
+  },
+  {
+   "championId": 777,
+   "role": "MIDDLE",
+   "opponentId": 4,
+   "games": 100,
+   "wins": 37
+  },
+  {
+   "championId": 777,
+   "role": "MIDDLE",
+   "opponentId": 131,
+   "games": 58,
+   "wins": 37
+  },
+  {
+   "championId": 777,
+   "role": "MIDDLE",
+   "opponentId": 38,
+   "games": 44,
+   "wins": 22
+  },
+  {
+   "championId": 777,
+   "role": "MIDDLE",
+   "opponentId": 39,
+   "games": 38,
+   "wins": 24
+  },
+  {
+   "championId": 777,
+   "role": "MIDDLE",
+   "opponentId": 246,
+   "games": 37,
+   "wins": 18
+  },
+  {
+   "championId": 777,
+   "role": "MIDDLE",
+   "opponentId": 910,
+   "games": 36,
+   "wins": 12
+  },
+  {
+   "championId": 777,
+   "role": "MIDDLE",
+   "opponentId": 142,
+   "games": 34,
+   "wins": 19
+  },
+  {
+   "championId": 777,
+   "role": "MIDDLE",
+   "opponentId": 1,
+   "games": 32,
+   "wins": 12
+  },
+  {
+   "championId": 777,
+   "role": "MIDDLE",
+   "opponentId": 166,
+   "games": 30,
+   "wins": 16
   },
   {
    "championId": 777,
    "role": "TOP",
    "opponentId": 24,
-   "games": 45,
-   "wins": 20
+   "games": 149,
+   "wins": 67
   },
   {
    "championId": 777,
    "role": "TOP",
    "opponentId": 266,
-   "games": 38,
-   "wins": 18
-  },
-  {
-   "championId": 777,
-   "role": "TOP",
-   "opponentId": 122,
-   "games": 34,
-   "wins": 12
+   "games": 138,
+   "wins": 66
   },
   {
    "championId": 777,
    "role": "TOP",
    "opponentId": 126,
-   "games": 32,
-   "wins": 12
+   "games": 127,
+   "wins": 61
   },
   {
    "championId": 777,
    "role": "TOP",
-   "opponentId": 39,
-   "games": 32,
+   "opponentId": 58,
+   "games": 121,
+   "wins": 49
+  },
+  {
+   "championId": 777,
+   "role": "TOP",
+   "opponentId": 80,
+   "games": 113,
+   "wins": 55
+  },
+  {
+   "championId": 777,
+   "role": "TOP",
+   "opponentId": 54,
+   "games": 102,
+   "wins": 47
+  },
+  {
+   "championId": 777,
+   "role": "TOP",
+   "opponentId": 114,
+   "games": 87,
+   "wins": 48
+  },
+  {
+   "championId": 777,
+   "role": "TOP",
+   "opponentId": 157,
+   "games": 82,
+   "wins": 32
+  },
+  {
+   "championId": 777,
+   "role": "TOP",
+   "opponentId": 84,
+   "games": 79,
+   "wins": 37
+  },
+  {
+   "championId": 777,
+   "role": "TOP",
+   "opponentId": 897,
+   "games": 74,
+   "wins": 45
+  },
+  {
+   "championId": 777,
+   "role": "TOP",
+   "opponentId": 904,
+   "games": 61,
+   "wins": 32
+  },
+  {
+   "championId": 777,
+   "role": "TOP",
+   "opponentId": 36,
+   "games": 54,
+   "wins": 31
+  },
+  {
+   "championId": 777,
+   "role": "TOP",
+   "opponentId": 799,
+   "games": 50,
+   "wins": 20
+  },
+  {
+   "championId": 777,
+   "role": "TOP",
+   "opponentId": 83,
+   "games": 48,
+   "wins": 25
+  },
+  {
+   "championId": 777,
+   "role": "TOP",
+   "opponentId": 79,
+   "games": 44,
+   "wins": 21
+  },
+  {
+   "championId": 777,
+   "role": "TOP",
+   "opponentId": 98,
+   "games": 43,
+   "wins": 19
+  },
+  {
+   "championId": 777,
+   "role": "TOP",
+   "opponentId": 23,
+   "games": 35,
+   "wins": 21
+  },
+  {
+   "championId": 777,
+   "role": "TOP",
+   "opponentId": 27,
+   "games": 35,
+   "wins": 20
+  },
+  {
+   "championId": 777,
+   "role": "TOP",
+   "opponentId": 106,
+   "games": 33,
+   "wins": 18
+  },
+  {
+   "championId": 777,
+   "role": "TOP",
+   "opponentId": 31,
+   "games": 31,
    "wins": 16
+  },
+  {
+   "championId": 777,
+   "role": "TOP",
+   "opponentId": 19,
+   "games": 30,
+   "wins": 13
+  },
+  {
+   "championId": 777,
+   "role": "TOP",
+   "opponentId": 420,
+   "games": 30,
+   "wins": 13
+  },
+  {
+   "championId": 799,
+   "role": "TOP",
+   "opponentId": 777,
+   "games": 50,
+   "wins": 30
+  },
+  {
+   "championId": 799,
+   "role": "TOP",
+   "opponentId": 122,
+   "games": 45,
+   "wins": 18
+  },
+  {
+   "championId": 799,
+   "role": "TOP",
+   "opponentId": 164,
+   "games": 39,
+   "wins": 15
+  },
+  {
+   "championId": 799,
+   "role": "TOP",
+   "opponentId": 80,
+   "games": 32,
+   "wins": 20
+  },
+  {
+   "championId": 799,
+   "role": "TOP",
+   "opponentId": 14,
+   "games": 32,
+   "wins": 19
+  },
+  {
+   "championId": 799,
+   "role": "TOP",
+   "opponentId": 23,
+   "games": 31,
+   "wins": 13
+  },
+  {
+   "championId": 800,
+   "role": "MIDDLE",
+   "opponentId": 103,
+   "games": 51,
+   "wins": 29
+  },
+  {
+   "championId": 800,
+   "role": "MIDDLE",
+   "opponentId": 142,
+   "games": 33,
+   "wins": 14
+  },
+  {
+   "championId": 800,
+   "role": "MIDDLE",
+   "opponentId": 4,
+   "games": 31,
+   "wins": 11
   },
   {
    "championId": 804,
    "role": "BOTTOM",
    "opponentId": 145,
-   "games": 114,
-   "wins": 59
+   "games": 411,
+   "wins": 218
   },
   {
    "championId": 804,
    "role": "BOTTOM",
    "opponentId": 202,
-   "games": 72,
-   "wins": 47
+   "games": 280,
+   "wins": 150
   },
   {
    "championId": 804,
    "role": "BOTTOM",
    "opponentId": 51,
-   "games": 38,
-   "wins": 18
+   "games": 184,
+   "wins": 82
   },
   {
    "championId": 804,
    "role": "BOTTOM",
    "opponentId": 523,
-   "games": 38,
-   "wins": 18
+   "games": 175,
+   "wins": 79
   },
   {
    "championId": 804,
    "role": "BOTTOM",
    "opponentId": 81,
-   "games": 37,
-   "wins": 15
+   "games": 159,
+   "wins": 77
   },
   {
    "championId": 804,
    "role": "BOTTOM",
    "opponentId": 236,
-   "games": 37,
-   "wins": 26
+   "games": 144,
+   "wins": 92
+  },
+  {
+   "championId": 804,
+   "role": "BOTTOM",
+   "opponentId": 18,
+   "games": 131,
+   "wins": 59
+  },
+  {
+   "championId": 804,
+   "role": "BOTTOM",
+   "opponentId": 221,
+   "games": 109,
+   "wins": 60
+  },
+  {
+   "championId": 804,
+   "role": "BOTTOM",
+   "opponentId": 498,
+   "games": 81,
+   "wins": 30
+  },
+  {
+   "championId": 804,
+   "role": "BOTTOM",
+   "opponentId": 110,
+   "games": 60,
+   "wins": 35
+  },
+  {
+   "championId": 804,
+   "role": "BOTTOM",
+   "opponentId": 29,
+   "games": 57,
+   "wins": 24
+  },
+  {
+   "championId": 804,
+   "role": "BOTTOM",
+   "opponentId": 15,
+   "games": 57,
+   "wins": 25
   },
   {
    "championId": 805,
    "role": "MIDDLE",
    "opponentId": 84,
-   "games": 31,
-   "wins": 14
+   "games": 106,
+   "wins": 58
+  },
+  {
+   "championId": 805,
+   "role": "MIDDLE",
+   "opponentId": 517,
+   "games": 99,
+   "wins": 44
+  },
+  {
+   "championId": 805,
+   "role": "MIDDLE",
+   "opponentId": 134,
+   "games": 70,
+   "wins": 46
+  },
+  {
+   "championId": 805,
+   "role": "MIDDLE",
+   "opponentId": 55,
+   "games": 67,
+   "wins": 29
+  },
+  {
+   "championId": 805,
+   "role": "MIDDLE",
+   "opponentId": 910,
+   "games": 43,
+   "wins": 28
+  },
+  {
+   "championId": 805,
+   "role": "MIDDLE",
+   "opponentId": 90,
+   "games": 42,
+   "wins": 18
+  },
+  {
+   "championId": 805,
+   "role": "MIDDLE",
+   "opponentId": 711,
+   "games": 38,
+   "wins": 20
+  },
+  {
+   "championId": 805,
+   "role": "MIDDLE",
+   "opponentId": 101,
+   "games": 35,
+   "wins": 21
+  },
+  {
+   "championId": 805,
+   "role": "MIDDLE",
+   "opponentId": 893,
+   "games": 34,
+   "wins": 20
+  },
+  {
+   "championId": 805,
+   "role": "MIDDLE",
+   "opponentId": 246,
+   "games": 33,
+   "wins": 17
+  },
+  {
+   "championId": 805,
+   "role": "MIDDLE",
+   "opponentId": 8,
+   "games": 32,
+   "wins": 19
+  },
+  {
+   "championId": 805,
+   "role": "MIDDLE",
+   "opponentId": 39,
+   "games": 30,
+   "wins": 17
+  },
+  {
+   "championId": 805,
+   "role": "MIDDLE",
+   "opponentId": 99,
+   "games": 30,
+   "wins": 16
   },
   {
    "championId": 875,
    "role": "TOP",
-   "opponentId": 266,
-   "games": 31,
-   "wins": 17
+   "opponentId": 86,
+   "games": 47,
+   "wins": 21
+  },
+  {
+   "championId": 875,
+   "role": "TOP",
+   "opponentId": 82,
+   "games": 44,
+   "wins": 28
+  },
+  {
+   "championId": 875,
+   "role": "TOP",
+   "opponentId": 58,
+   "games": 39,
+   "wins": 16
+  },
+  {
+   "championId": 875,
+   "role": "TOP",
+   "opponentId": 41,
+   "games": 34,
+   "wins": 14
   },
   {
    "championId": 876,
    "role": "JUNGLE",
    "opponentId": 64,
-   "games": 47,
-   "wins": 24
+   "games": 159,
+   "wins": 88
+  },
+  {
+   "championId": 876,
+   "role": "JUNGLE",
+   "opponentId": 246,
+   "games": 57,
+   "wins": 25
+  },
+  {
+   "championId": 876,
+   "role": "JUNGLE",
+   "opponentId": 5,
+   "games": 44,
+   "wins": 25
+  },
+  {
+   "championId": 876,
+   "role": "JUNGLE",
+   "opponentId": 35,
+   "games": 37,
+   "wins": 25
+  },
+  {
+   "championId": 876,
+   "role": "JUNGLE",
+   "opponentId": 76,
+   "games": 36,
+   "wins": 21
+  },
+  {
+   "championId": 876,
+   "role": "JUNGLE",
+   "opponentId": 102,
+   "games": 36,
+   "wins": 20
+  },
+  {
+   "championId": 876,
+   "role": "JUNGLE",
+   "opponentId": 245,
+   "games": 34,
+   "wins": 15
+  },
+  {
+   "championId": 876,
+   "role": "JUNGLE",
+   "opponentId": 56,
+   "games": 32,
+   "wins": 14
+  },
+  {
+   "championId": 876,
+   "role": "JUNGLE",
+   "opponentId": 143,
+   "games": 30,
+   "wins": 17
+  },
+  {
+   "championId": 888,
+   "role": "UTILITY",
+   "opponentId": 117,
+   "games": 44,
+   "wins": 17
+  },
+  {
+   "championId": 888,
+   "role": "UTILITY",
+   "opponentId": 412,
+   "games": 36,
+   "wins": 16
+  },
+  {
+   "championId": 893,
+   "role": "MIDDLE",
+   "opponentId": 103,
+   "games": 46,
+   "wins": 18
+  },
+  {
+   "championId": 893,
+   "role": "MIDDLE",
+   "opponentId": 134,
+   "games": 35,
+   "wins": 14
+  },
+  {
+   "championId": 893,
+   "role": "MIDDLE",
+   "opponentId": 805,
+   "games": 34,
+   "wins": 14
+  },
+  {
+   "championId": 893,
+   "role": "MIDDLE",
+   "opponentId": 127,
+   "games": 31,
+   "wins": 19
+  },
+  {
+   "championId": 895,
+   "role": "BOTTOM",
+   "opponentId": 145,
+   "games": 44,
+   "wins": 28
+  },
+  {
+   "championId": 897,
+   "role": "TOP",
+   "opponentId": 777,
+   "games": 74,
+   "wins": 29
+  },
+  {
+   "championId": 897,
+   "role": "TOP",
+   "opponentId": 86,
+   "games": 44,
+   "wins": 13
+  },
+  {
+   "championId": 897,
+   "role": "TOP",
+   "opponentId": 41,
+   "games": 44,
+   "wins": 26
+  },
+  {
+   "championId": 897,
+   "role": "TOP",
+   "opponentId": 58,
+   "games": 34,
+   "wins": 12
   },
   {
    "championId": 901,
    "role": "BOTTOM",
    "opponentId": 145,
-   "games": 33,
-   "wins": 16
+   "games": 133,
+   "wins": 64
   },
   {
-   "championId": 902,
-   "role": "UTILITY",
-   "opponentId": 412,
-   "games": 36,
-   "wins": 9
+   "championId": 901,
+   "role": "BOTTOM",
+   "opponentId": 202,
+   "games": 109,
+   "wins": 52
+  },
+  {
+   "championId": 901,
+   "role": "BOTTOM",
+   "opponentId": 18,
+   "games": 67,
+   "wins": 21
+  },
+  {
+   "championId": 901,
+   "role": "BOTTOM",
+   "opponentId": 21,
+   "games": 62,
+   "wins": 23
+  },
+  {
+   "championId": 901,
+   "role": "BOTTOM",
+   "opponentId": 523,
+   "games": 48,
+   "wins": 18
+  },
+  {
+   "championId": 901,
+   "role": "BOTTOM",
+   "opponentId": 29,
+   "games": 30,
+   "wins": 18
+  },
+  {
+   "championId": 901,
+   "role": "MIDDLE",
+   "opponentId": 90,
+   "games": 40,
+   "wins": 23
   },
   {
    "championId": 902,
    "role": "UTILITY",
    "opponentId": 117,
-   "games": 34,
-   "wins": 19
+   "games": 151,
+   "wins": 82
+  },
+  {
+   "championId": 902,
+   "role": "UTILITY",
+   "opponentId": 412,
+   "games": 133,
+   "wins": 55
+  },
+  {
+   "championId": 902,
+   "role": "UTILITY",
+   "opponentId": 497,
+   "games": 41,
+   "wins": 16
+  },
+  {
+   "championId": 902,
+   "role": "UTILITY",
+   "opponentId": 555,
+   "games": 39,
+   "wins": 11
+  },
+  {
+   "championId": 904,
+   "role": "TOP",
+   "opponentId": 777,
+   "games": 61,
+   "wins": 29
+  },
+  {
+   "championId": 904,
+   "role": "TOP",
+   "opponentId": 86,
+   "games": 30,
+   "wins": 12
+  },
+  {
+   "championId": 904,
+   "role": "TOP",
+   "opponentId": 14,
+   "games": 30,
+   "wins": 14
+  },
+  {
+   "championId": 904,
+   "role": "TOP",
+   "opponentId": 266,
+   "games": 30,
+   "wins": 20
+  },
+  {
+   "championId": 910,
+   "role": "BOTTOM",
+   "opponentId": 145,
+   "games": 32,
+   "wins": 14
+  },
+  {
+   "championId": 910,
+   "role": "MIDDLE",
+   "opponentId": 4,
+   "games": 45,
+   "wins": 25
+  },
+  {
+   "championId": 910,
+   "role": "MIDDLE",
+   "opponentId": 805,
+   "games": 43,
+   "wins": 15
+  },
+  {
+   "championId": 910,
+   "role": "MIDDLE",
+   "opponentId": 157,
+   "games": 41,
+   "wins": 17
+  },
+  {
+   "championId": 910,
+   "role": "MIDDLE",
+   "opponentId": 127,
+   "games": 37,
+   "wins": 14
+  },
+  {
+   "championId": 910,
+   "role": "MIDDLE",
+   "opponentId": 777,
+   "games": 36,
+   "wins": 24
   },
   {
    "championId": 950,
    "role": "JUNGLE",
    "opponentId": 64,
-   "games": 39,
-   "wins": 22
+   "games": 151,
+   "wins": 84
+  },
+  {
+   "championId": 950,
+   "role": "JUNGLE",
+   "opponentId": 76,
+   "games": 38,
+   "wins": 20
+  },
+  {
+   "championId": 950,
+   "role": "JUNGLE",
+   "opponentId": 120,
+   "games": 34,
+   "wins": 12
+  },
+  {
+   "championId": 950,
+   "role": "JUNGLE",
+   "opponentId": 141,
+   "games": 33,
+   "wins": 12
+  },
+  {
+   "championId": 950,
+   "role": "JUNGLE",
+   "opponentId": 91,
+   "games": 33,
+   "wins": 20
+  },
+  {
+   "championId": 950,
+   "role": "JUNGLE",
+   "opponentId": 517,
+   "games": 31,
+   "wins": 12
   }
  ]
 }
